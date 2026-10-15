@@ -223,7 +223,7 @@ src/
 ### Animations (GSAP)
 
 - **Invitations:** the hero names appear just as the opening screen finishes and drift away as you scroll; sections rise into place; the two families arrive from opposite sides; the couple photo has parallax depth; the **event cards pile on top of each other**; the **gallery is pinned and slides sideways** while you scroll down. The code is in `src/components/invite-shared/use-invite-motion.ts`.
-- **Website:** the four "How it works" cards pile up, the design showcase is pinned and slides sideways, the hero phones drift at different speeds, and cards rise in. See `src/components/marketing/page-motion.tsx`.
+- **Website:** the four "How it works" cards pile up, the designs sit in a simple 3-column grid, the hero phones drift at different speeds, and cards rise in. See `src/components/marketing/page-motion.tsx`.
 - Shared helpers (`stackCards`, `horizontalScroll`, `riseIn`, `parallax`) are in `src/lib/motion.ts`: use them to add the same effects anywhere.
 - Everything is switched off for visitors who set **Reduce motion** on their phone or computer; they get the plain page. The animation code is downloaded only after the opening screen (invitations) or at the first scroll (website), so the first screen stays fast.
 - Each design needs a solid card colour for the pile: it is the `--inv-stack-bg` line near the top of every design's CSS file.

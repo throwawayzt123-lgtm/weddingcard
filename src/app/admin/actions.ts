@@ -198,13 +198,12 @@ export async function saveSettingsAction(_prev: ActionState, formData: FormData)
     }
     const v = parsed.data;
     const digits = normalizePhone(v.whatsappNumber);
-    if (!digits) return { ok: false, error: "That WhatsApp number does not look right.", fieldErrors: { whatsappNumber: "Example: 0321 4317574" } };
+    if (!digits) return { ok: false, error: "That WhatsApp number does not look right.", fieldErrors: { whatsappNumber: "Example: 0300 1234567" } };
 
     await saveSettings({
       brandName: v.brandName,
       tagline: v.tagline,
       whatsappNumber: digits,
-      whatsappDisplay: `+${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`,
       defaultExpiryDays: v.defaultExpiryDays,
       shareMessage: v.shareMessage,
       prices: { BASIC: v.priceBASIC, STANDARD: v.priceSTANDARD, PREMIUM: v.pricePREMIUM },

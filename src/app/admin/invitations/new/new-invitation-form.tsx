@@ -137,7 +137,7 @@ export function NewInvitationForm({ clients, siteUrl, prices, defaultExpiryDays 
             <Field label="Customer name" htmlFor="customerName" error={fieldError(state, "customerName")} hint="Who we are talking to, e.g. Mr. Khalid Mehmood">
               <input id="customerName" name="customerName" className="input" autoComplete="off" />
             </Field>
-            <Field label="WhatsApp number" htmlFor="customerPhone" error={fieldError(state, "customerPhone")} hint="e.g. 0321 4317574">
+            <Field label="WhatsApp number" htmlFor="customerPhone" error={fieldError(state, "customerPhone")} hint="e.g. 0300 1234567">
               <input id="customerPhone" name="customerPhone" type="tel" inputMode="tel" className="input" autoComplete="off" />
             </Field>
             <Field label="Email (optional)" htmlFor="customerEmail" error={fieldError(state, "customerEmail")} className="sm:col-span-2">

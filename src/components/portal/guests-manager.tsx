@@ -55,7 +55,7 @@ function GuestForm({ initial, events, onSubmit, onDone, submitLabel }: {
       <Field label="Guest name" htmlFor="g-name" error={errors.displayName} hint="Exactly how it should appear: “Dear …,” e.g. Sarah & Family">
         <input id="g-name" value={name} onChange={(e) => setName(e.target.value)} className="input" maxLength={80} autoComplete="off" />
       </Field>
-      <Field label="WhatsApp number (optional)" htmlFor="g-phone" error={errors.phone} hint="So the Send button opens their chat directly. e.g. 0321 4317574">
+      <Field label="WhatsApp number (optional)" htmlFor="g-phone" error={errors.phone} hint="So the Send button opens their chat directly. e.g. 0300 1234567">
         <input id="g-phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="input" inputMode="tel" maxLength={30} autoComplete="off" />
       </Field>
       {events.length > 0 && (

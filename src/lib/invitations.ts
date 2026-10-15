@@ -75,7 +75,7 @@ export async function createInvitation(input: CreateInvitationInput, actorId: st
   let phone: string | null = null;
   if (input.customerMode === "new") {
     phone = normalizePhone(input.customerPhone);
-    if (!phone) throw new ActionError("That WhatsApp number does not look right. Example: 0321 4317574");
+    if (!phone) throw new ActionError("That WhatsApp number does not look right. Example: 0300 1234567");
     if (input.customerEmail && (await prisma.user.findUnique({ where: { email: input.customerEmail }, select: { id: true } }))) {
       throw new ActionError("A user with that email already exists. Choose “Existing customer” instead.");
     }

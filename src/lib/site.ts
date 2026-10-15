@@ -4,14 +4,20 @@
 export const SITE = {
   brandName: "Aesthetic Wedding Cards",
   tagline: "Animated wedding invitations, shared on WhatsApp",
-  /** International format, digits only — used in wa.me links. */
-  whatsappNumber: "923214317574",
-  whatsappDisplay: "+92 321 4317574",
+  /**
+   * THE ONE PLACE for the business WhatsApp number: international format, digits only.
+   * Every wa.me link, button and footer on the site uses it (the display text is made from it).
+   * The owner can also change it in Admin → Settings, which then takes over.
+   */
+  whatsappNumber: "92123456",
   currency: "PKR",
   /** Invitation expiry = last event date + this many days (admin can change). */
   defaultExpiryDays: 30,
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
 } as const;
+
+/** Pre-filled WhatsApp message of every "Order Custom Design" button. */
+export const CUSTOM_ORDER_MESSAGE = "Hi, I'd like to order a custom-designed wedding invitation.";
 
 /** Builds a WhatsApp chat link, optionally with a pre-filled message. */
 export function whatsappLink(text?: string, number: string = SITE.whatsappNumber): string {

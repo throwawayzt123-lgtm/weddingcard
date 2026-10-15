@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Sparkles } from "lucide-react";
 
-export function MarketingFooter({ brandName, whatsappHref, whatsappDisplay }: { brandName: string; whatsappHref: string; whatsappDisplay: string }) {
+export function MarketingFooter({ brandName, whatsappHref, whatsappDisplay, customHref }: { brandName: string; whatsappHref: string; whatsappDisplay: string; customHref: string }) {
   return (
     <>
       <footer className="bg-maroon-dark text-ivory">
@@ -15,7 +15,7 @@ export function MarketingFooter({ brandName, whatsappHref, whatsappDisplay }: { 
             <ul className="mt-3 space-y-2 text-ivory/80">
               <li><Link href="/designs" className="hover:text-white">All designs</Link></li>
               <li><Link href="/#how-it-works" className="hover:text-white">How it works</Link></li>
-              <li><Link href="/#pricing" className="hover:text-white">Pricing</Link></li>
+              {/* <li><Link href="/#pricing" className="hover:text-white">Pricing</Link></li> */}
               <li><Link href="/#faq" className="hover:text-white">FAQ</Link></li>
               <li><Link href="/login" className="hover:text-white">Customer login</Link></li>
             </ul>
@@ -25,6 +25,10 @@ export function MarketingFooter({ brandName, whatsappHref, whatsappDisplay }: { 
             <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-ivory/90 hover:text-white">
               <MessageCircle className="size-4" />
               {whatsappDisplay}
+            </a>
+            <a href={customHref} target="_blank" rel="noopener noreferrer" className="btn-custom mt-4 !min-h-11 !px-5 !py-2.5 !text-sm">
+              <Sparkles className="size-4" />
+              Order Custom Design
             </a>
           </div>
         </div>

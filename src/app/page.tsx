@@ -4,11 +4,12 @@ import Link from "next/link";
 import { BellRing, CalendarCheck, Check, Gift, Heart, Languages, MapPinned, Music2, Send, Sparkles, Users, Wallet } from "lucide-react";
 import { DesignCard } from "@/components/marketing/design-card";
 import { MarketingFooter } from "@/components/marketing/footer";
+import { CustomDesignBand } from "@/components/marketing/custom-band";
 import { MarketingHeader } from "@/components/marketing/header";
 import { PageMotion } from "@/components/marketing/page-motion";
 import { PhoneMockup } from "@/components/marketing/phone-mockup";
 import { PLAN_KEYS, PLANS, planFeatures } from "@/lib/plans";
-import { formatPkr } from "@/lib/site";
+import { CUSTOM_ORDER_MESSAGE, formatPkr } from "@/lib/site";
 import { getSettings, waLink } from "@/lib/settings";
 import { TEMPLATES } from "@/templates/registry";
 
@@ -60,10 +61,11 @@ const FAQ = [
 export default async function HomePage() {
   const settings = await getSettings();
   const wa = (text?: string) => waLink(settings, text);
+  const customHref = wa(CUSTOM_ORDER_MESSAGE);
 
   return (
     <>
-      <MarketingHeader brandName={settings.brandName} logoUrl={settings.logoUrl} whatsappHref={wa("Hi, I'd like to order a wedding invitation.")} />
+      <MarketingHeader brandName={settings.brandName} logoUrl={settings.logoUrl} whatsappHref={wa("Hi, I'd like to order a wedding invitation.")} customHref={customHref} />
 
       <main>
         <PageMotion />
@@ -78,10 +80,14 @@ export default async function HomePage() {
               <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink/75 lg:mx-0">
                 Doors that open, envelopes that unseal, music that plays. Share one link on WhatsApp and every guest is greeted by name — with venue maps, countdown and RSVP built in.
               </p>
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+              <div className="mt-8 flex flex-col flex-wrap justify-center gap-3 sm:flex-row lg:justify-start">
                 <Link href="/designs" className="btn-primary">
                   See live designs
                 </Link>
+                <a href={customHref} target="_blank" rel="noopener noreferrer" className="btn-custom">
+                  <Sparkles className="size-5" />
+                  Order Custom Design
+                </a>
                 <a href={wa("Hi, I'd like to order a wedding invitation.")} target="_blank" rel="noopener noreferrer" className="btn-secondary">
                   Order on WhatsApp
                 </a>
@@ -139,21 +145,24 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* ---------- Designs: pinned, slides sideways while you scroll down ---------- */}
-        <section id="designs" data-fx="hscroll" className="fx-hscroll scroll-mt-20 overflow-x-clip py-20">
+        {/* ---------- Designs: a simple grid ---------- */}
+        <section id="designs" className="scroll-mt-20 py-20">
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center">
               <p className="section-eyebrow">The designs</p>
               <h2 className="section-title">Pick the one that feels like you</h2>
-              <p className="mx-auto mt-4 max-w-xl text-ink/70">Scroll to browse. Tap “View Live Demo” to open any design exactly as your guests will see it.</p>
+              <p className="mx-auto mt-4 max-w-xl text-ink/70">Tap “View Live Demo” to open any design exactly as your guests will see it.</p>
             </div>
           </div>
-          <div data-fx="hscroll-track" className="fx-hscroll-track mt-10">
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3">
             {TEMPLATES.map((t) => (
-              <div key={t.key} className="fx-hscroll-item">
+              <div key={t.key} data-fx="rise">
                 <DesignCard template={t} orderHref={wa(`Hi, I want to order the ${t.name} invitation.`)} />
               </div>
             ))}
+          </div>
+          <div className="mx-auto max-w-6xl px-4">
+            <CustomDesignBand href={customHref} />
           </div>
         </section>
 
@@ -176,7 +185,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* ---------- Pricing ---------- */}
+        {/* ---------- Pricing (hidden for now: remove this comment wrapper to show it again) ----------
         <section id="pricing" className="scroll-mt-20 py-20">
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center">
@@ -217,6 +226,7 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+        */}
 
         {/* ---------- FAQ ---------- */}
         <section id="faq" className="scroll-mt-20 bg-white py-20">
@@ -245,14 +255,20 @@ export default async function HomePage() {
             <Heart className="mx-auto size-8 fill-gold-light text-gold-light" />
             <h2 className="mt-5 font-serif text-4xl font-medium sm:text-5xl">Ready to invite your guests?</h2>
             <p className="mt-4 text-ivory/80">Message us on WhatsApp and your invitation can be live today.</p>
-            <a href={wa("Hi, I'd like to order a wedding invitation.")} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8 !bg-gold !text-ink hover:!bg-gold-light">
-              Chat on WhatsApp · {settings.whatsappDisplay}
-            </a>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href={customHref} target="_blank" rel="noopener noreferrer" className="btn-custom">
+                <Sparkles className="size-5" />
+                Order Custom Design
+              </a>
+              <a href={wa("Hi, I'd like to order a wedding invitation.")} target="_blank" rel="noopener noreferrer" className="btn-primary !bg-white/10 ring-1 ring-white/30 hover:!bg-white/20">
+                Chat on WhatsApp · {settings.whatsappDisplay}
+              </a>
+            </div>
           </div>
         </section>
       </main>
 
-      <MarketingFooter brandName={settings.brandName} whatsappHref={wa()} whatsappDisplay={settings.whatsappDisplay} />
+      <MarketingFooter brandName={settings.brandName} whatsappHref={wa()} whatsappDisplay={settings.whatsappDisplay} customHref={customHref} />
     </>
   );
 }

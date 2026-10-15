@@ -48,6 +48,20 @@
   .btn-secondary {
     @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-ink/15 bg-white px-6 py-3 text-base font-semibold text-ink shadow-sm transition hover:bg-cream active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60;
   }
+  /* The highlighted gold "Order Custom Design" button, with a slow shine sweeping across it. */
+  .btn-custom {
+    @apply relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-xl bg-[linear-gradient(135deg,#e9cd8a,#c9a24b_55%,#b4862f)] px-6 py-3 text-base font-bold text-[#3a1a0a] shadow-[0_6px_18px_-6px_rgba(180,134,47,0.9)] ring-1 ring-[#8a6420]/40 transition hover:brightness-105 active:scale-[0.99];
+  }
+  .btn-custom::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -60%;
+    width: 45%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: skewX(-18deg);
+    animation: custom-shine 4.2s ease-in-out 1.2s infinite;
+    pointer-events: none;
+  }
   .card {
     @apply rounded-2xl border border-ink/10 bg-white shadow-sm;
   }
@@ -119,34 +133,16 @@
   box-shadow: 0 -12px 30px -18px rgba(60, 20, 30, 0.5);
 }
 
-/* A row of design cards. Without JavaScript it is a normal swipeable row;
-   with it, the section is pinned and the row is moved by scrolling. */
-.fx-hscroll-track {
-  display: flex;
-  gap: 1.5rem;
-  padding: 1rem 1rem 1.5rem max(1rem, calc((100vw - 72rem) / 2 + 1rem));
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.fx-hscroll-track::-webkit-scrollbar { display: none; }
-.fx-hscroll-item {
-  flex: 0 0 min(78vw, 20.5rem);
-  scroll-snap-align: center;
-}
-.fx-hscroll[data-fx-active] {
-  display: flex;
-  min-height: calc(100dvh - 4rem);
-  flex-direction: column;
-  justify-content: center;
-}
-.fx-hscroll[data-fx-active] .fx-hscroll-track {
-  width: max-content;
-  overflow: visible;
-  scroll-snap-type: none;
-  padding-right: 3rem;
-}
 @media (prefers-reduced-motion: reduce) {
   .fx-stack-card { position: static; }
 }
 /* reload 1792019210150 */
+
+@keyframes custom-shine {
+  0%, 55% { left: -60%; }
+  100% { left: 130%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-custom::after { animation: none; display: none; }
+}
+

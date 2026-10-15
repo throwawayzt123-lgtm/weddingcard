@@ -55,7 +55,7 @@ export async function addGuest(inv: Invitation, plan: PlanConfig, input: unknown
   if (!canAddMore(plan.maxGuests, count)) throw new ActionError(limitMessage(plan));
 
   const phone = data.phone ? normalizePhone(data.phone) : null;
-  if (data.phone && !phone) throw new ActionError("That phone number does not look right. Example: 0321 4317574");
+  if (data.phone && !phone) throw new ActionError("That phone number does not look right. Example: 0300 1234567");
   const eventIds = await validEventIds(inv.id, data.eventIds);
   await createGuest(inv.id, { displayName: data.displayName, phone, eventIds });
 }
@@ -65,7 +65,7 @@ export async function updateGuest(inv: Invitation, guestId: string, input: unkno
   const guest = await prisma.guest.findFirst({ where: { id: guestId, invitationId: inv.id }, select: { id: true } });
   if (!guest) throw new ActionError("That guest was not found.");
   const phone = data.phone ? normalizePhone(data.phone) : null;
-  if (data.phone && !phone) throw new ActionError("That phone number does not look right. Example: 0321 4317574");
+  if (data.phone && !phone) throw new ActionError("That phone number does not look right. Example: 0300 1234567");
   const eventIds = await validEventIds(inv.id, data.eventIds);
 
   await prisma.$transaction([

@@ -9,7 +9,6 @@ import { useEffect } from "react";
  *   data-fx="rise"            slides up and fades in when it scrolls into view
  *   data-fx-speed="-12"       drifts at its own speed while the section scrolls by (parallax)
  *   data-fx="stack"           its <li> cards pile on top of each other (CSS sticky + GSAP depth)
- *   data-fx="hscroll"         pinned while its data-fx="hscroll-track" slides sideways
  * GSAP is only downloaded when the visitor first scrolls or touches the page (or after 8 seconds),
  * so it never slows down the first screen.
  */
@@ -32,7 +31,7 @@ export function PageMotion() {
     fallback = setTimeout(start, 8000);
 
     function init() {
-      import("@/lib/motion").then(({ gsap, ScrollTrigger, horizontalScroll, riseIn, stackCards }) => {
+      import("@/lib/motion").then(({ gsap, ScrollTrigger, riseIn, stackCards }) => {
         if (cancelled) return;
         const mm = gsap.matchMedia();
 
@@ -51,17 +50,6 @@ export function PageMotion() {
           });
 
           stackCards(q("[data-fx=stack] > li"), 0.05);
-
-          const section = document.querySelector<HTMLElement>("[data-fx=hscroll]");
-          const track = section?.querySelector<HTMLElement>("[data-fx=hscroll-track]");
-          if (section && track) {
-            section.dataset.fxActive = "";
-            horizontalScroll(section, track, { topOffset: 64 });
-          }
-
-          return () => {
-            if (section) delete section.dataset.fxActive;
-          };
         });
 
         revert = () => mm.revert();

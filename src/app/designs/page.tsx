@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { DesignCard } from "@/components/marketing/design-card";
 import { MarketingFooter } from "@/components/marketing/footer";
+import { CustomDesignBand } from "@/components/marketing/custom-band";
 import { MarketingHeader } from "@/components/marketing/header";
 import { PageMotion } from "@/components/marketing/page-motion";
+import { CUSTOM_ORDER_MESSAGE } from "@/lib/site";
 import { getSettings, waLink } from "@/lib/settings";
 import { TEMPLATES } from "@/templates/registry";
 
@@ -17,10 +19,11 @@ export const metadata: Metadata = {
 export default async function DesignsPage() {
   const settings = await getSettings();
   const wa = (text?: string) => waLink(settings, text);
+  const customHref = wa(CUSTOM_ORDER_MESSAGE);
 
   return (
     <>
-      <MarketingHeader brandName={settings.brandName} logoUrl={settings.logoUrl} whatsappHref={wa("Hi, I'd like to order a wedding invitation.")} />
+      <MarketingHeader brandName={settings.brandName} logoUrl={settings.logoUrl} whatsappHref={wa("Hi, I'd like to order a wedding invitation.")} customHref={customHref} />
       <main className="bg-[linear-gradient(#fbf7f0,#f3ead9)] pt-14 pb-24">
         <PageMotion />
         <div className="mx-auto max-w-6xl px-4">
@@ -38,10 +41,10 @@ export default async function DesignsPage() {
               </div>
             ))}
           </div>
-          <p className="mt-12 text-center text-sm text-ink/60">Want something different? Message us — we can adapt colours and wording to your wedding.</p>
+          <CustomDesignBand href={customHref} />
         </div>
       </main>
-      <MarketingFooter brandName={settings.brandName} whatsappHref={wa()} whatsappDisplay={settings.whatsappDisplay} />
+      <MarketingFooter brandName={settings.brandName} whatsappHref={wa()} whatsappDisplay={settings.whatsappDisplay} customHref={customHref} />
     </>
   );
 }

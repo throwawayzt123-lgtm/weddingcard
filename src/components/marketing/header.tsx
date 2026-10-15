@@ -3,16 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, MessageCircle, Sparkles, X } from "lucide-react";
 
 const LINKS = [
   { href: "/designs", label: "Designs" },
   { href: "/#how-it-works", label: "How it works" },
-  { href: "/#pricing", label: "Pricing" },
+  // { href: "/#pricing", label: "Pricing" }, // pricing section is hidden for now
   { href: "/#faq", label: "FAQ" },
 ];
 
-export function MarketingHeader({ brandName, logoUrl, whatsappHref }: { brandName: string; logoUrl: string | null; whatsappHref: string }) {
+export function MarketingHeader({ brandName, logoUrl, whatsappHref, customHref }: { brandName: string; logoUrl: string | null; whatsappHref: string; customHref: string }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -35,7 +35,12 @@ export function MarketingHeader({ brandName, logoUrl, whatsappHref }: { brandNam
           <Link href="/login" className="hidden rounded-lg px-3 py-2 text-sm font-medium text-ink/80 hover:text-maroon sm:block">
             Customer login
           </Link>
-          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="hidden min-h-10 items-center gap-2 rounded-full bg-maroon px-4 text-sm font-semibold text-white hover:bg-maroon-dark sm:inline-flex">
+          <a href={customHref} target="_blank" rel="noopener noreferrer" className="btn-custom !min-h-10 !rounded-full !px-4 !py-2 !text-sm max-sm:hidden">
+            <Sparkles className="size-4" />
+            <span className="hidden lg:inline">Order Custom Design</span>
+            <span className="lg:hidden">Custom Design</span>
+          </a>
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="hidden min-h-10 items-center gap-2 rounded-full bg-maroon px-4 text-sm font-semibold text-white hover:bg-maroon-dark xl:inline-flex">
             <MessageCircle className="size-4" />
             Order now
           </a>
@@ -47,6 +52,10 @@ export function MarketingHeader({ brandName, logoUrl, whatsappHref }: { brandNam
 
       {open && (
         <nav className="border-t border-gold/25 bg-ivory px-4 pb-5 md:hidden" aria-label="Mobile">
+          <a href={customHref} target="_blank" rel="noopener noreferrer" className="btn-custom mt-4 w-full" onClick={() => setOpen(false)}>
+            <Sparkles className="size-5" />
+            Order Custom Design
+          </a>
           <ul className="divide-y divide-ink/10">
             {[...LINKS, { href: "/login", label: "Customer login" }].map((l) => (
               <li key={l.href}>

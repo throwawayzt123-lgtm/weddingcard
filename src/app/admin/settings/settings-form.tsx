@@ -40,7 +40,7 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
           <Field label="Brand name" htmlFor="brandName" error={fieldError(state, "brandName")} hint="Shown on the website and in the “Made with ❤ by …” badge.">
             <input id="brandName" name="brandName" defaultValue={settings.brandName} className="input" />
           </Field>
-          <Field label="WhatsApp number" htmlFor="whatsappNumber" error={fieldError(state, "whatsappNumber")} hint="Customers message this number to order. Example: 0321 4317574">
+          <Field label="WhatsApp number" htmlFor="whatsappNumber" error={fieldError(state, "whatsappNumber")} hint="Customers message this number to order. Example: 0300 1234567">
             <input id="whatsappNumber" name="whatsappNumber" defaultValue={formatPhone(settings.whatsappNumber)} className="input" inputMode="tel" />
           </Field>
           <Field label="Tagline" htmlFor="tagline" error={fieldError(state, "tagline")} className="sm:col-span-2">

@@ -3,6 +3,7 @@ import { cache } from "react";
 import type { Plan } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { PLANS } from "@/lib/plans";
+import { formatPhone } from "@/lib/phone";
 import { SITE } from "@/lib/site";
 
 // Site-wide settings the owner edits in Admin → Settings. They live in the
@@ -14,9 +15,9 @@ export type SiteSettings = {
   tagline: string;
   /** Logo image URL (Cloudinary), or null to show the brand name as text. */
   logoUrl: string | null;
-  /** Digits only, international format, e.g. 923214317574 */
+  /** Digits only, international format, e.g. 923001234567 */
   whatsappNumber: string;
-  /** How the number is shown to people, e.g. "+92 321 4317574" */
+  /** How the number is shown to people. Always made from whatsappNumber, never stored. */
   whatsappDisplay: string;
   defaultExpiryDays: number;
   /** Message template for the guest "Send on WhatsApp" button. {name} {couple} {link} are replaced. */
@@ -33,7 +34,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   tagline: SITE.tagline,
   logoUrl: null,
   whatsappNumber: SITE.whatsappNumber,
-  whatsappDisplay: SITE.whatsappDisplay,
+  whatsappDisplay: formatPhone(SITE.whatsappNumber),
   defaultExpiryDays: SITE.defaultExpiryDays,
   shareMessage: DEFAULT_SHARE_MESSAGE,
   prices: { BASIC: PLANS.BASIC.pricePkr, STANDARD: PLANS.STANDARD.pricePkr, PREMIUM: PLANS.PREMIUM.pricePkr },
@@ -55,8 +56,10 @@ export const getSettings = cache(async (): Promise<SiteSettings> => {
     for (const key of Object.keys(DEFAULT_SETTINGS)) {
       if (stored[key] !== undefined && stored[key] !== null && stored[key] !== "") s[key] = stored[key];
     }
+    const merged = s as SiteSettings;
     return {
-      ...(s as SiteSettings),
+      ...merged,
+      whatsappDisplay: formatPhone(merged.whatsappNumber),
       prices: { ...DEFAULT_SETTINGS.prices, ...((stored.prices as Partial<Record<Plan, number>> | undefined) ?? {}) },
     };
   } catch {
