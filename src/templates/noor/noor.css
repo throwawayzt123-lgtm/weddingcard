@@ -1,0 +1,291 @@
+/* ------------------------------------------------------------------
+   Noor — modern minimal luxury.
+   Colours: deep emerald, champagne gold, white. Thin lines, lots of space,
+   a faint Islamic geometric lattice. All CSS/SVG, no image files.
+------------------------------------------------------------------- */
+
+.invitation[data-template="noor"] {
+  /* Defaults are for the white sections; the hero and footer re-declare them (below). */
+  --inv-bg: #fbfaf6;
+  --inv-ink: #10241c;
+  --inv-muted: rgba(16, 36, 28, 0.74);
+  --inv-accent: #b89b5e;
+  --inv-accent-strong: #84692b;
+  --inv-on-accent: #f4ead0;
+  --inv-panel-bg: transparent;
+  --inv-panel-border: rgba(132, 105, 43, 0.5);
+  --inv-card-bg: transparent;
+  --inv-menu-bg: #ffffff;
+  --inv-heading: var(--font-serif);
+  --inv-script: var(--font-serif);
+  --inv-script-color: #0b3d2e;
+  --inv-radius: 0px;
+  --inv-stack-bg: #fbfaf6;
+  --inv-stack-edge: rgba(132, 105, 43, 0.4);
+  --inv-photo-radius: 999px 999px 0 0;
+  --nr-lattice: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23d8c08a' stroke-opacity='.09' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='22'/%3E%3Ccircle cx='44' cy='0' r='22'/%3E%3Ccircle cx='0' cy='44' r='22'/%3E%3Ccircle cx='44' cy='44' r='22'/%3E%3Ccircle cx='22' cy='22' r='22'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Script-style text becomes light italic serif — modern rather than ornate. */
+.invitation[data-template="noor"] .inv-script {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+.invitation[data-template="noor"] .inv-name {
+  font-style: normal;
+  font-weight: 300;
+  font-size: clamp(2.4rem, 11.5vw, 4.4rem);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 0;
+  margin-right: -0.26em; /* keeps wide letter-spacing visually centred */
+  color: #ecdcae;
+}
+.invitation[data-template="noor"] .inv-and { color: #d8c08a; font-size: 1.35rem; }
+.invitation[data-template="noor"] .inv-eyebrow { letter-spacing: 0.34em; font-weight: 600; }
+.invitation[data-template="noor"] .inv-title,
+.invitation[data-template="noor"] .inv-event-title { font-weight: 500; letter-spacing: 0.04em; }
+
+/* Squared, outlined buttons */
+.invitation[data-template="noor"] .inv-btn,
+.invitation[data-template="noor"] .inv-choice[data-active="true"] {
+  border-radius: 0;
+  background: #0b3d2e;
+  color: #f4ead0;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+.invitation[data-template="noor"] .inv-btn-ghost {
+  background: transparent;
+  border: 1px solid #84692b;
+  color: #0b3d2e;
+}
+.invitation[data-template="noor"] .inv-chip,
+.invitation[data-template="noor"] .inv-choice,
+.invitation[data-template="noor"] .inv-stepper,
+.invitation[data-template="noor"] .inv-textarea,
+.invitation[data-template="noor"] .inv-phone-pill,
+.invitation[data-template="noor"] .inv-badge { border-radius: 0; }
+.invitation[data-template="noor"] .inv-chip { color: #0b3d2e; border-color: #84692b; }
+.invitation[data-template="noor"] .inv-chip:hover { background: rgba(11, 61, 46, 0.07); }
+.invitation[data-template="noor"] .inv-music-btn { background: #0b3d2e; color: #e6d3a0; border-color: #b89b5e; }
+.invitation[data-template="noor"] .inv-event-icon { border-radius: 0; rotate: 45deg; }
+.invitation[data-template="noor"] .inv-event-icon svg { rotate: -45deg; }
+.invitation[data-template="noor"] .inv-date-badge { border-radius: 0; }
+.invitation[data-template="noor"] .inv-count-cell { border: 0; border-top: 1px solid #84692b; border-radius: 0; }
+.invitation[data-template="noor"] .inv-count-num { color: #0b3d2e; font-weight: 400; }
+
+/* Open sections separated by hairlines instead of boxes */
+.invitation[data-template="noor"] .inv-panel {
+  padding: 3.2rem 1rem 2.8rem;
+  border-width: 1px 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="noor"] .inv-panel::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  translate: -50% 0;
+  rotate: 45deg;
+  background: #fbfaf6;
+  border: 1px solid #84692b;
+}
+.invitation[data-template="noor"] .inv-event-card {
+  border-width: 0 0 1px;
+  padding-inline: 1rem;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: transparent;
+}
+
+/* ---------- Emerald hero & footer (re-declare colours for dark backgrounds) ---------- */
+.invitation[data-template="noor"] .inv-hero,
+.invitation[data-template="noor"] .inv-footer {
+  --inv-ink: #f2ead6;
+  --inv-muted: rgba(242, 234, 214, 0.78);
+  --inv-accent-strong: #dcc58d;
+  --inv-script-color: #f2ead6;
+  --inv-panel-border: rgba(220, 197, 141, 0.5);
+  color: #f2ead6;
+}
+.invitation[data-template="noor"] .inv-hero {
+  border-radius: 0 0 50% 50% / 0 0 70px 70px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 282'%3E%3Cpath d='M18 276V122C18 62 68 32 100 6C132 32 182 62 182 122V276' fill='none' stroke='%23dcc58d' stroke-opacity='.34' stroke-width='.8'/%3E%3C/svg%3E") center 58% / auto 78% no-repeat,
+    var(--nr-lattice) 0 0 / 44px 44px,
+    radial-gradient(110% 55% at 50% 0%, #135d46, transparent 75%),
+    linear-gradient(#08382b, #05241b);
+}
+.invitation[data-template="noor"] .inv-footer {
+  margin-top: 2rem;
+  border-radius: 50% 50% 0 0 / 70px 70px 0 0;
+  padding-top: 5rem;
+  background:
+    var(--nr-lattice) 0 0 / 44px 44px,
+    linear-gradient(#08382b, #05241b);
+}
+.invitation[data-template="noor"] .inv-footer .inv-script { color: #ecdcae; }
+
+.nr-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #fbfaf6;
+}
+
+/* ======================= OPENING: GOLD ARCH DRAWS ITSELF ======================= */
+
+.nr-opening {
+  cursor: pointer;
+  background:
+    var(--nr-lattice, none) 0 0 / 44px 44px,
+    radial-gradient(90% 60% at 50% 35%, #0f4f3a, transparent 80%),
+    linear-gradient(#08362a, #04211a);
+  transition: opacity 0.8s ease-in 1s;
+}
+.nr-opening {
+  --nr-lattice: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23d8c08a' stroke-opacity='.1' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='22'/%3E%3Ccircle cx='44' cy='0' r='22'/%3E%3Ccircle cx='0' cy='44' r='22'/%3E%3Ccircle cx='44' cy='44' r='22'/%3E%3Ccircle cx='22' cy='22' r='22'/%3E%3C/g%3E%3C/svg%3E");
+}
+.nr-opening[data-phase="opening"] {
+  opacity: 0;
+}
+.nr-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1.2rem;
+  color: #f2ead6;
+}
+.nr-kicker {
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: #dcc58d;
+  opacity: 0;
+  animation: nr-fade 1.2s ease-out 0.4s forwards;
+  transition: opacity 0.4s;
+}
+.nr-arch-wrap {
+  position: relative;
+  height: min(56dvh, 27rem);
+  aspect-ratio: 200 / 282;
+  transform-origin: 50% 62%;
+  transition: transform 1.55s cubic-bezier(0.7, 0, 0.9, 0.35);
+}
+.nr-opening[data-phase="opening"] .nr-arch-wrap {
+  transform: scale(9);
+}
+.nr-arch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(220, 197, 141, 0.45));
+}
+.nr-line {
+  fill: none;
+  stroke: #e2cc94;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.nr-line-1 {
+  stroke-width: 1.6;
+  animation: nr-draw 2.1s cubic-bezier(0.55, 0, 0.25, 1) 0.3s forwards;
+}
+.nr-line-2 {
+  stroke-width: 0.7;
+  stroke-opacity: 0.7;
+  animation: nr-draw 2.1s cubic-bezier(0.55, 0, 0.25, 1) 0.7s forwards;
+}
+@keyframes nr-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes nr-fade {
+  to { opacity: 1; }
+}
+.nr-names {
+  position: absolute;
+  inset: 22% 0 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 0.35s;
+}
+.nr-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 7.4vw, 2.1rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  margin-right: -0.3em;
+  color: #f4ead0;
+}
+.nr-amp {
+  margin-block: 0.35rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #dcc58d;
+  opacity: 0;
+  animation: nr-fade 1s ease-out 2.4s forwards;
+}
+.nr-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.4em);
+  animation: nr-letter 0.7s ease-out forwards;
+}
+@keyframes nr-letter {
+  to { opacity: 1; transform: translateY(0); }
+}
+.nr-tap {
+  min-height: 3.1rem;
+  padding-inline: 2.4rem;
+  border: 1px solid #dcc58d;
+  border-radius: 0;
+  background: transparent;
+  color: #ecdcae;
+  letter-spacing: 0.36em;
+  font-weight: 600;
+  box-shadow: none;
+  opacity: 0;
+  animation: nr-fade 1s ease-out 3.4s forwards;
+  transition: opacity 0.4s;
+}
+.nr-opening[data-phase="opening"] .nr-kicker,
+.nr-opening[data-phase="opening"] .nr-names,
+.nr-opening[data-phase="opening"] .nr-tap {
+  opacity: 0 !important;
+  animation: none;
+}
+
+@media (max-height: 640px) {
+  .nr-kicker { display: none; }
+  .nr-arch-wrap { height: 50dvh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nr-line, .nr-letter, .nr-kicker, .nr-amp, .nr-tap { animation-duration: 0.01s; animation-delay: 0s; }
+  .nr-arch-wrap { transition-duration: 0.01s; }
+  .nr-opening { transition-delay: 0s; transition-duration: 0.3s; }
+}
+
+@media (max-width: 480px) {
+  .invitation[data-template="noor"] .inv-event-actions { grid-template-columns: 1fr; }
+}

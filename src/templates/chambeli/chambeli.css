@@ -1,0 +1,408 @@
+/* ------------------------------------------------------------------
+   Chambeli — pure white, with hand-drawn jasmine.
+   White paper pages, sage-green and a thread of champagne gold; real jasmine
+   sprigs trail across the corners and overlap the card edges, oval photo frames,
+   a jasmine flower that unfurls to open the invitation.
+   The artwork is /public/templates/chambeli/sprig.svg and flower.svg
+   (made by scripts/make-chambeli-sprig.cjs — change the colours there).
+   Fonts: Imperial Script (names) + Cormorant Garamond + Jost.
+------------------------------------------------------------------- */
+
+.invitation[data-template="chambeli"] {
+  --cb-ink: #2e3a33;
+  --cb-sage: #6f8a76;
+  --cb-sage-deep: #4c6853;
+  --cb-gold: #b79a62;
+  --cb-line: rgba(111, 138, 118, 0.3);
+  --cb-sprig: url("/templates/chambeli/sprig.svg");
+  --cb-flower: url("/templates/chambeli/flower.svg");
+  --inv-bg: #ffffff;
+  --inv-ink: var(--cb-ink);
+  --inv-muted: rgba(46, 58, 51, 0.76);
+  --inv-accent: var(--cb-sage);
+  --inv-accent-strong: var(--cb-sage-deep);
+  --inv-on-accent: #ffffff;
+  --inv-panel-bg: #ffffff;
+  --inv-panel-border: var(--cb-line);
+  --inv-card-bg: #faf9f6;
+  --inv-menu-bg: #ffffff;
+  --inv-heading: var(--font-cormorant), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-imperial), cursive;
+  --inv-script-color: var(--cb-ink);
+  --inv-radius: 10px;
+  --inv-photo-radius: 50%;
+  --inv-stack-bg: #ffffff;
+  --inv-stack-edge: var(--cb-line);
+}
+
+/* Page background: white, with two very faint sprigs so it is never flat */
+.cb-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #ffffff;
+}
+.cb-backdrop::before,
+.cb-backdrop::after {
+  content: "";
+  position: absolute;
+  width: min(120vw, 34rem);
+  aspect-ratio: 330 / 250;
+  background: var(--cb-sprig, url("/templates/chambeli/sprig.svg")) center / contain no-repeat;
+  opacity: 0.11;
+}
+.cb-backdrop::before { top: -2rem; right: -5rem; transform: rotate(180deg); }
+.cb-backdrop::after { bottom: -2rem; left: -5rem; }
+
+/* ---------- Type ---------- */
+.invitation[data-template="chambeli"] .inv-eyebrow {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.36em;
+  color: var(--cb-sage-deep);
+}
+.invitation[data-template="chambeli"] .inv-title { font-style: italic; font-weight: 500; }
+.invitation[data-template="chambeli"] .inv-script { line-height: 1.12; letter-spacing: 0.01em; }
+.invitation[data-template="chambeli"] .inv-lead { font-size: 1.28rem; line-height: 1.8; }
+.invitation[data-template="chambeli"] .inv-parents { font-size: 1.32rem; }
+
+/* ---------- Hero: white space, a garland hanging from one corner, a sprig rising from the other ---------- */
+.invitation[data-template="chambeli"] .inv-hero {
+  padding-top: 9.5rem;
+  padding-bottom: 10rem;
+  background: radial-gradient(70% 48% at 50% 42%, #fff 45%, rgba(255, 255, 255, 0) 100%);
+}
+.invitation[data-template="chambeli"] .inv-hero::before,
+.invitation[data-template="chambeli"] .inv-hero::after {
+  content: "";
+  position: absolute;
+  width: min(64vw, 20rem);
+  aspect-ratio: 330 / 250;
+  background: var(--cb-sprig) center / contain no-repeat;
+  pointer-events: none;
+}
+.invitation[data-template="chambeli"] .inv-hero::before { top: -0.6rem; left: -3.2rem; transform: scaleY(-1); }
+.invitation[data-template="chambeli"] .inv-hero::after { right: -3.2rem; bottom: -0.4rem; transform: scaleX(-1); }
+.invitation[data-template="chambeli"] .inv-hero-inner { position: relative; z-index: 1; }
+.invitation[data-template="chambeli"] .inv-name {
+  padding: 0 0.15em;
+  font-size: clamp(4.6rem, 23vw, 8.4rem);
+  line-height: 1.05;
+  color: var(--cb-ink);
+}
+.invitation[data-template="chambeli"] .inv-and {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--cb-gold);
+}
+.invitation[data-template="chambeli"] .inv-hero-date {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+}
+.invitation[data-template="chambeli"] .inv-verse { color: var(--cb-sage-deep); }
+.invitation[data-template="chambeli"] .inv-scroll-hint { color: var(--cb-sage-deep); }
+
+/* A tiny jasmine flower replaces the diamond in every divider */
+.invitation[data-template="chambeli"] .inv-divider { color: var(--cb-gold); }
+.invitation[data-template="chambeli"] .inv-divider svg { display: none; }
+.invitation[data-template="chambeli"] .inv-divider::after {
+  content: "";
+  order: 1;
+  width: 2rem;
+  height: 2rem;
+  background: var(--cb-flower) center / contain no-repeat;
+}
+.invitation[data-template="chambeli"] .inv-divider span:last-child { order: 2; }
+
+/* ---------- White cards, with jasmine growing over their corners ---------- */
+.invitation[data-template="chambeli"] .inv-panel {
+  padding: 4.2rem 1.4rem 3.8rem;
+  border: 1px solid var(--cb-line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 22px 44px -30px rgba(46, 58, 51, 0.4);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="chambeli"] .inv-panel::before,
+.invitation[data-template="chambeli"] .inv-panel::after {
+  content: "";
+  position: absolute;
+  width: 7.6rem;
+  aspect-ratio: 330 / 250;
+  background: var(--cb-sprig) center / contain no-repeat;
+  pointer-events: none;
+}
+.invitation[data-template="chambeli"] .inv-panel::before { top: -2.3rem; left: -2.6rem; transform: scaleY(-1); }
+.invitation[data-template="chambeli"] .inv-panel::after { right: -2.6rem; bottom: -2.3rem; width: 7rem; transform: scaleX(-1); }
+
+/* ---------- Greeting: an oval portrait, like a cameo ---------- */
+.invitation[data-template="chambeli"] .inv-couple-photo {
+  width: min(62%, 13rem);
+  aspect-ratio: 3 / 4;
+  border: 6px solid #fff;
+  outline: 1px solid var(--cb-gold);
+  outline-offset: 3px;
+  box-shadow: 0 14px 28px -14px rgba(46, 58, 51, 0.4);
+}
+.invitation[data-template="chambeli"] .inv-chip {
+  border-color: var(--cb-sage);
+  color: var(--cb-sage-deep);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+.invitation[data-template="chambeli"] .inv-chip:hover { background: rgba(111, 138, 118, 0.1); }
+
+/* ---------- Countdown ---------- */
+.invitation[data-template="chambeli"] .inv-count-cell {
+  border: 0;
+  border-top: 1px solid var(--cb-gold);
+  border-bottom: 1px solid var(--cb-line);
+  border-radius: 0;
+  background: transparent;
+}
+.invitation[data-template="chambeli"] .inv-count-num { font-weight: 500; font-size: clamp(2rem, 10vw, 2.9rem); color: var(--cb-ink); }
+.invitation[data-template="chambeli"] .inv-count-label { font-family: var(--font-jost), sans-serif; font-size: 0.55rem; color: var(--cb-sage-deep); }
+
+/* ---------- Events ---------- */
+.invitation[data-template="chambeli"] .inv-event-card {
+  position: relative;
+  padding: 1.6rem 1.3rem 1.4rem;
+  border: 1px solid var(--cb-line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 18px 38px -30px rgba(46, 58, 51, 0.45);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="chambeli"] .inv-event-card::after {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  right: -1.6rem;
+  width: 5.4rem;
+  aspect-ratio: 330 / 250;
+  background: var(--cb-sprig) center / contain no-repeat;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+.invitation[data-template="chambeli"] .inv-event-icon { display: none; }
+.invitation[data-template="chambeli"] .inv-event-head { gap: 1.1rem; padding-right: 2.2rem; }
+.invitation[data-template="chambeli"] .inv-date-badge {
+  order: -1;
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--cb-sage);
+  border-radius: 50%;
+  color: var(--cb-sage-deep);
+  outline: 1px solid var(--cb-line);
+  outline-offset: 3px;
+}
+.invitation[data-template="chambeli"] .inv-date-badge > span:first-child { font-family: var(--font-cormorant), serif; font-size: 1.6rem; font-weight: 600; line-height: 1; }
+.invitation[data-template="chambeli"] .inv-date-badge > span:last-child { font-family: var(--font-jost), sans-serif; font-size: 0.5rem; letter-spacing: 0.22em; }
+.invitation[data-template="chambeli"] .inv-event-title { font-size: 1.75rem; font-style: italic; font-weight: 500; }
+.invitation[data-template="chambeli"] .inv-event-date { font-family: var(--font-jost), sans-serif; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.78; }
+.invitation[data-template="chambeli"] .inv-event-facts { border-top-color: var(--cb-line); }
+.invitation[data-template="chambeli"] .inv-event-facts svg { color: var(--cb-sage); }
+
+/* ---------- Buttons ---------- */
+.invitation[data-template="chambeli"] .inv-btn,
+.invitation[data-template="chambeli"] .inv-choice[data-active="true"] {
+  background: var(--cb-sage-deep);
+  color: #fff;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+.invitation[data-template="chambeli"] .inv-btn:hover { filter: none; background: #3d5643; }
+.invitation[data-template="chambeli"] .inv-btn-ghost { background: transparent; border: 1px solid var(--cb-sage); color: var(--cb-sage-deep); }
+.invitation[data-template="chambeli"] .inv-btn-ghost:hover { background: rgba(111, 138, 118, 0.08); }
+.invitation[data-template="chambeli"] .inv-choice { font-family: var(--font-jost), sans-serif; }
+.invitation[data-template="chambeli"] .inv-rsvp-card { background: #faf9f6; border-radius: 10px; }
+.invitation[data-template="chambeli"] .inv-textarea { background: #fff; border-radius: 10px; }
+.invitation[data-template="chambeli"] .inv-music-btn { background: #fff; color: var(--cb-sage-deep); border-color: var(--cb-sage); }
+
+/* ---------- Gallery: oval frames ---------- */
+.invitation[data-template="chambeli"] .inv-gallery-item {
+  border: 5px solid #fff;
+  outline: 1px solid var(--cb-line);
+  box-shadow: 0 16px 28px -16px rgba(46, 58, 51, 0.4);
+}
+
+/* ---------- Footer ---------- */
+.invitation[data-template="chambeli"] .inv-footer { position: relative; }
+.invitation[data-template="chambeli"] .inv-footer .inv-divider { display: none; }
+.invitation[data-template="chambeli"] .inv-footer::before {
+  content: "";
+  display: block;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0 auto 0.4rem;
+  background: var(--cb-flower) center / contain no-repeat;
+}
+.invitation[data-template="chambeli"] .inv-footer .inv-script { color: var(--cb-ink); }
+
+/* ======================= OPENING: THE JASMINE UNFURLS ======================= */
+
+.cb-opening {
+  cursor: pointer;
+  background: #fff;
+  transition: background-color 0.7s ease 1.75s;
+}
+.cb-opening[data-phase="opening"] { background-color: transparent; }
+.cb-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+  overflow: hidden;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1rem;
+  background: radial-gradient(75% 55% at 50% 44%, #fff 40%, #fbfaf6 100%);
+  transition: background-color 0.7s ease 1.75s;
+}
+.cb-opening[data-phase="opening"] .cb-stage { background: transparent; }
+
+.cb-vine {
+  position: absolute;
+  width: min(96vw, 27rem);
+  aspect-ratio: 330 / 250;
+  background: var(--cb-sprig, url("/templates/chambeli/sprig.svg")) center / contain no-repeat;
+  pointer-events: none;
+  animation: cb-sway 7s ease-in-out infinite alternate;
+  transition: opacity 0.8s ease 0.9s;
+}
+.cb-vine-tl { top: calc(-1.4rem + var(--inv-bar, 0px)); left: -3rem; transform: scaleY(-1); transform-origin: 0 100%; }
+.cb-vine-br { right: -3rem; bottom: -1.6rem; transform: scaleX(-1); transform-origin: 0 100%; animation-delay: -3s; }
+@keyframes cb-sway {
+  from { rotate: -1.3deg; }
+  to { rotate: 1.6deg; }
+}
+.cb-opening[data-phase="opening"] .cb-vine { opacity: 0; }
+
+.cb-kicker {
+  position: relative;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.44em;
+  text-indent: 0.44em;
+  text-transform: uppercase;
+  color: #4c6853;
+  transition: opacity 0.4s;
+}
+.cb-opening[data-phase="opening"] .cb-kicker,
+.cb-opening[data-phase="opening"] .cb-tap { opacity: 0; }
+
+.cb-bloom { position: relative; width: min(92vw, 23.5rem); aspect-ratio: 1; }
+.cb-flower {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 8px 12px rgba(70, 95, 78, 0.2));
+  transition: transform 1.25s cubic-bezier(0.55, 0, 0.8, 0.5) 1s, opacity 0.8s ease-in 1.55s;
+}
+.cb-opening[data-phase="opening"] .cb-flower { transform: scale(3.8); opacity: 0; }
+.cb-layer { transition: transform 1.7s ease-out; }
+.cb-opening[data-phase="opening"] .cb-outer { transform: rotate(16deg); }
+.cb-opening[data-phase="opening"] .cb-inner { transform: rotate(-14deg); }
+.cb-petal {
+  fill: url(#cb-petal-fill);
+  stroke: #b1c1ae;
+  stroke-width: 0.9;
+  transform: scale(0.9);
+  transition: transform 1.05s cubic-bezier(0.3, 0.9, 0.3, 1.08) calc(var(--i, 0) * 45ms + 60ms);
+}
+.cb-petal-in { transform: scale(0.66); stroke: #c3d0c0; }
+.cb-opening[data-phase="opening"] .cb-petal { transform: scale(1.1); }
+.cb-opening[data-phase="opening"] .cb-petal-in { transform: scale(0.86); }
+.cb-heart { fill: #fff; stroke: #e1e6dc; stroke-width: 0.8; }
+
+.cb-plaque {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 27%;
+  text-align: center;
+  color: #2e3a33;
+  transition: opacity 0.5s ease 1.05s;
+}
+.cb-opening[data-phase="opening"] .cb-plaque { opacity: 0; }
+.cb-names { font-family: var(--font-imperial), cursive; font-size: clamp(1.9rem, 9.6vw, 2.55rem); line-height: 1; }
+.cb-names i { display: block; margin-block: 0.12rem; font-family: var(--font-cormorant), serif; font-size: 0.5em; font-style: italic; color: #b79a62; }
+.cb-rule { display: block; width: 2rem; height: 1px; margin: 0.6rem 0 0.45rem; background: #b79a62; }
+.cb-date { font-family: var(--font-jost), sans-serif; font-size: 0.46rem; letter-spacing: 0.18em; text-indent: 0.18em; text-transform: uppercase; }
+
+.cb-tap {
+  min-height: 3.1rem;
+  padding: 0.7rem 2.7rem;
+  border: 0;
+  border-radius: 999px;
+  background: #4c6853;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: #fff;
+  box-shadow: 0 10px 22px -10px rgba(60, 90, 68, 0.7);
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.4s;
+}
+.cb-tap:hover { background: #3d5643; }
+
+/* petals that blow away when the flower opens */
+.cb-scatter { position: absolute; inset: 0; pointer-events: none; }
+.cb-scatter span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--s);
+  height: calc(var(--s) * 1.9);
+  margin: calc(var(--s) * -0.95) 0 0 calc(var(--s) * -0.5);
+  border: 1px solid #b9c8b6;
+  border-radius: 50% 50% 50% 50% / 78% 78% 22% 22%;
+  background: radial-gradient(circle at 50% 80%, #efe9d8, #fff 70%);
+  opacity: 0;
+}
+.cb-opening[data-phase="opening"] .cb-scatter span {
+  animation: cb-fly 1.7s cubic-bezier(0.2, 0.7, 0.3, 1) calc(900ms + var(--d)) forwards;
+}
+@keyframes cb-fly {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0deg) scale(0.5); }
+  14% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--r)) scale(1.1); }
+}
+
+@media (max-height: 640px) {
+  .cb-stage { gap: 1.2rem; }
+  .cb-bloom { width: min(70vw, 17rem); }
+  .cb-kicker { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-vine { animation: none; }
+  .cb-flower, .cb-petal, .cb-layer, .cb-opening, .cb-stage { transition-duration: 0.01s; transition-delay: 0s; }
+  .cb-opening[data-phase="opening"] .cb-scatter span { animation: none; }
+  .cb-opening[data-phase="opening"] .cb-flower { transform: none; opacity: 0; transition: opacity 0.3s; }
+}

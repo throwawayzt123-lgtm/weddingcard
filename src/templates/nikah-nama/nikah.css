@@ -1,0 +1,454 @@
+/* ------------------------------------------------------------------
+   Nikah Nama — ivory paper, crimson ink.
+   Designed like a printed wedding book: chapter numerals, double rules,
+   ledger-style event entries, a photograph "tipped in" at a slight angle.
+   Fonts: Libre Caslon (the classic book typeface) + Italianno for the names.
+------------------------------------------------------------------- */
+
+.invitation[data-template="nikah-nama"] {
+  --nk-red: #8f1a2c;
+  --nk-red-deep: #6e1221;
+  --nk-paper: #fbf8f2;
+  --inv-bg: var(--nk-paper);
+  --inv-ink: #2b1a1c;
+  --inv-muted: rgba(43, 26, 28, 0.76);
+  --inv-accent: #a3202f;
+  --inv-accent-strong: var(--nk-red);
+  --inv-on-accent: #ffffff;
+  --inv-panel-bg: transparent;
+  --inv-panel-border: rgba(143, 26, 44, 0.55);
+  --inv-card-bg: transparent;
+  --inv-menu-bg: #fffdf9;
+  --inv-heading: var(--font-caslon-display), "Libre Caslon Text", Georgia, serif;
+  --inv-body: var(--font-caslon), Georgia, serif;
+  --inv-script: var(--font-italianno), cursive;
+  --inv-script-color: var(--nk-red);
+  --inv-radius: 0px;
+  --inv-stack-bg: #fbf8f2;
+  --inv-stack-edge: rgba(143, 26, 44, 0.3);
+  --inv-photo-radius: 0;
+  font-size: 1.04rem;
+}
+
+/* Paper: warm white with a fine grain, like uncoated stock */
+.nk-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42  0 0 0 0 .32  0 0 0 0 .28  0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    #fbf8f2;
+}
+
+/* ---------- Type ---------- */
+.invitation[data-template="nikah-nama"] .inv-eyebrow {
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  color: var(--nk-red);
+}
+.invitation[data-template="nikah-nama"] .inv-title { font-weight: 400; }
+.invitation[data-template="nikah-nama"] .inv-lead { font-size: 1.12rem; line-height: 1.8; text-wrap: balance; }
+.invitation[data-template="nikah-nama"] .inv-script { letter-spacing: 0; }
+.invitation[data-template="nikah-nama"] .inv-parents { font-size: 1.22rem; }
+.invitation[data-template="nikah-nama"] .inv-member { font-size: 1.05rem; }
+
+/* ---------- Hero: a printed card with a double border ---------- */
+.invitation[data-template="nikah-nama"] .inv-hero { margin: 0; }
+.invitation[data-template="nikah-nama"] .inv-hero::before,
+.invitation[data-template="nikah-nama"] .inv-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+.invitation[data-template="nikah-nama"] .inv-hero::before {
+  inset: 14px;
+  border: 2px solid var(--nk-red);
+}
+.invitation[data-template="nikah-nama"] .inv-hero::after {
+  inset: 21px;
+  border: 0.5px solid rgba(143, 26, 44, 0.7);
+}
+.invitation[data-template="nikah-nama"] .inv-name {
+  padding: 0 0.1em;
+  font-size: clamp(4.2rem, 21vw, 8rem);
+  line-height: 0.95;
+  color: var(--nk-red);
+}
+.invitation[data-template="nikah-nama"] .inv-and {
+  margin-block: 0.3rem;
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--inv-muted);
+}
+.invitation[data-template="nikah-nama"] .inv-hero-date {
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.invitation[data-template="nikah-nama"] .inv-verse { color: var(--nk-red); font-size: 1.55rem; }
+.invitation[data-template="nikah-nama"] .inv-scroll-hint { color: var(--nk-red); }
+
+/* ---------- Chapters: every section is numbered like a book ---------- */
+.invitation[data-template="nikah-nama"] .inv-content { counter-reset: nk; }
+.invitation[data-template="nikah-nama"] .inv-section { counter-increment: nk; }
+.invitation[data-template="nikah-nama"] .inv-section::before {
+  content: counter(nk, upper-roman);
+  display: block;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: var(--font-caslon-display), Georgia, serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+  color: var(--nk-red);
+}
+
+/* Panels are not boxes: just a double rule above and below, like a printed page */
+.invitation[data-template="nikah-nama"] .inv-panel {
+  padding: 2.4rem 0.4rem 2.2rem;
+  border-style: double;
+  border-width: 4px 0;
+  border-color: var(--nk-red);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* ---------- Greeting ---------- */
+.invitation[data-template="nikah-nama"] .inv-couple-photo {
+  /* a photograph tipped into the book: white border, tiny tilt */
+  width: min(64%, 14rem);
+  aspect-ratio: 4 / 5;
+  border: 7px solid #fff;
+  outline: 1px solid rgba(43, 26, 28, 0.25);
+  box-shadow: 0 2px 6px rgba(43, 26, 28, 0.22);
+  rotate: -1.6deg;
+}
+.invitation[data-template="nikah-nama"] .inv-chip {
+  padding: 0.5rem 0.9rem;
+  border-color: var(--nk-red);
+  color: var(--nk-red);
+  font-family: var(--font-caslon), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+.invitation[data-template="nikah-nama"] .inv-chip:hover { background: rgba(143, 26, 44, 0.07); }
+
+/* ---------- Countdown ---------- */
+.invitation[data-template="nikah-nama"] .inv-count-cell {
+  border: 0;
+  border-top: 2px solid var(--nk-red);
+  border-bottom: 1px solid rgba(143, 26, 44, 0.4);
+  background: transparent;
+}
+.invitation[data-template="nikah-nama"] .inv-count-num {
+  font-family: var(--font-caslon-display), Georgia, serif;
+  font-weight: 400;
+  color: var(--nk-red);
+}
+
+/* ---------- Events: ledger entries ---------- */
+.invitation[data-template="nikah-nama"] .inv-event-card {
+  padding: 1.5rem 1.1rem 1.4rem;
+  border: 0;
+  border-bottom: 1px solid rgba(143, 26, 44, 0.3);
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="nikah-nama"] .inv-event-head { align-items: flex-start; gap: 1.1rem; }
+.invitation[data-template="nikah-nama"] .inv-event-icon { display: none; }
+.invitation[data-template="nikah-nama"] .inv-date-badge {
+  order: -1;
+  min-width: 3.4rem;
+  align-items: center;
+  padding: 0 1rem 0 0;
+  border: 0;
+  border-right: 1px solid rgba(143, 26, 44, 0.4);
+  border-radius: 0;
+  color: var(--nk-red);
+}
+.invitation[data-template="nikah-nama"] .inv-date-badge > span:first-child {
+  font-family: var(--font-caslon-display), Georgia, serif;
+  font-size: 2.9rem;
+  font-weight: 400;
+  line-height: 0.95;
+}
+.invitation[data-template="nikah-nama"] .inv-date-badge > span:last-child { font-size: 0.7rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+.invitation[data-template="nikah-nama"] .inv-event-title {
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nk-red);
+}
+.invitation[data-template="nikah-nama"] .inv-event-date { font-size: 0.95rem; letter-spacing: 0.03em; }
+.invitation[data-template="nikah-nama"] .inv-event-facts { margin-top: 1rem; padding-top: 0; border-top: 0; font-size: 1.02rem; }
+.invitation[data-template="nikah-nama"] .inv-event-facts svg { color: var(--nk-red); }
+
+/* ---------- Buttons: square, printed ---------- */
+.invitation[data-template="nikah-nama"] .inv-btn,
+.invitation[data-template="nikah-nama"] .inv-choice[data-active="true"] {
+  border-radius: 0;
+  background: var(--nk-red);
+  color: #fff;
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+.invitation[data-template="nikah-nama"] .inv-event-actions .inv-btn svg { display: none; }
+.invitation[data-template="nikah-nama"] .inv-btn:hover { filter: none; background: var(--nk-red-deep); }
+.invitation[data-template="nikah-nama"] .inv-btn-ghost { background: transparent; border: 1px solid var(--nk-red); color: var(--nk-red); }
+.invitation[data-template="nikah-nama"] .inv-btn-ghost:hover { background: rgba(143, 26, 44, 0.06); }
+.invitation[data-template="nikah-nama"] .inv-choice,
+.invitation[data-template="nikah-nama"] .inv-stepper,
+.invitation[data-template="nikah-nama"] .inv-textarea,
+.invitation[data-template="nikah-nama"] .inv-phone-pill,
+.invitation[data-template="nikah-nama"] .inv-badge { border-radius: 0; }
+.invitation[data-template="nikah-nama"] .inv-choice { font-family: var(--font-caslon), Georgia, serif; font-size: 0.85rem; }
+.invitation[data-template="nikah-nama"] .inv-rsvp-card { border-radius: 0; background: rgba(255, 255, 255, 0.55); }
+.invitation[data-template="nikah-nama"] .inv-textarea { background: rgba(255, 255, 255, 0.7); }
+.invitation[data-template="nikah-nama"] .inv-music-btn { background: #fffdf9; color: var(--nk-red); border-color: var(--nk-red); }
+.invitation[data-template="nikah-nama"] .inv-gallery-item {
+  margin: 6px;
+  border: 0;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 7px rgba(43, 26, 28, 0.25), 0 3px 8px 6px rgba(43, 26, 28, 0.08);
+}
+.invitation[data-template="nikah-nama"] .inv-footer { border-top: 4px double var(--nk-red); margin: 1rem 1rem 0; }
+.invitation[data-template="nikah-nama"] .inv-footer .inv-script { color: var(--nk-red); }
+
+/* ======================= OPENING: THE BOOK ======================= */
+
+.nk-opening {
+  cursor: pointer;
+  background: var(--nk-paper, #fbf8f2);
+}
+.nk-stage {
+  --book-w: min(74vw, 21rem);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1rem;
+  background:
+    radial-gradient(90% 60% at 50% 40%, #fffdf9, transparent 80%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42  0 0 0 0 .32  0 0 0 0 .28  0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    #f6f0e4;
+  transform-origin: 56% 46%;
+  transition: transform 1.3s cubic-bezier(0.6, 0, 0.9, 0.4) 1.7s, opacity 0.7s linear 2.3s;
+}
+.nk-opening[data-phase="opening"] .nk-stage {
+  transform: scale(2.6);
+  opacity: 0;
+}
+.nk-kicker {
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  text-indent: 0.4em;
+  color: #8f1a2c;
+  transition: opacity 0.4s;
+}
+.nk-opening[data-phase="opening"] .nk-kicker,
+.nk-opening[data-phase="opening"] .nk-tap { opacity: 0; }
+
+.nk-book {
+  position: relative;
+  width: var(--book-w);
+  aspect-ratio: 3 / 4.15;
+  perspective: 1900px;
+  filter: drop-shadow(0 22px 18px rgba(60, 20, 20, 0.32));
+  transition: translate 1.4s cubic-bezier(0.6, 0.05, 0.2, 1) 0.2s;
+}
+.nk-opening[data-phase="opening"] .nk-book { translate: 22% 0; }
+
+/* the thickness of the page block on the right and bottom edges */
+.nk-block {
+  position: absolute;
+  inset: 3px -5px -5px 3px;
+  border-radius: 2px 6px 6px 2px;
+  background:
+    repeating-linear-gradient(90deg, #f4ecdc 0 1.5px, #d9cdb6 1.5px 2.5px);
+}
+.nk-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  border-radius: 2px 5px 5px 2px;
+  background: linear-gradient(90deg, #e9dfcb, #fbf8f2 14%);
+  text-align: center;
+  color: #2b1a1c;
+}
+.nk-page::before {
+  content: "";
+  position: absolute;
+  inset: 12px 12px 12px 18px;
+  border: 1px solid rgba(143, 26, 44, 0.55);
+}
+.nk-page-eyebrow {
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #8f1a2c;
+}
+.nk-page-names {
+  margin-top: 0.7rem;
+  font-family: var(--font-italianno), cursive;
+  font-size: clamp(2.3rem, 12vw, 3.2rem);
+  line-height: 0.95;
+  color: #8f1a2c;
+}
+.nk-page-names i {
+  display: block;
+  margin-block: 0.2rem;
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.42em;
+  color: rgba(43, 26, 28, 0.6);
+}
+.nk-page-rule { display: block; width: 3rem; height: 1px; margin: 0.9rem 0 0.6rem; background: #8f1a2c; }
+.nk-page-date { font-family: var(--font-caslon), Georgia, serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+.nk-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1.5s cubic-bezier(0.6, 0.05, 0.2, 1) 0.2s;
+}
+.nk-opening[data-phase="opening"] .nk-cover { transform: rotateY(-158deg); }
+.nk-cover-front,
+.nk-cover-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px 8px 8px 3px;
+  backface-visibility: hidden;
+}
+.nk-cover-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  color: #e3c27a;
+  /* cloth binding: a fine woven grain over deep crimson */
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.07) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(135deg, #a52132, #7c1424 70%, #6a101e);
+  box-shadow: inset 7px 0 7px -3px rgba(0, 0, 0, 0.5), inset -1px 0 0 rgba(255, 255, 255, 0.12);
+}
+/* the hinge groove next to the spine */
+.nk-cover-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 9%;
+  width: 2px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.08));
+}
+/* gold-foil frame, pressed into the cloth */
+.nk-cover-front::after {
+  content: "";
+  position: absolute;
+  inset: 16px 16px 16px 22px;
+  border: 1.5px solid rgba(227, 194, 122, 0.85);
+  outline: 1px solid rgba(227, 194, 122, 0.4);
+  outline-offset: -6px;
+}
+.nk-cover-back {
+  transform: rotateY(180deg);
+  background:
+    repeating-linear-gradient(45deg, rgba(143, 26, 44, 0.05) 0 2px, transparent 2px 9px),
+    linear-gradient(90deg, #f1e8d6, #fbf8f2 30%);
+  box-shadow: inset -6px 0 8px -4px rgba(0, 0, 0, 0.25);
+}
+.nk-corner { position: absolute; z-index: 1; width: 2.2rem; height: 2.2rem; color: #e3c27a; }
+.nk-c1 { top: 22px; left: 28px; }
+.nk-c2 { top: 22px; right: 22px; transform: scaleX(-1); }
+.nk-c3 { bottom: 22px; left: 28px; transform: scaleY(-1); }
+.nk-c4 { bottom: 22px; right: 22px; transform: scale(-1, -1); }
+.nk-label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-caslon-display), Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+}
+.nk-rule { position: relative; z-index: 1; display: block; width: 3.2rem; height: 1px; margin: 1.1rem 0; background: rgba(227, 194, 122, 0.75); }
+.nk-names {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-italianno), cursive;
+  font-size: clamp(2.7rem, 14vw, 3.8rem);
+  line-height: 0.95;
+  text-align: center;
+  /* foil: flat gold with a hair of shadow, not a gradient */
+  text-shadow: 0 1px 0 rgba(60, 10, 10, 0.55);
+}
+.nk-names i {
+  display: block;
+  margin-block: 0.15rem;
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.4em;
+  color: rgba(227, 194, 122, 0.85);
+}
+.nk-year { position: relative; z-index: 1; font-family: var(--font-caslon), Georgia, serif; font-size: 0.82rem; letter-spacing: 0.4em; text-indent: 0.4em; }
+
+/* bookmark ribbon */
+.nk-ribbon {
+  position: absolute;
+  z-index: 4;
+  bottom: -2.6rem;
+  right: 26%;
+  width: 0.8rem;
+  height: 3.4rem;
+  background: linear-gradient(90deg, #c9a24b, #e3c27a, #b78b35);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  transition: opacity 0.3s;
+}
+.nk-opening[data-phase="opening"] .nk-ribbon { opacity: 0; }
+
+.nk-tap {
+  min-height: 3rem;
+  padding: 0.7rem 2.4rem;
+  border: 1px solid #8f1a2c;
+  background: transparent;
+  font-family: var(--font-caslon), Georgia, serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.36em;
+  text-indent: 0.36em;
+  text-transform: uppercase;
+  color: #8f1a2c;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, opacity 0.4s;
+}
+.nk-tap:hover { background: #8f1a2c; color: #fffdf9; }
+
+@media (max-height: 640px) {
+  .nk-stage { gap: 1.4rem; --book-w: min(58vw, 17rem); }
+  .nk-kicker { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nk-stage, .nk-cover, .nk-book { transition-duration: 0.01s; transition-delay: 0s; }
+  .nk-opening[data-phase="opening"] .nk-stage { transition: opacity 0.3s linear; transform: none; }
+}

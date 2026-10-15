@@ -1,0 +1,352 @@
+/* ------------------------------------------------------------------
+   Siyah Taj — black, old gold and one ruby thread.
+   Fashion-magazine editorial: huge Didone type, hairline rules, a "programme"
+   of events with giant date numerals, chamfered (cut-corner) buttons.
+   Fonts: Bodoni Moda + Jost.
+------------------------------------------------------------------- */
+
+.invitation[data-template="siyah-taj"] {
+  --sy-black: #0a0a0b;
+  --sy-ivory: #ece6d8;
+  --sy-gold: #c9a45c;
+  --sy-gold-light: #dcc58a;
+  --sy-ruby: #b3202f;
+  --sy-ruby-light: #d4505d;
+  --inv-bg: var(--sy-black);
+  --inv-ink: var(--sy-ivory);
+  --inv-muted: rgba(236, 230, 216, 0.7);
+  --inv-accent: var(--sy-gold);
+  --inv-accent-strong: var(--sy-gold-light);
+  --inv-on-accent: #0a0a0b;
+  --inv-panel-bg: transparent;
+  --inv-panel-border: rgba(201, 164, 92, 0.38);
+  --inv-card-bg: rgba(255, 255, 255, 0.03);
+  --inv-menu-bg: #161617;
+  --inv-heading: var(--font-bodoni), "Didot", Georgia, serif;
+  --inv-body: var(--font-jost), "Helvetica Neue", Arial, sans-serif;
+  --inv-script: var(--font-bodoni), "Didot", Georgia, serif;
+  --inv-script-color: var(--sy-ivory);
+  --inv-radius: 0px;
+  --inv-stack-bg: #0c0c0d;
+  --inv-stack-edge: rgba(201, 164, 92, 0.38);
+  --inv-photo-radius: 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.sy-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(90% 38% at 50% 105%, rgba(179, 32, 47, 0.2), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.014) 0 1px, transparent 1px 8px),
+    #0a0a0b;
+}
+
+/* ---------- Type ---------- */
+.invitation[data-template="siyah-taj"] .inv-eyebrow {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  color: var(--sy-gold);
+}
+.invitation[data-template="siyah-taj"] .inv-title { font-style: italic; font-weight: 400; font-size: 1.9rem; }
+.invitation[data-template="siyah-taj"] .inv-script {
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+.invitation[data-template="siyah-taj"] .inv-lead { font-size: 1.08rem; font-weight: 300; line-height: 1.85; }
+.invitation[data-template="siyah-taj"] .inv-parents { font-family: var(--font-bodoni), serif; font-size: 1.3rem; font-weight: 400; }
+.invitation[data-template="siyah-taj"] .inv-member { font-size: 0.98rem; letter-spacing: 0.03em; }
+
+/* ---------- Hero ---------- */
+.invitation[data-template="siyah-taj"] .inv-hero::before,
+.invitation[data-template="siyah-taj"] .inv-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(transparent, rgba(201, 164, 92, 0.45) 18%, rgba(201, 164, 92, 0.45) 82%, transparent);
+}
+.invitation[data-template="siyah-taj"] .inv-hero::before { left: 20px; }
+.invitation[data-template="siyah-taj"] .inv-hero::after { right: 20px; }
+.invitation[data-template="siyah-taj"] .inv-name {
+  padding: 0;
+  font-size: clamp(3.4rem, 18.5vw, 7rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--sy-ivory);
+}
+.invitation[data-template="siyah-taj"] .inv-and {
+  margin-block: 0.15rem;
+  font-size: 0; /* hide the word "and" … */
+  line-height: 1;
+}
+.invitation[data-template="siyah-taj"] .inv-and::before {
+  /* … and draw an italic ruby ampersand instead */
+  content: "&";
+  font-family: var(--font-bodoni), serif;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sy-ruby-light);
+}
+.invitation[data-template="siyah-taj"] .inv-hero-date {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: var(--sy-gold-light);
+}
+.invitation[data-template="siyah-taj"] .inv-verse { color: var(--sy-gold-light); }
+.invitation[data-template="siyah-taj"] .inv-divider svg { color: var(--sy-ruby-light); }
+.invitation[data-template="siyah-taj"] .inv-divider span { width: 3.4rem; }
+.invitation[data-template="siyah-taj"] .inv-scroll-hint { color: var(--sy-gold); }
+
+/* ---------- Sections: just a hairline, with a short ruby tab like a magazine rule ---------- */
+.invitation[data-template="siyah-taj"] .inv-panel {
+  padding: 2.4rem 0.2rem 1.6rem;
+  border: 0;
+  border-top: 1px solid var(--inv-panel-border);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="siyah-taj"] .inv-panel::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 2.6rem;
+  height: 3px;
+  background: var(--sy-ruby);
+}
+
+/* ---------- Greeting ---------- */
+.invitation[data-template="siyah-taj"] .inv-couple-photo {
+  width: min(66%, 14rem);
+  aspect-ratio: 4 / 5;
+  border: 0;
+  outline: 1px solid var(--sy-gold);
+  outline-offset: 9px;
+  box-shadow: none;
+  margin-bottom: 2.2rem;
+}
+.invitation[data-template="siyah-taj"] .inv-couple-photo img { filter: grayscale(0.2) contrast(1.05); }
+.invitation[data-template="siyah-taj"] .inv-chip {
+  border-color: rgba(201, 164, 92, 0.6);
+  color: var(--sy-gold-light);
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+}
+.invitation[data-template="siyah-taj"] .inv-chip:hover { background: rgba(201, 164, 92, 0.12); }
+
+/* ---------- Countdown ---------- */
+.invitation[data-template="siyah-taj"] .inv-count-cell {
+  border: 0;
+  border-top: 1px solid var(--sy-gold);
+  background: transparent;
+  padding-top: 1rem;
+}
+.invitation[data-template="siyah-taj"] .inv-count-cell + .inv-count-cell { border-left: 1px solid rgba(201, 164, 92, 0.22); }
+.invitation[data-template="siyah-taj"] .inv-count-num {
+  font-family: var(--font-bodoni), serif;
+  font-size: clamp(2.2rem, 11vw, 3.2rem);
+  font-weight: 400;
+  color: var(--sy-ivory);
+}
+.invitation[data-template="siyah-taj"] .inv-count-label { color: var(--sy-gold); font-size: 0.55rem; letter-spacing: 0.26em; }
+
+/* ---------- Events: a programme, with giant date numerals ---------- */
+.invitation[data-template="siyah-taj"] .inv-event-card {
+  padding: 1.8rem 1.1rem 1.5rem;
+  border: 0;
+  border-top: 1px solid rgba(201, 164, 92, 0.3);
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="siyah-taj"] .inv-event-head { align-items: flex-start; gap: 1.2rem; }
+.invitation[data-template="siyah-taj"] .inv-event-icon { display: none; }
+.invitation[data-template="siyah-taj"] .inv-date-badge {
+  order: -1;
+  min-width: 4.4rem;
+  align-items: flex-start;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--sy-gold-light);
+}
+.invitation[data-template="siyah-taj"] .inv-date-badge > span:first-child {
+  font-family: var(--font-bodoni), serif;
+  font-size: 4.2rem;
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+}
+.invitation[data-template="siyah-taj"] .inv-date-badge > span:last-child {
+  margin-top: 0.5rem;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: #e0626f;
+}
+.invitation[data-template="siyah-taj"] .inv-event-title { font-family: var(--font-bodoni), serif; font-size: 2rem; font-style: italic; font-weight: 400; line-height: 1.05; color: var(--sy-ivory); }
+.invitation[data-template="siyah-taj"] .inv-event-date { margin-top: 0.35rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; }
+.invitation[data-template="siyah-taj"] .inv-event-facts { margin-top: 1.2rem; padding-top: 0; border-top: 0; font-size: 0.98rem; font-weight: 300; }
+.invitation[data-template="siyah-taj"] .inv-event-facts svg { color: var(--sy-gold); }
+.invitation[data-template="siyah-taj"] .inv-event-card[data-type] { border-top-color: rgba(201, 164, 92, 0.3); }
+
+/* ---------- Buttons: cut corners ---------- */
+.invitation[data-template="siyah-taj"] .inv-btn,
+.invitation[data-template="siyah-taj"] .inv-choice[data-active="true"] {
+  border-radius: 0;
+  background: var(--sy-gold);
+  color: #0a0a0b;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  clip-path: polygon(11px 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%, 0 11px);
+}
+.invitation[data-template="siyah-taj"] .inv-event-actions .inv-btn svg { display: none; }
+.invitation[data-template="siyah-taj"] .inv-btn:hover { filter: none; background: var(--sy-gold-light); }
+.invitation[data-template="siyah-taj"] .inv-btn-ghost { background: transparent; border: 1px solid var(--sy-gold); color: var(--sy-gold-light); clip-path: none; }
+.invitation[data-template="siyah-taj"] .inv-btn-ghost:hover { background: rgba(201, 164, 92, 0.1); }
+.invitation[data-template="siyah-taj"] .inv-choice,
+.invitation[data-template="siyah-taj"] .inv-stepper,
+.invitation[data-template="siyah-taj"] .inv-textarea,
+.invitation[data-template="siyah-taj"] .inv-phone-pill,
+.invitation[data-template="siyah-taj"] .inv-badge { border-radius: 0; }
+.invitation[data-template="siyah-taj"] .inv-choice { font-family: var(--font-jost), sans-serif; font-weight: 500; }
+.invitation[data-template="siyah-taj"] .inv-rsvp-card { border-radius: 0; background: rgba(255, 255, 255, 0.025); }
+.invitation[data-template="siyah-taj"] .inv-music-btn { background: #111112; color: var(--sy-gold-light); border-color: var(--sy-gold); }
+.invitation[data-template="siyah-taj"] .inv-gallery-item { margin: 7px; border: 0; outline: 1px solid rgba(201, 164, 92, 0.7); outline-offset: 5px; filter: grayscale(0.2) contrast(1.05); }
+.invitation[data-template="siyah-taj"] .inv-footer { margin-inline: 1.2rem; border-top: 1px solid var(--inv-panel-border); }
+.invitation[data-template="siyah-taj"] .inv-footer .inv-script { color: var(--sy-ivory); }
+.invitation[data-template="siyah-taj"] .inv-footer .inv-divider { display: none; }
+
+@media (min-width: 640px) {
+  .invitation[data-template="siyah-taj"] .inv-family-side:last-child { border-left: 1px solid rgba(179, 32, 47, 0.7); }
+}
+
+/* ======================= OPENING: ROLLER SHUTTER ======================= */
+
+.sy-opening {
+  cursor: pointer;
+  background: #050506;
+}
+.sy-shutter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1.2rem 0;
+  /* corrugated steel slats: each has a lit top edge and a dark gap */
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 22px, rgba(0, 0, 0, 0.55) 44px 46px),
+    linear-gradient(90deg, #0d0d0e, #19191b 50%, #0d0d0e),
+    #111112;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.6);
+  will-change: transform;
+}
+.sy-opening[data-phase="opening"] .sy-shutter { animation: sy-lift 1.7s cubic-bezier(0.7, 0, 0.2, 1) forwards; }
+@keyframes sy-lift {
+  0% { transform: translateY(0); }
+  13% { transform: translateY(16px); animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.3); }
+  100% { transform: translateY(-106%); }
+}
+
+.sy-print {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ece6d8;
+}
+.sy-kicker {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: #c9a45c;
+}
+.sy-names {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-bodoni), serif;
+  font-size: clamp(3.4rem, 18vw, 6rem);
+  font-weight: 500;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+.sy-names i {
+  margin-block: 0.1em;
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #d4505d;
+}
+.sy-rule { display: block; width: 2.6rem; height: 3px; margin: 2rem 0 1.3rem; background: #b3202f; }
+.sy-date { font-family: var(--font-jost), sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.32em; text-indent: 0.32em; text-transform: uppercase; color: #dcc58a; }
+
+.sy-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  padding-bottom: 0;
+}
+.sy-tap {
+  min-height: 3.1rem;
+  padding: 0.7rem 2.4rem;
+  border: 1px solid #c9a45c;
+  background: rgba(0, 0, 0, 0.55);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-indent: 0.38em;
+  text-transform: uppercase;
+  color: #dcc58a;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.sy-tap:hover { background: #c9a45c; color: #0a0a0b; }
+/* the lip you would pull: a gold bar with a notch */
+.sy-bar {
+  display: block;
+  width: min(46vw, 12rem);
+  height: 12px;
+  background: linear-gradient(#e2cb90, #b38d45);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+@media (max-height: 640px) {
+  .sy-names { margin-top: 0.8rem; font-size: clamp(2.6rem, 14vw, 4.4rem); }
+  .sy-rule { margin-block: 1.2rem 0.9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sy-opening[data-phase="opening"] .sy-shutter { animation: sy-fade 0.4s linear forwards; }
+  @keyframes sy-fade { to { opacity: 0; } }
+}

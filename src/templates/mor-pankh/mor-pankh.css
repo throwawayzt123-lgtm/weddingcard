@@ -1,0 +1,361 @@
+/* ------------------------------------------------------------------
+   Mor Pankh — peacock teal, deep blue and gold.
+   A deep peacock-green page with a faint scale pattern, glassy dark cards with a gold
+   hairline and a feather "eye" on top, date badges drawn as peacock eyes, leaf-shaped
+   photo frames. A closed feather fan spreads open to reveal the invitation.
+   The eye ornament is /public/templates/mor-pankh/eye.svg (edit or replace it freely).
+   Fonts: Tenor Sans (headings) + Parisienne (names) + Cormorant Garamond.
+------------------------------------------------------------------- */
+
+.invitation[data-template="mor-pankh"] {
+  --mp-deep: #031f25;
+  --mp-teal: #07363d;
+  --mp-peacock: #0f6f6a;
+  --mp-blue: #123f6b;
+  --mp-gold: #d8b45c;
+  --mp-gold-light: #ecd596;
+  --mp-ivory: #f2ead6;
+  --mp-line: rgba(216, 180, 92, 0.45);
+  --mp-eye: url("/templates/mor-pankh/eye.svg");
+  --inv-bg: var(--mp-deep);
+  --inv-ink: var(--mp-ivory);
+  --inv-muted: rgba(242, 234, 214, 0.78);
+  --inv-accent: var(--mp-gold);
+  --inv-accent-strong: var(--mp-gold-light);
+  --inv-on-accent: #03242a;
+  --inv-panel-bg: rgba(7, 54, 61, 0.7);
+  --inv-panel-border: var(--mp-line);
+  --inv-card-bg: rgba(255, 255, 255, 0.04);
+  --inv-menu-bg: #07363d;
+  --inv-heading: var(--font-tenor), "Helvetica Neue", sans-serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-parisienne), cursive;
+  --inv-script-color: var(--mp-ivory);
+  --inv-radius: 4px;
+  --inv-photo-radius: 5rem 0 5rem 0;
+  --inv-stack-bg: #07363d;
+  --inv-stack-edge: var(--mp-line);
+}
+
+.mp-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(90% 38% at 50% 0%, rgba(42, 163, 160, 0.3), transparent 70%),
+    radial-gradient(80% 36% at 50% 105%, rgba(18, 63, 107, 0.7), transparent 70%),
+    radial-gradient(circle at 50% 100%, transparent 0 9px, rgba(216, 180, 92, 0.07) 9.5px 10.5px, transparent 11px) 0 0 / 22px 11px,
+    linear-gradient(#04282f, #031f25);
+}
+
+/* ---------- Type ---------- */
+.invitation[data-template="mor-pankh"] .inv-eyebrow {
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.36em;
+  color: var(--mp-gold);
+}
+.invitation[data-template="mor-pankh"] .inv-title { font-weight: 400; letter-spacing: 0.04em; }
+.invitation[data-template="mor-pankh"] .inv-script { line-height: 1.12; }
+.invitation[data-template="mor-pankh"] .inv-lead { font-size: 1.26rem; line-height: 1.8; }
+.invitation[data-template="mor-pankh"] .inv-parents { font-size: 1.3rem; }
+
+/* ---------- Hero: rings spread out from the names like the eye of a feather ---------- */
+.invitation[data-template="mor-pankh"] .inv-hero { padding-top: 8.2rem; padding-bottom: 9.4rem; }
+.invitation[data-template="mor-pankh"] .inv-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-radial-gradient(ellipse 48% 34% at 50% 46%, transparent 0 34px, rgba(216, 180, 92, 0.16) 34px 35px),
+    radial-gradient(ellipse 50% 34% at 50% 46%, rgba(15, 111, 106, 0.4), transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 46%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 46%, #000 30%, transparent 78%);
+  pointer-events: none;
+}
+.invitation[data-template="mor-pankh"] .inv-hero-inner { position: relative; z-index: 1; }
+.invitation[data-template="mor-pankh"] .inv-name {
+  padding: 0 0.1em;
+  font-size: clamp(4.2rem, 21vw, 7.4rem);
+  line-height: 1.06;
+  color: var(--mp-ivory);
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+}
+.invitation[data-template="mor-pankh"] .inv-and {
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.74rem;
+  font-style: normal;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: var(--mp-gold);
+}
+.invitation[data-template="mor-pankh"] .inv-hero-date {
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+  text-transform: uppercase;
+  color: var(--mp-gold-light);
+}
+.invitation[data-template="mor-pankh"] .inv-verse { color: var(--mp-gold-light); }
+.invitation[data-template="mor-pankh"] .inv-scroll-hint { color: var(--mp-gold-light); }
+
+/* The divider becomes a row of tiny feather eyes */
+.invitation[data-template="mor-pankh"] .inv-divider { color: var(--mp-gold); }
+.invitation[data-template="mor-pankh"] .inv-divider svg { display: none; }
+.invitation[data-template="mor-pankh"] .inv-divider::after {
+  content: "";
+  order: 1;
+  width: 1.4rem;
+  height: 2rem;
+  background: var(--mp-eye) center / contain no-repeat;
+}
+.invitation[data-template="mor-pankh"] .inv-divider span:last-child { order: 2; }
+
+/* ---------- Dark glass cards, a feather eye resting on the top edge ---------- */
+.invitation[data-template="mor-pankh"] .inv-panel {
+  padding: 4.2rem 1.4rem 3.6rem;
+  border: 1px solid var(--mp-line);
+  border-radius: 4px;
+  background:
+    radial-gradient(120% 50% at 50% 0%, rgba(42, 163, 160, 0.18), transparent 70%),
+    linear-gradient(rgba(7, 54, 61, 0.88), rgba(4, 40, 47, 0.92));
+  box-shadow: inset 0 0 0 4px rgba(3, 31, 37, 0.9), inset 0 0 0 5px rgba(216, 180, 92, 0.22), 0 26px 44px -26px rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="mor-pankh"] .inv-panel::before {
+  content: "";
+  position: absolute;
+  top: -1.55rem;
+  left: 50%;
+  width: 2.2rem;
+  height: 3.1rem;
+  margin-left: -1.1rem;
+  background: var(--mp-eye) center / contain no-repeat;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+.invitation[data-template="mor-pankh"] .inv-couple-photo {
+  width: min(64%, 13.5rem);
+  aspect-ratio: 3 / 4;
+  border: 0;
+  outline: 1px solid var(--mp-gold);
+  outline-offset: 5px;
+  box-shadow: 0 18px 30px -16px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1.4rem;
+}
+.invitation[data-template="mor-pankh"] .inv-chip {
+  border-color: var(--mp-gold);
+  border-radius: 0 12px 0 12px;
+  color: var(--mp-gold-light);
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+}
+.invitation[data-template="mor-pankh"] .inv-chip:hover { background: rgba(216, 180, 92, 0.12); }
+
+/* ---------- Countdown ---------- */
+.invitation[data-template="mor-pankh"] .inv-count-cell {
+  border: 1px solid var(--mp-line);
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 40%, rgba(42, 163, 160, 0.22), rgba(3, 31, 37, 0.4));
+}
+.invitation[data-template="mor-pankh"] .inv-count-num { font-family: var(--font-tenor), sans-serif; font-weight: 400; font-size: clamp(1.8rem, 9vw, 2.6rem); color: var(--mp-gold-light); }
+.invitation[data-template="mor-pankh"] .inv-count-label { font-family: var(--font-tenor), sans-serif; font-size: 0.5rem; color: #8fd2cf; }
+
+/* ---------- Events: the date is a peacock eye ---------- */
+.invitation[data-template="mor-pankh"] .inv-event-card {
+  position: relative;
+  padding: 1.7rem 1.3rem 1.5rem;
+  border: 1px solid var(--mp-line);
+  border-radius: 4px;
+  background:
+    radial-gradient(120% 60% at 0% 0%, rgba(42, 163, 160, 0.16), transparent 70%),
+    linear-gradient(rgba(7, 54, 61, 0.92), rgba(4, 40, 47, 0.95));
+  box-shadow: inset 0 0 0 4px rgba(3, 31, 37, 0.9), inset 0 0 0 5px rgba(216, 180, 92, 0.2);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="mor-pankh"] .inv-event-icon { display: none; }
+.invitation[data-template="mor-pankh"] .inv-event-head { gap: 1.1rem; align-items: center; }
+.invitation[data-template="mor-pankh"] .inv-date-badge {
+  order: -1;
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #061c2c 0 40%, #123f6b 41% 52%, #1f9aa5 53% 63%, #d8b45c 64% 70%, #0f6f6a 71% 100%);
+  color: #f6ecd0;
+  box-shadow: 0 8px 14px -6px rgba(0, 0, 0, 0.7);
+}
+.invitation[data-template="mor-pankh"] .inv-date-badge > span:first-child { font-family: var(--font-tenor), sans-serif; font-size: 1.3rem; line-height: 1; }
+.invitation[data-template="mor-pankh"] .inv-date-badge > span:last-child { font-family: var(--font-tenor), sans-serif; font-size: 0.42rem; letter-spacing: 0.18em; color: var(--mp-gold-light); }
+.invitation[data-template="mor-pankh"] .inv-event-title { font-family: var(--font-tenor), sans-serif; font-size: 1.45rem; font-weight: 400; line-height: 1.15; color: var(--mp-ivory); }
+.invitation[data-template="mor-pankh"] .inv-event-date { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.8; }
+.invitation[data-template="mor-pankh"] .inv-event-facts { border-top-color: var(--mp-line); }
+.invitation[data-template="mor-pankh"] .inv-event-facts svg { color: var(--mp-gold); }
+
+/* ---------- Buttons: leaf-shaped corners ---------- */
+.invitation[data-template="mor-pankh"] .inv-btn,
+.invitation[data-template="mor-pankh"] .inv-choice[data-active="true"] {
+  border-radius: 0 16px 0 16px;
+  background: linear-gradient(#ecd596, #c9a24a);
+  color: #03242a;
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+}
+.invitation[data-template="mor-pankh"] .inv-btn:hover { filter: brightness(1.08); }
+.invitation[data-template="mor-pankh"] .inv-btn-ghost { background: transparent; border: 1px solid var(--mp-gold); color: var(--mp-gold-light); }
+.invitation[data-template="mor-pankh"] .inv-btn-ghost:hover { background: rgba(216, 180, 92, 0.12); filter: none; }
+.invitation[data-template="mor-pankh"] .inv-choice,
+.invitation[data-template="mor-pankh"] .inv-stepper,
+.invitation[data-template="mor-pankh"] .inv-textarea,
+.invitation[data-template="mor-pankh"] .inv-phone-pill { border-radius: 4px; }
+.invitation[data-template="mor-pankh"] .inv-choice { font-family: var(--font-tenor), sans-serif; }
+.invitation[data-template="mor-pankh"] .inv-rsvp-card { background: rgba(255, 255, 255, 0.04); border-radius: 4px; }
+.invitation[data-template="mor-pankh"] .inv-music-btn { background: #04282f; color: var(--mp-gold-light); border-color: var(--mp-gold); }
+
+/* ---------- Gallery ---------- */
+.invitation[data-template="mor-pankh"] .inv-gallery-item {
+  margin: 6px;
+  border: 0;
+  outline: 1px solid var(--mp-gold);
+  outline-offset: 4px;
+  box-shadow: 0 16px 26px -14px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- Footer ---------- */
+.invitation[data-template="mor-pankh"] .inv-footer { margin-inline: 1.2rem; border-top: 1px solid var(--mp-line); }
+.invitation[data-template="mor-pankh"] .inv-footer .inv-script { color: var(--mp-ivory); }
+
+/* ======================= OPENING: THE FEATHER FAN ======================= */
+
+.mp-opening {
+  cursor: pointer;
+  background: #031f25;
+  transition: background-color 0.6s ease 1.8s;
+}
+.mp-opening[data-phase="opening"] { background-color: transparent; }
+.mp-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  overflow: hidden;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1.2rem;
+  text-align: center;
+  background:
+    radial-gradient(90% 40% at 50% 100%, rgba(18, 63, 107, 0.8), transparent 70%),
+    radial-gradient(circle at 50% 100%, transparent 0 9px, rgba(216, 180, 92, 0.07) 9.5px 10.5px, transparent 11px) 0 0 / 22px 11px,
+    linear-gradient(#04282f, #031f25);
+  transition: opacity 0.6s ease 1.8s;
+}
+.mp-opening[data-phase="opening"] .mp-stage { opacity: 0; }
+
+.mp-kicker {
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-transform: uppercase;
+  color: var(--mp-gold, #d8b45c);
+}
+.mp-names {
+  font-family: var(--font-parisienne), cursive;
+  font-size: clamp(2.4rem, 11.5vw, 3.3rem);
+  line-height: 1.04;
+  color: #f2ead6;
+}
+.mp-names i {
+  display: block;
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.28em;
+  font-style: normal;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: #d8b45c;
+}
+.mp-date {
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  color: #ecd596;
+}
+.mp-kicker, .mp-names, .mp-date { transition: opacity 0.5s ease 0.2s; }
+.mp-opening[data-phase="opening"] .mp-kicker,
+.mp-opening[data-phase="opening"] .mp-names,
+.mp-opening[data-phase="opening"] .mp-date,
+.mp-opening[data-phase="opening"] .mp-tap { opacity: 0; }
+
+.mp-fan {
+  position: relative;
+  width: min(92vw, 22rem);
+  height: clamp(10.5rem, 33vh, 16rem);
+  margin-top: 0.4rem;
+  transform-origin: 50% 100%;
+  transition: transform 1.2s cubic-bezier(0.6, 0, 0.9, 0.5) 0.9s, opacity 0.5s ease 1.75s;
+}
+.mp-feather {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: var(--z);
+  height: 100%;
+  aspect-ratio: 92 / 230;
+  translate: -50% 0;
+  rotate: calc(var(--n) * 3.5deg);
+  transform-origin: 50% 97%;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.45));
+  transition: rotate 1.25s cubic-bezier(0.25, 0.9, 0.3, 1.05) calc(0.05s + (4 - var(--z) + 6) * 0.04s);
+  animation: mp-breathe 4.6s ease-in-out infinite alternate;
+  animation-delay: calc(var(--n) * -0.35s);
+}
+.mp-feather svg { display: block; width: 100%; height: 100%; overflow: visible; }
+@keyframes mp-breathe {
+  from { scale: 1; }
+  to { scale: 1.025; }
+}
+.mp-opening[data-phase="opening"] .mp-feather { rotate: calc(var(--n) * 20deg); animation: none; }
+.mp-opening[data-phase="opening"] .mp-fan { transform: scale(4.2); opacity: 0; }
+
+.mp-tap {
+  min-height: 3.1rem;
+  padding: 0.7rem 2.6rem;
+  border: 1px solid #d8b45c;
+  border-radius: 0 16px 0 16px;
+  background: rgba(3, 31, 37, 0.7);
+  font-family: var(--font-tenor), sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: #ecd596;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, opacity 0.5s;
+}
+.mp-tap:hover { background: #d8b45c; color: #03242a; }
+
+@media (max-height: 700px) {
+  .mp-stage { gap: 0.5rem; }
+  .mp-kicker { display: none; }
+  .mp-fan { height: clamp(9rem, 29vh, 13rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mp-feather { animation: none; }
+  .mp-feather, .mp-fan, .mp-stage, .mp-opening { transition-duration: 0.01s; transition-delay: 0s; }
+  .mp-opening[data-phase="opening"] .mp-fan { transform: none; }
+}

@@ -1,0 +1,341 @@
+/* ------------------------------------------------------------------
+   Chandni — moonlight in silver and slate grey.
+   Calm and modern: a night-sky hero, event "tickets" with a perforated
+   date stub, circular countdown dials, scooped-corner pages.
+   Fonts: Italiana (thin capitals) + Jost (a light geometric sans).
+------------------------------------------------------------------- */
+
+.invitation[data-template="chandni"] {
+  --cd-night: #1e2329;
+  --cd-slate: #2a3038;
+  --cd-silver: #b7bec9;
+  --cd-steel: #5d6b82;
+  --cd-pearl: #f4f5f7;
+  --inv-bg: #eceef2;
+  --inv-ink: #20252c;
+  --inv-muted: rgba(32, 37, 44, 0.72);
+  --inv-accent: #8995a8;
+  --inv-accent-strong: var(--cd-steel);
+  --inv-on-accent: #f4f5f7;
+  --inv-panel-bg: #ffffff;
+  --inv-panel-border: rgba(32, 37, 44, 0.12);
+  --inv-card-bg: #f4f5f7;
+  --inv-menu-bg: #ffffff;
+  --inv-heading: var(--font-jost), "Helvetica Neue", Arial, sans-serif;
+  --inv-body: var(--font-jost), "Helvetica Neue", Arial, sans-serif;
+  --inv-script: var(--font-italiana), serif;
+  --inv-script-color: var(--cd-slate);
+  --inv-radius: 2px;
+  --inv-stack-bg: #ffffff;
+  --inv-stack-edge: rgba(32, 37, 44, 0.12);
+  --inv-photo-radius: 50%;
+  font-size: 1.02rem;
+  font-weight: 300;
+}
+
+.cd-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(115deg, #f7f8fa 0%, #eceef2 38%, #f7f8fa 60%, #e4e7ec 100%);
+}
+
+/* ---------- Type ---------- */
+.invitation[data-template="chandni"] .inv-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--cd-steel);
+}
+.invitation[data-template="chandni"] .inv-title { font-family: var(--font-italiana), serif; font-size: 2rem; font-weight: 400; letter-spacing: 0.06em; }
+.invitation[data-template="chandni"] .inv-script { font-weight: 400; letter-spacing: 0.04em; line-height: 1.2; }
+.invitation[data-template="chandni"] .inv-lead { font-size: 1.1rem; font-weight: 300; line-height: 1.85; }
+.invitation[data-template="chandni"] .inv-parents { font-family: var(--font-italiana), serif; font-size: 1.3rem; font-style: normal; letter-spacing: 0.04em; }
+.invitation[data-template="chandni"] .inv-member { font-size: 1.02rem; }
+
+/* ---------- Hero: a night sky with a pale moon ---------- */
+.invitation[data-template="chandni"] .inv-hero,
+.invitation[data-template="chandni"] .inv-footer {
+  --inv-ink: #eef0f3;
+  --inv-muted: rgba(238, 240, 243, 0.7);
+  --inv-accent-strong: #c3cad5;
+  --inv-script-color: #eef0f3;
+  --inv-panel-border: rgba(238, 240, 243, 0.3);
+  color: #eef0f3;
+}
+.invitation[data-template="chandni"] .inv-hero {
+  clip-path: ellipse(150% 100% at 50% 0);
+  background:
+    radial-gradient(1px 1px at 12% 16%, #fff, transparent),
+    radial-gradient(1.4px 1.4px at 82% 12%, #fff, transparent),
+    radial-gradient(1px 1px at 68% 26%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 24% 34%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 92% 40%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 8% 58%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 76% 66%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(circle at 50% 25%, rgba(238, 240, 243, 0.13) 0 5rem, transparent 5.05rem),
+    radial-gradient(circle at 50% 25%, transparent 0 7.2rem, rgba(238, 240, 243, 0.22) 7.22rem 7.27rem, transparent 7.3rem),
+    radial-gradient(circle at 50% 25%, transparent 0 9.6rem, rgba(238, 240, 243, 0.1) 9.62rem 9.67rem, transparent 9.7rem),
+    linear-gradient(#171b20, #2a3038);
+  padding-bottom: 9rem;
+}
+.invitation[data-template="chandni"] .inv-name {
+  padding: 0;
+  margin-right: -0.14em;
+  font-size: clamp(2.7rem, 13vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f1f3f6;
+}
+.invitation[data-template="chandni"] .inv-and {
+  margin-block: 0.7rem;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+}
+.invitation[data-template="chandni"] .inv-hero-date { font-family: var(--font-jost), sans-serif; font-size: 0.86rem; font-weight: 400; letter-spacing: 0.34em; text-indent: 0.34em; text-transform: uppercase; }
+.invitation[data-template="chandni"] .inv-verse { color: #dfe3e9; }
+.invitation[data-template="chandni"] .inv-divider span { width: 2.6rem; }
+.invitation[data-template="chandni"] .inv-divider svg { display: none; }
+.invitation[data-template="chandni"] .inv-divider::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  order: 1;
+}
+.invitation[data-template="chandni"] .inv-divider span:last-child { order: 2; }
+
+.invitation[data-template="chandni"] .inv-hero .inv-eyebrow,
+.invitation[data-template="chandni"] .inv-footer .inv-eyebrow { color: #aeb6c3; }
+
+/* ---------- Panels: white pages with scooped corners ---------- */
+.invitation[data-template="chandni"] .inv-panel {
+  padding: 2.6rem 1.4rem 2.4rem;
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  --s: 15px;
+  -webkit-mask:
+    radial-gradient(circle var(--s) at 0 0, #0000 97%, #000) top left / 51% 51% no-repeat,
+    radial-gradient(circle var(--s) at 100% 0, #0000 97%, #000) top right / 51% 51% no-repeat,
+    radial-gradient(circle var(--s) at 0 100%, #0000 97%, #000) bottom left / 51% 51% no-repeat,
+    radial-gradient(circle var(--s) at 100% 100%, #0000 97%, #000) bottom right / 51% 51% no-repeat;
+  mask:
+    radial-gradient(circle var(--s) at 0 0, #0000 97%, #000) top left / 51% 51% no-repeat,
+    radial-gradient(circle var(--s) at 100% 0, #0000 97%, #000) top right / 51% 51% no-repeat,
+    radial-gradient(circle var(--s) at 0 100%, #0000 97%, #000) bottom left / 51% 51% no-repeat,
+    radial-gradient(circle var(--s) at 100% 100%, #0000 97%, #000) bottom right / 51% 51% no-repeat;
+}
+
+/* ---------- Greeting: a round portrait like a moon ---------- */
+.invitation[data-template="chandni"] .inv-couple-photo {
+  width: min(58%, 12rem);
+  aspect-ratio: 1;
+  margin-bottom: 2.2rem;
+  border: 0;
+  outline: 1px solid var(--cd-silver);
+  outline-offset: 9px;
+  box-shadow: none;
+}
+.invitation[data-template="chandni"] .inv-chip {
+  border-color: var(--cd-silver);
+  border-radius: 999px;
+  color: var(--cd-slate);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+}
+.invitation[data-template="chandni"] .inv-chip:hover { background: rgba(93, 107, 130, 0.1); }
+
+/* ---------- Countdown: four small dials ---------- */
+.invitation[data-template="chandni"] .inv-count-cell {
+  aspect-ratio: 1;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--cd-silver);
+  border-radius: 50%;
+  background: #fff;
+}
+.invitation[data-template="chandni"] .inv-count-num { font-family: var(--font-italiana), serif; font-size: clamp(1.7rem, 8vw, 2.3rem); font-weight: 400; color: var(--cd-slate); }
+.invitation[data-template="chandni"] .inv-count-label { font-size: 0.5rem; letter-spacing: 0.2em; }
+
+/* ---------- Events: tickets with a perforated date stub ---------- */
+.invitation[data-template="chandni"] .inv-event-card {
+  --stub: 5.2rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--stub) 1fr;
+  grid-template-rows: auto;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  -webkit-mask:
+    radial-gradient(circle 9px at var(--stub) 0, #0000 97%, #000),
+    radial-gradient(circle 9px at var(--stub) 100%, #0000 97%, #000);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle 9px at var(--stub) 0, #0000 97%, #000),
+    radial-gradient(circle 9px at var(--stub) 100%, #0000 97%, #000);
+  mask-composite: intersect;
+}
+.invitation[data-template="chandni"] .inv-event-card::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: calc(var(--stub) + 1px);
+  border-left: 1.5px dashed #c5cad2;
+}
+.invitation[data-template="chandni"] .inv-event-head { display: contents; }
+.invitation[data-template="chandni"] .inv-event-icon { display: none; }
+.invitation[data-template="chandni"] .inv-event-head > div:not(.inv-date-badge) { grid-column: 2; grid-row: 1; padding: 1.3rem 1.2rem 0 1.3rem; }
+.invitation[data-template="chandni"] .inv-date-badge {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  justify-content: center;
+  padding: 1rem 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--cd-slate);
+  color: #eef0f3;
+}
+.invitation[data-template="chandni"] .inv-date-badge > span:first-child { font-family: var(--font-italiana), serif; font-size: 2.6rem; font-weight: 400; line-height: 1; }
+.invitation[data-template="chandni"] .inv-date-badge > span:last-child { margin-top: 0.4rem; font-size: 0.62rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+.invitation[data-template="chandni"] .inv-event-title { font-family: var(--font-italiana), serif; font-size: 1.7rem; font-weight: 400; letter-spacing: 0.06em; }
+.invitation[data-template="chandni"] .inv-event-date { font-size: 0.86rem; letter-spacing: 0.04em; }
+.invitation[data-template="chandni"] .inv-event-facts { grid-column: 2; margin: 0.9rem 0 0; padding: 0 1.2rem 0 1.3rem; border-top: 0; font-size: 0.96rem; }
+.invitation[data-template="chandni"] .inv-event-facts svg { color: var(--cd-steel); }
+.invitation[data-template="chandni"] .inv-event-notes { grid-column: 2; margin: 0.8rem 0 0; padding: 0 1.2rem 0 1.3rem; font-size: 0.92rem; }
+.invitation[data-template="chandni"] .inv-event-actions { grid-column: 2; grid-template-columns: 1fr; margin: 1.1rem 0 0; padding: 0 1.2rem 1.3rem 1.3rem; }
+
+/* ---------- Buttons ---------- */
+.invitation[data-template="chandni"] .inv-btn,
+.invitation[data-template="chandni"] .inv-choice[data-active="true"] {
+  border-radius: 2px;
+  background: var(--cd-slate);
+  color: #f4f5f7;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+.invitation[data-template="chandni"] .inv-btn:hover { filter: none; background: var(--cd-night); }
+.invitation[data-template="chandni"] .inv-btn-ghost { background: transparent; border: 1px solid var(--cd-slate); color: var(--cd-slate); }
+.invitation[data-template="chandni"] .inv-btn-ghost:hover { background: rgba(42, 48, 56, 0.06); }
+.invitation[data-template="chandni"] .inv-choice,
+.invitation[data-template="chandni"] .inv-textarea { border-radius: 2px; }
+.invitation[data-template="chandni"] .inv-choice { font-family: var(--font-jost), sans-serif; }
+.invitation[data-template="chandni"] .inv-rsvp-card { background: #f4f5f7; border-radius: 2px; }
+.invitation[data-template="chandni"] .inv-textarea { background: #f4f5f7; }
+.invitation[data-template="chandni"] .inv-music-btn { background: var(--cd-slate); color: #eef0f3; border-color: var(--cd-silver); }
+.invitation[data-template="chandni"] .inv-gallery-item { border: 0; border-radius: 50% 50% 4px 4px / 22% 22% 4px 4px; }
+.invitation[data-template="chandni"] .inv-footer {
+  margin-top: 2rem;
+  padding-top: 5rem;
+  background: linear-gradient(#2a3038, #171b20);
+  clip-path: ellipse(150% 100% at 50% 100%);
+}
+
+/* ======================= OPENING: MOON DIAL ======================= */
+
+.cd-opening {
+  cursor: pointer;
+  background: #eceef2;
+  transition: opacity 0.6s linear 1.55s;
+}
+.cd-opening[data-phase="opening"] { opacity: 0; }
+.cd-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1rem;
+  color: #2a3038;
+  background: linear-gradient(115deg, #f7f8fa 0%, #eceef2 38%, #f7f8fa 60%, #e4e7ec 100%);
+}
+.cd-kicker {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: #5d6b82;
+}
+.cd-kicker, .cd-tap { transition: opacity 0.35s; }
+.cd-opening[data-phase="opening"] .cd-kicker,
+.cd-opening[data-phase="opening"] .cd-tap { opacity: 0; }
+
+.cd-dial { position: relative; width: min(84vw, 21rem); aspect-ratio: 1; }
+.cd-ring { position: absolute; inset: 0; width: 100%; height: 100%; color: #7a8598; transition: opacity 0.5s; }
+.cd-ring-outer { animation: cd-spin 140s linear infinite; }
+.cd-ring-text { animation: cd-spin 90s linear infinite reverse; font-family: var(--font-jost), sans-serif; }
+@keyframes cd-spin { to { transform: rotate(360deg); } }
+.cd-opening[data-phase="opening"] .cd-ring { opacity: 0; }
+
+.cd-disc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: 58%;
+  aspect-ratio: 1;
+  place-items: center;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 30%, #3a424d, #1e2329 70%);
+  color: #eef0f3;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: transform 1.35s cubic-bezier(0.75, 0, 0.2, 1) 0.3s;
+}
+.cd-opening[data-phase="opening"] .cd-disc { transform: scale(20); }
+.cd-disc-inner { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; transition: opacity 0.3s; }
+.cd-opening[data-phase="opening"] .cd-disc-inner { opacity: 0; }
+.cd-monogram { font-family: var(--font-italiana), serif; font-size: clamp(2.2rem, 11vw, 3.1rem); letter-spacing: 0.1em; line-height: 1; }
+.cd-monogram i { margin-inline: 0.2em; font-family: var(--font-jost), sans-serif; font-size: 0.4em; font-style: normal; font-weight: 300; vertical-align: middle; color: #b7bec9; }
+.cd-date { font-family: var(--font-jost), sans-serif; font-size: 0.56rem; font-weight: 400; letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase; color: #b7bec9; }
+
+.cd-tap {
+  min-height: 3rem;
+  padding: 0.7rem 2.4rem;
+  border: 1px solid #2a3038;
+  border-radius: 2px;
+  background: transparent;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.36em;
+  text-indent: 0.36em;
+  text-transform: uppercase;
+  color: #2a3038;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, opacity 0.35s;
+}
+.cd-tap:hover { background: #2a3038; color: #f4f5f7; }
+
+@media (max-height: 640px) {
+  .cd-stage { gap: 1.4rem; }
+  .cd-dial { width: min(66vw, 17rem); }
+  .cd-kicker { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cd-ring-outer, .cd-ring-text { animation: none; }
+  .cd-disc { transition-duration: 0.01s; transition-delay: 0s; }
+  .cd-opening { transition-delay: 0.1s; transition-duration: 0.3s; }
+}

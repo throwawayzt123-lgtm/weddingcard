@@ -1,0 +1,286 @@
+// Database schema for the Digital Wedding Invitation platform.
+// After changing this file run:  npm run db:migrate
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled connection (used by the app)
+  directUrl = env("DIRECT_URL") // direct connection (used for migrations)
+}
+
+// ---------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------
+
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+enum Plan {
+  BASIC
+  STANDARD
+  PREMIUM
+}
+
+enum InvitationStatus {
+  DRAFT
+  ACTIVE
+  SUSPENDED
+  EXPIRED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+
+enum FamilySideType {
+  GROOM
+  BRIDE
+}
+
+enum EventType {
+  DHOLKI
+  MAYUN
+  MEHNDI
+  NIKKAH
+  BARAAT
+  RUKHSATI
+  WALIMA
+  CUSTOM
+}
+
+enum RsvpResponse {
+  YES
+  NO
+  MAYBE
+}
+
+// ---------------------------------------------------------------
+// Users & auth
+// ---------------------------------------------------------------
+
+model User {
+  id           String  @id @default(cuid())
+  name         String
+  email        String? @unique // stored lowercase; optional for clients
+  username     String  @unique // stored lowercase
+  passwordHash String
+  role         Role    @default(CLIENT)
+  phone        String?
+
+  // Bumped when the admin resets this user's password. Login cookies that
+  // carry an older number stop working immediately.
+  sessionVersion Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  invitations Invitation[]
+  auditLogs   AuditLog[]
+}
+
+// ---------------------------------------------------------------
+// Invitation (one per couple — only the admin can create one)
+// ---------------------------------------------------------------
+
+model Invitation {
+  id          String @id @default(cuid())
+  slug        String @unique // LOCKED for the client
+  templateKey String // LOCKED for the client
+
+  // LOCKED couple names: only the admin writes these (and every change is
+  // recorded in AuditLog). The client update action never touches them.
+  groomName          String
+  brideName          String
+  namesNormalizedKey String // "ahmad|mawra" — used to warn about duplicates
+
+  weddingDate DateTime @db.Date
+  dateLocked  Boolean  @default(true)
+  timezone    String   @default("Asia/Karachi")
+
+  plan      Plan             @default(BASIC)
+  status    InvitationStatus @default(ACTIVE)
+  expiresAt DateTime
+  // true = expiry follows the last event date + default days; false = the admin set a custom date
+  expiryAuto Boolean @default(true)
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Restrict)
+
+  // Content the client can edit
+  hashtag        String?
+  welcomeMessage String?
+  verseText      String?
+  couplePhotoUrl String?
+  musicKey       String?
+  customMusicUrl String?
+  musicEnabled   Boolean @default(true)
+
+  // Admin-only
+  showBadge     Boolean       @default(true)
+  paymentStatus PaymentStatus @default(UNPAID)
+  paymentAmount Int? // PKR, whole rupees
+  paymentMethod String?
+  paymentRef    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  familySides FamilySide[]
+  events      Event[]
+  guests      Guest[]
+  photos      Photo[]
+  auditLogs   AuditLog[]
+
+  @@index([ownerId])
+  @@index([namesNormalizedKey])
+  @@index([status, expiresAt])
+}
+
+model FamilySide {
+  id           String         @id @default(cuid())
+  invitationId String
+  invitation   Invitation     @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+  side         FamilySideType
+  parentsLine  String? // e.g. "Mr. & Mrs. Khalid Mehmood"
+  members      FamilyMember[]
+
+  @@unique([invitationId, side])
+}
+
+model FamilyMember {
+  id           String     @id @default(cuid())
+  familySideId String
+  familySide   FamilySide @relation(fields: [familySideId], references: [id], onDelete: Cascade)
+  name         String
+  phone        String?
+  showPhone    Boolean    @default(false)
+  order        Int        @default(0)
+
+  @@index([familySideId])
+}
+
+model Event {
+  id           String     @id @default(cuid())
+  invitationId String
+  invitation   Invitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+  type         EventType
+  title        String
+  date         DateTime   @db.Date
+  startTime    String? // "19:30" in the invitation's timezone
+  endTime      String?
+  venueName    String?
+  address      String?
+  mapUrl       String?
+  dressCode    String?
+  notes        String?
+  order        Int        @default(0)
+
+  guestEvents GuestEvent[]
+  rsvps       Rsvp[]
+
+  @@index([invitationId])
+}
+
+// ---------------------------------------------------------------
+// Guests & RSVP
+// ---------------------------------------------------------------
+
+model Guest {
+  id           String     @id @default(cuid())
+  invitationId String
+  invitation   Invitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+  displayName  String // "Sarah & Family"
+  phone        String?
+  code         String     @unique // random, unguessable — used in the personal link
+  openedAt     DateTime? // first time the personal link was opened
+  openCount    Int        @default(0)
+  createdAt    DateTime   @default(now())
+
+  guestEvents GuestEvent[]
+  rsvps       Rsvp[]
+
+  @@index([invitationId])
+}
+
+// Which events a guest is invited to.
+model GuestEvent {
+  guestId String
+  guest   Guest  @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@id([guestId, eventId])
+  @@index([eventId])
+}
+
+// One answer per guest per event (the guest can update it).
+model Rsvp {
+  id        String       @id @default(cuid())
+  guestId   String
+  guest     Guest        @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  eventId   String
+  event     Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  response  RsvpResponse
+  headcount Int          @default(1)
+  message   String?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@unique([guestId, eventId])
+  @@index([eventId])
+}
+
+model Photo {
+  id           String     @id @default(cuid())
+  invitationId String
+  invitation   Invitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+  url          String
+  publicId     String? // Cloudinary id, so the file can be deleted later
+  order        Int        @default(0)
+  createdAt    DateTime   @default(now())
+
+  @@index([invitationId])
+}
+
+// ---------------------------------------------------------------
+// Admin & system
+// ---------------------------------------------------------------
+
+// History of sensitive admin changes (e.g. correcting locked names).
+// Rows are kept even if the invitation or the admin user is deleted.
+model AuditLog {
+  id             String      @id @default(cuid())
+  actorId        String?
+  actor          User?       @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  invitationId   String?
+  invitation     Invitation? @relation(fields: [invitationId], references: [id], onDelete: SetNull)
+  invitationSlug String? // snapshot, still readable after deletion
+  action         String // e.g. "NAMES_CORRECTED", "INVITATION_CREATED"
+  field          String?
+  oldValue       String?
+  newValue       String?
+  createdAt      DateTime    @default(now())
+
+  @@index([invitationId])
+  @@index([createdAt])
+}
+
+// Site-wide settings editable by the admin (brand name, WhatsApp, ...).
+model Setting {
+  key       String   @id
+  value     String // JSON-encoded
+  updatedAt DateTime @updatedAt
+}
+
+// Counters for rate limiting login and RSVP (works on Vercel without Redis).
+model RateLimit {
+  key     String   @id
+  count   Int      @default(0)
+  resetAt DateTime
+}

@@ -1,0 +1,296 @@
+/* ------------------------------------------------------------------
+   Neelam Kashi — sapphire blue and glazed Multani tile-work.
+   A deep navy page with ivory "tile-bordered" cards, like a courtyard wall.
+   The tile motif is /public/templates/neelam-kashi/tile.svg (edit or replace it freely).
+   Fonts: Cinzel (carved Roman capitals) + Cormorant + Allura for the names.
+------------------------------------------------------------------- */
+
+.invitation[data-template="neelam-kashi"] {
+  --nl-navy: #0c1a3b;
+  --nl-navy-2: #14264f;
+  --nl-cobalt: #1c3f94;
+  --nl-turq: #1d9aa6;
+  --nl-ivory: #f7f2e6;
+  --nl-gold: #c4a15a;
+  --nl-gold-light: #dcc283;
+  --nl-tile: url("/templates/neelam-kashi/tile.svg");
+  --inv-bg: var(--nl-navy);
+  --inv-ink: #f4efe2;
+  --inv-muted: rgba(244, 239, 226, 0.78);
+  --inv-accent: var(--nl-gold);
+  --inv-accent-strong: var(--nl-gold-light);
+  --inv-on-accent: #0c1a3b;
+  --inv-panel-bg: var(--nl-ivory);
+  --inv-panel-border: rgba(20, 38, 79, 0.3);
+  --inv-card-bg: rgba(20, 38, 79, 0.05);
+  --inv-menu-bg: #f7f2e6;
+  --inv-heading: var(--font-cinzel), "Trajan Pro", Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-allura), cursive;
+  --inv-script-color: #f4efe2;
+  --inv-radius: 0px;
+  --inv-stack-bg: #f7f2e6;
+  --inv-stack-edge: transparent;
+  --inv-photo-radius: 999px 999px 0 0;
+}
+
+.nl-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(90% 45% at 50% 0%, #1a3270, transparent 70%), #0c1a3b;
+}
+.nl-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--nl-tile, none) 0 0 / 110px 110px;
+  opacity: 0.035;
+}
+
+/* ---------- Type ---------- */
+.invitation[data-template="neelam-kashi"] .inv-eyebrow {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+}
+.invitation[data-template="neelam-kashi"] .inv-title { font-family: var(--font-cinzel), serif; font-size: 1.7rem; font-weight: 500; letter-spacing: 0.05em; }
+.invitation[data-template="neelam-kashi"] .inv-script { font-weight: 400; }
+.invitation[data-template="neelam-kashi"] .inv-lead { font-size: 1.25rem; }
+
+/* ---------- Hero: a band of tiles top and bottom ---------- */
+.invitation[data-template="neelam-kashi"] .inv-hero { padding-top: 7.5rem; padding-bottom: 10rem; }
+.invitation[data-template="neelam-kashi"] .inv-hero::before,
+.invitation[data-template="neelam-kashi"] .inv-hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 3.7rem;
+  background: var(--nl-tile) 0 0 / 3.7rem 3.7rem repeat-x;
+}
+.invitation[data-template="neelam-kashi"] .inv-hero::before { top: 0; border-bottom: 3px solid var(--nl-gold); }
+.invitation[data-template="neelam-kashi"] .inv-hero::after { bottom: 0; border-top: 3px solid var(--nl-gold); }
+.invitation[data-template="neelam-kashi"] .inv-name {
+  padding: 0 0.1em;
+  font-size: clamp(4.4rem, 22vw, 8rem);
+  line-height: 1;
+  color: #f4efe2;
+}
+.invitation[data-template="neelam-kashi"] .inv-and {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: var(--nl-gold-light);
+}
+.invitation[data-template="neelam-kashi"] .inv-hero-date { font-family: var(--font-cinzel), serif; font-size: 0.98rem; font-weight: 500; letter-spacing: 0.22em; text-indent: 0.22em; }
+.invitation[data-template="neelam-kashi"] .inv-verse { color: var(--nl-gold-light); }
+.invitation[data-template="neelam-kashi"] .inv-scroll-hint { bottom: 4.9rem; color: var(--nl-gold-light); }
+
+/* ---------- Ivory cards with a row of tiles above and below ---------- */
+.invitation[data-template="neelam-kashi"] .inv-panel,
+.invitation[data-template="neelam-kashi"] .inv-event-card {
+  position: relative;
+  color: #14264f;
+  --inv-ink: #14264f;
+  --inv-muted: rgba(20, 38, 79, 0.8);
+  --inv-accent: #1c3f94;
+  --inv-accent-strong: #1c3f94;
+  --inv-script-color: #14264f;
+  --inv-on-accent: #f7f2e6;
+  border: 0;
+  background: var(--nl-ivory);
+  box-shadow: 0 0 0 1px var(--nl-gold);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="neelam-kashi"] .inv-panel { padding: 4.4rem 1.4rem 4.2rem; }
+.invitation[data-template="neelam-kashi"] .inv-panel::before,
+.invitation[data-template="neelam-kashi"] .inv-panel::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 2.2rem;
+  background: var(--nl-tile) 0 0 / 2.2rem 2.2rem repeat-x;
+}
+.invitation[data-template="neelam-kashi"] .inv-panel::before { top: 0; border-bottom: 1px solid var(--nl-gold); }
+.invitation[data-template="neelam-kashi"] .inv-panel::after { bottom: 0; border-top: 1px solid var(--nl-gold); }
+.invitation[data-template="neelam-kashi"] .inv-parents { font-size: 1.28rem; }
+
+.invitation[data-template="neelam-kashi"] .inv-couple-photo {
+  border: 0;
+  outline: 1px solid var(--nl-gold);
+  outline-offset: 6px;
+  box-shadow: inset 0 0 0 4px var(--nl-ivory);
+}
+.invitation[data-template="neelam-kashi"] .inv-chip {
+  border-color: #1c3f94;
+  border-radius: 0;
+  color: #1c3f94;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+.invitation[data-template="neelam-kashi"] .inv-chip:hover { background: rgba(28, 63, 148, 0.08); }
+
+/* ---------- Countdown sits on the navy wall ---------- */
+.invitation[data-template="neelam-kashi"] .inv-count-cell {
+  border: 1px solid var(--nl-gold);
+  border-radius: 0;
+  background: rgba(247, 242, 230, 0.05);
+  outline: 1px solid rgba(196, 161, 90, 0.35);
+  outline-offset: 3px;
+}
+.invitation[data-template="neelam-kashi"] .inv-count-num { font-family: var(--font-cinzel), serif; font-weight: 500; color: #f4efe2; }
+.invitation[data-template="neelam-kashi"] .inv-count-label { color: var(--nl-gold-light); }
+
+/* ---------- Events ---------- */
+.invitation[data-template="neelam-kashi"] .inv-event-card { padding: 3.3rem 1.2rem 1.4rem; }
+.invitation[data-template="neelam-kashi"] .inv-event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2.2rem;
+  background: var(--nl-tile) 0 0 / 2.2rem 2.2rem repeat-x;
+  border-bottom: 1px solid var(--nl-gold);
+}
+.invitation[data-template="neelam-kashi"] .inv-event-icon { border-radius: 0; border-color: #1c3f94; color: #1c3f94; rotate: 45deg; }
+.invitation[data-template="neelam-kashi"] .inv-event-icon svg { rotate: -45deg; }
+.invitation[data-template="neelam-kashi"] .inv-event-title { font-family: var(--font-cinzel), serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.04em; }
+.invitation[data-template="neelam-kashi"] .inv-date-badge { border: 0; border-radius: 0; background: #14264f; color: #f7f2e6; }
+.invitation[data-template="neelam-kashi"] .inv-date-badge > span:first-child { font-family: var(--font-cinzel), serif; font-weight: 600; }
+.invitation[data-template="neelam-kashi"] .inv-event-facts { border-top-color: rgba(20, 38, 79, 0.2); }
+.invitation[data-template="neelam-kashi"] .inv-event-facts svg { color: var(--nl-turq); }
+
+/* ---------- Buttons ---------- */
+.invitation[data-template="neelam-kashi"] .inv-btn,
+.invitation[data-template="neelam-kashi"] .inv-choice[data-active="true"] {
+  border-radius: 0;
+  background: #14264f;
+  color: #f7f2e6;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+.invitation[data-template="neelam-kashi"] .inv-btn:hover { filter: none; background: #1c3f94; }
+.invitation[data-template="neelam-kashi"] .inv-btn-ghost { background: transparent; border: 1px solid #14264f; color: #14264f; }
+.invitation[data-template="neelam-kashi"] .inv-btn-ghost:hover { background: rgba(20, 38, 79, 0.07); }
+.invitation[data-template="neelam-kashi"] .inv-event-actions .inv-btn svg { display: none; }
+.invitation[data-template="neelam-kashi"] .inv-choice,
+.invitation[data-template="neelam-kashi"] .inv-stepper,
+.invitation[data-template="neelam-kashi"] .inv-textarea,
+.invitation[data-template="neelam-kashi"] .inv-phone-pill,
+.invitation[data-template="neelam-kashi"] .inv-badge { border-radius: 0; }
+.invitation[data-template="neelam-kashi"] .inv-choice { font-family: var(--font-cormorant), serif; font-size: 0.95rem; font-weight: 600; }
+.invitation[data-template="neelam-kashi"] .inv-rsvp-card { border-radius: 0; background: rgba(20, 38, 79, 0.04); }
+.invitation[data-template="neelam-kashi"] .inv-textarea { background: #fff; }
+.invitation[data-template="neelam-kashi"] .inv-music-btn { background: var(--nl-ivory); color: #14264f; border-color: var(--nl-gold); }
+.invitation[data-template="neelam-kashi"] .inv-gallery-item { margin: 3px; border: 0; outline: 3px solid var(--nl-ivory); }
+.invitation[data-template="neelam-kashi"] .inv-footer { padding-top: 5rem; }
+
+/* ======================= OPENING: TILES FLIP OVER ======================= */
+
+.nl-opening {
+  cursor: pointer;
+  background: #0c1a3b;
+  transition: opacity 0.35s linear 1.3s;
+}
+.nl-opening[data-phase="opening"] { opacity: 0; }
+.nl-tiles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 3px;
+  padding: 3px;
+  perspective: 900px;
+}
+.nl-tile {
+  background: var(--nl-tile, url("/templates/neelam-kashi/tile.svg")) center / cover;
+  backface-visibility: hidden;
+  transition: transform 0.55s cubic-bezier(0.5, 0, 0.8, 0.4) var(--d, 0ms), opacity 0.01s linear calc(var(--d, 0ms) + 0.54s);
+}
+.nl-opening[data-phase="opening"] .nl-tile { transform: rotateY(90deg); opacity: 0; }
+
+.nl-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1rem;
+  transition: opacity 0.35s, transform 0.5s;
+}
+.nl-opening[data-phase="opening"] .nl-center { opacity: 0; transform: scale(0.94); }
+
+/* the nameplate: an arched niche, like a mihrab */
+.nl-plate {
+  width: min(78vw, 17.5rem);
+  padding: 4.6rem 1.2rem 2.2rem;
+  border: 3px solid #14264f;
+  border-radius: 50% 50% 4px 4px / 7rem 7rem 4px 4px;
+  outline: 1px solid #c4a15a;
+  outline-offset: 4px;
+  background: #f7f2e6;
+  box-shadow: 0 0 0 7px #f7f2e6, 0 14px 30px rgba(5, 12, 30, 0.55);
+  text-align: center;
+  color: #14264f;
+}
+.nl-eyebrow { font-family: var(--font-cinzel), serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.32em; text-indent: 0.32em; text-transform: uppercase; color: #1c3f94; }
+.nl-names {
+  margin-top: 0.5rem;
+  font-family: var(--font-allura), cursive;
+  font-size: clamp(2.9rem, 14vw, 3.7rem);
+  line-height: 0.95;
+  color: #14264f;
+}
+.nl-names i {
+  display: block;
+  margin-block: 0.12rem;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.34em;
+  font-style: normal;
+  letter-spacing: 0.3em;
+  color: #c4a15a;
+}
+.nl-rule { display: block; width: 3rem; height: 1px; margin: 1rem auto 0.8rem; background: #c4a15a; }
+.nl-date { font-family: var(--font-cinzel), serif; font-size: 0.62rem; letter-spacing: 0.2em; text-indent: 0.2em; text-transform: uppercase; }
+
+.nl-tap {
+  min-height: 3.1rem;
+  padding: 0.7rem 2.2rem;
+  border: 1px solid #c4a15a;
+  background: #0c1a3b;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  text-transform: uppercase;
+  color: #f4efe2;
+  box-shadow: 0 0 0 4px #0c1a3b, 0 10px 22px rgba(5, 12, 30, 0.5);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.nl-tap:hover { background: #1c3f94; }
+
+@media (max-height: 640px) {
+  .nl-plate { padding-top: 3.4rem; }
+  .nl-center { gap: 1.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nl-tile { transition-duration: 0.01s; transition-delay: 0s; }
+  .nl-opening { transition-delay: 0.1s; transition-duration: 0.3s; }
+}

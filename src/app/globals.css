@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Font families (variables come from src/lib/fonts.ts). */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-script: var(--font-great-vibes), cursive;
+  --font-script-alt: var(--font-pinyon), cursive;
+  --font-urdu: var(--font-nastaliq), "Noto Nastaliq Urdu", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Brand colours for the marketing site, portal and admin.
+   (Each invitation template defines its own colours.) */
+@theme {
+  --color-ivory: #fbf7f0;
+  --color-cream: #f3ead9;
+  --color-maroon: #7a1f35;
+  --color-maroon-dark: #5a1426;
+  --color-maroon-light: #9b3550;
+  --color-gold: #b8913a;
+  --color-gold-light: #dcc07c;
+  --color-gold-dark: #8c6a22;
+  --color-ink: #2b1d1a;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+  }
+  /* Bigger, friendlier focus ring for keyboard users. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-maroon;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Reusable building blocks for forms and dashboards. */
+@layer components {
+  .input {
+    @apply block w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-base text-ink shadow-sm transition placeholder:text-ink/35 focus:border-maroon focus:ring-2 focus:ring-maroon/20 focus:outline-none disabled:cursor-not-allowed disabled:bg-ink/5;
+  }
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-maroon px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-maroon-dark active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-ink/15 bg-white px-6 py-3 text-base font-semibold text-ink shadow-sm transition hover:bg-cream active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .card {
+    @apply rounded-2xl border border-ink/10 bg-white shadow-sm;
+  }
 }
+
+/* Urdu / Arabic text: right-to-left with generous line height for Nastaliq. */
+@utility urdu {
+  font-family: var(--font-urdu);
+  direction: rtl;
+  line-height: 2.2;
+}
+
+/* ---------- Marketing site: phone mockups and little animations ---------- */
+@layer components {
+  .phone {
+    @apply relative mx-auto aspect-[9/19] w-full overflow-hidden rounded-[2.1rem] border-[7px] border-[#1d1215] bg-[#1d1215] shadow-2xl;
+    box-shadow: 0 30px 60px -20px rgba(70, 20, 35, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  }
+  .phone::after {
+    content: "";
+    @apply absolute top-2 left-1/2 h-[14px] w-[34%] -translate-x-1/2 rounded-full bg-[#1d1215];
+  }
+  .phone-screen {
+    @apply absolute inset-0 overflow-hidden rounded-[1.6rem] bg-ivory;
+  }
+  .section-eyebrow {
+    @apply text-xs font-bold tracking-[0.3em] text-gold-dark uppercase;
+  }
+  .section-title {
+    @apply mt-3 font-serif text-4xl leading-tight font-medium text-maroon sm:text-5xl;
+  }
+}
+/* The phone alternates between the "opening" screen and the finished page. */
+.phone-swap {
+  opacity: 0;
+  animation: phone-swap 9s ease-in-out infinite;
+}
+@keyframes phone-swap {
+  0%, 38% { opacity: 0; }
+  50%, 88% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.float-slow { animation: float-y 7s ease-in-out infinite; }
+.float-slower { animation: float-y 9s ease-in-out -3s infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .phone-swap { animation: none; }
+  .float-slow, .float-slower { animation: none; }
+}
+/* touched */
+
+/* ---------- Scroll choreography on the website (see components/marketing/page-motion.tsx) ---------- */
+
+/* Cards that pile up: position: sticky does the piling, GSAP adds the shrinking depth */
+.fx-stack-card {
+  position: sticky;
+  top: calc(5.2rem + var(--i, 0) * 1.1rem);
+  display: flex;
+  min-height: 11.5rem;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.75rem;
+  border-width: 1px;
+  border-radius: 1.75rem;
+  box-shadow: 0 -12px 30px -18px rgba(60, 20, 30, 0.5);
+}
+
+/* A row of design cards. Without JavaScript it is a normal swipeable row;
+   with it, the section is pinned and the row is moved by scrolling. */
+.fx-hscroll-track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 1rem 1.5rem max(1rem, calc((100vw - 72rem) / 2 + 1rem));
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.fx-hscroll-track::-webkit-scrollbar { display: none; }
+.fx-hscroll-item {
+  flex: 0 0 min(78vw, 20.5rem);
+  scroll-snap-align: center;
+}
+.fx-hscroll[data-fx-active] {
+  display: flex;
+  min-height: calc(100dvh - 4rem);
+  flex-direction: column;
+  justify-content: center;
+}
+.fx-hscroll[data-fx-active] .fx-hscroll-track {
+  width: max-content;
+  overflow: visible;
+  scroll-snap-type: none;
+  padding-right: 3rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-stack-card { position: static; }
+}
+/* reload 1792019210150 */

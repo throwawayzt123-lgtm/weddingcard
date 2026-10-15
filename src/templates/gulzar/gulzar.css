@@ -1,0 +1,319 @@
+/* ------------------------------------------------------------------
+   Gulzar — soft, romantic floral garden.
+   Colours: blush pink, sage green, ivory, rose gold.
+   Florals are SVG (florals.tsx) so no image files are required.
+------------------------------------------------------------------- */
+
+.invitation[data-template="gulzar"] {
+  --inv-bg: #fff8f3;
+  --inv-ink: #4a2f36;
+  --inv-muted: rgba(74, 47, 54, 0.78);
+  --inv-accent: #c98f7e;
+  --inv-accent-strong: #a24d5c;
+  --inv-on-accent: #ffffff;
+  --inv-panel-bg: rgba(255, 252, 249, 0.8);
+  --inv-panel-border: rgba(183, 110, 121, 0.38);
+  --inv-card-bg: rgba(250, 232, 230, 0.55);
+  --inv-menu-bg: #fff8f3;
+  --inv-heading: var(--font-serif);
+  --inv-script: var(--font-script-alt);
+  --inv-script-color: #a24d5c;
+  --inv-radius: 30px;
+  --inv-stack-bg: #fff6f1;
+  --inv-stack-edge: rgba(183, 110, 121, 0.4);
+  --inv-photo-radius: 999px 999px 24px 24px;
+}
+.invitation[data-template="gulzar"] .inv-btn,
+.invitation[data-template="gulzar"] .inv-choice[data-active="true"] {
+  background: linear-gradient(135deg, #c8707f, #a24d5c);
+}
+.invitation[data-template="gulzar"] .inv-btn-ghost {
+  background: transparent;
+}
+.invitation[data-template="gulzar"] .inv-name {
+  background: linear-gradient(180deg, #c8707f, #8e3b4c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.invitation[data-template="gulzar"] .inv-panel {
+  box-shadow: 0 24px 50px -26px rgba(162, 77, 92, 0.45);
+}
+/* little flower on top of each panel */
+.invitation[data-template="gulzar"] .inv-panel::before {
+  content: "";
+  position: absolute;
+  top: -1.05rem;
+  left: 50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  translate: -50% 0;
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cg fill='%23e9a8b3'%3E%3Cellipse cy='-6' rx='3.6' ry='6'/%3E%3Cellipse cy='-6' rx='3.6' ry='6' transform='rotate(72)'/%3E%3Cellipse cy='-6' rx='3.6' ry='6' transform='rotate(144)'/%3E%3Cellipse cy='-6' rx='3.6' ry='6' transform='rotate(216)'/%3E%3Cellipse cy='-6' rx='3.6' ry='6' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='2.6' fill='%23e9c46a'/%3E%3C/svg%3E")
+      center / 74% no-repeat,
+    #fff8f3;
+  box-shadow: 0 0 0 1px rgba(183, 110, 121, 0.38);
+}
+.invitation[data-template="gulzar"] .inv-event-card {
+  border-radius: 26px 26px 26px 8px;
+}
+.invitation[data-template="gulzar"] .inv-date-badge,
+.invitation[data-template="gulzar"] .inv-event-icon {
+  background: #fdeceb;
+}
+
+/* ---------- Page background: soft blush glow, corner florals, falling petals ---------- */
+.gz-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(90% 55% at 50% 0%, rgba(248, 214, 214, 0.85), transparent 70%),
+    radial-gradient(80% 50% at 50% 100%, rgba(196, 211, 186, 0.55), transparent 70%),
+    #fff8f3;
+}
+.gz-corner {
+  position: absolute;
+  width: clamp(130px, 36vw, 250px);
+  height: auto;
+}
+.gz-tl { top: -6px; left: -6px; }
+.gz-tr { top: -6px; right: -6px; transform: scaleX(-1); }
+.gz-bl { bottom: -6px; left: -6px; transform: scaleY(-1); opacity: 0.8; width: clamp(110px, 28vw, 200px); }
+.gz-br { bottom: -6px; right: -6px; transform: scale(-1, -1); opacity: 0.8; width: clamp(110px, 28vw, 200px); }
+
+.gz-petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.gz-petals span {
+  position: absolute;
+  top: -5%;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #f9c9cf, #e9a0ae);
+  opacity: 0.75;
+  animation: gz-fall linear infinite;
+}
+@keyframes gz-fall {
+  0% { transform: translate3d(0, -8vh, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.8; }
+  50% { transform: translate3d(40px, 52vh, 0) rotate(200deg); }
+  100% { transform: translate3d(-30px, 112vh, 0) rotate(420deg); opacity: 0.2; }
+}
+
+/* ======================= OPENING: SEALED ENVELOPE ======================= */
+
+.gz-opening {
+  cursor: pointer;
+  background: #fbe9e6;
+}
+.gz-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1rem;
+  background:
+    radial-gradient(90% 60% at 50% 0%, #fdf1ee, transparent 75%),
+    radial-gradient(80% 60% at 50% 100%, #dfe8d6, transparent 75%),
+    #fbe9e6;
+  transition:
+    transform 1.3s cubic-bezier(0.6, 0, 0.9, 0.5) 1.95s,
+    opacity 0.8s linear 2.35s;
+}
+.gz-opening[data-phase="opening"] .gz-stage {
+  transform: scale(1.7);
+  opacity: 0;
+}
+.gz-kicker,
+.gz-tap,
+.gz-hint {
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.4s;
+}
+.gz-opening[data-phase="opening"] .gz-kicker,
+.gz-opening[data-phase="opening"] .gz-tap,
+.gz-opening[data-phase="opening"] .gz-hint {
+  opacity: 0;
+}
+.gz-kicker {
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #a24d5c;
+}
+
+.gz-envelope {
+  position: relative;
+  width: min(88vw, 24rem);
+  aspect-ratio: 1.45;
+  margin: 2.6rem 0 2.2rem;
+  perspective: 1400px;
+  filter: drop-shadow(0 22px 22px rgba(120, 50, 60, 0.28));
+}
+.gz-env-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 8px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath d='M9 0l9 9-9 9-9-9z' fill='none' stroke='%23ffffff' stroke-opacity='.28'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #b4c6a8, #8ea282);
+}
+.gz-card {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  left: 5%;
+  z-index: 2;
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid #d9a8a0;
+  border-radius: 6px;
+  outline: 1px solid rgba(201, 143, 126, 0.55);
+  outline-offset: -7px;
+  background: linear-gradient(180deg, #fffdfa, #fdf1ec);
+  text-align: center;
+  transition: transform 1.15s cubic-bezier(0.45, 0, 0.2, 1) 1.2s;
+}
+.gz-opening[data-phase="opening"] .gz-card {
+  transform: translateY(-62%);
+}
+.gz-card-eyebrow {
+  font-family: var(--font-serif);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #a24d5c;
+}
+.gz-card-names {
+  margin-top: 0.4rem;
+  font-family: var(--font-script-alt);
+  font-size: clamp(1.9rem, 9vw, 2.6rem);
+  line-height: 1.2;
+  color: #8e3b4c;
+}
+.gz-card-names i {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.55em;
+  color: #c98f7e;
+}
+.gz-card-rule {
+  display: block;
+  width: 3.4rem;
+  height: 1px;
+  margin-top: 0.5rem;
+  background: linear-gradient(to right, transparent, #c98f7e, transparent);
+}
+.gz-env-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fde6e2, #efb9bd);
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+}
+.gz-env-front svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.gz-env-front path {
+  fill: none;
+  stroke: rgba(162, 77, 92, 0.3);
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+.gz-flap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  height: 55%;
+  background: linear-gradient(180deg, #f9d6d4, #e7a6ad);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.9s cubic-bezier(0.5, 0, 0.3, 1) 0.4s, z-index 0s 0.8s;
+}
+.gz-opening[data-phase="opening"] .gz-flap {
+  z-index: 0;
+  transform: rotateX(180deg);
+}
+
+/* gold wax seal — splits in two when the guest taps */
+.gz-seal {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  z-index: 5;
+  width: 4.5rem;
+  height: 4.5rem;
+  translate: -50% -50%;
+}
+.gz-seal-half {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50% 47% 52% 49% / 49% 52% 47% 50%;
+  background: radial-gradient(circle at 35% 28%, #f8e4a2, #d6a73b 55%, #946a1a);
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.2),
+    inset 0 -4px 8px rgba(80, 50, 0, 0.35),
+    0 6px 12px rgba(60, 30, 0, 0.35);
+  transition: transform 0.7s cubic-bezier(0.5, 0, 0.9, 0.6), opacity 0.6s ease-in 0.1s;
+}
+.gz-seal-half b {
+  font-family: var(--font-script-alt);
+  font-size: 1.55rem;
+  font-weight: 400;
+  color: rgba(110, 72, 8, 0.9);
+  text-shadow: 0 1px 0 rgba(255, 240, 190, 0.7);
+}
+.gz-seal-l { clip-path: polygon(0 0, 52% 0, 45% 28%, 55% 52%, 46% 78%, 52% 100%, 0 100%); }
+.gz-seal-r { clip-path: polygon(52% 0, 100% 0, 100% 100%, 52% 100%, 46% 78%, 55% 52%, 45% 28%); }
+.gz-opening[data-phase="opening"] .gz-seal-l { transform: translate(-80%, 50%) rotate(-32deg); opacity: 0; }
+.gz-opening[data-phase="opening"] .gz-seal-r { transform: translate(80%, 50%) rotate(32deg); opacity: 0; }
+
+.gz-tap {
+  background: linear-gradient(135deg, #c8707f, #a24d5c);
+  color: #fff;
+  box-shadow: 0 10px 26px -8px rgba(140, 50, 70, 0.6), 0 0 0 4px rgba(201, 143, 126, 0.35);
+}
+.gz-hint {
+  margin-top: 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #8e5a62;
+}
+
+@media (max-height: 640px) {
+  .gz-envelope { margin-block: 1.4rem 1.2rem; }
+  .gz-kicker { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gz-petals { display: none; }
+  .gz-stage,
+  .gz-card,
+  .gz-flap,
+  .gz-seal-half { transition-duration: 0.01s; transition-delay: 0s; }
+  .gz-opening[data-phase="opening"] .gz-stage { transition: opacity 0.3s linear; }
+}
