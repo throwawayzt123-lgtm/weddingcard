@@ -106,17 +106,17 @@ export default async function HomePage() {
             <div className="relative mx-auto flex w-full max-w-md items-end justify-center gap-0 sm:max-w-lg" aria-hidden>
               <div data-fx-speed="-26" className="z-10 -mr-6 w-[34%] sm:-mr-8">
                 <div className="float-slow translate-y-8">
-                  <PhoneMockup template={TEMPLATES[1]} sizes="160px" />
+                  <PhoneMockup template={TEMPLATES[2]} sizes="160px" />
                 </div>
               </div>
               <div data-fx-speed="-8" className="z-20 w-[40%]">
                 <div className="float-slower">
-                  <PhoneMockup template={TEMPLATES[0]} priority sizes="220px" />
+                  <PhoneMockup template={TEMPLATES[1]} priority sizes="220px" />
                 </div>
               </div>
               <div data-fx-speed="-18" className="z-10 -ml-6 w-[34%] sm:-ml-8">
                 <div className="float-slow translate-y-8">
-                  <PhoneMockup template={TEMPLATES[3]} sizes="160px" />
+                  <PhoneMockup template={TEMPLATES[4]} sizes="160px" />
                 </div>
               </div>
             </div>

@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: NikahOpening,
   Backdrop: NikahBackdrop,
   openingMs: 3100, // matches the CSS timings in nikah.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Nikah Nama": ivory paper, crimson ink, a bound book that opens. */

@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: NoorOpening,
   Backdrop: NoorBackdrop,
   openingMs: 1900, // matches the CSS transition timings in noor.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Noor" — modern minimal luxury in emerald and champagne gold. */

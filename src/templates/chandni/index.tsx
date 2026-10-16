@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: ChandniOpening,
   Backdrop: ChandniBackdrop,
   openingMs: 2300, // matches the CSS timings in chandni.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Chandni": moonlight in silver and slate grey. */

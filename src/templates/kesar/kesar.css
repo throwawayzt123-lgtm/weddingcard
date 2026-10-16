@@ -1,0 +1,163 @@
+/* ------------------------------------------------------------------
+   Kesar — saffron, cream and deep brown.
+   A warm cream page with a saffron glow at the top, white cards with dotted saffron edges
+   (like a rangoli border) and flame-shaped date badges. A brass diya lights up to open it.
+   Fonts: Alex Brush (names) + Marcellus (headings) + Cormorant Garamond.
+------------------------------------------------------------------- */
+
+.invitation[data-template="kesar"] {
+  --ke-saffron: #f08a1c;
+  --ke-saffron-deep: #c85f0a;
+  --ke-brown: #3a1d10;
+  --ke-cream: #fff3dc;
+  --ke-brass: #c9922b;
+  --ke-line: rgba(240, 138, 28, 0.55);
+  --inv-bg: var(--ke-cream);
+  --inv-ink: var(--ke-brown);
+  --inv-muted: rgba(58, 29, 16, 0.78);
+  --inv-accent: var(--ke-saffron);
+  --inv-accent-strong: var(--ke-saffron-deep);
+  --inv-on-accent: #ffffff;
+  --inv-panel-bg: #ffffff;
+  --inv-panel-border: var(--ke-line);
+  --inv-card-bg: #fff8ea;
+  --inv-menu-bg: #ffffff;
+  --inv-heading: var(--font-marcellus), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-alex), cursive;
+  --inv-script-color: var(--ke-saffron-deep);
+  --inv-radius: 18px;
+  --inv-photo-radius: 999px 999px 18px 18px;
+  --inv-stack-bg: #ffffff;
+  --inv-stack-edge: var(--ke-line);
+}
+
+.ke-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(90% 38% at 50% 0%, rgba(255, 190, 90, 0.55), transparent 70%),
+    radial-gradient(70% 28% at 50% 100%, rgba(240, 138, 28, 0.18), transparent 70%),
+    #fff3dc;
+}
+
+/* ---------- Type ---------- */
+.invitation[data-template="kesar"] .inv-eyebrow { font-family: var(--font-marcellus), serif; font-size: 0.68rem; letter-spacing: 0.34em; color: var(--ke-saffron-deep); }
+.invitation[data-template="kesar"] .inv-title { font-weight: 400; letter-spacing: 0.03em; }
+.invitation[data-template="kesar"] .inv-script { line-height: 1.12; }
+.invitation[data-template="kesar"] .inv-lead { font-size: 1.28rem; line-height: 1.8; }
+.invitation[data-template="kesar"] .inv-parents { font-size: 1.32rem; }
+
+/* ---------- Hero ---------- */
+.invitation[data-template="kesar"] .inv-hero { padding-top: 8.4rem; padding-bottom: 9.6rem; }
+.invitation[data-template="kesar"] .inv-name { padding: 0 0.12em; font-size: clamp(4.6rem, 23vw, 8.4rem); line-height: 1.05; color: var(--ke-brown); }
+.invitation[data-template="kesar"] .inv-and { font-family: var(--font-marcellus), serif; font-size: 0.78rem; font-style: normal; letter-spacing: 0.5em; text-indent: 0.5em; text-transform: uppercase; color: var(--ke-saffron-deep); }
+.invitation[data-template="kesar"] .inv-hero-date { font-family: var(--font-marcellus), serif; font-size: 0.92rem; letter-spacing: 0.24em; text-indent: 0.24em; text-transform: uppercase; }
+.invitation[data-template="kesar"] .inv-verse { color: var(--ke-saffron-deep); }
+.invitation[data-template="kesar"] .inv-scroll-hint { color: var(--ke-saffron-deep); }
+
+/* A row of saffron dots (like rangoli) replaces the diamond in dividers */
+.invitation[data-template="kesar"] .inv-divider { color: var(--ke-saffron); }
+.invitation[data-template="kesar"] .inv-divider svg { display: none; }
+.invitation[data-template="kesar"] .inv-divider::after {
+  content: "";
+  order: 1;
+  width: 3.2rem;
+  height: 0.5rem;
+  background: radial-gradient(circle, var(--ke-saffron) 0 2.4px, transparent 2.6px) 0 50% / 0.8rem 100% repeat-x;
+}
+.invitation[data-template="kesar"] .inv-divider span:last-child { order: 2; }
+
+/* ---------- White cards with a dotted saffron border ---------- */
+.invitation[data-template="kesar"] .inv-panel {
+  padding: 3.4rem 1.4rem 3.2rem;
+  border: 2px dotted var(--ke-saffron);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 7px rgba(240, 138, 28, 0.3), 0 24px 44px -26px rgba(140, 70, 10, 0.5);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.invitation[data-template="kesar"] .inv-couple-photo { width: min(62%, 13rem); aspect-ratio: 3 / 4; border: 6px solid #fff; outline: 2px dotted var(--ke-saffron); outline-offset: 3px; box-shadow: 0 14px 28px -14px rgba(58, 29, 16, 0.45); }
+.invitation[data-template="kesar"] .inv-chip { border-color: var(--ke-saffron); color: var(--ke-saffron-deep); font-family: var(--font-marcellus), serif; font-size: 0.66rem; letter-spacing: 0.14em; }
+.invitation[data-template="kesar"] .inv-chip:hover { background: rgba(240, 138, 28, 0.1); }
+
+/* ---------- Countdown ---------- */
+.invitation[data-template="kesar"] .inv-count-cell { border: 2px dotted var(--ke-line); border-radius: 18px; background: #fff; }
+.invitation[data-template="kesar"] .inv-count-num { font-family: var(--font-marcellus), serif; font-weight: 400; font-size: clamp(1.9rem, 9.5vw, 2.7rem); color: var(--ke-saffron-deep); }
+.invitation[data-template="kesar"] .inv-count-label { font-family: var(--font-marcellus), serif; font-size: 0.52rem; }
+
+/* ---------- Events: the date sits in a saffron flame ---------- */
+.invitation[data-template="kesar"] .inv-event-card { position: relative; padding: 1.6rem 1.3rem 1.4rem; border: 2px dotted var(--ke-saffron); border-radius: 22px; background: #fff; box-shadow: 0 0 0 5px #fff, 0 0 0 6px rgba(240, 138, 28, 0.3); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.invitation[data-template="kesar"] .inv-event-icon { display: none; }
+.invitation[data-template="kesar"] .inv-event-head { gap: 1.1rem; align-items: center; }
+.invitation[data-template="kesar"] .inv-date-badge { order: -1; flex: none; width: 4rem; height: 5rem; justify-content: center; padding: 0.7rem 0 0; border: 0; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: linear-gradient(#ffbe45, #f0701c); color: #fff; box-shadow: 0 10px 16px -8px rgba(200, 95, 10, 0.7); }
+.invitation[data-template="kesar"] .inv-date-badge > span:first-child { font-family: var(--font-marcellus), serif; font-size: 1.5rem; line-height: 1; }
+.invitation[data-template="kesar"] .inv-date-badge > span:last-child { font-family: var(--font-marcellus), serif; font-size: 0.5rem; letter-spacing: 0.22em; }
+.invitation[data-template="kesar"] .inv-event-title { font-family: var(--font-marcellus), serif; font-size: 1.55rem; font-weight: 400; line-height: 1.12; }
+.invitation[data-template="kesar"] .inv-event-date { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.8; }
+.invitation[data-template="kesar"] .inv-event-facts { border-top: 2px dotted var(--ke-line); }
+.invitation[data-template="kesar"] .inv-event-facts svg { color: var(--ke-saffron-deep); }
+
+/* ---------- Buttons ---------- */
+.invitation[data-template="kesar"] .inv-btn,
+.invitation[data-template="kesar"] .inv-choice[data-active="true"] { border-radius: 999px; background: linear-gradient(#f79a2e, #d96a0c); color: #fff; font-family: var(--font-marcellus), serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; }
+.invitation[data-template="kesar"] .inv-btn:hover { filter: brightness(1.08); }
+.invitation[data-template="kesar"] .inv-btn-ghost { background: transparent; border: 1px solid var(--ke-saffron); color: var(--ke-saffron-deep); }
+.invitation[data-template="kesar"] .inv-btn-ghost:hover { background: rgba(240, 138, 28, 0.1); filter: none; }
+.invitation[data-template="kesar"] .inv-choice { font-family: var(--font-marcellus), serif; }
+.invitation[data-template="kesar"] .inv-rsvp-card { background: #fff8ea; border-radius: 16px; }
+.invitation[data-template="kesar"] .inv-textarea { background: #fff; border-radius: 14px; }
+.invitation[data-template="kesar"] .inv-music-btn { background: #fff; color: var(--ke-saffron-deep); border-color: var(--ke-saffron); }
+.invitation[data-template="kesar"] .inv-gallery-item { border: 5px solid #fff; outline: 2px dotted var(--ke-saffron); box-shadow: 0 16px 28px -16px rgba(58, 29, 16, 0.45); }
+.invitation[data-template="kesar"] .inv-footer .inv-script { color: var(--ke-saffron-deep); }
+
+/* ======================= OPENING: THE DIYA ======================= */
+.ke-opening { cursor: pointer; background: #1b0d07; transition: background-color 0.6s ease 1.8s; }
+.ke-opening[data-phase="opening"] { background-color: transparent; }
+.ke-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  overflow: hidden;
+  padding: calc(1rem + var(--inv-bar, 0px)) 1rem 1.4rem;
+  text-align: center;
+  background: radial-gradient(70% 45% at 50% 62%, rgba(120, 58, 14, 0.5), transparent 72%), #1b0d07;
+  transition: opacity 0.6s ease 1.8s;
+}
+.ke-opening[data-phase="opening"] .ke-stage { opacity: 0; }
+.ke-kicker { font-family: var(--font-marcellus), serif; font-size: 0.64rem; letter-spacing: 0.4em; text-indent: 0.4em; text-transform: uppercase; color: #e8b25a; }
+.ke-names { font-family: var(--font-alex), cursive; font-size: clamp(2.5rem, 12vw, 3.4rem); line-height: 1.05; color: #fff1d3; }
+.ke-names i { display: block; font-family: var(--font-marcellus), serif; font-size: 0.28em; font-style: normal; letter-spacing: 0.5em; text-indent: 0.5em; text-transform: uppercase; color: #e8b25a; }
+.ke-date { font-family: var(--font-marcellus), serif; font-size: 0.7rem; letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase; color: #f0c880; }
+.ke-kicker, .ke-names, .ke-date, .ke-tap { transition: opacity 0.5s; }
+.ke-opening[data-phase="opening"] .ke-kicker,
+.ke-opening[data-phase="opening"] .ke-names,
+.ke-opening[data-phase="opening"] .ke-date,
+.ke-opening[data-phase="opening"] .ke-tap { opacity: 0; }
+
+.ke-lamp { position: relative; width: min(58vw, 15rem); margin-top: 0.8rem; }
+.ke-lamp svg { position: relative; z-index: 2; display: block; width: 100%; overflow: visible; filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.6)); }
+.ke-halo { position: absolute; left: 50%; top: -12%; z-index: 1; width: 140%; aspect-ratio: 1; margin-left: -70%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 190, 70, 0.55), rgba(240, 120, 20, 0.2) 38%, transparent 66%); animation: ke-breathe 3.2s ease-in-out infinite alternate; }
+@keyframes ke-breathe { from { opacity: 0.75; transform: scale(0.96); } to { opacity: 1; transform: scale(1.04); } }
+.ke-flame { transform-origin: 100px 90px; animation: ke-flicker 1.6s ease-in-out infinite alternate; transition: transform 1.2s cubic-bezier(0.5, 0, 0.8, 0.4); }
+@keyframes ke-flicker { 0% { transform: scale(1, 1) rotate(-1.5deg); } 50% { transform: scale(0.96, 1.05) rotate(1.2deg); } 100% { transform: scale(1.03, 0.97) rotate(-0.8deg); } }
+.ke-opening[data-phase="opening"] .ke-flame { animation: none; transform: scale(1.7, 2); }
+.ke-flash { position: absolute; left: 50%; top: 18%; z-index: 3; width: 4rem; aspect-ratio: 1; margin: -2rem 0 0 -2rem; border-radius: 50%; background: radial-gradient(circle, #fffbe6 0%, #ffd277 38%, #ffa23a 62%, #fff3dc 100%); opacity: 0; transform: scale(0.2); }
+.ke-opening[data-phase="opening"] .ke-flash { animation: ke-fill 1.9s cubic-bezier(0.55, 0, 0.8, 0.5) 0.35s forwards; }
+@keyframes ke-fill { 0% { opacity: 0; transform: scale(0.2); } 18% { opacity: 1; } 100% { opacity: 1; transform: scale(60); } }
+
+.ke-tap { min-height: 3.1rem; margin-top: 0.6rem; padding: 0.7rem 2.6rem; border: 1px solid #e8b25a; border-radius: 999px; background: rgba(0, 0, 0, 0.3); font-family: var(--font-marcellus), serif; font-size: 0.76rem; letter-spacing: 0.34em; text-indent: 0.34em; text-transform: uppercase; color: #f6d79a; cursor: pointer; transition: background 0.2s, color 0.2s, opacity 0.5s; }
+.ke-tap:hover { background: #e8b25a; color: #1b0d07; }
+
+@media (max-height: 700px) { .ke-lamp { width: min(46vw, 11rem); } .ke-kicker { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .ke-halo, .ke-flame { animation: none; }
+  .ke-flash, .ke-stage, .ke-opening { transition-duration: 0.01s; transition-delay: 0s; }
+  .ke-opening[data-phase="opening"] .ke-flash { animation-duration: 0.3s; animation-delay: 0s; }
+}

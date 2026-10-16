@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: MorPankhOpening,
   Backdrop: MorPankhBackdrop,
   openingMs: 2400, // matches the CSS timings in mor-pankh.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Mor Pankh": peacock teal, deep blue and gold. */

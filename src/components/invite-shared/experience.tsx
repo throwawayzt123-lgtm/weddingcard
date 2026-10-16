@@ -1,12 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ComponentType } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from "react";
 import dynamic from "next/dynamic";
 import type { InvitationViewData, TemplateProps } from "@/templates/types";
 import { MusicButton, MusicProvider, useMusic } from "./music";
 import "@/templates/invite.css";
 
 export type OpeningPhase = "closed" | "opening";
+/** What the page body (everything after the opening screen) receives. */
+export type ContentProps = TemplateProps & { reduceMotion: boolean; introDelay: number; opened: boolean };
 export type OpeningProps = { data: InvitationViewData; phase: OpeningPhase; onTap: () => void };
 
 /** What a design supplies; everything else (sections, logic) is shared. */
@@ -17,6 +19,8 @@ export type TemplateParts = {
   Backdrop: ComponentType;
   /** How long the opening animation runs before the page is revealed (ms). */
   openingMs: number;
+  /** A design with its own page layout supplies its own page body (lazy-loaded). Default: the shared scrolling page. */
+  loadContent?: () => Promise<{ default: ComponentType<ContentProps> }>;
 };
 
 // SPEED ON SLOW PHONES
@@ -40,6 +44,7 @@ function usePrefersReducedMotion(): boolean {
 
 function Inner({ data, onRsvp, parts }: TemplateProps & { parts: TemplateParts }) {
   const { Opening, Backdrop, openingMs } = parts;
+  const Content = useMemo(() => (parts.loadContent ? dynamic(parts.loadContent, { ssr: false }) : InvitationContent), [parts.loadContent]);
   const [phase, setPhase] = useState<"closed" | "opening" | "open">("closed");
   const [ready, setReady] = useState(false); // page body mounted (on tap)
   const [assets, setAssets] = useState(false); // background pictures + page-body code may download
@@ -52,7 +57,7 @@ function Inner({ data, onRsvp, parts }: TemplateProps & { parts: TemplateParts }
     const go = () => {
       t = setTimeout(() => {
         setAssets(true);
-        loadContent(); // warm the download so the tap feels instant
+        (parts.loadContent ?? loadContent)(); // warm the download so the tap feels instant
       }, 500);
     };
     if (document.readyState === "complete") go();
@@ -84,7 +89,7 @@ function Inner({ data, onRsvp, parts }: TemplateProps & { parts: TemplateParts }
       <Backdrop />
       {phase !== "open" && <Opening data={data} phase={phase} onTap={onTap} />}
       {ready && (
-        <InvitationContent
+        <Content
           data={data}
           onRsvp={onRsvp}
           reduceMotion={reduceMotion}

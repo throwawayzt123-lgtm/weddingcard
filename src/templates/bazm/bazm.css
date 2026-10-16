@@ -1,0 +1,144 @@
+/* ------------------------------------------------------------------
+   Bazm: the cover (opening) and the page colours.
+   The chapters themselves are the shared full-screen chapters (see chapters.tsx
+   and src/components/invite-shared/chapters). Pictures: /public/templates/bazm/scene-*.webp
+   Fonts: Cormorant Garamond (tight display) + Manrope + Amiri for the Arabic verse.
+------------------------------------------------------------------- */
+
+.invitation[data-template="bazm"] {
+  --bz-ink: #3d1927;
+  --bz-paper: #f4eee3;
+  --bz-gold: #c3a776;
+  --bz-serif: var(--font-cormorant), Georgia, serif;
+  --bz-sans: var(--font-manrope), "Helvetica Neue", Arial, sans-serif;
+  --bz-ease: cubic-bezier(0.19, 1, 0.22, 1);
+  --bz-pad: clamp(24px, 4.6vw, 76px);
+  --inv-bg: #3d1927;
+  --inv-ink: #f4eee3;
+  --inv-accent: #c3a776;
+  --inv-accent-strong: #dfcba7;
+  --inv-on-accent: #3d1927;
+  --inv-menu-bg: #3d1927;
+  --inv-heading: var(--bz-serif);
+  --inv-body: var(--bz-serif);
+  --inv-radius: 0px;
+  background: #3d1927;
+}
+
+.bz-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #3d1927;
+}
+
+.bz-cover .bz-eyebrow { font: 500 0.75rem/1.6 var(--font-manrope), Arial, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #d8c2a2; }
+.bz-cover {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--inv-bar, 0px);
+  background: var(--bz-ink, #3d1927);
+  color: #f4eee3;
+  font: 400 16px/1.7 var(--font-manrope), Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.6s ease 0.6s;
+}
+.bz-cover[data-opening="true"] { background: transparent; }
+.bz-cover :is(p) { margin: 0; }
+.bz-cover button { appearance: none; background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; }
+.bz-cover svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.35; fill: none; flex-shrink: 0; }
+.bz-cover-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 112px 36px 104px;
+  text-align: center;
+  background: #3d1927;
+  transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.7s;
+}
+.bz-cover-ornament { width: 1px; height: 42px; margin: 0 auto 26px; background: linear-gradient(transparent, #c3a776); }
+.bz-cover-names { width: 100%; margin: 30px 0 26px !important; font: 400 clamp(74px, 8.5vw, 144px) / 0.86 var(--font-cormorant), Georgia, serif; letter-spacing: -0.045em; overflow-wrap: anywhere; }
+.bz-cover-names > span { display: block; }
+.bz-cover-names .bz-name-second { margin-top: 6px; font-style: italic; }
+.bz-cover-names .bz-amp { display: inline-block; margin-right: 0.17em; font-size: 0.39em; line-height: 1.1; vertical-align: middle; font-style: italic; color: #c3a776; transform: translateY(-0.05em); }
+.bz-cover-names .bz-name-second > span:last-child { display: inline; }
+.bz-cover-description { max-width: 290px; font: 400 21px/1.45 var(--font-cormorant), Georgia, serif; color: #ddccba; }
+.bz-cover-date { margin-top: 24px !important; font-size: 0.875rem; letter-spacing: 0.06em; }
+.bz-cover .bz-primary {
+  display: inline-flex;
+  min-width: 196px;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 14px 24px;
+  border: 1px solid #f4eee3;
+  background: #f4eee3;
+  color: #3d1927;
+  font-size: 0.875rem;
+  transition: background 0.3s, transform 0.3s;
+}
+.bz-cover .bz-primary:hover { transform: translateY(-2px); background: #dfcba7; }
+.bz-cover-foot { position: absolute; right: 0; bottom: 28px; left: 0; font: italic 18px/1.5 var(--font-cormorant), Georgia, serif; color: #cab59c; }
+.bz-cover-visual { position: relative; overflow: hidden; padding: 96px 40px 52px 0; transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.6s 0.1s; }
+.bz-cover-arch { position: relative; width: 100%; height: 100%; overflow: hidden; border: 1px solid rgba(182, 154, 104, 0.31); border-radius: 48% 48% 1px 1px / 36% 36% 1px 1px; background: #755541; }
+.bz-cover-arch img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; transform: scale(1.065); animation: bz-settle 8s cubic-bezier(0.19, 1, 0.22, 1) both; }
+@keyframes bz-settle { to { transform: scale(1); } }
+.bz-cover-arch::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(36, 21, 16, 0.3), transparent 40%); }
+.bz-arch-caption { position: absolute; right: 15px; bottom: 22px; left: 15px; z-index: 1; text-align: center; font: italic 22px/1.4 var(--font-cormorant), Georgia, serif; color: #fff2db; }
+.bz-cover[data-opening="true"] .bz-cover-copy { transform: translateX(-100%); opacity: 0; }
+.bz-cover[data-opening="true"] .bz-cover-visual { transform: translateX(100%); opacity: 0; }
+
+@media (min-width: 761px) and (max-height: 860px) {
+  .bz-cover-copy { padding-top: 95px; padding-bottom: 80px; }
+  .bz-cover-ornament { height: 24px; margin-bottom: 18px; }
+  .bz-cover-names { margin-block: 22px 20px !important; font-size: clamp(66px, 7.7vw, 115px); }
+  .bz-cover-visual { padding-top: 84px; padding-bottom: 40px; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .bz-cover-visual { padding-right: 25px; }
+}
+@media (max-width: 760px) {
+  .bz-cover { display: block; }
+  .bz-cover-visual { position: absolute; inset: var(--inv-bar, 0px) 0 0; padding: 0; transition: transform 1.3s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.9s; }
+  .bz-cover-arch { border: 0; border-radius: 0; }
+  .bz-cover-arch img { object-position: 50% 50%; filter: brightness(0.72); }
+  .bz-cover-arch::after { background: linear-gradient(180deg, rgba(32, 14, 18, 0.22), rgba(39, 17, 24, 0.17) 30%, rgba(34, 13, 22, 0.8) 67%, rgba(34, 13, 22, 0.96)); }
+  .bz-arch-caption { display: none; }
+  .bz-cover-copy { position: absolute; inset: var(--inv-bar, 0px) 0 0; justify-content: flex-end; padding: 105px 26px 68px; background: none; transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.6s; }
+  .bz-cover-ornament { height: 31px; margin-bottom: 22px; }
+  .bz-cover .bz-eyebrow { font-size: 0.75rem; letter-spacing: 0.15em; }
+  .bz-cover-names { margin-block: 26px 21px !important; font-size: clamp(70px, 22vw, 112px); line-height: 0.91; }
+  .bz-cover-names .bz-name-second { margin-top: 1px; }
+  .bz-cover-description { max-width: 270px; }
+  .bz-cover-date { margin-top: 20px !important; }
+  .bz-cover .bz-primary { margin-top: 24px; min-height: 51px; }
+  .bz-cover-foot { bottom: 20px; font-size: 16px; }
+  .bz-cover[data-opening="true"] .bz-cover-copy { transform: translateY(-35px); opacity: 0; }
+  .bz-cover[data-opening="true"] .bz-cover-visual { transform: scale(1.1); opacity: 0; }
+}
+@media (max-width: 760px) and (max-height: 750px) {
+  .bz-cover-copy { padding-bottom: 60px; }
+  .bz-cover-ornament { height: 22px; margin-bottom: 15px; }
+  .bz-cover-names { margin-block: 20px 17px !important; font-size: 80px; }
+  .bz-cover-date { margin-top: 16px !important; }
+  .bz-cover .bz-primary { margin-top: 20px; }
+  .bz-cover-description { font-size: 20px; }
+}
+@media (max-width: 360px) {
+  .bz-cover-names { font-size: 76px; }
+}
+@media (max-height: 600px) {
+  .bz-cover-copy { justify-content: flex-start; overflow-y: auto; padding-top: 84px; padding-bottom: 76px; }
+  .bz-cover-foot { position: static; margin-top: 28px; }
+  .bz-cover-names { flex-shrink: 0; font-size: 68px; }
+  .bz-cover-ornament { flex-shrink: 0; height: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bz-cover, .bz-cover * { animation: none !important; transition: none !important; }
+  .bz-cover-arch img { transform: none !important; }
+}

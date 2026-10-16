@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: JharokaOpening,
   Backdrop: JharokaBackdrop,
   openingMs: 2300, // matches the CSS timings in jharoka.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Jharoka": sandstone, terracotta and a carved lattice window. */

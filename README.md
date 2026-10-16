@@ -1,6 +1,6 @@
 # Aesthetic Wedding Cards
 
-A website for selling **digital wedding invitations**. Customers pick one of **twelve** animated designs (royal doors, a sealed envelope, mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window and a peacock-feather fan), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Sarah & Family”) to share on WhatsApp, with RSVP, maps, music and a countdown.
+A website for selling **digital wedding invitations**. Customers pick one of **sixteen** animated designs (royal doors, a sealed envelope, mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Every design is a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Sarah & Family”) to share on WhatsApp, with RSVP, maps, music and a countdown.
 
 **The most important rule:** the groom and bride names are entered only by you (the admin) and are **locked**. A customer can never change them, so one purchase cannot be reused for another wedding. [Proof it works](#the-locked-names-and-the-proof) · [Where to read more](#more-guides)
 
@@ -88,7 +88,7 @@ It creates a temporary customer and invitation, tries 30+ ways to cheat, prints 
 
 ## 4. Photos and music
 
-All twelve designs are built with CSS and SVG, so they work with no images at all. See [docs/ASSETS.md](docs/ASSETS.md) for the list of included photos, **AI prompts** for better ones, and what music to use.
+All sixteen designs are built with CSS and SVG, so they work with no images at all. See [docs/ASSETS.md](docs/ASSETS.md) for the list of included photos, **AI prompts** for better ones, and what music to use.
 
 - ⚠️ The four MP3s in `public/music/` were *generated* as placeholders. Replace them with royalty-free music (same file names) before launch.
 - The demo photos (Pexels) appear only on the demo preview pages.
@@ -216,12 +216,13 @@ src/
     rate-limit.ts, audit.ts, og.tsx …
 ```
 
-**Add a thirteenth design:** copy a folder in `src/templates/`, change its colours and opening screen, add it to `registry.ts` and `template-host.tsx`, and take a thumbnail. Nothing else changes.
+**Add a seventeenth design:** copy a folder in `src/templates/`, change its colours and opening screen, add it to `registry.ts` and `template-host.tsx`, and take a thumbnail. Nothing else changes.
 
 ---
 
 ### Animations (GSAP)
 
+- **Full-screen chapters (every design):** the invitation is a set of chapters (blessings, each celebration, families, moments, RSVP). Scroll, swipe, use the arrow keys or the menu: the picture, the colours and the layout change. The engine is in `src/components/invite-shared/chapters/`; each design only supplies a small `chapters.tsx` with its own pictures, colour schemes and layouts (`split`, `flip`, `overlay`, `arch`, `poster`). The first chapter always shows the same generic picture (`hands-wedding.webp`, no couple); the couple's own photo goes first in their Moments gallery. The pictures are in `public/templates/photos/` (replace any file with your own, same name; list in `CREDITS.md`). The older single-page layout is still in `invite-shared/content.tsx`: a design uses it when it does not pass `loadContent`.
 - **Invitations:** the hero names appear just as the opening screen finishes and drift away as you scroll; sections rise into place; the two families arrive from opposite sides; the couple photo has parallax depth; the **event cards pile on top of each other**; the **gallery is pinned and slides sideways** while you scroll down. The code is in `src/components/invite-shared/use-invite-motion.ts`.
 - **Website:** the four "How it works" cards pile up, the designs sit in a simple 3-column grid, the hero phones drift at different speeds, and cards rise in. See `src/components/marketing/page-motion.tsx`.
 - Shared helpers (`stackCards`, `horizontalScroll`, `riseIn`, `parallax`) are in `src/lib/motion.ts`: use them to add the same effects anywhere.

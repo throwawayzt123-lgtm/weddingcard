@@ -1,6 +1,6 @@
 # Images & music guide
 
-Everything in the twelve designs is built from **CSS and SVG**, so the site looks complete even with no images.
+Everything in the sixteen designs is built from **CSS and SVG**, so the site looks complete even with no images.
 A few real photos make the designs richer. Each photo has a gradient fallback: if a file is missing or renamed,
 the design still works.
 
@@ -14,6 +14,9 @@ the design still works.
 | `public/templates/farman/corner-1…4.svg` | Gold corner flourishes of the Farman design | Drawn for this project (`scripts/make-farman-corners.cjs`) |
 | `public/templates/jharoka/jali.svg` | Stone-lattice pattern of the Jharoka design | Drawn for this project (edit freely) |
 | `public/templates/mor-pankh/eye.svg` | Peacock-feather eye used in the Mor Pankh design | Drawn for this project (edit freely) |
+| `public/templates/bazm/scene-mehndi.webp`, `scene-barat.webp`, `scene-walima.webp` | The background pictures of the Bazm design (one per kind of celebration, used in turn so the picture changes every chapter) | AI-generated ambience pictures (no real venues or people). Replace with your own, same file names, about 960 px wide, under 200 KB |
+| `public/templates/photos/hands-wedding.webp` | The picture of the first (Blessings) chapter in every design: hands with henna, deliberately no couple | Supplied by the owner |
+| `public/templates/photos/*.webp` | The background pictures of the full-screen chapters. Every design picks its own set, so the picture changes as you scroll | Pexels, free licence (IDs in `public/templates/photos/CREDITS.md`) |
 | `public/demo/couple.webp`, `gallery-1…8.webp` | **Demo pages only** (`/preview/…`) | Pexels (IDs in `public/demo/CREDITS.md`) |
 | `public/templates/<key>/thumb.webp`, `thumb-2.webp` | Phone mockups on the homepage and /designs | Screenshots of our own designs |
 | `public/music/*.mp3` | Music for every design | **Generated placeholders — please replace** (see section 3) |

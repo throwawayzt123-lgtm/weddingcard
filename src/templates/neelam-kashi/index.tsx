@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: NeelamOpening,
   Backdrop: NeelamBackdrop,
   openingMs: 1750, // matches the CSS timings in neelam.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Neelam Kashi": sapphire blue and Multani glazed-tile work. */

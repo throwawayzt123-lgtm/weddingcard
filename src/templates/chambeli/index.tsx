@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: ChambeliOpening,
   Backdrop: ChambeliBackdrop,
   openingMs: 2400, // matches the CSS timings in chambeli.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Chambeli": pure white pages with hand-drawn jasmine. */

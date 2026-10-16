@@ -24,7 +24,7 @@ export function eventIcon(type: EventKind) {
 }
 
 /** Downloads a .ics file in the browser (works with Apple, Outlook and Google Calendar apps). */
-function downloadIcs(event: InviteEvent, data: InvitationViewData) {
+export function downloadIcs(event: InviteEvent, data: InvitationViewData) {
   const ics = buildIcs(event, { coupleTitle: `${data.groomName} & ${data.brideName}`, timezone: data.timezone });
   const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
   const a = document.createElement("a");

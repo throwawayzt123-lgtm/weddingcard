@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: SiyahOpening,
   Backdrop: SiyahBackdrop,
   openingMs: 1900, // matches the CSS timings in siyah.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Siyah Taj": black, old gold and a single ruby thread. */

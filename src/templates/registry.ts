@@ -42,6 +42,24 @@ export type TemplateMeta = {
 
 export const TEMPLATES: TemplateMeta[] = [
   {
+    key: "bazm",
+    name: "Bazm",
+    tagline: "Full-screen chapters, a new picture with every scroll",
+    description:
+      "Each part of your invitation is its own full-screen chapter. Scroll, swipe or tap the menu and the whole scene changes: a new candlelit courtyard photograph, a new colour (forest green, wine, ivory), new wording. Blessings, every celebration, families, moments and RSVP, one beautiful chapter at a time.",
+    colors: [
+      { name: "Wine", hex: "#3d1927" },
+      { name: "Forest green", hex: "#1e372d" },
+      { name: "Ivory", hex: "#f4eee3" },
+      { name: "Champagne", hex: "#c3a776" },
+    ],
+    thumbnail: "/templates/bazm/thumb.webp",
+    opening: "Split cover slides apart",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
+    bestFor: ["Multi-day weddings", "Modern couples", "Photo-led"],
+  },
+  {
     key: "shahi-darwaza",
     name: "Shahi Darwaza",
     tagline: "Royal Mughal doors that swing open",
@@ -256,6 +274,60 @@ export const TEMPLATES: TemplateMeta[] = [
     defaultTrack: "calm-pads",
     tracks: ["calm-pads", "shahi-sitar", "soft-piano"],
     bestFor: ["Reception", "Evening events", "Teal & blue"],
+  },
+  {
+    key: "aasmani",
+    name: "Aasmani",
+    tagline: "Soft clouds part over a summer-sky blue",
+    description:
+      "Light, airy and calm. Two banks of soft clouds drift apart to reveal your invitation on a clear morning sky. White cards with powder-blue edges, navy script names and little cloud dividers. Simple, clean and easy to read.",
+    colors: [
+      { name: "Sky", hex: "#cfe6f7" },
+      { name: "Powder blue", hex: "#8fb8dc" },
+      { name: "Navy", hex: "#1c3557" },
+      { name: "Cloud white", hex: "#ffffff" },
+    ],
+    thumbnail: "/templates/aasmani/thumb.webp",
+    opening: "Clouds part",
+    defaultTrack: "calm-pads",
+    tracks: ["calm-pads", "soft-piano", "shahi-sitar"],
+    bestFor: ["Day weddings", "Nikah", "Blue & white"],
+  },
+  {
+    key: "sunehri",
+    name: "Sunehri",
+    tagline: "A champagne-gold gift box that lifts open",
+    description:
+      "Warm champagne, ivory and soft gold. Your invitation arrives as a wrapped gift: a ribbon bow unties and the lid lifts away. Foil-edged cards, gold script names and a gentle shimmer. Simple, classic and generous.",
+    colors: [
+      { name: "Champagne", hex: "#e7d3a5" },
+      { name: "Gold", hex: "#b8913a" },
+      { name: "Ivory", hex: "#fbf6ec" },
+      { name: "Cocoa", hex: "#4a3524" },
+    ],
+    thumbnail: "/templates/sunehri/thumb.webp",
+    opening: "Gift box opens",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
+    bestFor: ["Nikah", "Walima", "Gold & ivory"],
+  },
+  {
+    key: "kesar",
+    name: "Kesar",
+    tagline: "A brass diya lights up in saffron",
+    description:
+      "Warm saffron, cream and deep brown. A little brass diya sits in the dark; tap, and its flame grows into golden light that fills the screen. White cards with dotted saffron edges and flame-shaped date badges. Simple, festive and welcoming.",
+    colors: [
+      { name: "Saffron", hex: "#f08a1c" },
+      { name: "Cream", hex: "#fff3dc" },
+      { name: "Deep brown", hex: "#3a1d10" },
+      { name: "Brass", hex: "#c9922b" },
+    ],
+    thumbnail: "/templates/kesar/thumb.webp",
+    opening: "A diya lights up",
+    defaultTrack: "festive-dhol",
+    tracks: ["festive-dhol", "shahi-sitar", "soft-piano"],
+    bestFor: ["Mehndi", "Mayun", "Saffron & cream"],
   },
 ];
 

@@ -1,5 +1,5 @@
 import {
-  Alex_Brush, Allura, Bodoni_Moda, Cinzel, Cormorant_Garamond, Gilda_Display, Great_Vibes, Inter, Imperial_Script, Italiana, Italianno, Jost, Libre_Caslon_Display, Libre_Caslon_Text,
+  Alex_Brush, Allura, Amiri, Bodoni_Moda, Cinzel, Cormorant_Garamond, Gilda_Display, Great_Vibes, Inter, Imperial_Script, Italiana, Italianno, Jost, Libre_Caslon_Display, Libre_Caslon_Text, Manrope,
   Marcellus, Noto_Nastaliq_Urdu, Parisienne, Petit_Formal_Script, Pinyon_Script, Playfair_Display, Tenor_Sans,
 } from "next/font/google";
 
@@ -87,6 +87,10 @@ export const alexBrush = Alex_Brush({ subsets: ["latin"], weight: "400", variabl
 export const tenor = Tenor_Sans({ subsets: ["latin"], weight: "400", variable: "--font-tenor", display: "swap", preload: false });
 export const parisienne = Parisienne({ subsets: ["latin"], weight: "400", variable: "--font-parisienne", display: "swap", preload: false });
 
-export const fontVariables = [inter, cormorant, playfair, greatVibes, pinyon, nastaliq, caslon, caslonDisplay, italianno, italiana, jost, bodoni, cinzel, allura, imperial, gilda, petit, marcellus, alexBrush, tenor, parisienne]
+/** Bazm: tight Cormorant for display, Manrope for small print, Amiri for the Arabic verse. */
+export const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-manrope", display: "swap", preload: false });
+export const amiri = Amiri({ subsets: ["arabic", "latin"], weight: "400", variable: "--font-amiri", display: "swap", preload: false });
+
+export const fontVariables = [inter, cormorant, playfair, greatVibes, pinyon, nastaliq, caslon, caslonDisplay, italianno, italiana, jost, bodoni, cinzel, allura, imperial, gilda, petit, marcellus, alexBrush, tenor, parisienne, manrope, amiri]
   .map((f) => f.variable)
   .join(" ");

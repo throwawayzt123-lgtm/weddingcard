@@ -13,6 +13,8 @@ const parts: TemplateParts = {
   Opening: FarmanOpening,
   Backdrop: FarmanBackdrop,
   openingMs: 2600, // matches the CSS timings in farman.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Farman": a royal decree in wine red and gold. */

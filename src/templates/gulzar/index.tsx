@@ -23,6 +23,8 @@ const parts: TemplateParts = {
   Opening: GulzarOpening,
   Backdrop: GulzarBackdrop,
   openingMs: 3200, // matches the CSS transition timings in gulzar.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Gulzar" — romantic floral garden with a wax-sealed envelope. */

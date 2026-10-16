@@ -17,6 +17,8 @@ const parts: TemplateParts = {
   Opening: MehndiOpening,
   Backdrop: MehndiBackdrop,
   openingMs: 2700, // matches the CSS transition timings in mehndi.css
+  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
+  loadContent: () => import("./chapters"),
 };
 
 /** "Mehndi Rang" — vibrant, joyful and festive. */
