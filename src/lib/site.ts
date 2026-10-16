@@ -9,7 +9,7 @@ export const SITE = {
    * Every wa.me link, button and footer on the site uses it (the display text is made from it).
    * The owner can also change it in Admin → Settings, which then takes over.
    */
-  whatsappNumber: "92123456",
+  whatsappNumber: "923197138377",
   currency: "PKR",
   /** Invitation expiry = last event date + this many days (admin can change). */
   defaultExpiryDays: 30,
