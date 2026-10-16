@@ -64,7 +64,7 @@ async function main() {
     }
     check("event form with groomName is rejected", !eventSchema.safeParse({ type: "NIKKAH", title: "", date: "2030-06-14", groomName: "X" }).success);
     check("family form with brideName is rejected", !familySchema.safeParse({ groom: { parentsLine: "", members: [] }, bride: { parentsLine: "", members: [] }, brideName: "X" }).success);
-    check("guest form with slug is rejected", !guestSchema.safeParse({ displayName: "Sarah", eventIds: [], slug: "x" }).success);
+    check("guest form with slug is rejected", !guestSchema.safeParse({ displayName: "Zainab", eventIds: [], slug: "x" }).success);
 
     console.log("\n2. Allowed edits work, and still never touch the locked fields");
     await updateDetails(original, { hashtag: "#AhmadWedsMawra", welcomeMessage: "Welcome <b>all</b>", verseText: "" });

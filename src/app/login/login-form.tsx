@@ -25,7 +25,7 @@ export function LoginForm({ callbackUrl }: { callbackUrl?: string }) {
           spellCheck={false}
           required
           className="input"
-          placeholder="e.g. ahmad.mawra"
+          placeholder="e.g. ahmad.sara"
         />
       </div>
 

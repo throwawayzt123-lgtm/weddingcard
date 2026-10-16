@@ -39,7 +39,7 @@ const STEP_STYLES = [
 ];
 
 const FEATURES = [
-  { icon: Users, title: "Personal guest links", text: "“Dear Sarah & Family” — each guest sees only the events they are invited to." },
+  { icon: Users, title: "Personal guest links", text: "“Dear Zainab & Family” — each guest sees only the events they are invited to." },
   { icon: Music2, title: "Tap to open, with music", text: "A beautiful opening animation, then soft music that starts when your guest taps." },
   { icon: CalendarCheck, title: "RSVP & headcount", text: "Guests reply Yes, No or Maybe per event. You see totals and can export to Excel." },
   { icon: MapPinned, title: "Maps & calendar", text: "One-tap directions and add-to-calendar for every ceremony." },

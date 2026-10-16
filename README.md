@@ -1,6 +1,6 @@
 # Aesthetic Wedding Cards
 
-A website for selling **digital wedding invitations**. Customers pick one of **sixteen** animated designs (royal doors, a sealed envelope, mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Every design is a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Sarah & Family”) to share on WhatsApp, with RSVP, maps, music and a countdown.
+A website for selling **digital wedding invitations**. Customers pick one of **sixteen** animated designs (royal doors, a sealed envelope, mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Every design is a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Zainab & Family”) to share on WhatsApp, with RSVP, maps, music and a countdown.
 
 **The most important rule:** the groom and bride names are entered only by you (the admin) and are **locked**. A customer can never change them, so one purchase cannot be reused for another wedding. [Proof it works](#the-locked-names-and-the-proof) · [Where to read more](#more-guides)
 
@@ -47,7 +47,7 @@ You need **Node.js 20.9 or newer** (`node -v`) and **Git**.
 | You (admin) | your `ADMIN_EMAIL` | your `ADMIN_PASSWORD` |
 | Demo customer | `demo` | `demo12345` |
 
-The seed also creates the demo invitation **Ahmad & Mawra** at `/i/ahmad-weds-mawra` (personal link: `/i/ahmad-weds-mawra/demosara`).
+The seed also creates the demo invitation **Ahmad & Sara** at `/i/ahmad-weds-sara` (personal link: `/i/ahmad-weds-sara/demosara`).
 
 ---
 

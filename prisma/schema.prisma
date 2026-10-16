@@ -195,7 +195,7 @@ model Guest {
   id           String     @id @default(cuid())
   invitationId String
   invitation   Invitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
-  displayName  String // "Sarah & Family"
+  displayName  String // "Zainab & Family"
   phone        String?
   code         String     @unique // random, unguessable — used in the personal link
   openedAt     DateTime? // first time the personal link was opened

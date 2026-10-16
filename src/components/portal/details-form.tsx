@@ -73,7 +73,7 @@ export function DetailsForm(p: Props) {
                 <input id="weddingDate" name="weddingDate" type="date" defaultValue={p.weddingDate} className="input" disabled={p.disabled} />
               </Field>
             )}
-            <Field label="Hashtag (optional)" htmlFor="hashtag" error={fieldError(state, "hashtag")} hint="For example #AhmadWedsMawra">
+            <Field label="Hashtag (optional)" htmlFor="hashtag" error={fieldError(state, "hashtag")} hint="For example #AhmadWedsSara">
               <input id="hashtag" name="hashtag" defaultValue={p.hashtag} className="input" disabled={p.disabled} autoComplete="off" />
             </Field>
           </div>

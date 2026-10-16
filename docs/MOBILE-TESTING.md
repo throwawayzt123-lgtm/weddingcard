@@ -19,7 +19,7 @@ Tick each box. If something fails, note the phone model and what you saw.
 - [ ] Switch to another app and back: music pauses and resumes
 
 **Content**
-- [ ] The greeting reads “Dear Sarah & Family,” (or “Dear Guest,” on the general link)
+- [ ] The greeting reads “Dear Zainab & Family,” (or “Dear Guest,” on the general link)
 - [ ] Only the events this guest is invited to are shown
 - [ ] The family section shows two columns on a tablet and one column on a phone; phone numbers open the dialler
 - [ ] Urdu text (Bismillah) is right-to-left and readable

@@ -52,17 +52,17 @@ export function buildDemoData(templateKey: string, options: { guest?: boolean } 
   const events = demoEvents();
 
   return {
-    slug: "ahmad-weds-mawra",
+    slug: "ahmad-weds-sara",
     templateKey,
     groomName: "Ahmad",
-    brideName: "Mawra",
+    brideName: "Sara",
     weddingDate: events[2].date,
     timezone: "Asia/Karachi",
-    hashtag: "#AhmadWedsMawra",
+    hashtag: "#AhmadWedsSara",
     welcomeMessage:
       "Your presence is the blessing we are asking for. Over these few days two families become one, and it would not be complete without the people who have loved us all our lives. Come eat with us, dance with us, pray with us and stay late — we have saved you a place.",
     verseText: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
-    couplePhotoUrl: "/demo/couple.webp",
+    couplePhotoUrl: null,
     groomFamily: {
       parentsLine: "Mr. & Mrs. Khalid Mehmood",
       members: [
@@ -79,11 +79,12 @@ export function buildDemoData(templateKey: string, options: { guest?: boolean } 
       ],
     },
     events,
-    photos: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ id: `demo-${n}`, url: `/demo/gallery-${n}.webp` })),
+    // flowers and wedding decor, never a couple: the wedding has not happened yet
+    photos: ["garden-aisle", "rose-red-teal", "table-banquet", "jasmine-leaves", "mehndi-decor", "candlesticks", "venue-white", "hall-palace"].map((n) => ({ id: `demo-${n}`, url: `/templates/photos/${n}.webp` })),
     music: { enabled: true, src: track?.file ?? null },
     features: { rsvp: true, gallery: true, showBadge: true },
     brand: { name: SITE.brandName, url: SITE.url },
-    guest: options.guest === false ? null : { code: "demo", displayName: "Sarah & Family" },
+    guest: options.guest === false ? null : { code: "demo", displayName: "Zainab & Family" },
     rsvps: {},
     mode: "preview",
   };

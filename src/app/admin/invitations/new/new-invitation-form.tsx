@@ -61,7 +61,7 @@ export function NewInvitationForm({ clients, siteUrl, prices, defaultExpiryDays 
           <Field label="Groom's name" htmlFor="groomName" error={fieldError(state, "groomName")} hint="e.g. Ahmad">
             <input id="groomName" name="groomName" className="input" autoComplete="off" required />
           </Field>
-          <Field label="Bride's name" htmlFor="brideName" error={fieldError(state, "brideName")} hint="e.g. Mawra">
+          <Field label="Bride's name" htmlFor="brideName" error={fieldError(state, "brideName")} hint="e.g. Sara">
             <input id="brideName" name="brideName" className="input" autoComplete="off" required />
           </Field>
         </div>

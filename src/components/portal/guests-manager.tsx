@@ -52,7 +52,7 @@ function GuestForm({ initial, events, onSubmit, onDone, submitLabel }: {
 
   return (
     <form onSubmit={submit} className="space-y-4" noValidate>
-      <Field label="Guest name" htmlFor="g-name" error={errors.displayName} hint="Exactly how it should appear: “Dear …,” e.g. Sarah & Family">
+      <Field label="Guest name" htmlFor="g-name" error={errors.displayName} hint="Exactly how it should appear: “Dear …,” e.g. Zainab & Family">
         <input id="g-name" value={name} onChange={(e) => setName(e.target.value)} className="input" maxLength={80} autoComplete="off" />
       </Field>
       <Field label="WhatsApp number (optional)" htmlFor="g-phone" error={errors.phone} hint="So the Send button opens their chat directly. e.g. 0300 1234567">
@@ -108,7 +108,7 @@ function BulkImport({ invitationId, events, onDone }: { invitationId: string; ev
           <p className="text-sm text-ink/70">
             One guest per line: <strong>name, phone, events</strong>. Phone and events are optional. For events write names separated by <code>|</code> (for example <code>Mehndi|Walima</code>) or <code>all</code>.
           </p>
-          <pre className="rounded-xl bg-ink/5 p-3 text-xs leading-relaxed">{`Sarah & Family, 0300 1112233, all
+          <pre className="rounded-xl bg-ink/5 p-3 text-xs leading-relaxed">{`Zainab & Family, 0300 1112233, all
 Uncle Asif, 0321 4445566, Nikkah|Walima
 Hina`}</pre>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={7} className="input font-mono text-sm" placeholder="Paste your list here…" />

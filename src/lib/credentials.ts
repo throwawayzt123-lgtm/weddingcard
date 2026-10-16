@@ -11,7 +11,7 @@ export function generatePassword(length = 10): string {
   return out;
 }
 
-/** "ahmad.mawra" (+ digits when taken). `isTaken` checks the database. */
+/** "ahmad.sara" (+ digits when taken). `isTaken` checks the database. */
 export async function generateUsername(groomName: string, brideName: string, isTaken: (u: string) => Promise<boolean>): Promise<string> {
   const base = `${slugify(groomName) || "groom"}.${slugify(brideName) || "bride"}`.slice(0, 30);
   if (!(await isTaken(base))) return base;

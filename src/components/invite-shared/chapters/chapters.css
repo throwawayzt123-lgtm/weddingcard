@@ -93,7 +93,7 @@
 .ch-scene.is-active { z-index: 3; visibility: visible; opacity: 1; pointer-events: auto; }
 .ch-scene.is-leaving { z-index: 2; visibility: visible; opacity: 0; }
 
-.ch-inner { position: relative; z-index: 2; display: flex; width: 50%; height: 100%; align-items: center; justify-content: center; padding: 104px var(--ch-pad) 122px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.ch-inner { position: relative; z-index: 2; display: flex; width: 50%; height: calc(100% - 86px); align-items: center; justify-content: center; padding: 104px var(--ch-pad) 26px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent); }
 .ch-content { position: relative; width: 100%; max-width: 470px; margin: auto 0; flex-shrink: 0; }
 
 .ch-photo { position: absolute; inset: 0 0 0 50%; overflow: hidden; background: color-mix(in srgb, var(--scene-ink) 30%, var(--scene-bg)); }
@@ -101,7 +101,7 @@
 .ch-scene.is-active .ch-photo-img { transform: scale(1); }
 @keyframes ch-fade { from { opacity: 0; } to { opacity: 1; } }
 .ch-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 14, 10, 0.2), transparent 25%, transparent 60%, rgba(20, 14, 10, 0.6)); pointer-events: none; }
-.ch-caption { position: absolute; right: var(--ch-pad); bottom: 112px; z-index: 2; text-align: right; white-space: pre-line; color: #fff4e0; font: italic 24px/1.3 var(--ch-body); }
+.ch-root .ch-caption { position: absolute; right: var(--ch-pad); bottom: 112px; z-index: 2; text-align: right; white-space: pre-line; color: #fff4e0; font: italic 24px/1.3 var(--ch-body); }
 
 /* text slides up one line after another when a chapter appears */
 .ch-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ch-ease), transform 1s var(--ch-ease); }
@@ -128,7 +128,7 @@
 
 /* poster: a wide picture across the top, the details below in two columns */
 .ch-layout-poster .ch-photo { inset: 0 0 auto 0; height: calc((100dvh - var(--inv-bar, 0px)) * 0.4); }
-.ch-layout-poster .ch-inner { width: 100%; align-items: center; padding-top: calc((100dvh - var(--inv-bar, 0px)) * 0.4 + 22px); padding-bottom: 112px; }
+.ch-layout-poster .ch-inner { width: 100%; align-items: center; padding-top: calc((100dvh - var(--inv-bar, 0px)) * 0.4 + 22px); padding-bottom: 26px; }
 .ch-layout-poster .ch-content { max-width: 1020px; }
 .ch-layout-poster .ch-caption { right: auto; left: var(--ch-pad); bottom: auto; top: calc((100dvh - var(--inv-bar, 0px)) * 0.4 - 56px); text-align: left; }
 .ch-layout-poster .ch-event { display: grid; grid-template-columns: 1fr 1fr; align-items: start; column-gap: clamp(32px, 5vw, 80px); }
@@ -157,7 +157,7 @@
   .ch-layout-flip .ch-overlay { right: calc(50% + var(--ch-pad)); left: var(--ch-pad); }
   .ch-layout-overlay .ch-overlay { right: var(--ch-pad); left: auto; width: min(430px, 36vw); }
   .ch-layout-arch .ch-overlay { right: calc(var(--ch-pad) + 26px); left: calc(50% + var(--ch-pad) + 26px); bottom: 140px; }
-  .ch-scene.has-overlay .ch-caption { bottom: 262px; }
+  .ch-scene.has-overlay .ch-caption { display: none; }
 }
 
 /* ============================== type ============================== */
@@ -224,6 +224,13 @@
 .ch-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 26px; font-size: 0.72rem; opacity: 0.55; }
 .ch-badge svg { width: 13px; height: 13px; fill: currentColor; }
 
+/* countdown colours: more specific than a design's own rules */
+.invitation[data-template] .ch-root .ch-countdown {
+  & .inv-eyebrow, & .inv-title, & .inv-script, & .inv-count-num, & .inv-count-label { color: inherit; }
+  & .inv-eyebrow { opacity: 0.8; }
+}
+.invitation[data-template] .ch-root .ch-overlay { color: #fff4e0; }
+
 /* ---- the shared parts, restyled to follow the chapter's colours (more specific than a design's own rules) ---- */
 .invitation[data-template] .ch-root .ch-scene {
   & .inv-rsvp-card { padding: 18px 16px; border: 1px solid var(--inv-panel-border); border-radius: 0; background: var(--inv-card-bg); box-shadow: none; color: var(--scene-ink); --inv-ink: var(--scene-ink); --inv-muted: color-mix(in srgb, var(--scene-ink) 76%, transparent); --inv-accent: var(--scene-accent); --inv-accent-strong: var(--scene-accent); --inv-on-accent: var(--scene-bg); }
@@ -249,6 +256,7 @@
 .ch-track { display: flex; min-width: 0; flex-wrap: nowrap; align-items: center; gap: 17px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 90%, transparent); mask-image: linear-gradient(90deg, #000 90%, transparent); }
 .ch-track::-webkit-scrollbar { display: none; }
 .ch-root .ch-link { position: relative; min-height: 44px; padding: 10px 0; font-size: 0.875rem; line-height: 1.5; white-space: nowrap; opacity: 0.55; transition: opacity 0.3s; }
+.ch-root .ch-link:focus-visible { outline-offset: -3px; outline-width: 1px; }
 .ch-root .ch-link:hover, .ch-root .ch-link[aria-current="step"] { opacity: 1; }
 .ch-root .ch-link::after { content: ""; position: absolute; bottom: 4px; left: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ch-ease); }
 .ch-root .ch-link[aria-current="step"]::after { transform: scaleX(1); }
@@ -265,7 +273,7 @@
 /* ============================== laptops with short screens ============================== */
 @media (min-width: 761px) and (max-height: 860px) {
   .ch-chrome { height: 84px; padding-block: 18px; }
-  .ch-inner { padding-top: 94px; padding-bottom: 112px; }
+  .ch-inner { padding-top: 94px; padding-bottom: 24px; }
   .ch-root .ch-title { margin-top: 13px; font-size: clamp(58px, 6.4vw, 100px); }
   .ch-root .ch-title.is-long { font-size: clamp(44px, 4.4vw, 70px); }
   .ch-date-block { margin: 22px 0 19px; padding: 18px 0; }
@@ -298,7 +306,7 @@
   .ch-photo, .ch-layout-flip .ch-photo { inset: 0 0 auto; height: 43%; min-height: 240px; }
   .ch-photo-img { object-position: 50% 40%; }
   .ch-photo::after { background: linear-gradient(180deg, rgba(20, 14, 10, 0.28), transparent 30%, transparent 50%, var(--scene-bg) 100%); }
-  .ch-inner, .ch-layout-flip .ch-inner { width: 100%; height: auto; min-height: 100%; margin-left: 0; align-items: flex-start; justify-content: center; padding: clamp(212px, 31svh, 292px) 30px 112px; overflow: visible; }
+  .ch-inner, .ch-layout-flip .ch-inner { -webkit-mask-image: none; mask-image: none; width: 100%; height: auto; min-height: 100%; margin-left: 0; align-items: flex-start; justify-content: center; padding: clamp(212px, 31svh, 292px) 30px 112px; overflow: visible; }
   .ch-content { max-width: 440px; margin: 0 auto; }
   .ch-caption { display: none; }
 

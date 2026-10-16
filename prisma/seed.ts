@@ -3,7 +3,7 @@
  *
  * 1. Creates (or updates) the admin account from ADMIN_EMAIL / ADMIN_PASSWORD.
  * 2. (unless SEED_DEMO=false) Creates a demo client (username "demo") who owns a demo invitation,
- *    "Ahmad & Mawra", with family, 4 events and one guest ("Sarah & Family").
+ *    "Ahmad & Sara", with family, 4 events and one guest ("Zainab & Family").
  *
  * Safe to run more than once: the demo invitation is rebuilt each time with
  * fresh dates (about 2 months from today).
@@ -14,7 +14,7 @@ import { normalizeNamesKey } from "../src/lib/slug";
 
 const prisma = new PrismaClient();
 
-const DEMO_SLUG = "ahmad-weds-mawra";
+const DEMO_SLUG = "ahmad-weds-sara";
 const DEMO_GUEST_CODE = "demosara"; // fixed so the test link never changes
 
 /** A calendar date `days` from today, stored as midnight UTC (Postgres DATE). */
@@ -114,15 +114,15 @@ async function seedDemo() {
       slug: DEMO_SLUG,
       templateKey: "shahi-darwaza",
       groomName: "Ahmad",
-      brideName: "Mawra",
-      namesNormalizedKey: normalizeNamesKey("Ahmad", "Mawra"),
+      brideName: "Sara",
+      namesNormalizedKey: normalizeNamesKey("Ahmad", "Sara"),
       weddingDate: dateFromToday(62), // Baraat day
       dateLocked: true,
       plan: "PREMIUM",
       status: "ACTIVE",
       expiresAt,
       ownerId: client.id,
-      hashtag: "#AhmadWedsMawra",
+      hashtag: "#AhmadWedsSara",
       welcomeMessage:
         "Your presence is the blessing we are asking for. Over these few days two families become one, and it would not be complete without the people who have loved us all our lives. Come eat with us, dance with us, pray with us and stay late — we have saved you a place.",
       verseText: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
@@ -178,7 +178,7 @@ async function seedDemo() {
   await prisma.guest.create({
     data: {
       invitationId: invitation.id,
-      displayName: "Sarah & Family",
+      displayName: "Zainab & Family",
       phone: "+923001112233",
       code: DEMO_GUEST_CODE,
       guestEvents: { create: invitation.events.map((e) => ({ eventId: e.id })) },

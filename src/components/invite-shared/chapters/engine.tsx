@@ -283,9 +283,7 @@ function buildScenes(data: InvitationViewData, config: ChapterConfig, api: Api):
 
   // 4. The couple's own gallery
   if (data.features.gallery && data.photos.length > 0) {
-    const own = data.photos.slice(0, 24).map((p, i) => ({ src: p.url, alt: `Photo ${i + 1} of ${coupleAlt}` }));
-    // the couple's main photo, if they added one, is the first picture of their gallery
-    const photos: Photo[] = data.couplePhotoUrl ? [{ src: data.couplePhotoUrl, alt: coupleAlt, position: "50% 30%" }, ...own] : own;
+    const photos: Photo[] = data.photos.slice(0, 24).map((p, i) => ({ src: p.url, alt: `Photo ${i + 1} of ${coupleAlt}` }));
     previousPhoto = -1;
     add({ id: "moments", label: "Moments", photo: photos[Math.min(api.moment, photos.length - 1)], body: <MomentsBody photos={photos} active={api.moment} onPick={api.setMoment} /> });
   }

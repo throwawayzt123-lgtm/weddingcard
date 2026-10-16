@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: PageProps<"/i/[slug]/[guestCo
   return invitationMetadata(slug, guestCode);
 }
 
-/** A personal link: "Dear Sarah & Family," with only their events and their RSVP form. */
+/** A personal link: "Dear Zainab & Family," with only their events and their RSVP form. */
 export default async function Page({ params }: PageProps<"/i/[slug]/[guestCode]">) {
   const { slug, guestCode } = await params;
   return <InvitationPage slug={slug} guestCode={guestCode} />;

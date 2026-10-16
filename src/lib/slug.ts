@@ -16,14 +16,14 @@ export function slugify(text: string): string {
 
 /**
  * Case-, space- and punctuation-insensitive key for a couple, used to warn the
- * admin about duplicates. "  AHMAD  " + "Ma wra." → "ahmad|mawra".
+ * admin about duplicates. "  AHMAD  " + "Sa ra." → "ahmad|sara".
  */
 export function normalizeNamesKey(groomName: string, brideName: string): string {
   const clean = (s: string) => s.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   return `${clean(groomName)}|${clean(brideName)}`;
 }
 
-/** Slugs we try in order: ahmad-weds-mawra → ahmad-mawra-2026 → ahmad-weds-mawra-k3x9. */
+/** Slugs we try in order: ahmad-weds-sara → ahmad-sara-2026 → ahmad-weds-sara-k3x9. */
 export function slugCandidates(groomName: string, brideName: string, year: number): string[] {
   const g = slugify(groomName) || "groom";
   const b = slugify(brideName) || "bride";

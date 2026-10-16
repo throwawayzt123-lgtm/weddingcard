@@ -72,7 +72,7 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
         <div className="mt-4">
           <p className="mb-1.5 text-xs font-semibold tracking-wider text-ink/50 uppercase">Preview</p>
           <pre className="rounded-xl bg-[#dcf8c6] p-4 font-sans text-sm leading-relaxed whitespace-pre-wrap">
-            {guestMessage(message, { name: "Sarah & Family", couple: "Ahmad & Mawra", link: "https://…/i/ahmad-weds-mawra/k7m2xq9p" })}
+            {guestMessage(message, { name: "Zainab & Family", couple: "Ahmad & Sara", link: "https://…/i/ahmad-weds-sara/k7m2xq9p" })}
           </pre>
         </div>
       </Card>
