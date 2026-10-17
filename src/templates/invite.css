@@ -713,3 +713,34 @@
 @media (prefers-reduced-motion: reduce) {
   .invitation .inv-event-stack > .inv-event-card { position: static; }
 }
+
+/* ---------- Guest name on the cover ---------- */
+.inv-guest-line {
+  position: relative;
+  z-index: 3;
+  max-width: min(88vw, 21rem);
+  margin: 1rem auto 0;
+  text-align: center;
+  color: var(--guest-ink, #fff);
+}
+.inv-guest-line span {
+  display: block;
+  font-family: var(--inv-heading);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.inv-guest-line strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--inv-body);
+  font-size: clamp(1.1rem, 4.6vw, 1.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}

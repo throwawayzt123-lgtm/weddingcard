@@ -2,6 +2,7 @@
 
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 /** A little brass diya in the dark. Tap → the flame grows into golden light that fills the screen. */
 export function KesarOpening({ data, phase, onTap }: OpeningProps) {
@@ -45,6 +46,8 @@ export function KesarOpening({ data, phase, onTap }: OpeningProps) {
           </svg>
           <span className="ke-flash" />
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

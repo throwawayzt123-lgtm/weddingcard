@@ -8,7 +8,6 @@ import { Menu, MessageCircle, Sparkles, X } from "lucide-react";
 const LINKS = [
   { href: "/designs", label: "Designs" },
   { href: "/#how-it-works", label: "How it works" },
-  // { href: "/#pricing", label: "Pricing" }, // pricing section is hidden for now
   { href: "/#faq", label: "FAQ" },
 ];
 

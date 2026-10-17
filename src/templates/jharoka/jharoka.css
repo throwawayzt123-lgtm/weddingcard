@@ -337,3 +337,7 @@
   .jh-window, .jh-shutter, .jh-stage, .jh-opening { transition-duration: 0.01s; transition-delay: 0s; }
   .jh-opening[data-phase="opening"] .jh-window { transform: none; }
 }
+
+/* the guest name on the cover */
+.jh-opening { --guest-ink: #e9c987; }
+.jh-opening .inv-guest-line, .jh-opening .jh-date, .jh-opening .jh-kicker { text-shadow: 0 0 6px #2b1a11, 0 0 14px #2b1a11; }

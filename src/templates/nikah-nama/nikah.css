@@ -452,3 +452,6 @@
   .nk-stage, .nk-cover, .nk-book { transition-duration: 0.01s; transition-delay: 0s; }
   .nk-opening[data-phase="opening"] .nk-stage { transition: opacity 0.3s linear; transform: none; }
 }
+
+/* the guest name on the cover */
+.nk-opening { --guest-ink: #8f1a2c; }

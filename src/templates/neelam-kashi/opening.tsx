@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // A wall of glazed tiles, 5 across and 9 down. Each tile flips edge-on a moment after its
 // neighbour, starting from the middle, so the wall peels open outward from the nameplate.
@@ -36,6 +37,7 @@ export function NeelamOpening({ data, phase, onTap }: OpeningProps) {
           <span className="nl-rule" />
           <p className="nl-date">{formatLongDate(data.weddingDate)}</p>
         </div>
+        <GuestLine data={data} />
         <button
           type="button"
           className="nl-tap"

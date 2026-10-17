@@ -38,15 +38,15 @@ function longDate(value: string): string {
   return `${String(d).padStart(2, "0")} ${MONTHS[m - 1]} ${y}`;
 }
 
-/** "05 — 07 March 2027" when the celebrations run over several days, otherwise one date. */
+/** "05 to 07 March 2027" when the celebrations run over several days, otherwise one date. */
 export function dateRange(data: Pick<InvitationViewData, "events" | "weddingDate">): string {
   const dates = [...new Set(data.events.map((e) => e.date))].sort();
   if (dates.length < 2) return longDate(dates[0] ?? data.weddingDate);
   const a = ymd(dates[0]);
   const b = ymd(dates[dates.length - 1]);
   const day = (n: number) => String(n).padStart(2, "0");
-  if (a.y === b.y && a.m === b.m) return `${day(a.d)} — ${day(b.d)} ${MONTHS[a.m - 1]} ${a.y}`;
-  return `${day(a.d)} ${MONTHS[a.m - 1].slice(0, 3)} — ${day(b.d)} ${MONTHS[b.m - 1].slice(0, 3)} ${b.y}`;
+  if (a.y === b.y && a.m === b.m) return `${day(a.d)} to ${day(b.d)} ${MONTHS[a.m - 1]} ${a.y}`;
+  return `${day(a.d)} ${MONTHS[a.m - 1].slice(0, 3)} to ${day(b.d)} ${MONTHS[b.m - 1].slice(0, 3)} ${b.y}`;
 }
 
 /** Is this colour light? (decides whether text over it should be dark) */

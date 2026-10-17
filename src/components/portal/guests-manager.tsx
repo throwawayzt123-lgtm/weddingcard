@@ -52,7 +52,7 @@ function GuestForm({ initial, events, onSubmit, onDone, submitLabel }: {
 
   return (
     <form onSubmit={submit} className="space-y-4" noValidate>
-      <Field label="Guest name" htmlFor="g-name" error={errors.displayName} hint="Exactly how it should appear: “Dear …,” e.g. Zainab & Family">
+      <Field label="Guest name" htmlFor="g-name" error={errors.displayName} hint="Write it exactly as it should appear on the cover and in the greeting. For example: Mr &amp; Mrs Ali, or Mr Ali and his family">
         <input id="g-name" value={name} onChange={(e) => setName(e.target.value)} className="input" maxLength={80} autoComplete="off" />
       </Field>
       <Field label="WhatsApp number (optional)" htmlFor="g-phone" error={errors.phone} hint="So the Send button opens their chat directly. e.g. 0300 1234567">
@@ -106,11 +106,11 @@ function BulkImport({ invitationId, events, onDone }: { invitationId: string; ev
       ) : (
         <>
           <p className="text-sm text-ink/70">
-            One guest per line: <strong>name, phone, events</strong>. Phone and events are optional. For events write names separated by <code>|</code> (for example <code>Mehndi|Walima</code>) or <code>all</code>.
+            One guest per line: <strong>name, phone, events</strong>. Phone and events are optional. If a name contains a comma, put the name in quotes. For events write names separated by <code>|</code> (for example <code>Mehndi|Walima</code>) or <code>all</code>.
           </p>
-          <pre className="rounded-xl bg-ink/5 p-3 text-xs leading-relaxed">{`Zainab & Family, 0300 1112233, all
-Uncle Asif, 0321 4445566, Nikkah|Walima
-Hina`}</pre>
+          <pre className="rounded-xl bg-ink/5 p-3 text-xs leading-relaxed">{`Mr & Mrs Ali, 0300 1112233, all
+Mr Asif and his family, 0321 4445566, Nikkah|Walima
+"Mrs Hina, Mr Kamran and children"`}</pre>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={7} className="input font-mono text-sm" placeholder="Paste your list here…" />
           <div className="flex flex-wrap items-center gap-3">
             <button type="button" className="btn-secondary !min-h-10 !text-sm" onClick={() => file.current?.click()}><FileUp className="size-4" /> Choose a CSV file</button>
@@ -217,7 +217,7 @@ export function GuestsManager({
         </div>
         {atLimit && (
           <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
-            You have used all the guest links in your plan. <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">Upgrade — contact us on WhatsApp</a>
+            You have used all the guest links in your plan. <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">Upgrade by messaging us on WhatsApp</a>
           </p>
         )}
       </div>

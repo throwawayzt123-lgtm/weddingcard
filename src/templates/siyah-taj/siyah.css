@@ -350,3 +350,6 @@
   .sy-opening[data-phase="opening"] .sy-shutter { animation: sy-fade 0.4s linear forwards; }
   @keyframes sy-fade { to { opacity: 0; } }
 }
+
+/* the guest name on the cover */
+.sy-opening { --guest-ink: #dcc58a; }

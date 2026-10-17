@@ -19,7 +19,7 @@ function isDuplicate(data: unknown): data is DuplicatePayload {
   return !!data && typeof data === "object" && "duplicates" in data;
 }
 
-export function NewInvitationForm({ clients, siteUrl, prices, defaultExpiryDays }: { clients: Client[]; siteUrl: string; prices: Record<string, number>; defaultExpiryDays: number }) {
+export function NewInvitationForm({ clients, siteUrl, defaultExpiryDays }: { clients: Client[]; siteUrl: string; defaultExpiryDays: number }) {
   const { state, onSubmit, pending } = useServerForm(createInvitationAction);
   useActionToast(state);
   const [mode, setMode] = useState<"new" | "existing">("new");
@@ -84,10 +84,10 @@ export function NewInvitationForm({ clients, siteUrl, prices, defaultExpiryDays 
         <div className="grid gap-3 sm:grid-cols-3" role="radiogroup">
           {PLAN_KEYS.map((key) => (
             <label key={key} className="cursor-pointer">
-              <input type="radio" name="plan" value={key} checked={plan === key} onChange={() => { setPlan(key); if (!amount) setAmount(String(prices[key] ?? PLANS[key].pricePkr)); }} className="peer sr-only" />
+              <input type="radio" name="plan" value={key} checked={plan === key} onChange={() => { setPlan(key); if (!amount) setAmount(String(PLANS[key].pricePkr)); }} className="peer sr-only" />
               <span className="block rounded-2xl border-2 border-ink/10 p-4 transition peer-checked:border-maroon peer-checked:bg-cream/60">
                 <span className="font-serif text-xl text-maroon">{PLANS[key].label}</span>
-                <span className="block text-sm font-semibold">Rs {(prices[key] ?? PLANS[key].pricePkr).toLocaleString("en-PK")}</span>
+                <span className="block text-sm font-semibold">Rs {(PLANS[key].pricePkr).toLocaleString("en-PK")}</span>
                 <span className="mt-1 block text-xs text-ink/60">{PLANS[key].blurb}</span>
               </span>
             </label>
@@ -110,7 +110,7 @@ export function NewInvitationForm({ clients, siteUrl, prices, defaultExpiryDays 
             </select>
           </Field>
           <Field label="Amount (Rs)" htmlFor="paymentAmount" error={fieldError(state, "paymentAmount")}>
-            <input id="paymentAmount" name="paymentAmount" inputMode="numeric" className="input" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={String(prices[plan] ?? "")} />
+            <input id="paymentAmount" name="paymentAmount" inputMode="numeric" className="input" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={String(PLANS[plan as keyof typeof PLANS]?.pricePkr ?? "")} />
           </Field>
           <Field label="Payment method" htmlFor="paymentMethod">
             <input id="paymentMethod" name="paymentMethod" className="input" placeholder="JazzCash, EasyPaisa, Bank transfer…" />
@@ -171,7 +171,7 @@ export function NewInvitationForm({ clients, siteUrl, prices, defaultExpiryDays 
                 <Link href={`/admin/invitations/${d.id}`} className="font-semibold underline" target="_blank">
                   {d.groomName} &amp; {d.brideName}
                 </Link>{" "}
-                — customer: {d.owner} (/i/{d.slug})
+                (customer: {d.owner} /i/{d.slug})
               </li>
             ))}
           </ul>

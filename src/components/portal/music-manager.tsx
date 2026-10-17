@@ -61,7 +61,7 @@ export function MusicManager({
         </label>
       </Card>
 
-      <Card title="Choose a track" description={customUrl ? "You uploaded your own music, so it plays instead of these. Remove it below to use a built-in track." : "Tap the play button to listen."}>
+      <Card title="Choose a track" description={customUrl ? "You uploaded your own music, so it plays instead of these. Remove it below to choose one of our tracks." : "Tap the play button to listen."}>
         <ul className={`space-y-2.5 ${customUrl ? "pointer-events-none opacity-50" : ""}`}>
           {tracks.map((t) => (
             <li key={t.key}>
@@ -99,7 +99,7 @@ export function MusicManager({
             <Music2 className="mt-0.5 size-5 shrink-0 text-gold-dark" />
             <span>
               Uploading your own music is included in the Premium plan.{" "}
-              <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-maroon underline">Upgrade — contact us on WhatsApp</a>
+              <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-maroon underline">Upgrade by messaging us on WhatsApp</a>
             </span>
           </p>
         )}

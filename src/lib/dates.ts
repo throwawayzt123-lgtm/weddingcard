@@ -53,7 +53,7 @@ export function formatTime(hhmm: string | null): string | null {
 export function formatTimeRange(start: string | null, end: string | null): string | null {
   const s = formatTime(start);
   const e = formatTime(end);
-  if (s && e) return `${s} – ${e}`;
+  if (s && e) return `${s} to ${e}`;
   if (s) return `${s} onwards`;
   return null;
 }

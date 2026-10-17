@@ -2,6 +2,7 @@
 
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 /** A black roller shutter with the names printed on it. Tap → it lifts and the invitation is behind. */
 export function SiyahOpening({ data, phase, onTap }: OpeningProps) {
@@ -21,6 +22,7 @@ export function SiyahOpening({ data, phase, onTap }: OpeningProps) {
 
         {/* the pull-handle and the button */}
         <div className="sy-handle">
+          <GuestLine data={data} />
           <button
             type="button"
             className="sy-tap"

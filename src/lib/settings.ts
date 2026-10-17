@@ -1,8 +1,6 @@
 import "server-only";
 import { cache } from "react";
-import type { Plan } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import { PLANS } from "@/lib/plans";
 import { formatPhone } from "@/lib/phone";
 import { SITE } from "@/lib/site";
 
@@ -22,12 +20,10 @@ export type SiteSettings = {
   defaultExpiryDays: number;
   /** Message template for the guest "Send on WhatsApp" button. {name} {couple} {link} are replaced. */
   shareMessage: string;
-  /** Prices in PKR shown on the homepage. */
-  prices: Record<Plan, number>;
 };
 
 export const DEFAULT_SHARE_MESSAGE =
-  "Assalam-o-Alaikum {name}! 🌸\n\nYou are warmly invited to the wedding of {couple}.\n\nPlease open your personal invitation here:\n{link}\n\n(Turn your sound on for the full experience.)";
+  "Assalamu Alaikum {name}! 🌸\n\nYou are warmly invited to the wedding of {couple}.\n\nPlease open your personal invitation here:\n{link}\n\n(Turn your sound on for the full experience.)";
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   brandName: SITE.brandName,
@@ -37,7 +33,6 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   whatsappDisplay: formatPhone(SITE.whatsappNumber),
   defaultExpiryDays: SITE.defaultExpiryDays,
   shareMessage: DEFAULT_SHARE_MESSAGE,
-  prices: { BASIC: PLANS.BASIC.pricePkr, STANDARD: PLANS.STANDARD.pricePkr, PREMIUM: PLANS.PREMIUM.pricePkr },
 };
 
 /** Reads all settings. Never throws: if the database is unreachable the defaults are used. */
@@ -57,11 +52,7 @@ export const getSettings = cache(async (): Promise<SiteSettings> => {
       if (stored[key] !== undefined && stored[key] !== null && stored[key] !== "") s[key] = stored[key];
     }
     const merged = s as SiteSettings;
-    return {
-      ...merged,
-      whatsappDisplay: formatPhone(merged.whatsappNumber),
-      prices: { ...DEFAULT_SETTINGS.prices, ...((stored.prices as Partial<Record<Plan, number>> | undefined) ?? {}) },
-    };
+    return { ...merged, whatsappDisplay: formatPhone(merged.whatsappNumber) };
   } catch {
     return DEFAULT_SETTINGS;
   }

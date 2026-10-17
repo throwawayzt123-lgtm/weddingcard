@@ -303,3 +303,6 @@
   .shahi-interior { transition-duration: 0.01s; transition-delay: 0s; }
   .shahi-opening[data-phase="opening"] .shahi-stage { transition: opacity 0.3s linear; }
 }
+
+/* the guest name on the cover */
+.shahi-opening { --guest-ink: #5b1020; }

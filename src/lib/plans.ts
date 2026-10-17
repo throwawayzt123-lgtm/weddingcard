@@ -34,7 +34,7 @@ export const PLANS = {
   STANDARD: {
     label: "Standard",
     pricePkr: 4500,
-    blurb: "Most popular — RSVP, gallery and up to 4 events",
+    blurb: "Our most chosen plan, with RSVP, gallery and up to 4 events",
     maxEvents: 4,
     maxGuests: 300,
     rsvp: true,
@@ -78,10 +78,10 @@ export function planFeatures(plan: Plan): string[] {
     `${p.maxEvents === null ? "Unlimited" : `Up to ${p.maxEvents}`} events (Mehndi, Nikkah, Baraat, Walima…)`,
     `${p.maxGuests === null ? "Unlimited" : `${p.maxGuests}`} personalised guest links`,
     "Animated opening, music & countdown",
-    "Venue maps & add-to-calendar",
+    "Venue maps and add to calendar",
     p.rsvp ? "RSVP with headcount & messages" : "RSVP not included",
     p.maxPhotos > 0 ? `Photo gallery (${p.maxPhotos} photos)` : "No photo gallery",
-    p.customMusicUpload ? "Upload your own music" : "Choose from built-in music",
+    p.customMusicUpload ? "Upload your own music" : "Choose from the music we provide",
     p.canRemoveBadge ? "Your invitation, no branding" : `"Made with ❤" badge in footer`,
   ];
   return list;

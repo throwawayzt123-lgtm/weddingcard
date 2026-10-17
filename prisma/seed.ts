@@ -3,7 +3,7 @@
  *
  * 1. Creates (or updates) the admin account from ADMIN_EMAIL / ADMIN_PASSWORD.
  * 2. (unless SEED_DEMO=false) Creates a demo client (username "demo") who owns a demo invitation,
- *    "Ahmad & Sara", with family, 4 events and one guest ("Zainab & Family").
+ *    "Ahmad & Sara", with family, 4 events and one guest ("Mr & Mrs Ali").
  *
  * Safe to run more than once: the demo invitation is rebuilt each time with
  * fresh dates (about 2 months from today).
@@ -68,10 +68,10 @@ async function seedDemo() {
       day: 60,
       start: "19:00",
       end: "23:30",
-      venue: "Gul-e-Lalah Lawn",
+      venue: "Rose Garden Lawn",
       address: "Main Boulevard, Gulberg III, Lahore",
       dress: "Yellow, green & bright festive colours",
-      notes: "Dholak, songs and dancing — come ready to perform!",
+      notes: "Dholak, songs and dancing. Come ready to perform!",
     },
     {
       type: "NIKKAH",
@@ -91,7 +91,7 @@ async function seedDemo() {
       end: "23:00",
       venue: "Shahi Mahal Banquet",
       address: "Canal Bank Road, near Thokar Niaz Baig, Lahore",
-      dress: "Formal — reds, maroons & gold",
+      dress: "Formal, in reds, maroons and gold",
       notes: "Baraat arrival at 8:00 pm sharp.",
     },
     {
@@ -102,7 +102,7 @@ async function seedDemo() {
       end: "23:00",
       venue: "Noor Pavilion",
       address: "MM Alam Road, Gulberg II, Lahore",
-      dress: "Formal — soft and pastel tones",
+      dress: "Formal, in soft pastel tones",
     },
   ];
 
@@ -124,7 +124,7 @@ async function seedDemo() {
       ownerId: client.id,
       hashtag: "#AhmadWedsSara",
       welcomeMessage:
-        "Your presence is the blessing we are asking for. Over these few days two families become one, and it would not be complete without the people who have loved us all our lives. Come eat with us, dance with us, pray with us and stay late — we have saved you a place.",
+        "Your presence is the blessing we are asking for. Over these few days two families become one, and it would not be complete without the people who have loved us all our lives. Come eat with us, dance with us, pray with us and stay late. We have saved you a place.",
       verseText: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
       musicEnabled: true,
       showBadge: true,
@@ -178,7 +178,7 @@ async function seedDemo() {
   await prisma.guest.create({
     data: {
       invitationId: invitation.id,
-      displayName: "Zainab & Family",
+      displayName: "Mr & Mrs Ali",
       phone: "+923001112233",
       code: DEMO_GUEST_CODE,
       guestEvents: { create: invitation.events.map((e) => ({ eventId: e.id })) },

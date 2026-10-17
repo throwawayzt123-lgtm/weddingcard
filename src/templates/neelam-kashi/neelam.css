@@ -294,3 +294,6 @@
   .nl-tile { transition-duration: 0.01s; transition-delay: 0s; }
   .nl-opening { transition-delay: 0.1s; transition-duration: 0.3s; }
 }
+
+/* the guest name on the cover */
+.nl-opening { --guest-ink: #f4efe2; }

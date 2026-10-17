@@ -161,3 +161,6 @@
   .ke-flash, .ke-stage, .ke-opening { transition-duration: 0.01s; transition-delay: 0s; }
   .ke-opening[data-phase="opening"] .ke-flash { animation-duration: 0.3s; animation-delay: 0s; }
 }
+
+/* the guest name on the cover */
+.ke-opening { --guest-ink: #f0c880; }

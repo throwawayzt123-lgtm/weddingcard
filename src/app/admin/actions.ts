@@ -206,7 +206,6 @@ export async function saveSettingsAction(_prev: ActionState, formData: FormData)
       whatsappNumber: digits,
       defaultExpiryDays: v.defaultExpiryDays,
       shareMessage: v.shareMessage,
-      prices: { BASIC: v.priceBASIC, STANDARD: v.priceSTANDARD, PREMIUM: v.pricePREMIUM },
     });
     revalidatePath("/", "layout");
     return { ok: true, message: "Settings saved" };

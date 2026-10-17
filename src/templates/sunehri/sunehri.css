@@ -171,3 +171,6 @@
   .invitation[data-template="sunehri"] .inv-name { animation: none; }
   .su-lid, .su-base, .su-bow, .su-opening { transition-duration: 0.01s; transition-delay: 0s; }
 }
+
+/* the guest name on the cover */
+.su-opening { --guest-ink: #4a3524; }

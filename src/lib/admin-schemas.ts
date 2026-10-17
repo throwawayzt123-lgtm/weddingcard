@@ -100,7 +100,4 @@ export const settingsSchema = z.object({
   whatsappNumber: z.string().min(8, "Enter your WhatsApp number").max(30),
   defaultExpiryDays: z.preprocess((v) => Number(v), z.number("Enter a number").int().min(1, "At least 1 day").max(730)),
   shareMessage: z.string().trim().min(10, "The message is too short").max(1000).refine((v) => v.includes("{link}"), "The message must contain {link}"),
-  priceBASIC: z.preprocess((v) => Number(String(v).replace(/[, ]/g, "")), z.number("Enter a number").int().min(0).max(10_000_000)),
-  priceSTANDARD: z.preprocess((v) => Number(String(v).replace(/[, ]/g, "")), z.number("Enter a number").int().min(0).max(10_000_000)),
-  pricePREMIUM: z.preprocess((v) => Number(String(v).replace(/[, ]/g, "")), z.number("Enter a number").int().min(0).max(10_000_000)),
 });

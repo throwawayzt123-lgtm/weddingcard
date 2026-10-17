@@ -27,7 +27,7 @@ export function GalleryManager({
         <ImageIcon className="mx-auto size-10 text-gold-dark" />
         <p className="mt-3 font-serif text-2xl text-maroon">The photo gallery is not in your plan</p>
         <p className="mt-1 text-sm text-ink/65">The {planLabel} plan does not include a gallery. Upgrade to Standard (10 photos) or Premium (30 photos).</p>
-        <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5">Upgrade — contact us on WhatsApp</a>
+        <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5">Upgrade by messaging us on WhatsApp</a>
       </div>
     );
   }
@@ -50,7 +50,7 @@ export function GalleryManager({
       {full && (
         <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           You have used all {limit} photos in your {planLabel} plan.{" "}
-          <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">Upgrade — contact us on WhatsApp</a>
+          <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">Upgrade by messaging us on WhatsApp</a>
         </p>
       )}
 

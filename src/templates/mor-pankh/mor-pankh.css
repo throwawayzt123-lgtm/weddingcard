@@ -359,3 +359,6 @@
   .mp-feather, .mp-fan, .mp-stage, .mp-opening { transition-duration: 0.01s; transition-delay: 0s; }
   .mp-opening[data-phase="opening"] .mp-fan { transform: none; }
 }
+
+/* the guest name on the cover */
+.mp-opening { --guest-ink: #ecd596; }

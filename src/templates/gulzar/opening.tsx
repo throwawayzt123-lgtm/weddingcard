@@ -1,6 +1,7 @@
 "use client";
 
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 import { FallingPetals } from "./florals";
 
 /** Sealed envelope with a gold wax seal. Tap → seal breaks, flap opens, the card slides up. */
@@ -39,6 +40,8 @@ export function GulzarOpening({ data, phase, onTap }: OpeningProps) {
             <span className="gz-seal-half gz-seal-r"><b>{initials}</b></span>
           </div>
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

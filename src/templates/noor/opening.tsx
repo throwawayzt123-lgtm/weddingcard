@@ -1,6 +1,7 @@
 "use client";
 
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // Pointed arch, drawn as a single stroke that animates from nothing to complete.
 const ARCH = "M18 276 V122 C18 62 68 32 100 6 C132 32 182 62 182 122 V276";
@@ -46,6 +47,8 @@ export function NoorOpening({ data, phase, onTap }: OpeningProps) {
             </p>
           </div>
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

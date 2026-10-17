@@ -2,6 +2,7 @@
 
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 /** A hand-drawn corner flourish for the cover, repeated in all four corners with CSS rotation. */
 function Corner({ className }: { className: string }) {
@@ -57,6 +58,8 @@ export function NikahOpening({ data, phase, onTap }: OpeningProps) {
 
           <span className="nk-ribbon" aria-hidden />
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

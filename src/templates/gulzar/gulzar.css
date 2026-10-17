@@ -317,3 +317,6 @@
   .gz-seal-half { transition-duration: 0.01s; transition-delay: 0s; }
   .gz-opening[data-phase="opening"] .gz-stage { transition: opacity 0.3s linear; }
 }
+
+/* the guest name on the cover */
+.gz-opening { --guest-ink: #5f2431; }

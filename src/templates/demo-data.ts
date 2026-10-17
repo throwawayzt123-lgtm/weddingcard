@@ -21,9 +21,9 @@ function demoEvents(): InviteEvent[] {
   return [
     {
       ...base, id: "demo-mehndi", type: "MEHNDI", title: "Mehndi", date: ymdFromToday(60),
-      startTime: "19:00", endTime: "23:30", venueName: "Gul-e-Lalah Lawn",
-      address: "Main Boulevard, Gulberg III, Lahore", mapUrl: search("Gul-e-Lalah Lawn", "Gulberg III, Lahore"),
-      dressCode: "Yellow, green & bright festive colours", notes: "Dholak, songs and dancing — come ready to perform!",
+      startTime: "19:00", endTime: "23:30", venueName: "Rose Garden Lawn",
+      address: "Main Boulevard, Gulberg III, Lahore", mapUrl: search("Rose Garden Lawn", "Gulberg III, Lahore"),
+      dressCode: "Yellow, green and bright festive colours", notes: "Dholak, songs and dancing. Come ready to perform!",
     },
     {
       ...base, id: "demo-nikkah", type: "NIKKAH", title: "Nikkah", date: ymdFromToday(61),
@@ -35,13 +35,13 @@ function demoEvents(): InviteEvent[] {
       ...base, id: "demo-baraat", type: "BARAAT", title: "Baraat", date: ymdFromToday(62),
       startTime: "19:30", endTime: "23:00", venueName: "Shahi Mahal Banquet",
       address: "Canal Bank Road, near Thokar Niaz Baig, Lahore", mapUrl: search("Shahi Mahal Banquet", "Canal Bank Road, Lahore"),
-      dressCode: "Formal — reds, maroons & gold", notes: "Baraat arrival at 8:00 pm sharp.",
+      dressCode: "Formal, in reds, maroons and gold", notes: "Baraat arrival at 8:00 pm sharp.",
     },
     {
       ...base, id: "demo-walima", type: "WALIMA", title: "Walima", date: ymdFromToday(63),
       startTime: "20:00", endTime: "23:00", venueName: "Noor Pavilion",
       address: "MM Alam Road, Gulberg II, Lahore", mapUrl: search("Noor Pavilion", "MM Alam Road, Lahore"),
-      dressCode: "Formal — soft and pastel tones",
+      dressCode: "Formal, in soft pastel tones",
     },
   ];
 }
@@ -60,7 +60,7 @@ export function buildDemoData(templateKey: string, options: { guest?: boolean } 
     timezone: "Asia/Karachi",
     hashtag: "#AhmadWedsSara",
     welcomeMessage:
-      "Your presence is the blessing we are asking for. Over these few days two families become one, and it would not be complete without the people who have loved us all our lives. Come eat with us, dance with us, pray with us and stay late — we have saved you a place.",
+      "Your presence is the blessing we are asking for. Over these few days two families become one, and it would not be complete without the people who have loved us all our lives. Come eat with us, dance with us, pray with us and stay late. We have saved you a place.",
     verseText: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
     couplePhotoUrl: null,
     groomFamily: {
@@ -84,7 +84,7 @@ export function buildDemoData(templateKey: string, options: { guest?: boolean } 
     music: { enabled: true, src: track?.file ?? null },
     features: { rsvp: true, gallery: true, showBadge: true },
     brand: { name: SITE.brandName, url: SITE.url },
-    guest: options.guest === false ? null : { code: "demo", displayName: "Zainab & Family" },
+    guest: options.guest === false ? null : { code: "demo", displayName: "Mr & Mrs Ali" },
     rsvps: {},
     mode: "preview",
   };

@@ -12,7 +12,7 @@ export default async function SettingsPage() {
   return (
     <div>
       <h1 className="font-serif text-3xl sm:text-4xl">Settings</h1>
-      <p className="mt-1 mb-6 text-sm text-ink/60">Your brand, contact details and prices. Changes appear on the website straight away.</p>
+      <p className="mt-1 mb-6 text-sm text-ink/60">Your brand and contact details. Changes appear on the website straight away.</p>
       <SettingsForm settings={settings} />
       <h2 className="mt-10 mb-4 font-serif text-2xl text-ink">Your admin account</h2>
       <PasswordForm />

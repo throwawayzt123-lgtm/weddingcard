@@ -64,7 +64,7 @@ export function buildIcs(event: InviteEvent, ctx: CalendarContext): string {
     `DTSTAMP:${utcStamp(Date.now())}`,
     allDay ? `DTSTART;VALUE=DATE:${dayStamp(event.date)}` : `DTSTART:${utcStamp(start)}`,
     allDay ? `DTEND;VALUE=DATE:${dayStamp(event.date, 1)}` : `DTEND:${utcStamp(end)}`,
-    `SUMMARY:${escapeIcs(`${event.title} — ${ctx.coupleTitle}`)}`,
+    `SUMMARY:${escapeIcs(`${ctx.coupleTitle}: ${event.title}`)}`,
     `DESCRIPTION:${escapeIcs(description(event))}`,
     `LOCATION:${escapeIcs(location(event))}`,
     "END:VEVENT",
@@ -79,7 +79,7 @@ export function googleCalendarUrl(event: InviteEvent, ctx: CalendarContext): str
   const dates = allDay ? `${dayStamp(event.date)}/${dayStamp(event.date, 1)}` : `${utcStamp(start)}/${utcStamp(end)}`;
   const params = new URLSearchParams({
     action: "TEMPLATE",
-    text: `${event.title} — ${ctx.coupleTitle}`,
+    text: `${ctx.coupleTitle}: ${event.title}`,
     dates,
     details: description(event),
     location: location(event),

@@ -7,7 +7,7 @@ import { loadInvitation } from "@/lib/invitation-view";
 
 // WhatsApp / Facebook link-preview image (1200 × 630) for each invitation.
 // Shows the couple's names in their design's colours. For a personal link it
-// also says "You're invited, Zainab & Family".
+// also says "You're invited, Mr & Mrs Ali".
 
 export const OG_SIZE = { width: 1200, height: 630 };
 

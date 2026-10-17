@@ -7,11 +7,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.brandName} — Digital Wedding Invitations`,
+    default: `${SITE.brandName} | Digital Wedding Invitations`,
     template: `%s | ${SITE.brandName}`,
   },
   description:
-    "Beautiful animated wedding invitation websites with personal guest links, RSVP and venue maps — shared on WhatsApp.",
+    "Elegant animated wedding invitations with personal guest links, RSVP and venue maps, shared with your family on WhatsApp.",
 };
 
 export const viewport: Viewport = {

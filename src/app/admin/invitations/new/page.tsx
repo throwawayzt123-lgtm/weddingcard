@@ -18,7 +18,7 @@ export default async function NewInvitationPage() {
     <div>
       <h1 className="font-serif text-3xl sm:text-4xl">New invitation</h1>
       <p className="mt-1 mb-6 text-sm text-ink/60">Use this when a customer has chosen a design and paid. It takes about a minute.</p>
-      <NewInvitationForm clients={clients} siteUrl={SITE.url} prices={settings.prices} defaultExpiryDays={settings.defaultExpiryDays} />
+      <NewInvitationForm clients={clients} siteUrl={SITE.url} defaultExpiryDays={settings.defaultExpiryDays} />
     </div>
   );
 }

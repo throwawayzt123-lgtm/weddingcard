@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/preview/[template
   const { templateKey } = await params;
   const template = getTemplate(templateKey);
   return {
-    title: template ? `${template.name} — Live Demo` : "Design not found",
+    title: template ? `${template.name} | Live Demo` : "Design not found",
     robots: { index: false, follow: false },
   };
 }

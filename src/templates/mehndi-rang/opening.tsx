@@ -1,6 +1,7 @@
 "use client";
 
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // Hanging marigold garlands: x position (%), number of flowers, swing timing.
 const STRANDS = [
@@ -46,6 +47,7 @@ export function MehndiOpening({ data, phase, onTap }: OpeningProps) {
             {data.brideName}
           </p>
         </div>
+        <GuestLine data={data} />
         <button
           type="button"
           className="inv-tap-btn mr-tap"

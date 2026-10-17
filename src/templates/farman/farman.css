@@ -437,3 +437,6 @@
   .fm-scroll { animation: none; }
   .fm-sheet, .fm-seal, .fm-more, .fm-stage, .fm-opening { transition-duration: 0.01s; transition-delay: 0s; }
 }
+
+/* the guest name on the cover */
+.fm-opening { --guest-ink: #e8cf94; }

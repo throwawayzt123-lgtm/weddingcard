@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // One jasmine petal, pointing up from the centre of the flower.
 const PETAL = "M0 0C-36 -20 -40 -68 0 -102C40 -68 36 -20 0 0Z";
@@ -77,6 +78,8 @@ export function ChambeliOpening({ data, phase, onTap }: OpeningProps) {
             ))}
           </div>
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

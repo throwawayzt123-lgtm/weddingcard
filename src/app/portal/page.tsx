@@ -183,7 +183,7 @@ export default async function PortalHome() {
           rel="noopener noreferrer"
           className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-maroon underline underline-offset-4"
         >
-          <MessageCircle className="size-4" /> Need more? Upgrade — contact us on WhatsApp
+          <MessageCircle className="size-4" /> Need more? Upgrade by messaging us on WhatsApp
         </a>
       </Card>
     </div>

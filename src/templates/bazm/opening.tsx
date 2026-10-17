@@ -2,6 +2,7 @@
 
 import { Mail } from "lucide-react";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 import { dateRange } from "@/components/invite-shared/chapters/copy";
 
 /** A split cover: the names on the left, a candlelit arch on the right. Tap → the two halves slide apart. */
@@ -24,6 +25,7 @@ export function BazmOpening({ data, phase, onTap }: OpeningProps) {
           A lifetime of togetherness.
         </p>
         <p className="bz-cover-date">{dateRange(data)}</p>
+        <GuestLine data={data} />
         <button
           type="button"
           className="bz-primary"

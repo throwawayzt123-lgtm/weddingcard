@@ -8,26 +8,25 @@ import { CustomDesignBand } from "@/components/marketing/custom-band";
 import { MarketingHeader } from "@/components/marketing/header";
 import { PageMotion } from "@/components/marketing/page-motion";
 import { PhoneMockup } from "@/components/marketing/phone-mockup";
-import { PLAN_KEYS, PLANS, planFeatures } from "@/lib/plans";
-import { CUSTOM_ORDER_MESSAGE, formatPkr } from "@/lib/site";
+import { CUSTOM_ORDER_MESSAGE } from "@/lib/site";
 import { getSettings, waLink } from "@/lib/settings";
 import { TEMPLATES } from "@/templates/registry";
 
-// The page reads prices and contact details from the database; refresh every 5 minutes.
+// The page reads the brand and contact details from the database; refresh every 5 minutes.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: { absolute: "Digital Wedding Invitations in Pakistan — Animated Cards for WhatsApp" },
+  title: { absolute: "Digital Wedding Invitations in Pakistan | Elegant Cards for WhatsApp" },
   description:
-    "Beautiful animated wedding invitation websites with personal guest links, RSVP, venue maps and music. Pick a design, share it on WhatsApp. Starting from Rs 2,500.",
+    "Elegant animated wedding invitations with personal guest links, RSVP, venue maps and music. Choose a design and share it with your family on WhatsApp.",
   alternates: { canonical: "/" },
 };
 
 const STEPS = [
-  { icon: Sparkles, title: "Choose your design", text: "Open the live demos on your phone and pick the one that feels like your wedding." },
-  { icon: Wallet, title: "Pay us", text: "Bank transfer, JazzCash or EasyPaisa. We confirm your payment on WhatsApp." },
-  { icon: Gift, title: "Get your portal", text: "We create your invitation and send you a login. Add your events, families and photos yourself." },
-  { icon: Send, title: "Share on WhatsApp", text: "Every guest gets a personal link that greets them by name. Track who has opened it." },
+  { icon: Sparkles, title: "Choose your design", text: "Open the live demos on your phone and pick the one that feels like your family." },
+  { icon: Wallet, title: "Confirm your order", text: "Send us a message on WhatsApp. We will guide you through payment and the few details we need." },
+  { icon: Gift, title: "Receive your portal", text: "We prepare your invitation and send you a private login. Add your events, families and photos whenever you like." },
+  { icon: Send, title: "Share with your guests", text: "Every guest receives a personal link that welcomes them by name. You can see who has opened it." },
 ];
 
 // A different colour for each of the four stacked cards, so the pile is easy to see.
@@ -39,23 +38,23 @@ const STEP_STYLES = [
 ];
 
 const FEATURES = [
-  { icon: Users, title: "Personal guest links", text: "“Dear Zainab & Family” — each guest sees only the events they are invited to." },
-  { icon: Music2, title: "Tap to open, with music", text: "A beautiful opening animation, then soft music that starts when your guest taps." },
-  { icon: CalendarCheck, title: "RSVP & headcount", text: "Guests reply Yes, No or Maybe per event. You see totals and can export to Excel." },
-  { icon: MapPinned, title: "Maps & calendar", text: "One-tap directions and add-to-calendar for every ceremony." },
-  { icon: BellRing, title: "Live countdown", text: "A ticking countdown to the first event builds excitement." },
-  { icon: Languages, title: "Urdu & English", text: "Add Bismillah or any verse in Urdu or Arabic — shown in beautiful Nastaliq." },
+  { icon: Users, title: "Personal guest links", text: "Welcome each guest the way you would in person, as Mr & Mrs Ali or Mr Ali and his family. They see only the events meant for them." },
+  { icon: Music2, title: "Tap to open, with music", text: "A graceful opening, then soft music that begins when your guest taps." },
+  { icon: CalendarCheck, title: "RSVP and headcount", text: "Guests answer Yes, No or Maybe for each event. You see the totals and can export the list to Excel." },
+  { icon: MapPinned, title: "Maps and calendar", text: "Directions and an add to calendar button for every ceremony." },
+  { icon: BellRing, title: "Live countdown", text: "A countdown to the first event builds anticipation as the day draws near." },
+  { icon: Languages, title: "Urdu and English", text: "Add Bismillah or any verse in Urdu or Arabic, set in elegant Nastaliq." },
 ];
 
 const FAQ = [
-  { q: "How do I order?", a: "Choose a design, then tap “Order This Design”. It opens WhatsApp with your message ready. We reply with payment details and the few things we need from you." },
-  { q: "How do I pay?", a: "By bank transfer, JazzCash or EasyPaisa. Once we receive your payment we create your invitation and send you your login — usually within a few hours." },
-  { q: "Can I change details after I get my portal?", a: "Yes. You can edit events, venues, times, family names, photos, music and guests any time. Only the bride and groom names (and the web address) are locked. If there is a spelling mistake, message us and we will fix it for free." },
-  { q: "Why are the couple names locked?", a: "Each invitation belongs to one couple. Locking the names protects your purchase and stops your card being copied for another wedding." },
-  { q: "Do my guests need to install anything?", a: "No. They simply tap the link on WhatsApp and it opens in their phone browser, just like a website." },
-  { q: "How long will the invitation stay online?", a: "Until 30 days after your last event. Afterwards it shows a polite “this celebration has concluded” page. We can extend it if you wish." },
-  { q: "Can I use my own music?", a: "Every design has built-in music to choose from. The Premium plan lets you upload your own MP3." },
-  { q: "Can I change my design later?", a: "Yes — message us on WhatsApp and we will switch your design. Your details stay as they are." },
+  { q: "How do I order?", a: "Choose a design and tap Order This Design. WhatsApp opens with your message ready, and we reply with the next steps." },
+  { q: "How does payment work?", a: "We accept bank transfer, JazzCash and EasyPaisa. Once your payment is received we create your invitation and send you your login, usually within a few hours." },
+  { q: "Can I change details after I receive my portal?", a: "Yes. You can edit events, venues, times, family names, photos, music and guests at any time. Only the names of the bride and groom, and the web address, are fixed. If there is a spelling mistake, message us and we will correct it at no charge." },
+  { q: "Why are the couple names fixed?", a: "Each invitation belongs to one couple. Fixing the names protects your invitation from being copied for another wedding." },
+  { q: "Do my guests need to install anything?", a: "No. Guests simply tap the link on WhatsApp and it opens in their phone browser, like any website." },
+  { q: "How long will the invitation stay online?", a: "Until 30 days after your last event. After that it shows a polite message that the celebration has concluded. We can extend it on request." },
+  { q: "Can I use my own music?", a: "Every design comes with music to choose from. If you would like your own track, let us know and we will arrange it." },
+  { q: "Can I change my design later?", a: "Yes. Message us on WhatsApp and we will switch your design. Your details stay exactly as they are." },
 ];
 
 export default async function HomePage() {
@@ -78,7 +77,7 @@ export default async function HomePage() {
                 Your invitation, <span className="font-script text-gold-dark">beautifully alive</span>
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink/75 lg:mx-0">
-                Doors that open, envelopes that unseal, music that plays. Share one link on WhatsApp and every guest is greeted by name — with venue maps, countdown and RSVP built in.
+                A tap opens a palace door, an envelope or a garden gate, and soft music begins. Share one link on WhatsApp and every guest is welcomed by name, with directions, a countdown and a simple way to reply.
               </p>
               <div className="mt-8 flex flex-col flex-wrap justify-center gap-3 sm:flex-row lg:justify-start">
                 <Link href="/designs" className="btn-primary">
@@ -93,7 +92,7 @@ export default async function HomePage() {
                 </a>
               </div>
               <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-ink/70 lg:justify-start">
-                {["Personal guest links", "RSVP tracking", "Ready in hours", `From ${formatPkr(settings.prices.BASIC)}`].map((t) => (
+                {["Personal guest links", "RSVP tracking", "Ready in hours", "Urdu and English"].map((t) => (
                   <li key={t} className="flex items-center gap-1.5">
                     <Check className="size-4 text-gold-dark" />
                     {t}
@@ -128,7 +127,7 @@ export default async function HomePage() {
           <div className="mx-auto max-w-6xl px-4">
             <div data-fx="rise" className="text-center">
               <p className="section-eyebrow">How it works</p>
-              <h2 className="section-title">From idea to WhatsApp in four steps</h2>
+              <h2 className="section-title">Four simple steps to a finished invitation</h2>
             </div>
             <ol data-fx="stack" className="mx-auto mt-14 max-w-3xl">
               {STEPS.map((s, i) => (
@@ -151,7 +150,7 @@ export default async function HomePage() {
             <div className="text-center">
               <p className="section-eyebrow">The designs</p>
               <h2 className="section-title">Pick the one that feels like you</h2>
-              <p className="mx-auto mt-4 max-w-xl text-ink/70">Tap “View Live Demo” to open any design exactly as your guests will see it.</p>
+              <p className="mx-auto mt-4 max-w-xl text-ink/70">Open any live demo to see it exactly as your guests will.</p>
             </div>
           </div>
           <div className="mx-auto mt-12 grid max-w-6xl gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -171,7 +170,7 @@ export default async function HomePage() {
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center">
               <p className="text-xs font-bold tracking-[0.3em] text-gold-light uppercase">Everything included</p>
-              <h2 className="mt-3 font-serif text-4xl font-medium sm:text-5xl">More than a pretty picture</h2>
+              <h2 className="mt-3 font-serif text-4xl font-medium sm:text-5xl">Thoughtful details for every guest</h2>
             </div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {FEATURES.map((f) => (
@@ -184,49 +183,6 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* ---------- Pricing (hidden for now: remove this comment wrapper to show it again) ----------
-        <section id="pricing" className="scroll-mt-20 py-20">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="text-center">
-              <p className="section-eyebrow">Pricing</p>
-              <h2 className="section-title">Simple, one-time prices</h2>
-              <p className="mx-auto mt-4 max-w-xl text-ink/70">Pay once per wedding. No subscriptions, no hidden fees.</p>
-            </div>
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {PLAN_KEYS.map((key) => {
-                const plan = PLANS[key];
-                const popular = key === "STANDARD";
-                return (
-                  <div key={key} data-fx="rise" className={`relative flex flex-col rounded-3xl border bg-white p-7 ${popular ? "border-maroon shadow-xl lg:-translate-y-3" : "border-gold/30"}`}>
-                    {popular && <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-maroon px-4 py-1 text-xs font-bold tracking-widest text-gold-light uppercase">Most popular</span>}
-                    <h3 className="font-serif text-3xl text-maroon">{plan.label}</h3>
-                    <p className="mt-1 text-sm text-ink/65">{plan.blurb}</p>
-                    <p className="mt-5 flex items-baseline gap-1.5">
-                      <span className="font-serif text-5xl font-medium text-ink">{formatPkr(settings.prices[key])}</span>
-                      <span className="text-sm text-ink/60">per wedding</span>
-                    </p>
-                    <ul className="mt-6 flex-1 space-y-3 text-sm">
-                      {planFeatures(key).map((f) => {
-                        const off = f.includes("not included") || f.startsWith("No ");
-                        return (
-                          <li key={f} className={`flex gap-2.5 ${off ? "text-ink/40 line-through" : "text-ink/85"}`}>
-                            <Check className={`mt-0.5 size-4 shrink-0 ${off ? "text-ink/30" : "text-gold-dark"}`} />
-                            {f}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <a href={wa(`Hi, I'm interested in the ${plan.label} plan.`)} target="_blank" rel="noopener noreferrer" className={`mt-8 ${popular ? "btn-primary" : "btn-secondary"} w-full`}>
-                      Order {plan.label}
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-        */}
 
         {/* ---------- FAQ ---------- */}
         <section id="faq" className="scroll-mt-20 bg-white py-20">
@@ -254,7 +210,7 @@ export default async function HomePage() {
           <div className="mx-auto max-w-2xl px-4">
             <Heart className="mx-auto size-8 fill-gold-light text-gold-light" />
             <h2 className="mt-5 font-serif text-4xl font-medium sm:text-5xl">Ready to invite your guests?</h2>
-            <p className="mt-4 text-ivory/80">Message us on WhatsApp and your invitation can be live today.</p>
+            <p className="mt-4 text-ivory/80">Message us on WhatsApp and your invitation can be ready today.</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a href={customHref} target="_blank" rel="noopener noreferrer" className="btn-custom">
                 <Sparkles className="size-5" />

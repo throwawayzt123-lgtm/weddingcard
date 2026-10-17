@@ -85,7 +85,7 @@ export default async function ManageInvitation({ params }: PageProps<"/admin/inv
         <Card title="Customer">
           <dl className="space-y-3 text-sm">
             <div><dt className="text-xs text-ink/50">Name</dt><dd className="font-medium">{inv.owner.name}</dd></div>
-            <div><dt className="text-xs text-ink/50">WhatsApp</dt><dd className="font-medium">{inv.owner.phone ? <a className="text-maroon underline" href={`https://wa.me/${inv.owner.phone}`} target="_blank" rel="noopener noreferrer">+{inv.owner.phone}</a> : "—"}</dd></div>
+            <div><dt className="text-xs text-ink/50">WhatsApp</dt><dd className="font-medium">{inv.owner.phone ? <a className="text-maroon underline" href={`https://wa.me/${inv.owner.phone}`} target="_blank" rel="noopener noreferrer">+{inv.owner.phone}</a> : "Not provided"}</dd></div>
             <div><dt className="text-xs text-ink/50">Login username</dt><dd className="font-mono">{inv.owner.username}</dd></div>
             <div>
               <dt className="text-xs text-ink/50">Invitation link</dt>

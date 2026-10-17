@@ -142,3 +142,6 @@
   .bz-cover, .bz-cover * { animation: none !important; transition: none !important; }
   .bz-cover-arch img { transform: none !important; }
 }
+
+/* the guest name on the cover */
+.bz-cover { --guest-ink: #e6d3b0; }

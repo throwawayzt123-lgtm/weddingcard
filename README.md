@@ -1,6 +1,6 @@
 # Aesthetic Wedding Cards
 
-A website for selling **digital wedding invitations**. Customers pick one of **sixteen** animated designs (royal doors, a sealed envelope, mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Every design is a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Zainab & Family”) to share on WhatsApp, with RSVP, maps, music and a countdown.
+A website for selling **digital wedding invitations**. Customers pick one of **sixteen** animated designs (royal doors, a sealed envelope, mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Every design is a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Mr & Mrs Ali”) to share on WhatsApp, with RSVP, maps, music and a countdown.
 
 **The most important rule:** the groom and bride names are entered only by you (the admin) and are **locked**. A customer can never change them, so one purchase cannot be reused for another wedding. [Proof it works](#the-locked-names-and-the-proof) · [Where to read more](#more-guides)
 
@@ -64,7 +64,7 @@ The seed also creates the demo invitation **Ahmad & Sara** at `/i/ahmad-weds-sar
 
 | What | Where |
 |---|---|
-| Brand name, WhatsApp number, prices on the homepage, default expiry days, the guest WhatsApp message, logo, your admin password | **Admin → Settings** |
+| Brand name, WhatsApp number, default expiry days, the guest WhatsApp message, logo, your admin password | **Admin → Settings** |
 | Plan limits (events, guests, photos, RSVP, own music) | `src/lib/plans.ts`, one file |
 | Which music tracks each design offers | `src/templates/registry.ts` |
 | Brand defaults used before you save settings | `src/lib/site.ts` |
@@ -150,7 +150,7 @@ npm run db:seed
 
 **E. After launch: checklist**
 - [ ] Log in as admin on the live site and change your password (**Admin → Settings**).
-- [ ] **Admin → Settings:** brand name, WhatsApp number, prices, logo.
+- [ ] **Admin → Settings:** brand name, WhatsApp number, logo.
 - [ ] Create one **test invitation** for yourself, log in as that customer on your phone, add an event, a guest and a photo, send the link to yourself on WhatsApp.
 - [ ] Paste an invitation link into WhatsApp and check the **preview card** shows the names.
 - [ ] Upload one photo and one MP3 (confirms Cloudinary).
@@ -222,7 +222,7 @@ src/
 
 ### Animations (GSAP)
 
-- **Full-screen chapters (every design):** the invitation is a set of chapters (blessings, each celebration, families, moments, RSVP). Scroll, swipe, use the arrow keys or the menu: the picture, the colours and the layout change. The engine is in `src/components/invite-shared/chapters/`; each design only supplies a small `chapters.tsx` with its own pictures, colour schemes and layouts (`split`, `flip`, `overlay`, `arch`, `poster`). The first chapter always shows the same generic picture (`hands-wedding.webp`, no couple); the couple's own photo goes first in their Moments gallery. The pictures are in `public/templates/photos/` (replace any file with your own, same name; list in `CREDITS.md`). The older single-page layout is still in `invite-shared/content.tsx`: a design uses it when it does not pass `loadContent`.
+- **Full-screen chapters (every design):** the invitation is a set of chapters (blessings, each celebration, families, moments, RSVP). Scroll, swipe, use the arrow keys or the menu: the picture, the colours and the layout change. The engine is in `src/components/invite-shared/chapters/`; each design only supplies a small `chapters.tsx` with its own pictures, colour schemes and layouts (`split`, `flip`, `overlay`, `arch`, `poster`). Each guest's name is free text (for example Mr & Mrs Ali, or Mr Ali and his family) and appears on the cover of every design as well as in the greeting. The first chapter always shows the same generic picture (`hands-wedding.webp`, no couple); the couple's own photo goes first in their Moments gallery. The pictures are in `public/templates/photos/` (replace any file with your own, same name; list in `CREDITS.md`). The older single-page layout is still in `invite-shared/content.tsx`: a design uses it when it does not pass `loadContent`.
 - **Invitations:** the hero names appear just as the opening screen finishes and drift away as you scroll; sections rise into place; the two families arrive from opposite sides; the couple photo has parallax depth; the **event cards pile on top of each other**; the **gallery is pinned and slides sideways** while you scroll down. The code is in `src/components/invite-shared/use-invite-motion.ts`.
 - **Website:** the four "How it works" cards pile up, the designs sit in a simple 3-column grid, the hero phones drift at different speeds, and cards rise in. See `src/components/marketing/page-motion.tsx`.
 - Shared helpers (`stackCards`, `horizontalScroll`, `riseIn`, `parallax`) are in `src/lib/motion.ts`: use them to add the same effects anywhere.

@@ -44,9 +44,9 @@ export const TEMPLATES: TemplateMeta[] = [
   {
     key: "bazm",
     name: "Bazm",
-    tagline: "Full-screen chapters, a new picture with every scroll",
+    tagline: "Full screen chapters, a new picture with every scroll",
     description:
-      "Each part of your invitation is its own full-screen chapter. Scroll, swipe or tap the menu and the whole scene changes: a new candlelit courtyard photograph, a new colour (forest green, wine, ivory), new wording. Blessings, every celebration, families, moments and RSVP, one beautiful chapter at a time.",
+      "Each part of your invitation is its own full screen chapter. Scroll, swipe or tap the menu and the whole scene changes: a new picture, a new colour, new wording. Blessings, every celebration, families, moments and RSVP, one beautiful chapter at a time.",
     colors: [
       { name: "Wine", hex: "#3d1927" },
       { name: "Forest green", hex: "#1e372d" },
@@ -57,14 +57,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Split cover slides apart",
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
-    bestFor: ["Multi-day weddings", "Modern couples", "Photo-led"],
+    bestFor: ["Multi day weddings","Modern couples","Photo led"],
   },
   {
     key: "shahi-darwaza",
     name: "Shahi Darwaza",
-    tagline: "Royal Mughal doors that swing open",
+    tagline: "Carved palace doors that swing open",
     description:
-      "A carved wooden palace door inside a Mughal arch. Tap, and the doors open in 3D to reveal a maroon-and-gold palace. Rich, traditional and unmistakably grand.",
+      "A carved wooden palace door set in a Mughal arch. Tap, and the doors open in three dimensions onto a maroon and gold hall. Rich, traditional and unmistakably grand.",
     colors: [
       { name: "Maroon", hex: "#5b1020" },
       { name: "Walnut", hex: "#5a3a22" },
@@ -75,14 +75,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Palace doors open",
     defaultTrack: "shahi-sitar",
     tracks: ["shahi-sitar", "soft-piano", "calm-pads"],
-    bestFor: ["Baraat", "Walima", "Traditional families"],
+    bestFor: ["Baraat","Walima","Traditional families"],
   },
   {
     key: "gulzar",
     name: "Gulzar",
-    tagline: "A wax-sealed envelope in a rose garden",
+    tagline: "A sealed envelope in a rose garden",
     description:
-      "Soft, romantic and pastel. A sealed envelope breaks open to reveal your card, while watercolour florals frame every page and petals drift down the screen.",
+      "Soft, romantic and gentle. A sealed envelope opens to reveal your card, while watercolour florals frame every page and petals drift down the screen.",
     colors: [
       { name: "Blush", hex: "#f4cfd0" },
       { name: "Sage", hex: "#9db08f" },
@@ -90,17 +90,17 @@ export const TEMPLATES: TemplateMeta[] = [
       { name: "Rose gold", hex: "#c98f7e" },
     ],
     thumbnail: "/templates/gulzar/thumb.webp",
-    opening: "Wax-sealed envelope",
+    opening: "Sealed envelope opens",
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
-    bestFor: ["Nikkah", "Day weddings", "Romantic couples"],
+    bestFor: ["Nikkah","Day weddings","Romantic couples"],
   },
   {
     key: "mehndi-rang",
     name: "Mehndi Rang",
     tagline: "Embroidered curtains and swaying marigolds",
     description:
-      "Bright, playful and full of life. Phulkari-style curtains part to reveal a festival of colour, with marigold garlands, bunting and bold, easy-to-read cards.",
+      "Bright, playful and full of life. Embroidered curtains part to reveal a festival of colour, with marigold garlands, bunting and bold, easy to read cards.",
     colors: [
       { name: "Marigold", hex: "#f6a800" },
       { name: "Parrot green", hex: "#2e9e44" },
@@ -111,14 +111,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Curtains part",
     defaultTrack: "festive-dhol",
     tracks: ["festive-dhol", "shahi-sitar", "calm-pads"],
-    bestFor: ["Mehndi", "Dholki", "Mayun"],
+    bestFor: ["Mehndi","Dholki","Mayun"],
   },
   {
     key: "noor",
     name: "Noor",
-    tagline: "A gold arch draws itself in the dark",
+    tagline: "A gold arch drawn in the dark",
     description:
-      "Modern, minimal and quietly luxurious. A thin gold line draws an arch on deep emerald, the names appear letter by letter, and the invitation unfolds with plenty of space to breathe.",
+      "Modern, minimal and quietly luxurious. A fine gold line draws an arch on deep emerald, the names appear letter by letter, and the invitation unfolds with room to breathe.",
     colors: [
       { name: "Emerald", hex: "#0b3d2e" },
       { name: "Champagne gold", hex: "#d8c08a" },
@@ -126,17 +126,17 @@ export const TEMPLATES: TemplateMeta[] = [
       { name: "Ink", hex: "#10241c" },
     ],
     thumbnail: "/templates/noor/thumb.webp",
-    opening: "Gold arch draws itself",
+    opening: "A gold arch draws itself",
     defaultTrack: "calm-pads",
     tracks: ["calm-pads", "soft-piano", "shahi-sitar"],
-    bestFor: ["Nikkah", "Modern couples", "Destination weddings"],
+    bestFor: ["Nikkah","Modern couples","Destination weddings"],
   },
   {
     key: "nikah-nama",
     name: "Nikah Nama",
-    tagline: "A crimson cloth-bound book that opens",
+    tagline: "A crimson cloth bound book that opens",
     description:
-      "Ivory paper and crimson ink, set like a printed wedding book. A gold-foil cover opens onto chapter-numbered pages, ledger-style event entries and a photograph tipped in by hand. Timeless, formal and quietly royal.",
+      "Ivory paper and crimson ink, set like a printed wedding book. A gold foil cover opens onto numbered chapters, event entries laid out like a ledger and a photograph tipped in by hand. Timeless, formal and quietly royal.",
     colors: [
       { name: "Crimson", hex: "#8f1a2c" },
       { name: "Ivory paper", hex: "#fbf8f2" },
@@ -147,14 +147,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "A book opens",
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
-    bestFor: ["Nikah", "Formal families", "White & red"],
+    bestFor: ["Nikah","Formal families","Ivory and red"],
   },
   {
     key: "chandni",
     name: "Chandni",
     tagline: "Moonlight in silver and slate",
     description:
-      "Calm, modern and quietly luxurious. A silver moon-dial turns on a pale ground, then swells like an eclipse into a night-sky invitation. Event tickets with perforated date stubs, round countdown dials and thin, wide-set capitals.",
+      "Calm, modern and quietly luxurious. A silver moon dial turns on a pale ground, then swells like an eclipse into a night sky invitation. Event tickets with perforated date stubs, round countdown dials and finely spaced capitals.",
     colors: [
       { name: "Night", hex: "#1e2329" },
       { name: "Slate", hex: "#2a3038" },
@@ -162,17 +162,17 @@ export const TEMPLATES: TemplateMeta[] = [
       { name: "Pearl", hex: "#f4f5f7" },
     ],
     thumbnail: "/templates/chandni/thumb.webp",
-    opening: "Moon-dial eclipse",
+    opening: "Moon dial eclipse",
     defaultTrack: "calm-pads",
     tracks: ["calm-pads", "soft-piano", "shahi-sitar"],
-    bestFor: ["Modern couples", "Evening nikah", "Grey & silver"],
+    bestFor: ["Modern couples","Evening nikah","Grey and silver"],
   },
   {
     key: "siyah-taj",
     name: "Siyah Taj",
     tagline: "Black, old gold and one ruby thread",
     description:
-      "Sharp and unmistakably royal. A black roller shutter with your names printed on it lifts to reveal a fashion-magazine invitation: huge Didone type, hairline gold rules, a programme of events with giant date numerals and cut-corner buttons.",
+      "Sharp and unmistakably royal. A black roller shutter with your names printed on it lifts to reveal an invitation set like a fashion magazine: large Didone type, hairline gold rules, a programme of events with big date numerals and cut corner buttons.",
     colors: [
       { name: "Black", hex: "#0a0a0b" },
       { name: "Old gold", hex: "#c9a45c" },
@@ -183,14 +183,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Shutter lifts",
     defaultTrack: "shahi-sitar",
     tracks: ["shahi-sitar", "calm-pads", "soft-piano"],
-    bestFor: ["Baraat", "Reception", "Black & gold"],
+    bestFor: ["Baraat","Reception","Black and gold"],
   },
   {
     key: "neelam-kashi",
     name: "Neelam Kashi",
     tagline: "Sapphire blue and glazed Multani tiles",
     description:
-      "A deep sapphire wall of hand-glazed tiles with an arched nameplate. Tap and the tiles flip over from the centre outward. Ivory cards framed with rows of tile-work, carved Roman capitals and a flowing script. Rich, cool and regal.",
+      "A deep sapphire wall of hand glazed tiles with an arched nameplate. Tap and the tiles turn over from the centre outward. Ivory cards framed with rows of tile work, carved Roman capitals and a flowing script. Rich, cool and regal.",
     colors: [
       { name: "Sapphire", hex: "#0c1a3b" },
       { name: "Cobalt", hex: "#1c3f94" },
@@ -201,14 +201,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Tiles flip over",
     defaultTrack: "shahi-sitar",
     tracks: ["shahi-sitar", "soft-piano", "calm-pads"],
-    bestFor: ["Walima", "Reception", "Blue & ivory"],
+    bestFor: ["Walima","Reception","Blue and ivory"],
   },
   {
     key: "chambeli",
     name: "Chambeli",
-    tagline: "Pure white, with hand-drawn jasmine",
+    tagline: "Pure white, with hand drawn jasmine",
     description:
-      "Clean white pages and soft sage, with real jasmine sprigs trailing across the corners and over the edges of every card. A jasmine flower unfurls around your names, then scatters its petals. Oval photo frames, a thread of champagne gold. Light, fragrant and effortlessly elegant.",
+      "Clean white pages and soft sage, with jasmine sprigs trailing across the corners and over the edges of every card. A jasmine flower opens around your names, then scatters its petals. Oval photo frames and a thread of champagne gold. Light, fragrant and effortlessly elegant.",
     colors: [
       { name: "Pure white", hex: "#ffffff" },
       { name: "Sage", hex: "#6f8a76" },
@@ -216,17 +216,17 @@ export const TEMPLATES: TemplateMeta[] = [
       { name: "Champagne", hex: "#b79a62" },
     ],
     thumbnail: "/templates/chambeli/thumb.webp",
-    opening: "A jasmine unfurls",
+    opening: "A jasmine opens",
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
-    bestFor: ["Nikah", "Day weddings", "White & floral"],
+    bestFor: ["Nikah","Day weddings","White and floral"],
   },
   {
     key: "farman",
     name: "Farman",
-    tagline: "A royal decree sealed in wine-red wax",
+    tagline: "A royal decree sealed in wine red wax",
     description:
-      "Deep wine red and antique gold. A rolled royal decree with your initials in wax unrolls to show the names, then the page opens onto parchment cards with gold corner flourishes, wax-seal date badges and a hairline gold frame. Stately, warm and unmistakably regal.",
+      "Deep wine red and antique gold. A rolled royal decree with your initials in wax unrolls to show the names, then the invitation opens onto parchment cards with gold corner flourishes, wax seal date badges and a fine gold frame. Stately, warm and regal.",
     colors: [
       { name: "Wine", hex: "#4a0f20" },
       { name: "Antique gold", hex: "#d4b06a" },
@@ -234,17 +234,17 @@ export const TEMPLATES: TemplateMeta[] = [
       { name: "Wax red", hex: "#8a1f3a" },
     ],
     thumbnail: "/templates/farman/thumb.webp",
-    opening: "Wax-sealed scroll unrolls",
+    opening: "Wax sealed scroll unrolls",
     defaultTrack: "shahi-sitar",
     tracks: ["shahi-sitar", "soft-piano", "calm-pads"],
-    bestFor: ["Baraat", "Walima", "Wine & gold"],
+    bestFor: ["Baraat","Walima","Wine and gold"],
   },
   {
     key: "jharoka",
     name: "Jharoka",
     tagline: "Sandstone, terracotta and a carved lattice window",
     description:
-      "A warm sandstone page with a faint stone-lattice screen. A palace window with carved shutters slides open and the evening sun floods in. Arch-framed names, little arched date badges in terracotta and a thread of turquoise. Warm, earthy and graceful.",
+      "A warm sandstone page with a faint stone lattice. A palace window with carved shutters slides open and the evening sun floods in. Names set in a tall arch, arched date badges in terracotta and a thread of turquoise. Warm, earthy and graceful.",
     colors: [
       { name: "Sandstone", hex: "#f3e8d4" },
       { name: "Terracotta", hex: "#a8482a" },
@@ -255,14 +255,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Lattice shutters slide open",
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
-    bestFor: ["Mehndi", "Day weddings", "Earthy & warm"],
+    bestFor: ["Mehndi","Day weddings","Warm and earthy"],
   },
   {
     key: "mor-pankh",
     name: "Mor Pankh",
     tagline: "Peacock teal, deep blue and gold",
     description:
-      "A deep peacock-green page with a faint feather-scale pattern. A closed fan of peacock feathers spreads open to reveal the invitation. Dark glass cards crowned with a feather eye, date badges drawn as peacock eyes and leaf-shaped photo frames. Rich, cool and dramatic.",
+      "A deep peacock green page with a faint feather scale pattern. A closed fan of peacock feathers spreads open to reveal the invitation. Dark glass cards crowned with a feather eye, date badges drawn as peacock eyes and leaf shaped photo frames. Rich, cool and dramatic.",
     colors: [
       { name: "Peacock", hex: "#07363d" },
       { name: "Deep blue", hex: "#123f6b" },
@@ -273,14 +273,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Peacock fan spreads open",
     defaultTrack: "calm-pads",
     tracks: ["calm-pads", "shahi-sitar", "soft-piano"],
-    bestFor: ["Reception", "Evening events", "Teal & blue"],
+    bestFor: ["Reception","Evening events","Teal and blue"],
   },
   {
     key: "aasmani",
     name: "Aasmani",
-    tagline: "Soft clouds part over a summer-sky blue",
+    tagline: "Soft clouds part over a summer sky",
     description:
-      "Light, airy and calm. Two banks of soft clouds drift apart to reveal your invitation on a clear morning sky. White cards with powder-blue edges, navy script names and little cloud dividers. Simple, clean and easy to read.",
+      "Light, airy and calm. Two banks of soft clouds drift apart to reveal your invitation on a clear morning sky. White cards with powder blue edges, navy script names and small cloud dividers. Simple, clean and easy to read.",
     colors: [
       { name: "Sky", hex: "#cfe6f7" },
       { name: "Powder blue", hex: "#8fb8dc" },
@@ -291,14 +291,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Clouds part",
     defaultTrack: "calm-pads",
     tracks: ["calm-pads", "soft-piano", "shahi-sitar"],
-    bestFor: ["Day weddings", "Nikah", "Blue & white"],
+    bestFor: ["Day weddings","Nikah","Blue and white"],
   },
   {
     key: "sunehri",
     name: "Sunehri",
-    tagline: "A champagne-gold gift box that lifts open",
+    tagline: "A champagne gold gift box that lifts open",
     description:
-      "Warm champagne, ivory and soft gold. Your invitation arrives as a wrapped gift: a ribbon bow unties and the lid lifts away. Foil-edged cards, gold script names and a gentle shimmer. Simple, classic and generous.",
+      "Warm champagne, ivory and soft gold. Your invitation arrives as a wrapped gift: a ribbon bow unties and the lid lifts away. Foil edged cards, gold script names and a gentle shimmer. Simple, classic and generous.",
     colors: [
       { name: "Champagne", hex: "#e7d3a5" },
       { name: "Gold", hex: "#b8913a" },
@@ -309,14 +309,14 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "Gift box opens",
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
-    bestFor: ["Nikah", "Walima", "Gold & ivory"],
+    bestFor: ["Nikah","Walima","Gold and ivory"],
   },
   {
     key: "kesar",
     name: "Kesar",
     tagline: "A brass diya lights up in saffron",
     description:
-      "Warm saffron, cream and deep brown. A little brass diya sits in the dark; tap, and its flame grows into golden light that fills the screen. White cards with dotted saffron edges and flame-shaped date badges. Simple, festive and welcoming.",
+      "Warm saffron, cream and deep brown. A little brass diya sits in the dark; tap, and its flame grows into golden light that fills the screen. White cards with dotted saffron edges and flame shaped date badges. Simple, festive and welcoming.",
     colors: [
       { name: "Saffron", hex: "#f08a1c" },
       { name: "Cream", hex: "#fff3dc" },
@@ -327,7 +327,7 @@ export const TEMPLATES: TemplateMeta[] = [
     opening: "A diya lights up",
     defaultTrack: "festive-dhol",
     tracks: ["festive-dhol", "shahi-sitar", "soft-piano"],
-    bestFor: ["Mehndi", "Mayun", "Saffron & cream"],
+    bestFor: ["Mehndi","Mayun","Saffron and cream"],
   },
 ];
 

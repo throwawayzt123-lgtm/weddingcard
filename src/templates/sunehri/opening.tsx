@@ -2,6 +2,7 @@
 
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 /** A wrapped gift box with a ribbon bow. Tap → the bow unties, the lid lifts away and the base sinks. */
 export function SunehriOpening({ data, phase, onTap }: OpeningProps) {
@@ -20,6 +21,7 @@ export function SunehriOpening({ data, phase, onTap }: OpeningProps) {
         </p>
         <span className="su-rule" />
         <p className="su-date">{formatLongDate(data.weddingDate)}</p>
+        <GuestLine data={data} />
         <button
           type="button"
           className="su-tap"

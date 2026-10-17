@@ -56,7 +56,7 @@ export function Countdown({ data }: { data: InvitationViewData }) {
         {cells.map(([label, value]) => (
           <div key={label} className="inv-count-cell">
             <span className="inv-count-num" suppressHydrationWarning>
-              {value === null ? "––" : String(value).padStart(2, "0")}
+              {value === null ? "00" : String(value).padStart(2, "0")}
             </span>
             <span className="inv-count-label">{label}</span>
           </div>

@@ -17,7 +17,7 @@ export const SITE = {
 } as const;
 
 /** Pre-filled WhatsApp message of every "Order Custom Design" button. */
-export const CUSTOM_ORDER_MESSAGE = "Hi, I'd like to order a custom-designed wedding invitation.";
+export const CUSTOM_ORDER_MESSAGE = "Hi, I would like to order a custom wedding invitation design.";
 
 /** Builds a WhatsApp chat link, optionally with a pre-filled message. */
 export function whatsappLink(text?: string, number: string = SITE.whatsappNumber): string {
@@ -25,7 +25,3 @@ export function whatsappLink(text?: string, number: string = SITE.whatsappNumber
   return text ? `https://wa.me/${digits}?text=${encodeURIComponent(text)}` : `https://wa.me/${digits}`;
 }
 
-/** Formats a PKR amount, e.g. 4500 → "Rs 4,500". */
-export function formatPkr(amount: number): string {
-  return `Rs ${amount.toLocaleString("en-PK")}`;
-}

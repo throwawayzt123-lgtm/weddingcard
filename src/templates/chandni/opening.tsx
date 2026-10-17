@@ -2,6 +2,7 @@
 
 import { formatDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // 60 minute-marks around the outer ring, like a watch dial. Every fifth one is longer.
 const TICKS = Array.from({ length: 60 }, (_, i) => {
@@ -51,6 +52,8 @@ export function ChandniOpening({ data, phase, onTap }: OpeningProps) {
             </div>
           </div>
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

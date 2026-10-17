@@ -347,3 +347,8 @@
   .mr-curtain { transition-duration: 0.01s; transition-delay: 0s; }
   .mr-opening { transition-delay: 0.1s; transition-duration: 0.3s; }
 }
+
+/* the guest name on the cover */
+.mr-opening { --guest-ink: #fff8e0; }
+.mr-opening .inv-guest-line { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55); }
+.mr-opening .inv-guest-line { padding: 0.55rem 1.3rem 0.6rem; border-radius: 14px; background: rgba(59, 20, 80, 0.82); text-shadow: none; }

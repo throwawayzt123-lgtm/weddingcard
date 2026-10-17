@@ -15,7 +15,6 @@ export function MarketingFooter({ brandName, whatsappHref, whatsappDisplay, cust
             <ul className="mt-3 space-y-2 text-ivory/80">
               <li><Link href="/designs" className="hover:text-white">All designs</Link></li>
               <li><Link href="/#how-it-works" className="hover:text-white">How it works</Link></li>
-              {/* <li><Link href="/#pricing" className="hover:text-white">Pricing</Link></li> */}
               <li><Link href="/#faq" className="hover:text-white">FAQ</Link></li>
               <li><Link href="/login" className="hover:text-white">Customer login</Link></li>
             </ul>

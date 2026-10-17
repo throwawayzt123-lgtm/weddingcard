@@ -2,6 +2,7 @@
 
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // A pointed, scalloped arch, like a palace window (viewBox 240 x 340).
 const ARCH = "M8 340V152Q8 120 34 104Q58 90 74 64Q92 34 120 8Q148 34 166 64Q182 90 206 104Q232 120 232 152V340Z";
@@ -55,6 +56,8 @@ export function JharokaOpening({ data, phase, onTap }: OpeningProps) {
         </div>
 
         <p className="jh-date">{formatLongDate(data.weddingDate)}</p>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

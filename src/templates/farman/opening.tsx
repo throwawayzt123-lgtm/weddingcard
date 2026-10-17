@@ -2,6 +2,7 @@
 
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 /** A rolled royal decree sealed in wax. Tap → the seal drops, the scroll unrolls, then the invitation appears. */
 export function FarmanOpening({ data, phase, onTap }: OpeningProps) {
@@ -33,6 +34,8 @@ export function FarmanOpening({ data, phase, onTap }: OpeningProps) {
             </span>
           </span>
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"

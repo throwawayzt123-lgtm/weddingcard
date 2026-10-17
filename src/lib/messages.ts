@@ -15,7 +15,7 @@ export function credentialsMessage(m: CredentialsMessage): string {
     ? `Username: ${m.username}\nPassword: ${m.password}`
     : `Username: ${m.username}\n(Use your existing password)`;
   return [
-    `Assalam-o-Alaikum ${m.customerName}! 🎉`,
+    `Assalamu Alaikum ${m.customerName}! 🎉`,
     "",
     `Your wedding invitation for ${m.couple} is ready.`,
     "",

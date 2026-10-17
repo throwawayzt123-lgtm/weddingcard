@@ -406,3 +406,6 @@
   .cb-opening[data-phase="opening"] .cb-scatter span { animation: none; }
   .cb-opening[data-phase="opening"] .cb-flower { transform: none; opacity: 0; transition: opacity 0.3s; }
 }
+
+/* the guest name on the cover */
+.cb-opening { --guest-ink: #4c6853; }

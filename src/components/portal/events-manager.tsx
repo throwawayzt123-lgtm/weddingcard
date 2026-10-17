@@ -123,7 +123,7 @@ export function EventsManager({ invitationId, events, limit, planLabel, disabled
       {atLimit && (
         <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           Your {planLabel} plan includes {limit} events and you have used them all.{" "}
-          <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">Upgrade — contact us on WhatsApp</a>
+          <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">Upgrade by messaging us on WhatsApp</a>
         </p>
       )}
 

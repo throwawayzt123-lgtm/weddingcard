@@ -339,3 +339,6 @@
   .cd-disc { transition-duration: 0.01s; transition-delay: 0s; }
   .cd-opening { transition-delay: 0.1s; transition-duration: 0.3s; }
 }
+
+/* the guest name on the cover */
+.cd-opening { --guest-ink: #3b4552; }

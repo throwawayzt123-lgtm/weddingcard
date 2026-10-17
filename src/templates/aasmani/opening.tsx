@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // Each cloud: where it sits (percent of its half), its size and how fast it drifts. Whole numbers only.
 const CLOUDS = [
@@ -42,6 +43,7 @@ export function AasmaniOpening({ data, phase, onTap }: OpeningProps) {
         </p>
         <span className="aa-rule" />
         <p className="aa-date">{formatLongDate(data.weddingDate)}</p>
+        <GuestLine data={data} />
         <button
           type="button"
           className="aa-tap"

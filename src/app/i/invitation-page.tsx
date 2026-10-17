@@ -18,7 +18,7 @@ export async function invitationMetadata(slug: string, guestCode: string | null)
   const result = await loadInvitation(slug, guestCode);
   if (result.kind === "ok") {
     const { data } = result;
-    const title = `${data.groomName} & ${data.brideName} — Wedding Invitation`;
+    const title = `${data.groomName} & ${data.brideName} | Wedding Invitation`;
     const description = data.guest ? `You're invited, ${data.guest.displayName}` : "You are warmly invited to our wedding celebrations.";
     return { title, description, openGraph: { title, description, type: "website" }, ...noindex };
   }

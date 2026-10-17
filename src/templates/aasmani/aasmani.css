@@ -181,3 +181,6 @@
   .aa-cloud { animation: none; }
   .aa-clouds, .aa-plaque, .aa-sky, .aa-sun, .aa-opening { transition-duration: 0.01s; transition-delay: 0s; }
 }
+
+/* the guest name on the cover */
+.aa-opening { --guest-ink: #1c3557; }

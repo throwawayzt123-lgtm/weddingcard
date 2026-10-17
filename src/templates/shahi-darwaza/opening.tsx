@@ -2,6 +2,7 @@
 
 import { preload } from "react-dom";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // A Mughal-style pointed arch, as numbers between 0 and 1 (for clip-path) …
 const CLIP_PATH = "M0,1 V0.45 C0,0.25 0.3,0.16 0.5,0 C0.7,0.16 1,0.25 1,0.45 V1 Z";
@@ -56,6 +57,7 @@ export function ShahiOpening({ data, phase, onTap }: OpeningProps) {
         </div>
 
         <div className="shahi-bottom">
+          <GuestLine data={data} />
           <button
             type="button"
             className="inv-tap-btn shahi-tap"

@@ -12,7 +12,7 @@ import { prisma } from "@/lib/prisma";
 export const MAX_BULK_ROWS = 300;
 
 export const guestSchema = z.strictObject({
-  displayName: z.string().transform(stripTags).pipe(z.string().min(1, "Enter the guest's name").max(80, "Maximum 80 characters")),
+  displayName: z.string().transform(stripTags).pipe(z.string().min(1, "Enter the guest's name").max(120, "Maximum 120 characters")),
   phone: z.preprocess((v) => (typeof v === "string" ? v.trim() : v), z.string().max(30).optional()),
   eventIds: z.array(z.string().max(50)).max(20),
 });
@@ -130,7 +130,7 @@ export async function bulkAddGuests(inv: Invitation, plan: PlanConfig, text: str
 
   for (const [i, line] of rows.entries()) {
     const [rawName = "", rawPhone = "", rawEvents = ""] = splitLine(line);
-    const displayName = stripTags(rawName).slice(0, 80);
+    const displayName = stripTags(rawName).slice(0, 120);
     const row = i + 1;
     if (!displayName) { result.skipped++; result.notes.push(`Row ${row}: no name`); continue; }
     if (!canAddMore(plan.maxGuests, count)) {

@@ -49,16 +49,6 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
         </div>
       </Card>
 
-      <Card title="Prices (Rs)" description="Shown on the homepage. The plan limits (how many events, guests, photos) are set in src/lib/plans.ts.">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {(["BASIC", "STANDARD", "PREMIUM"] as const).map((k) => (
-            <Field key={k} label={k.charAt(0) + k.slice(1).toLowerCase()} htmlFor={`price${k}`} error={fieldError(state, `price${k}`)}>
-              <input id={`price${k}`} name={`price${k}`} inputMode="numeric" defaultValue={settings.prices[k]} className="input" />
-            </Field>
-          ))}
-        </div>
-      </Card>
-
       <Card title="Expiry" description="How long an invitation stays online after the last event.">
         <Field label="Days after the last event" htmlFor="defaultExpiryDays" error={fieldError(state, "defaultExpiryDays")}>
           <input id="defaultExpiryDays" name="defaultExpiryDays" inputMode="numeric" defaultValue={settings.defaultExpiryDays} className="input max-w-32" />
@@ -72,7 +62,7 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
         <div className="mt-4">
           <p className="mb-1.5 text-xs font-semibold tracking-wider text-ink/50 uppercase">Preview</p>
           <pre className="rounded-xl bg-[#dcf8c6] p-4 font-sans text-sm leading-relaxed whitespace-pre-wrap">
-            {guestMessage(message, { name: "Zainab & Family", couple: "Ahmad & Sara", link: "https://…/i/ahmad-weds-sara/k7m2xq9p" })}
+            {guestMessage(message, { name: "Mr & Mrs Ali", couple: "Ahmad & Sara", link: "https://…/i/ahmad-weds-sara/k7m2xq9p" })}
           </pre>
         </div>
       </Card>

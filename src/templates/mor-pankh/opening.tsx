@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { formatLongDate } from "@/lib/dates";
 import type { OpeningProps } from "@/components/invite-shared/experience";
+import { GuestLine } from "@/components/invite-shared/guest-line";
 
 // Fine barbs on both sides of the quill. Whole numbers only, so the server and the browser draw the same thing.
 const BARBS = Array.from({ length: 24 }, (_, i) => {
@@ -73,6 +74,8 @@ export function MorPankhOpening({ data, phase, onTap }: OpeningProps) {
             </span>
           ))}
         </div>
+
+        <GuestLine data={data} />
 
         <button
           type="button"
