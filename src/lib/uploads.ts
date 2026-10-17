@@ -38,7 +38,7 @@ async function checkAllowed(inv: Invitation | null, kind: UploadKind) {
     if (!canAddMore(plan.maxPhotos, count)) throw new ActionError(`Your plan includes ${plan.maxPhotos} gallery photos and you have used them all.`);
   }
   if (kind === "music" && !plan.customMusicUpload) {
-    throw new ActionError("Uploading your own music is a Premium feature. Message us on WhatsApp to upgrade.");
+    throw new ActionError("Uploading your own music is a Prime feature. Message us on WhatsApp to upgrade.");
   }
 }
 

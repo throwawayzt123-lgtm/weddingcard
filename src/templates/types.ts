@@ -55,7 +55,7 @@ export type InvitationViewData = {
   photos: { id: string; url: string }[];
   music: { enabled: boolean; src: string | null };
   features: { rsvp: boolean; gallery: boolean; showBadge: boolean };
-  brand: { name: string; url: string };
+  brand: { name: string; url: string; /** WhatsApp link of the small credit shown on every invitation */ whatsappUrl: string };
   /** null on the generic link → "Dear Guest," */
   guest: { code: string; displayName: string } | null;
   /** The guest's earlier answers, keyed by event id. */

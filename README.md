@@ -216,6 +216,8 @@ src/
     rate-limit.ts, audit.ts, og.tsx …
 ```
 
+**Categories and prices:** every design belongs to a category: Regular (PKR 2,599), Advanced (PKR 3,399) or Prime (PKR 6,899). The category of a design is the `plan` line of its entry in `src/templates/registry.ts`, and the prices and limits of each category are in `src/lib/plans.ts` (Regular is the BASIC plan, Advanced is STANDARD, Prime is PREMIUM). In Admin, choosing a design selects its category and fills in the amount for you. Every invitation carries a small "Made by Dawatnamaa" credit at the top that opens WhatsApp (see `WATERMARK_NAME` in `src/lib/site.ts`).
+
 **Add a seventeenth design:** copy a folder in `src/templates/`, change its colours and opening screen, add it to `registry.ts` and `template-host.tsx`, and take a thumbnail. Nothing else changes.
 
 ---

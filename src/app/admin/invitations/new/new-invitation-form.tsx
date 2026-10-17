@@ -7,7 +7,7 @@ import { AlertTriangle, ExternalLink, Lock, MessageCircle, PlusCircle } from "lu
 import { Card, CopyButton, Field, SubmitButton, fieldError, useActionToast, useServerForm } from "@/components/ui/form";
 import { credentialsMessage } from "@/lib/messages";
 import { PLAN_KEYS, PLANS } from "@/lib/plans";
-import { TEMPLATES } from "@/templates/registry";
+import { TEMPLATES, templatesByPlan } from "@/templates/registry";
 import { createInvitationAction, type CreatedPayload, type DuplicatePayload } from "../../actions";
 
 type Client = { id: string; name: string; phone: string | null };
@@ -23,9 +23,11 @@ export function NewInvitationForm({ clients, siteUrl, defaultExpiryDays }: { cli
   const { state, onSubmit, pending } = useServerForm(createInvitationAction);
   useActionToast(state);
   const [mode, setMode] = useState<"new" | "existing">("new");
-  const [plan, setPlan] = useState("STANDARD");
+  const [templateKey, setTemplateKey] = useState<string>(TEMPLATES[0].key);
+  const [plan, setPlan] = useState<string>(TEMPLATES[0].plan);
+  const [amountTouched, setAmountTouched] = useState(false);
   const [paid, setPaid] = useState("UNPAID");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(String(PLANS[TEMPLATES[0].plan].pricePkr));
   const [resetKey, setResetKey] = useState(0);
 
   const created = state?.ok && isCreated(state.data) ? state.data : null;
@@ -39,17 +41,33 @@ export function NewInvitationForm({ clients, siteUrl, defaultExpiryDays }: { cli
     <form key={resetKey} onSubmit={onSubmit} className="space-y-6" noValidate>
       {/* 1. Design */}
       <Card title="1. Choose the design" description="The design the customer picked from the demos.">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup">
-          {TEMPLATES.map((t, i) => (
-            <label key={t.key} className="group cursor-pointer">
-              <input type="radio" name="templateKey" value={t.key} defaultChecked={i === 0} className="peer sr-only" />
-              <span className="block overflow-hidden rounded-2xl border-2 border-ink/10 bg-white transition peer-checked:border-maroon peer-checked:shadow-lg peer-focus-visible:outline-2 peer-focus-visible:outline-maroon">
-                <span className="relative block aspect-[9/14] bg-cream">
-                  <Image src={t.thumbnail} alt="" fill sizes="200px" className="object-cover object-top" />
-                </span>
-                <span className="block p-3 text-center font-serif text-lg text-maroon">{t.name}</span>
-              </span>
-            </label>
+        <div className="space-y-6" role="radiogroup" aria-label="Design">
+          {PLAN_KEYS.map((key) => (
+            <div key={key}>
+              <p className="mb-2 text-sm font-semibold text-ink/70">
+                {PLANS[key].label} <span className="font-normal text-ink/50">(Rs {PLANS[key].pricePkr.toLocaleString("en-PK")})</span>
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {templatesByPlan(key).map((t) => (
+                  <label key={t.key} className="group cursor-pointer">
+                    <input
+                      type="radio"
+                      name="templateKey"
+                      value={t.key}
+                      checked={templateKey === t.key}
+                      onChange={() => { setTemplateKey(t.key); setPlan(t.plan); if (!amountTouched) setAmount(String(PLANS[t.plan].pricePkr)); }}
+                      className="peer sr-only"
+                    />
+                    <span className="block overflow-hidden rounded-2xl border-2 border-ink/10 bg-white transition peer-checked:border-maroon peer-checked:shadow-lg peer-focus-visible:outline-2 peer-focus-visible:outline-maroon">
+                      <span className="relative block aspect-[9/14] bg-cream">
+                        <Image src={t.thumbnail} alt="" fill sizes="200px" className="object-cover object-top" />
+                      </span>
+                      <span className="block p-3 text-center font-serif text-lg text-maroon">{t.name}</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
         {fieldError(state, "templateKey") && <p className="mt-2 text-sm font-medium text-red-600">{fieldError(state, "templateKey")}</p>}
@@ -84,7 +102,7 @@ export function NewInvitationForm({ clients, siteUrl, defaultExpiryDays }: { cli
         <div className="grid gap-3 sm:grid-cols-3" role="radiogroup">
           {PLAN_KEYS.map((key) => (
             <label key={key} className="cursor-pointer">
-              <input type="radio" name="plan" value={key} checked={plan === key} onChange={() => { setPlan(key); if (!amount) setAmount(String(PLANS[key].pricePkr)); }} className="peer sr-only" />
+              <input type="radio" name="plan" value={key} checked={plan === key} onChange={() => { setPlan(key); if (!amountTouched) setAmount(String(PLANS[key].pricePkr)); }} className="peer sr-only" />
               <span className="block rounded-2xl border-2 border-ink/10 p-4 transition peer-checked:border-maroon peer-checked:bg-cream/60">
                 <span className="font-serif text-xl text-maroon">{PLANS[key].label}</span>
                 <span className="block text-sm font-semibold">Rs {(PLANS[key].pricePkr).toLocaleString("en-PK")}</span>
@@ -110,7 +128,7 @@ export function NewInvitationForm({ clients, siteUrl, defaultExpiryDays }: { cli
             </select>
           </Field>
           <Field label="Amount (Rs)" htmlFor="paymentAmount" error={fieldError(state, "paymentAmount")}>
-            <input id="paymentAmount" name="paymentAmount" inputMode="numeric" className="input" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={String(PLANS[plan as keyof typeof PLANS]?.pricePkr ?? "")} />
+            <input id="paymentAmount" name="paymentAmount" inputMode="numeric" className="input" value={amount} onChange={(e) => { setAmount(e.target.value); setAmountTouched(true); }} placeholder={String(PLANS[plan as keyof typeof PLANS]?.pricePkr ?? "")} />
           </Field>
           <Field label="Payment method" htmlFor="paymentMethod">
             <input id="paymentMethod" name="paymentMethod" className="input" placeholder="JazzCash, EasyPaisa, Bank transfer…" />

@@ -744,3 +744,29 @@
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
+
+/* ---------- The small "Made by" credit, on every design ---------- */
+.inv-watermark {
+  position: fixed;
+  top: calc(var(--inv-bar, 0px) + 5px);
+  left: 50%;
+  z-index: 65;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(20, 12, 12, 0.34);
+  color: rgba(255, 248, 236, 0.86);
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.inv-watermark:hover, .inv-watermark:focus-visible { opacity: 1; }

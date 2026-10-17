@@ -3,7 +3,8 @@ import { cache } from "react";
 import { prisma } from "@/lib/prisma";
 import { toYmd } from "@/lib/dates";
 import { getPlan } from "@/lib/plans";
-import { SITE } from "@/lib/site";
+import { getSettings, waLink } from "@/lib/settings";
+import { SITE, WATERMARK_MESSAGE } from "@/lib/site";
 import { getTemplate, getTrack } from "@/templates/registry";
 import type { InvitationViewData, InviteFamilySide, RsvpAnswer } from "@/templates/types";
 
@@ -20,7 +21,7 @@ export type InvitationLoad =
  */
 export const loadInvitation = cache(async (slug: string, guestCode: string | null): Promise<InvitationLoad> => {
   // One round trip: every query runs at the same time (each filters by slug itself).
-  const [inv, familySides, allEvents, photos, guest] = await Promise.all([
+  const [inv, familySides, allEvents, photos, guest, settings] = await Promise.all([
     prisma.invitation.findUnique({ where: { slug } }),
     prisma.familySide.findMany({ where: { invitation: { slug } }, include: { members: { orderBy: { order: "asc" } } } }),
     prisma.event.findMany({ where: { invitation: { slug } }, orderBy: [{ date: "asc" }, { order: "asc" }] }),
@@ -31,6 +32,7 @@ export const loadInvitation = cache(async (slug: string, guestCode: string | nul
           include: { guestEvents: { select: { eventId: true } }, rsvps: true },
         })
       : Promise.resolve(null),
+    getSettings(),
   ]);
   if (!inv || inv.status === "DRAFT") return { kind: "notfound" };
 
@@ -55,7 +57,7 @@ export const loadInvitation = cache(async (slug: string, guestCode: string | nul
     };
   };
 
-  // Music: the customer's own MP3 (Premium) → their chosen track → the design's default.
+  // Music: the customer's own MP3 (Prime) → their chosen track → the design's default.
   const meta = getTemplate(inv.templateKey);
   const track = getTrack(inv.musicKey) ?? getTrack(meta?.defaultTrack);
   const musicSrc = (plan.customMusicUpload && inv.customMusicUrl) || track?.file || null;
@@ -87,10 +89,10 @@ export const loadInvitation = cache(async (slug: string, guestCode: string | nul
     features: {
       rsvp: plan.rsvp,
       gallery: plan.maxPhotos > 0,
-      // Only Premium can hide the badge.
+      // Only Prime can hide the badge.
       showBadge: inv.showBadge || !plan.canRemoveBadge,
     },
-    brand: { name: brand, url: SITE.url },
+    brand: { name: brand, url: SITE.url, whatsappUrl: waLink(settings, WATERMARK_MESSAGE) },
     guest: guest ? { code: guest.code, displayName: guest.displayName } : null,
     rsvps,
     mode: "live",

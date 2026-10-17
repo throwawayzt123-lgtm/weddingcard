@@ -25,3 +25,11 @@ export function whatsappLink(text?: string, number: string = SITE.whatsappNumber
   return text ? `https://wa.me/${digits}?text=${encodeURIComponent(text)}` : `https://wa.me/${digits}`;
 }
 
+/** Formats a PKR amount, e.g. 2599 becomes "PKR 2,599". */
+export function formatPkr(amount: number): string {
+  return `PKR ${amount.toLocaleString("en-PK")}`;
+}
+
+/** The small credit shown on every invitation. It opens WhatsApp with this message. */
+export const WATERMARK_NAME = "Dawatnamaa";
+export const WATERMARK_MESSAGE = "Hi, I saw an invitation made by Dawatnamaa and I would like one for my wedding.";

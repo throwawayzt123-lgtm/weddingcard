@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { BellRing, CalendarCheck, Check, Gift, Heart, Languages, MapPinned, Music2, Send, Sparkles, Users, Wallet } from "lucide-react";
-import { DesignCard } from "@/components/marketing/design-card";
+import { DesignCategories } from "@/components/marketing/design-categories";
 import { MarketingFooter } from "@/components/marketing/footer";
 import { CustomDesignBand } from "@/components/marketing/custom-band";
 import { MarketingHeader } from "@/components/marketing/header";
@@ -150,15 +150,11 @@ export default async function HomePage() {
             <div className="text-center">
               <p className="section-eyebrow">The designs</p>
               <h2 className="section-title">Pick the one that feels like you</h2>
-              <p className="mx-auto mt-4 max-w-xl text-ink/70">Open any live demo to see it exactly as your guests will.</p>
+              <p className="mx-auto mt-4 max-w-xl text-ink/70">Open any live demo to see it exactly as your guests will. Each category has its own price, shown below.</p>
             </div>
           </div>
-          <div className="mx-auto mt-12 grid max-w-6xl gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3">
-            {TEMPLATES.map((t) => (
-              <div key={t.key} data-fx="rise">
-                <DesignCard template={t} orderHref={wa(`Hi, I want to order the ${t.name} invitation.`)} />
-              </div>
-            ))}
+          <div className="mt-10">
+            <DesignCategories orderHref={wa} />
           </div>
           <div className="mx-auto max-w-6xl px-4">
             <CustomDesignBand href={customHref} />

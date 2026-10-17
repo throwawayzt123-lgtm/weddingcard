@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       stored = { folder, ext: "webp", bytes };
     }
 
-    // Plan limits are checked before saving (photos count, Premium-only music…).
+    // Plan limits are checked before saving (photos count, Prime only music…).
     const { prepareUpload } = await import("@/lib/uploads");
     await prepareUpload(inv, kind, { size: data.length, type: kind === "music" ? "audio/mpeg" : "image/webp" });
 

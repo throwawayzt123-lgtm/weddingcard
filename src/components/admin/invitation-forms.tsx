@@ -8,7 +8,7 @@ import { Card, Field, SubmitButton, fieldError, useActionToast, useServerForm } 
 import { Dialog } from "@/components/ui/confirm-dialog";
 import { ResetPasswordDialog } from "@/components/admin/reset-password";
 import { PLAN_KEYS, PLANS } from "@/lib/plans";
-import { TEMPLATES } from "@/templates/registry";
+import { templatesByPlan } from "@/templates/registry";
 import {
   correctNamesAction, deleteInvitationAction, extendExpiryAction, setStatusAction, updateInvitationAction,
 } from "@/app/admin/actions";
@@ -46,7 +46,11 @@ export function SettingsForm({ inv }: { inv: InvitationData }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Design" htmlFor="templateKey" hint="Changing the design keeps all the customer's details.">
             <select id="templateKey" name="templateKey" defaultValue={inv.templateKey} className="input">
-              {TEMPLATES.map((t) => <option key={t.key} value={t.key}>{t.name}</option>)}
+              {PLAN_KEYS.map((key) => (
+                <optgroup key={key} label={`${PLANS[key].label} (Rs ${PLANS[key].pricePkr.toLocaleString("en-PK")})`}>
+                  {templatesByPlan(key).map((t) => <option key={t.key} value={t.key}>{t.name}</option>)}
+                </optgroup>
+              ))}
             </select>
           </Field>
           <Field label="Plan" htmlFor="plan" hint="Sets the limits for events, guests, photos and RSVP.">
@@ -63,7 +67,7 @@ export function SettingsForm({ inv }: { inv: InvitationData }) {
           </Field>
           <label className="flex items-start gap-3 rounded-xl border border-ink/10 bg-cream/50 p-4 sm:mt-7">
             <input type="checkbox" name="showBadge" defaultChecked={inv.showBadge} className="mt-1 size-5 accent-maroon" />
-            <span className="text-sm"><strong>Show “Made with ❤” badge</strong><br /><span className="text-ink/65">Only Premium invitations can hide it.</span></span>
+            <span className="text-sm"><strong>Show “Made with ❤” badge</strong><br /><span className="text-ink/65">Only Prime invitations can hide it.</span></span>
           </label>
         </div>
       </Card>

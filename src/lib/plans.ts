@@ -21,9 +21,9 @@ export type PlanConfig = {
 
 export const PLANS = {
   BASIC: {
-    label: "Basic",
-    pricePkr: 2500,
-    blurb: "A beautiful card for a small celebration",
+    label: "Regular",
+    pricePkr: 2599,
+    blurb: "A graceful invitation for an intimate celebration",
     maxEvents: 2,
     maxGuests: 50,
     rsvp: false,
@@ -32,9 +32,9 @@ export const PLANS = {
     canRemoveBadge: false,
   },
   STANDARD: {
-    label: "Standard",
-    pricePkr: 4500,
-    blurb: "Our most chosen plan, with RSVP, gallery and up to 4 events",
+    label: "Advanced",
+    pricePkr: 3399,
+    blurb: "RSVP, a photo gallery and up to 4 events",
     maxEvents: 4,
     maxGuests: 300,
     rsvp: true,
@@ -43,9 +43,9 @@ export const PLANS = {
     canRemoveBadge: false,
   },
   PREMIUM: {
-    label: "Premium",
-    pricePkr: 7500,
-    blurb: "Everything unlimited, your own music, no branding",
+    label: "Prime",
+    pricePkr: 6899,
+    blurb: "Our fullest experience, with unlimited guests and your own music",
     maxEvents: null,
     maxGuests: null,
     rsvp: true,
@@ -66,23 +66,22 @@ export function canAddMore(limit: number | null, currentCount: number): boolean 
   return limit === null || currentCount < limit;
 }
 
-/** "23 / 50" or "23 / Unlimited" — for the portal usage meters. */
+/** "23 / 50" or "23 / Unlimited", for the portal usage meters. */
 export function formatUsage(currentCount: number, limit: number | null): string {
   return `${currentCount} / ${limit === null ? "Unlimited" : limit}`;
 }
 
-/** Human-readable feature list for a plan (used on the homepage and in the admin). */
+/** Human readable feature list for a plan (used on the website and in the admin). */
 export function planFeatures(plan: Plan): string[] {
   const p = PLANS[plan];
-  const list = [
-    `${p.maxEvents === null ? "Unlimited" : `Up to ${p.maxEvents}`} events (Mehndi, Nikkah, Baraat, Walima…)`,
-    `${p.maxGuests === null ? "Unlimited" : `${p.maxGuests}`} personalised guest links`,
-    "Animated opening, music & countdown",
+  return [
+    `${p.maxEvents === null ? "Unlimited" : `Up to ${p.maxEvents}`} events (Mehndi, Nikkah, Baraat, Walima and more)`,
+    `${p.maxGuests === null ? "Unlimited" : `${p.maxGuests}`} personal guest links`,
+    "Animated opening, music and countdown",
     "Venue maps and add to calendar",
-    p.rsvp ? "RSVP with headcount & messages" : "RSVP not included",
+    p.rsvp ? "RSVP with headcount and messages" : "RSVP not included",
     p.maxPhotos > 0 ? `Photo gallery (${p.maxPhotos} photos)` : "No photo gallery",
     p.customMusicUpload ? "Upload your own music" : "Choose from the music we provide",
-    p.canRemoveBadge ? "Your invitation, no branding" : `"Made with ❤" badge in footer`,
+    p.canRemoveBadge ? "No Made with love badge in the footer" : "A small Made with love badge in the footer",
   ];
-  return list;
 }

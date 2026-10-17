@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType }
 import dynamic from "next/dynamic";
 import type { InvitationViewData, TemplateProps } from "@/templates/types";
 import { MusicButton, MusicProvider, useMusic } from "./music";
+import { Watermark } from "./watermark";
 import "@/templates/invite.css";
 
 export type OpeningPhase = "closed" | "opening";
@@ -87,6 +88,7 @@ function Inner({ data, onRsvp, parts }: TemplateProps & { parts: TemplateParts }
   return (
     <div className="invitation" data-template={data.templateKey} data-phase={phase} data-ready={assets}>
       <Backdrop />
+      <Watermark href={data.brand.whatsappUrl} />
       {phase !== "open" && <Opening data={data} phase={phase} onTap={onTap} />}
       {ready && (
         <Content

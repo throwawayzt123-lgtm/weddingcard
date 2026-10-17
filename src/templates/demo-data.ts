@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { SITE, WATERMARK_MESSAGE, whatsappLink } from "@/lib/site";
 import { getTemplate, getTrack } from "./registry";
 import type { InvitationViewData, InviteEvent } from "./types";
 
@@ -83,7 +83,7 @@ export function buildDemoData(templateKey: string, options: { guest?: boolean } 
     photos: ["garden-aisle", "rose-red-teal", "table-banquet", "jasmine-leaves", "mehndi-decor", "candlesticks", "venue-white", "hall-palace"].map((n) => ({ id: `demo-${n}`, url: `/templates/photos/${n}.webp` })),
     music: { enabled: true, src: track?.file ?? null },
     features: { rsvp: true, gallery: true, showBadge: true },
-    brand: { name: SITE.brandName, url: SITE.url },
+    brand: { name: SITE.brandName, url: SITE.url, whatsappUrl: whatsappLink(WATERMARK_MESSAGE) },
     guest: options.guest === false ? null : { code: "demo", displayName: "Mr & Mrs Ali" },
     rsvps: {},
     mode: "preview",

@@ -25,7 +25,7 @@ export default async function MusicPage() {
         canUpload={plan.customMusicUpload}
         customUrl={plan.customMusicUpload ? inv.customMusicUrl : null}
         disabled={!edit.editable}
-        upgradeUrl={waLink(settings, `Hi, I'd like to upgrade my invitation (${inv.groomName} & ${inv.brideName}) to Premium to upload my own music.`)}
+        upgradeUrl={waLink(settings, `Hi, I'd like to upgrade my invitation (${inv.groomName} & ${inv.brideName}) to Prime to upload my own music.`)}
       />
     </div>
   );

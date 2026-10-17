@@ -1,3 +1,5 @@
+import type { Plan } from "@prisma/client";
+
 // The list of designs customers can choose from.
 // To add a design: create src/templates/<key>/, add it to loader.tsx and add
 // an entry below. Nothing else in the app needs to change.
@@ -23,6 +25,8 @@ export function getTrack(key: string | null | undefined): MusicTrack | undefined
 
 export type TemplateMeta = {
   key: string;
+  /** The category (and price) of the design: BASIC = Regular, STANDARD = Advanced, PREMIUM = Prime. */
+  plan: Plan;
   name: string;
   /** One line shown on cards. */
   tagline: string;
@@ -43,6 +47,7 @@ export type TemplateMeta = {
 export const TEMPLATES: TemplateMeta[] = [
   {
     key: "bazm",
+    plan: "PREMIUM",
     name: "Bazm",
     tagline: "Full screen chapters, a new picture with every scroll",
     description:
@@ -61,6 +66,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "shahi-darwaza",
+    plan: "PREMIUM",
     name: "Shahi Darwaza",
     tagline: "Carved palace doors that swing open",
     description:
@@ -79,6 +85,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "gulzar",
+    plan: "PREMIUM",
     name: "Gulzar",
     tagline: "A sealed envelope in a rose garden",
     description:
@@ -97,6 +104,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "mehndi-rang",
+    plan: "PREMIUM",
     name: "Mehndi Rang",
     tagline: "Embroidered curtains and swaying marigolds",
     description:
@@ -115,6 +123,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "noor",
+    plan: "PREMIUM",
     name: "Noor",
     tagline: "A gold arch drawn in the dark",
     description:
@@ -133,6 +142,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "nikah-nama",
+    plan: "PREMIUM",
     name: "Nikah Nama",
     tagline: "A crimson cloth bound book that opens",
     description:
@@ -151,6 +161,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "chandni",
+    plan: "STANDARD",
     name: "Chandni",
     tagline: "Moonlight in silver and slate",
     description:
@@ -169,6 +180,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "siyah-taj",
+    plan: "STANDARD",
     name: "Siyah Taj",
     tagline: "Black, old gold and one ruby thread",
     description:
@@ -187,6 +199,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "neelam-kashi",
+    plan: "STANDARD",
     name: "Neelam Kashi",
     tagline: "Sapphire blue and glazed Multani tiles",
     description:
@@ -205,6 +218,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "chambeli",
+    plan: "STANDARD",
     name: "Chambeli",
     tagline: "Pure white, with hand drawn jasmine",
     description:
@@ -223,6 +237,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "farman",
+    plan: "STANDARD",
     name: "Farman",
     tagline: "A royal decree sealed in wine red wax",
     description:
@@ -241,6 +256,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "jharoka",
+    plan: "STANDARD",
     name: "Jharoka",
     tagline: "Sandstone, terracotta and a carved lattice window",
     description:
@@ -259,6 +275,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "mor-pankh",
+    plan: "BASIC",
     name: "Mor Pankh",
     tagline: "Peacock teal, deep blue and gold",
     description:
@@ -277,6 +294,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "aasmani",
+    plan: "BASIC",
     name: "Aasmani",
     tagline: "Soft clouds part over a summer sky",
     description:
@@ -295,6 +313,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "sunehri",
+    plan: "BASIC",
     name: "Sunehri",
     tagline: "A champagne gold gift box that lifts open",
     description:
@@ -313,6 +332,7 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "kesar",
+    plan: "BASIC",
     name: "Kesar",
     tagline: "A brass diya lights up in saffron",
     description:
@@ -330,6 +350,11 @@ export const TEMPLATES: TemplateMeta[] = [
     bestFor: ["Mehndi","Mayun","Saffron and cream"],
   },
 ];
+
+/** The designs of one category, in the order they are listed. */
+export function templatesByPlan(plan: Plan): TemplateMeta[] {
+  return TEMPLATES.filter((t) => t.plan === plan);
+}
 
 export function getTemplate(key: string): TemplateMeta | undefined {
   return TEMPLATES.find((t) => t.key === key);

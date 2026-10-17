@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DesignCard } from "@/components/marketing/design-card";
+import { DesignCategories } from "@/components/marketing/design-categories";
 import { MarketingFooter } from "@/components/marketing/footer";
 import { CustomDesignBand } from "@/components/marketing/custom-band";
 import { MarketingHeader } from "@/components/marketing/header";
@@ -34,12 +34,8 @@ export default async function DesignsPage() {
               Every design includes personal guest links, music, countdown, maps and RSVP. Open a live demo to see exactly what your guests will experience. It looks best on your phone, with the sound on.
             </p>
           </div>
-          <div className="mt-12 grid gap-7 sm:grid-cols-2 xl:grid-cols-4">
-            {TEMPLATES.map((t) => (
-              <div key={t.key} data-fx="rise">
-                <DesignCard template={t} orderHref={wa(`Hi, I want to order the ${t.name} invitation.`)} />
-              </div>
-            ))}
+          <div className="mt-10">
+            <DesignCategories orderHref={wa} />
           </div>
           <CustomDesignBand href={customHref} />
         </div>
