@@ -1,0 +1,1179 @@
+/* ------------------------------------------------------------------
+   Marwareed — Luxury Ivory Silk Gatefold with French Lace & Pearl Brooch
+   Colours: Ivory silk, Antique gold, Pearl cream, Blush taupe damask.
+   Matching the physical luxury French-door wedding invitation.
+------------------------------------------------------------------- */
+
+.invitation[data-template="marwareed"] {
+  --inv-bg: #ede4d5;
+  --inv-ink: #3b2a22;
+  --inv-muted: rgba(59, 42, 34, 0.74);
+  --inv-accent: #cda358;
+  --inv-accent-strong: #ebd08a;
+  --inv-on-accent: #2c1a12;
+  --inv-panel-bg: #fdfbf7;
+  --inv-panel-border: rgba(205, 163, 88, 0.45);
+  --inv-card-bg: rgba(255, 255, 255, 0.96);
+  --inv-menu-bg: #352119;
+  --inv-heading: var(--font-cormorant), serif;
+  --inv-script: var(--font-pinyon), cursive;
+  --inv-radius: 18px;
+  --inv-stack-bg: #fdfbf7;
+  --inv-stack-edge: rgba(205, 163, 88, 0.4);
+}
+
+/* ------------------- FIXED BACKDROP ------------------- */
+.mw-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255, 248, 235, 0.85) 0%, rgba(220, 203, 185, 0.75) 60%, rgba(186, 158, 140, 0.9) 100%),
+    linear-gradient(#f4ede2, #dccbb9);
+}
+
+.mw-backdrop-damask {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: radial-gradient(#8c6b65 1px, transparent 1px),
+    radial-gradient(#8c6b65 1px, #dccbb9 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.mw-backdrop-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(70, 40, 30, 0.2);
+}
+
+/* ==============================================================
+   OPENING SCREEN: 3D SILK GATEFOLD DOORS WITH PEARL BROOCH
+   ============================================================== */
+
+.mw-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 50% 45%, #fffdfa 0%, #f6ede0 50%, #e2d2bf 100%);
+  perspective: 1800px;
+  overflow: hidden;
+}
+
+.mw-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: calc(3.4rem + var(--inv-bar, 0px));
+  padding-bottom: 1.5rem;
+  padding-inline: 1rem;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.8s, opacity 0.8s ease-out 1.5s;
+}
+
+.mw-opening[data-phase="opening"] .mw-stage {
+  transform: scale(1.15);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Guest Tag: Positioned safely below the watermark badge */
+.mw-guest-tag-wrapper {
+  margin-bottom: 0.8rem;
+  z-index: 10;
+}
+.mw-guest-tag {
+  display: inline-block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: #5c3e30;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(205, 163, 88, 0.45);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(70, 40, 25, 0.08);
+}
+.mw-guest-tag strong {
+  font-weight: 600;
+  color: #3b2a22;
+}
+
+/* The Gatefold Card Structure */
+.mw-gatefold-card {
+  position: relative;
+  width: min(88vw, 360px);
+  height: min(74dvh, 580px);
+  aspect-ratio: 9 / 16;
+  border-radius: 8px;
+  box-shadow:
+    0 24px 50px -12px rgba(60, 35, 20, 0.42),
+    0 0 0 1px rgba(205, 163, 88, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  background: #fdfbf7;
+}
+
+/* Card Interior (Behind the doors) */
+.mw-card-interior {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: #fdfbf7;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 0;
+  box-shadow: inset 0 0 40px rgba(180, 150, 120, 0.15);
+  transform: scale(0.96);
+  opacity: 0.6;
+  transition: transform 1.6s ease-out 0.2s, opacity 0.8s ease-out 0.2s;
+}
+
+.mw-opening[data-phase="opening"] .mw-card-interior {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.mw-interior-border {
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid #d4af5a;
+  pointer-events: none;
+  z-index: 1;
+}
+.mw-interior-border::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 0.75px solid rgba(212, 175, 90, 0.65);
+}
+
+.mw-interior-lace-top {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  background: url("/templates/marwareed/lace-top.png") top center / 100% 100% no-repeat;
+  z-index: 2;
+}
+.mw-interior-lace-bottom {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  background: url("/templates/marwareed/lace-bottom.png") bottom center / 100% 100% no-repeat;
+  z-index: 2;
+}
+
+.mw-interior-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0.2rem 1rem;
+}
+.mw-interior-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: #5c4436;
+}
+.mw-interior-sub {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  color: #7d6152;
+  margin-top: 0.25rem;
+}
+.mw-interior-names {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(2rem, 7vw, 2.5rem);
+  line-height: 1.15;
+  color: #9f7528;
+  margin-top: 0.25rem;
+  background: linear-gradient(180deg, #d8b25d 0%, #aa8030 65%, #7e5c18 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.mw-interior-names i {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.55em;
+  font-style: italic;
+  margin-inline: 0.25em;
+  color: #9f7528;
+  -webkit-text-fill-color: #9f7528;
+}
+.mw-interior-text {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #4a382e;
+  margin-top: 0.35rem;
+}
+
+/* Doors (Left and Right Flaps) */
+.mw-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.3%;
+  z-index: 10;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 1.7s cubic-bezier(0.65, 0.02, 0.2, 1) 0.15s;
+}
+
+.mw-door-left {
+  left: 0;
+  transform-origin: left center;
+  border-right: 1px solid rgba(80, 50, 30, 0.35);
+}
+.mw-door-right {
+  right: 0;
+  transform-origin: right center;
+  border-left: 1px solid rgba(80, 50, 30, 0.35);
+}
+
+.mw-opening[data-phase="opening"] .mw-door-left {
+  transform: rotateY(-112deg);
+}
+.mw-opening[data-phase="opening"] .mw-door-right {
+  transform: rotateY(112deg);
+}
+
+/* Door Panel surface with silky satin sheen */
+.mw-door-panel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, #ede4d5 0%, #fcf9f3 30%, #ffffff 65%, #f6efe3 98%, #3e2e24 100%);
+  box-shadow: inset 0 0 35px rgba(210, 185, 155, 0.25);
+}
+.mw-door-left .mw-door-panel {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.mw-door-right .mw-door-panel {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background:
+    linear-gradient(270deg, #ede4d5 0%, #fcf9f3 30%, #ffffff 65%, #f6efe3 98%, #3e2e24 100%);
+}
+
+/* Outer vertical French lace border */
+.mw-lace-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45px;
+  z-index: 5;
+  pointer-events: none;
+}
+.mw-lace-left {
+  left: 0;
+  background: url("/templates/marwareed/lace-left.png") left top / cover repeat-y;
+  filter: drop-shadow(2px 0 4px rgba(70, 45, 30, 0.15));
+}
+.mw-lace-right {
+  right: 0;
+  background: url("/templates/marwareed/lace-right.png") right top / cover repeat-y;
+  filter: drop-shadow(-2px 0 4px rgba(70, 45, 30, 0.15));
+}
+
+/* Seamless Door Inner Content (Half on left, Half on right) */
+.mw-door-inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200%;
+}
+.mw-door-inner-left {
+  left: 0;
+}
+.mw-door-inner-right {
+  left: -100%;
+}
+
+/* Cover Face: EXACT ZERO-OVERLAP ZONES */
+.mw-cover-face {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Zone 1: Names strictly in top 8% to 42% */
+.mw-cover-names-zone {
+  position: absolute;
+  top: 9%;
+  left: 45px;
+  right: 45px;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.mw-cover-name {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(2.1rem, 7.5vw, 2.8rem);
+  line-height: 1.1;
+  color: #9f7528;
+  background: linear-gradient(180deg, #e3c16f 0%, #aa8030 55%, #775514 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(120, 90, 40, 0.2));
+}
+.mw-cover-amp {
+  display: block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #9f7528;
+  margin: 0.1rem 0;
+}
+
+/* Zone 2: Date strictly at ~65% */
+.mw-cover-date-zone {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.mw-cover-date {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  color: #8c6724;
+}
+
+/* Zone 3: Tap Prompt strictly at ~85% */
+.mw-cover-tap-zone {
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.mw-pearl-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f4ede0 50%, #d8caa8 90%, #9a845e 100%);
+  box-shadow: 0 1px 4px rgba(60, 40, 20, 0.35);
+  animation: mw-pearl-glow 2.4s ease-in-out infinite;
+}
+.mw-tap-text {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: #7a5e4c;
+}
+
+/* Pearl & Crystal Rhinestone Brooch Clasp */
+.mw-brooch-clasp {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(60, 35, 20, 0.45));
+  transition: transform 0.65s cubic-bezier(0.5, 0, 0.2, 1), opacity 0.5s ease-out;
+}
+
+.mw-brooch-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: contrast(1.05) brightness(1.02);
+}
+
+.mw-opening[data-phase="closed"] .mw-brooch-clasp {
+  animation: mw-brooch-float 3.5s ease-in-out infinite;
+}
+
+.mw-opening[data-phase="opening"] .mw-brooch-clasp {
+  transform: translate(-50%, -50%) scale(1.18);
+  opacity: 0;
+}
+
+@keyframes mw-brooch-float {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: drop-shadow(0 6px 14px rgba(60, 35, 20, 0.45));
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.03);
+    filter: drop-shadow(0 8px 20px rgba(180, 130, 60, 0.65));
+  }
+}
+
+@keyframes mw-pearl-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(212, 175, 90, 0.4), 0 2px 5px rgba(60, 40, 20, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(212, 175, 90, 0.25), 0 2px 8px rgba(180, 140, 70, 0.5);
+  }
+}
+
+.mw-opening-hint {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #7b5b47;
+  margin-top: 0.8rem;
+}
+
+/* ==============================================================
+   PAGE BODY: MARWAREED CONTENT & LUXURY CARDS
+   ============================================================== */
+
+.mw-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: calc(2rem + var(--inv-bar, 0px)) 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.mw-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Base Card Styling */
+.mw-card {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  background: #fdfbf7;
+  box-shadow:
+    0 20px 45px -15px rgba(70, 40, 30, 0.22),
+    0 0 0 1px rgba(205, 163, 88, 0.3);
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------
+   CARD 1: FORMAL INVITATION CARD (Exact Image 2)
+   -------------------------------------------------------------- */
+.mw-invitation-card {
+  padding: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, #ffffff 0%, #fdfbf7 75%, #f6efe3 100%);
+}
+
+.mw-lace-top {
+  width: 100%;
+  height: 88px;
+  background: url("/templates/marwareed/lace-top.png") top center / 100% 100% no-repeat;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.mw-lace-bottom {
+  width: 100%;
+  height: 75px;
+  background: url("/templates/marwareed/lace-bottom.png") bottom center / 100% 100% no-repeat;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mw-double-gold-frame {
+  position: relative;
+  border-left: 1.5px solid #d4af5a;
+  border-right: 1.5px solid #d4af5a;
+  padding: 0 6px;
+  margin: 0 1rem;
+}
+.mw-frame-inner {
+  border-left: 0.75px solid rgba(212, 175, 90, 0.65);
+  border-right: 0.75px solid rgba(212, 175, 90, 0.65);
+  padding: 1.8rem 1.4rem 1.8rem;
+  text-align: center;
+}
+
+.mw-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: #4a382e;
+}
+.mw-sub-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: #725747;
+  margin-top: 0.5rem;
+}
+
+.mw-names {
+  margin: 1.2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mw-name {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(3rem, 11vw, 4.2rem);
+  line-height: 1.1;
+  color: #9f7528;
+  background: linear-gradient(180deg, #dfbc68 0%, #aa8030 55%, #7a5816 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(120, 90, 40, 0.2));
+}
+.mw-amp {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #aa8030;
+  margin: 0.1rem 0;
+}
+
+/* Pearl Divider Ornament */
+.mw-pearl-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 1.2rem auto;
+  max-width: 240px;
+}
+.mw-pearl-divider .mw-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #cda358, transparent);
+}
+.mw-pearl-cabochon {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f4ede0 50%, #d8caa8 90%, #9a845e 100%);
+  box-shadow: 0 1px 3px rgba(60, 40, 20, 0.35);
+}
+.mw-pearl-cabochon.mw-pearl-center {
+  width: 9.5px;
+  height: 9.5px;
+}
+
+.mw-verse-invitation {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 3.5vw, 1.22rem);
+  line-height: 1.6;
+  color: #3b2a22;
+  margin: 1.1rem 0;
+}
+
+.mw-datetime-group {
+  margin: 1.4rem 0;
+}
+.mw-date {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #2c1e17;
+}
+.mw-venue-line {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: #6d5140;
+  margin-top: 0.45rem;
+}
+
+.mw-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.mw-reply-link {
+  display: inline-block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #3b2a22;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: #cda358;
+  padding: 0.4rem 1.2rem;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.mw-reply-link:hover {
+  color: #9f7528;
+  text-decoration-color: #9f7528;
+}
+
+/* --------------------------------------------------------------
+   CARD 2: ITINERARY / THE EVENING (Exact Image 3)
+   -------------------------------------------------------------- */
+.mw-deckled-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 1.2rem 0.8rem;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(180, 145, 130, 0.4) 0%, rgba(140, 107, 101, 0.8) 100%),
+    linear-gradient(#a3817a, #84615a);
+  box-shadow: 0 20px 45px -10px rgba(50, 30, 25, 0.45);
+}
+
+.mw-deckled-card {
+  position: relative;
+  padding: 1.5rem 1.8rem 3.2rem;
+  border-radius: 6px;
+  background: #fdfbf7;
+  box-shadow:
+    0 14px 30px -8px rgba(45, 25, 20, 0.4),
+    0 0 0 1px rgba(220, 200, 180, 0.6),
+    inset 0 0 30px rgba(210, 185, 160, 0.25);
+  border: 1px solid rgba(235, 220, 200, 0.8);
+}
+
+/* Header Row: Bouquet on Left, Titles on Right (No Overlap!) */
+.mw-itinerary-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 140px;
+  margin-bottom: 1.2rem;
+}
+
+.mw-corner-roses {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(130px, 36vw, 175px);
+  aspect-ratio: 240 / 280;
+  z-index: 10;
+  pointer-events: none;
+}
+.mw-corner-roses-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(2px 4px 10px rgba(60, 35, 25, 0.25));
+}
+
+.mw-itinerary-title-box {
+  margin-left: auto;
+  text-align: right;
+  padding-top: 1.2rem;
+  padding-right: 0.5rem;
+  z-index: 12;
+}
+
+.mw-itinerary-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: #634b3e;
+}
+.mw-itinerary-heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(2.2rem, 7vw, 2.9rem);
+  font-style: italic;
+  color: #2b1d16;
+  margin-top: 0.3rem;
+}
+
+.mw-itinerary-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.mw-timeline-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.mw-timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mw-timeline-time {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #725747;
+}
+.mw-timeline-label {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.65rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #2a1c15;
+  margin: 0.2rem 0 0.3rem;
+}
+.mw-timeline-desc {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  color: #553e32;
+}
+
+.mw-timeline-pearl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0;
+}
+.mw-pearl-orb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f4ede0 50%, #d8caa8 90%, #9a845e 100%);
+  box-shadow: 0 1px 4px rgba(60, 40, 20, 0.35);
+}
+
+/* --------------------------------------------------------------
+   CARD 3: OUR LOVE STORY & MILESTONES (NEW FANCY CARD)
+   -------------------------------------------------------------- */
+.mw-story-lead {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #4a3528;
+  max-width: 440px;
+  margin: 1.2rem auto 1.6rem;
+}
+
+.mw-milestones-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.mw-milestone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #5c4436;
+  background: #fbf6ec;
+  border: 1px solid rgba(205, 163, 88, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.mw-milestone-pill:hover,
+.mw-milestone-pill.active {
+  background: #cda358;
+  color: #ffffff;
+  border-color: #cda358;
+  box-shadow: 0 4px 12px rgba(205, 163, 88, 0.35);
+}
+
+.mw-milestone-box {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(205, 163, 88, 0.4);
+  border-radius: 14px;
+  padding: 1.8rem 1.6rem;
+  box-shadow: 0 6px 18px rgba(70, 40, 25, 0.06);
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.mw-milestone-pearl-top {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f4ede0 50%, #d8caa8 90%, #9a845e 100%);
+  box-shadow: 0 2px 5px rgba(60, 40, 20, 0.3);
+}
+.mw-milestone-title {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #2c1e17;
+  margin-bottom: 0.6rem;
+}
+.mw-milestone-body {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #553e32;
+}
+
+/* --------------------------------------------------------------
+   CARD 5: CELEBRATIONS / EVENTS
+   -------------------------------------------------------------- */
+.mw-section-intro {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #5c4436;
+  max-width: 440px;
+  margin: 0.6rem auto 0;
+}
+
+.mw-events-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.mw-event-card {
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-left: 4px solid #cda358;
+}
+.mw-event-top-filigree {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -0.8rem;
+}
+.mw-event-step-number {
+  font-family: var(--font-cormorant), serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: rgba(205, 163, 88, 0.3);
+  line-height: 1;
+}
+
+.mw-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(205, 163, 88, 0.25);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+.mw-event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9f7528;
+  background: #f7efe1;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+}
+.mw-event-name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #2c1e17;
+}
+
+.mw-event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: #4a382e;
+}
+.mw-event-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.mw-row-icon {
+  width: 16px;
+  height: 16px;
+  color: #cda358;
+  shrink: 0;
+  margin-top: 2px;
+}
+.mw-event-dress-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #5a3d2e;
+  background: #fdf6ec;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(205, 163, 88, 0.25);
+  width: fit-content;
+  margin-top: 0.2rem;
+}
+.mw-event-note-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #634b3e;
+  background: rgba(245, 235, 220, 0.5);
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.2rem;
+}
+
+.mw-event-action {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.mw-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #cda358, #aa8030);
+  color: #ffffff;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(170, 128, 48, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.mw-map-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* --------------------------------------------------------------
+   CARD 6: WEDDING ATTIRE & PALETTE GUIDE (NEW FANCY CARD)
+   -------------------------------------------------------------- */
+.mw-attire-prompt {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4a3528;
+  max-width: 480px;
+  margin: 0 auto 1.8rem;
+}
+
+.mw-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 0.9rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.mw-swatch-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #faf6ee;
+  border: 1px solid rgba(205, 163, 88, 0.3);
+  padding: 0.8rem 0.4rem;
+  border-radius: 12px;
+}
+.mw-swatch-circle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(60, 40, 20, 0.2);
+  margin-bottom: 0.5rem;
+}
+.mw-swatch-pearl-pin {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #d8caa8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.mw-swatch-name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2c1e17;
+}
+.mw-swatch-desc {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  color: #725747;
+  margin-top: 0.15rem;
+}
+
+.mw-blessing-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #5c4436;
+  background: #faf4e8;
+  border: 1px solid rgba(205, 163, 88, 0.3);
+  padding: 0.6rem 1.2rem;
+  border-radius: 24px;
+  margin-top: 1.8rem;
+}
+
+/* --------------------------------------------------------------
+   CARDS 4, 7, 8, 9: COUNTDOWN, FAMILY, GALLERY, RSVP
+   -------------------------------------------------------------- */
+.mw-panel-card {
+  padding: 1.4rem;
+}
+.mw-panel-frame {
+  border: 1px solid rgba(205, 163, 88, 0.4);
+  padding: 2.2rem 1.4rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.mw-section-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.mw-section-title {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(2.4rem, 8vw, 3.2rem);
+  color: #9f7528;
+  background: linear-gradient(180deg, #dfbc68 0%, #aa8030 55%, #7a5816 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.2rem;
+}
+
+/* Countdown */
+.mw-countdown-section .inv-count-cell {
+  background: #faf6ee;
+  border: 1px solid rgba(205, 163, 88, 0.4);
+  border-radius: 12px;
+  padding: 0.8rem 0.4rem;
+  box-shadow: 0 2px 8px rgba(70, 40, 20, 0.06);
+}
+.mw-countdown-section .inv-count-num {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #8c6724;
+}
+.mw-countdown-section .inv-count-label {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #725747;
+}
+
+/* Gallery */
+.mw-gallery-wrap {
+  width: 100%;
+}
+
+/* RSVP */
+.mw-rsvp-guest-line {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.12rem;
+  color: #3b2a22;
+  margin-top: 0.5rem;
+}
+.mw-rsvp-prompt {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #6d5140;
+  margin: 0.4rem 0 1rem;
+}
+
+/* --------------------------------------------------------------
+   ACCESSIBILITY & RESPONSIVENESS
+   -------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .mw-door,
+  .mw-stage,
+  .mw-brooch-clasp,
+  .mw-card-interior {
+    transition-duration: 0.01s !important;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mw-gatefold-card {
+    height: min(72dvh, 540px);
+  }
+  .mw-card-interior {
+    padding: 0;
+  }
+  .mw-interior-content {
+    padding: 0.2rem 0.5rem;
+  }
+  .mw-double-gold-frame {
+    margin: 0 0.5rem;
+  }
+  .mw-frame-inner {
+    padding: 1.4rem 0.6rem 1.4rem;
+  }
+  .mw-deckled-card {
+    padding: 1.2rem 1.2rem 2.4rem;
+  }
+  .mw-palette-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

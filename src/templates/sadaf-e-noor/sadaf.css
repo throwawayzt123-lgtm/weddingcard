@@ -1,0 +1,1142 @@
+/* ------------------------------------------------------------------
+   Sadaf-e-Noor — Luxury Blush Satin Gatefold with Rose Gold Lace & Brooch
+   Colours: Blush silk, Rose gold, Pearl cream, Dusky rose damask.
+------------------------------------------------------------------- */
+
+.invitation[data-template="sadaf-e-noor"] {
+  --inv-bg: #f8ede8;
+  --inv-ink: #442a2e;
+  --inv-muted: rgba(68, 42, 46, 0.74);
+  --inv-accent: #c59285;
+  --inv-accent-strong: #e3b0a3;
+  --inv-on-accent: #30171c;
+  --inv-panel-bg: #fff8f5;
+  --inv-panel-border: rgba(197, 146, 133, 0.45);
+  --inv-card-bg: rgba(255, 255, 255, 0.96);
+  --inv-menu-bg: #3d1c24;
+  --inv-heading: var(--font-cormorant), serif;
+  --inv-script: var(--font-pinyon), cursive;
+  --inv-radius: 18px;
+  --inv-stack-bg: #fff8f5;
+  --inv-stack-edge: rgba(197, 146, 133, 0.4);
+}
+
+/* ------------------- FIXED BACKDROP ------------------- */
+.sd-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255, 245, 242, 0.9) 0%, rgba(245, 222, 215, 0.8) 60%, rgba(200, 160, 155, 0.9) 100%),
+    linear-gradient(#faece8, #dfcac5);
+}
+
+.sd-backdrop-damask {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: radial-gradient(#9e5f67 1px, transparent 1px),
+    radial-gradient(#9e5f67 1px, #dfcac5 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.sd-backdrop-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(80, 35, 45, 0.18);
+}
+
+/* ==============================================================
+   OPENING SCREEN: 3D BLUSH SILK GATEFOLD DOORS WITH BROOCH
+   ============================================================== */
+
+.sd-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 50% 45%, #fffdfd 0%, #fceed9 50%, #edd8d4 100%);
+  perspective: 1800px;
+  overflow: hidden;
+}
+
+.sd-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: calc(3.4rem + var(--inv-bar, 0px));
+  padding-bottom: 1.5rem;
+  padding-inline: 1rem;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.8s, opacity 0.8s ease-out 1.5s;
+}
+
+.sd-opening[data-phase="opening"] .sd-stage {
+  transform: scale(1.15);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sd-guest-tag-wrapper {
+  margin-bottom: 0.8rem;
+  z-index: 10;
+}
+.sd-guest-tag {
+  display: inline-block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: #63323b;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(197, 146, 133, 0.45);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(80, 40, 50, 0.08);
+}
+.sd-guest-tag strong {
+  font-weight: 600;
+  color: #442a2e;
+}
+
+.sd-gatefold-card {
+  position: relative;
+  width: min(88vw, 360px);
+  height: min(74dvh, 580px);
+  aspect-ratio: 9 / 16;
+  border-radius: 8px;
+  box-shadow:
+    0 24px 50px -12px rgba(80, 35, 45, 0.38),
+    0 0 0 1px rgba(197, 146, 133, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  background: #fff8f5;
+}
+
+.sd-card-interior {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: #fff8f5;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  box-shadow: inset 0 0 40px rgba(220, 180, 175, 0.18);
+  transform: scale(0.96);
+  opacity: 0.6;
+  transition: transform 1.6s ease-out 0.2s, opacity 0.8s ease-out 0.2s;
+}
+
+.sd-opening[data-phase="opening"] .sd-card-interior {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.sd-interior-border {
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid #c59285;
+  pointer-events: none;
+  z-index: 1;
+}
+.sd-interior-border::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 0.75px solid rgba(197, 146, 133, 0.65);
+}
+
+.sd-interior-lace-top {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  background: url("/templates/sadaf-e-noor/lace-top.png") top center / 100% 100% no-repeat;
+  filter: sepia(0.2) hue-rotate(-15deg);
+  z-index: 2;
+}
+.sd-interior-lace-bottom {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  background: url("/templates/sadaf-e-noor/lace-bottom.png") bottom center / 100% 100% no-repeat;
+  filter: sepia(0.2) hue-rotate(-15deg);
+  z-index: 2;
+}
+
+.sd-interior-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0.2rem 0.8rem;
+}
+.sd-interior-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: #63323b;
+}
+.sd-interior-sub {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  color: #8c5761;
+  margin-top: 0.25rem;
+}
+.sd-interior-names {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(2rem, 7vw, 2.5rem);
+  line-height: 1.15;
+  color: #ab6a60;
+  margin-top: 0.25rem;
+  background: linear-gradient(180deg, #d9a093 0%, #ad6d62 65%, #7a4037 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sd-interior-names i {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.55em;
+  font-style: italic;
+  margin-inline: 0.25em;
+  color: #ab6a60;
+  -webkit-text-fill-color: #ab6a60;
+}
+.sd-interior-text {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #55333a;
+  margin-top: 0.35rem;
+}
+
+.sd-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.3%;
+  z-index: 10;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 1.7s cubic-bezier(0.65, 0.02, 0.2, 1) 0.15s;
+}
+
+.sd-door-left {
+  left: 0;
+  transform-origin: left center;
+  border-right: 1px solid rgba(100, 45, 55, 0.35);
+}
+.sd-door-right {
+  right: 0;
+  transform-origin: right center;
+  border-left: 1px solid rgba(100, 45, 55, 0.35);
+}
+
+.sd-opening[data-phase="opening"] .sd-door-left {
+  transform: rotateY(-112deg);
+}
+.sd-opening[data-phase="opening"] .sd-door-right {
+  transform: rotateY(112deg);
+}
+
+.sd-door-panel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, #f7ebe8 0%, #fffbf9 30%, #ffffff 65%, #faeee9 98%, #4a2128 100%);
+  box-shadow: inset 0 0 35px rgba(225, 190, 185, 0.3);
+}
+.sd-door-left .sd-door-panel {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.sd-door-right .sd-door-panel {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background:
+    linear-gradient(270deg, #f7ebe8 0%, #fffbf9 30%, #ffffff 65%, #faeee9 98%, #4a2128 100%);
+}
+
+.sd-lace-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45px;
+  z-index: 5;
+  pointer-events: none;
+}
+.sd-lace-left {
+  left: 0;
+  background: url("/templates/sadaf-e-noor/lace-left.png") left top / cover repeat-y;
+  filter: sepia(0.2) hue-rotate(-15deg) drop-shadow(2px 0 4px rgba(80, 35, 45, 0.15));
+}
+.sd-lace-right {
+  right: 0;
+  background: url("/templates/sadaf-e-noor/lace-right.png") right top / cover repeat-y;
+  filter: sepia(0.2) hue-rotate(-15deg) drop-shadow(-2px 0 4px rgba(80, 35, 45, 0.15));
+}
+
+.sd-door-inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200%;
+}
+.sd-door-inner-left {
+  left: 0;
+}
+.sd-door-inner-right {
+  left: -100%;
+}
+
+.sd-cover-face {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sd-cover-names-zone {
+  position: absolute;
+  top: 9%;
+  left: 45px;
+  right: 45px;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.sd-cover-name {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(2.1rem, 7.5vw, 2.8rem);
+  line-height: 1.1;
+  color: #ab6a60;
+  background: linear-gradient(180deg, #e3aba0 0%, #ab6a60 55%, #7a3c34 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(120, 60, 70, 0.2));
+}
+.sd-cover-amp {
+  display: block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #ab6a60;
+  margin: 0.1rem 0;
+}
+
+.sd-cover-date-zone {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.sd-cover-date {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  color: #985850;
+}
+
+.sd-cover-tap-zone {
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.sd-pearl-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fceed9 50%, #d8baa8 90%, #aa7a74 100%);
+  box-shadow: 0 1px 4px rgba(80, 40, 50, 0.35);
+  animation: sd-pearl-glow 2.4s ease-in-out infinite;
+}
+.sd-tap-text {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: #8c5761;
+}
+
+.sd-brooch-clasp {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(80, 35, 45, 0.42));
+  transition: transform 0.65s cubic-bezier(0.5, 0, 0.2, 1), opacity 0.5s ease-out;
+}
+.sd-brooch-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.sd-opening[data-phase="closed"] .sd-brooch-clasp {
+  animation: sd-brooch-float 3.5s ease-in-out infinite;
+}
+.sd-opening[data-phase="opening"] .sd-brooch-clasp {
+  transform: translate(-50%, -50%) scale(1.18);
+  opacity: 0;
+}
+
+@keyframes sd-brooch-float {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: drop-shadow(0 6px 14px rgba(80, 35, 45, 0.42));
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.03);
+    filter: drop-shadow(0 8px 20px rgba(197, 146, 133, 0.65));
+  }
+}
+
+@keyframes sd-pearl-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(197, 146, 133, 0.4), 0 2px 5px rgba(80, 40, 50, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(197, 146, 133, 0.25), 0 2px 8px rgba(197, 146, 133, 0.5);
+  }
+}
+
+.sd-opening-hint {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #8c5761;
+  margin-top: 0.8rem;
+}
+
+/* ==============================================================
+   PAGE BODY: SADAF-E-NOOR LUXURY CONTENT
+   ============================================================== */
+
+.sd-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: calc(2rem + var(--inv-bar, 0px)) 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.sd-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sd-card {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  background: #fff8f5;
+  box-shadow:
+    0 20px 45px -15px rgba(80, 35, 45, 0.2),
+    0 0 0 1px rgba(197, 146, 133, 0.3);
+  overflow: hidden;
+}
+
+/* CARD 1 */
+.sd-invitation-card {
+  padding: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, #ffffff 0%, #fff8f5 75%, #fbede8 100%);
+}
+
+.sd-lace-top {
+  width: 100%;
+  height: 88px;
+  background: url("/templates/sadaf-e-noor/lace-top.png") top center / 100% 100% no-repeat;
+  filter: sepia(0.2) hue-rotate(-15deg);
+}
+.sd-lace-bottom {
+  width: 100%;
+  height: 75px;
+  background: url("/templates/sadaf-e-noor/lace-bottom.png") bottom center / 100% 100% no-repeat;
+  filter: sepia(0.2) hue-rotate(-15deg);
+}
+
+.sd-double-gold-frame {
+  position: relative;
+  border-left: 1.5px solid #c59285;
+  border-right: 1.5px solid #c59285;
+  padding: 0 6px;
+  margin: 0 1rem;
+}
+.sd-frame-inner {
+  border-left: 0.75px solid rgba(197, 146, 133, 0.65);
+  border-right: 0.75px solid rgba(197, 146, 133, 0.65);
+  padding: 1.8rem 1.4rem 1.8rem;
+  text-align: center;
+}
+
+.sd-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: #55333a;
+}
+.sd-sub-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: #8c5761;
+  margin-top: 0.5rem;
+}
+
+.sd-names {
+  margin: 1.2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sd-name {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(3rem, 11vw, 4.2rem);
+  line-height: 1.1;
+  color: #ab6a60;
+  background: linear-gradient(180deg, #d9a093 0%, #ad6d62 55%, #7a3c34 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(120, 60, 70, 0.2));
+}
+.sd-amp {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #ad6d62;
+  margin: 0.1rem 0;
+}
+
+.sd-pearl-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 1.2rem auto;
+  max-width: 240px;
+}
+.sd-pearl-divider .sd-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c59285, transparent);
+}
+.sd-pearl-cabochon {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fceed9 50%, #d8baa8 90%, #aa7a74 100%);
+  box-shadow: 0 1px 3px rgba(80, 40, 50, 0.35);
+}
+.sd-pearl-cabochon.sd-pearl-center {
+  width: 9.5px;
+  height: 9.5px;
+}
+
+.sd-verse-invitation {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 3.5vw, 1.22rem);
+  line-height: 1.6;
+  color: #442a2e;
+  margin: 1.1rem 0;
+}
+
+.sd-datetime-group {
+  margin: 1.4rem 0;
+}
+.sd-date {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #351c22;
+}
+.sd-venue-line {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: #8c5761;
+  margin-top: 0.45rem;
+}
+
+.sd-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.sd-reply-link {
+  display: inline-block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #442a2e;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: #c59285;
+  padding: 0.4rem 1.2rem;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.sd-reply-link:hover {
+  color: #ab6a60;
+  text-decoration-color: #ab6a60;
+}
+
+/* CARD 2: ITINERARY */
+.sd-deckled-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 1.2rem 0.8rem;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(190, 140, 145, 0.4) 0%, rgba(130, 85, 95, 0.8) 100%),
+    linear-gradient(#ad7884, #7f515d);
+  box-shadow: 0 20px 45px -10px rgba(70, 30, 40, 0.45);
+}
+
+.sd-deckled-card {
+  position: relative;
+  padding: 1.5rem 1.8rem 3.2rem;
+  border-radius: 6px;
+  background: #fff8f5;
+  box-shadow:
+    0 14px 30px -8px rgba(60, 25, 35, 0.4),
+    0 0 0 1px rgba(220, 185, 180, 0.6),
+    inset 0 0 30px rgba(215, 180, 175, 0.25);
+  border: 1px solid rgba(235, 210, 205, 0.8);
+}
+
+.sd-itinerary-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 140px;
+  margin-bottom: 1.2rem;
+}
+
+.sd-corner-roses {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(130px, 36vw, 175px);
+  aspect-ratio: 240 / 280;
+  z-index: 10;
+  pointer-events: none;
+}
+.sd-corner-roses-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: sepia(0.15) hue-rotate(-15deg) drop-shadow(2px 4px 10px rgba(80, 35, 45, 0.25));
+}
+
+.sd-itinerary-title-box {
+  margin-left: auto;
+  text-align: right;
+  padding-top: 1.2rem;
+  padding-right: 0.5rem;
+  z-index: 12;
+}
+
+.sd-itinerary-kicker {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: #72424b;
+}
+.sd-itinerary-heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(2.2rem, 7vw, 2.9rem);
+  font-style: italic;
+  color: #351c22;
+  margin-top: 0.3rem;
+}
+
+.sd-itinerary-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.sd-timeline-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.sd-timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sd-timeline-time {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #8c5761;
+}
+.sd-timeline-label {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.65rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #351c22;
+  margin: 0.2rem 0 0.3rem;
+}
+.sd-timeline-desc {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  color: #63323b;
+}
+
+.sd-timeline-pearl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0;
+}
+.sd-pearl-orb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fceed9 50%, #d8baa8 90%, #aa7a74 100%);
+  box-shadow: 0 1px 4px rgba(80, 40, 50, 0.35);
+}
+
+/* CARD 3: OUR STORY */
+.sd-story-lead {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #55333a;
+  max-width: 440px;
+  margin: 1.2rem auto 1.6rem;
+}
+
+.sd-milestones-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.sd-milestone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #63323b;
+  background: #fdf3f0;
+  border: 1px solid rgba(197, 146, 133, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.sd-milestone-pill:hover,
+.sd-milestone-pill.active {
+  background: #c59285;
+  color: #ffffff;
+  border-color: #c59285;
+  box-shadow: 0 4px 12px rgba(197, 146, 133, 0.35);
+}
+
+.sd-milestone-box {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(197, 146, 133, 0.4);
+  border-radius: 14px;
+  padding: 1.8rem 1.6rem;
+  box-shadow: 0 6px 18px rgba(80, 40, 50, 0.06);
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.sd-milestone-pearl-top {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fceed9 50%, #d8baa8 90%, #aa7a74 100%);
+  box-shadow: 0 2px 5px rgba(80, 40, 50, 0.3);
+}
+.sd-milestone-title {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #351c22;
+  margin-bottom: 0.6rem;
+}
+.sd-milestone-body {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #63323b;
+}
+
+/* CARD 5: CELEBRATIONS */
+.sd-section-intro {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #63323b;
+  max-width: 440px;
+  margin: 0.6rem auto 0;
+}
+
+.sd-events-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.sd-event-card {
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-left: 4px solid #c59285;
+}
+.sd-event-top-filigree {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -0.8rem;
+}
+.sd-event-step-number {
+  font-family: var(--font-cormorant), serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: rgba(197, 146, 133, 0.3);
+  line-height: 1;
+}
+
+.sd-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(197, 146, 133, 0.25);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+.sd-event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ab6a60;
+  background: #fceede;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+}
+.sd-event-name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #351c22;
+}
+
+.sd-event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: #55333a;
+}
+.sd-event-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.sd-row-icon {
+  width: 16px;
+  height: 16px;
+  color: #c59285;
+  shrink: 0;
+  margin-top: 2px;
+}
+.sd-event-dress-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #63323b;
+  background: #fdf0ec;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 146, 133, 0.25);
+  width: fit-content;
+  margin-top: 0.2rem;
+}
+.sd-event-note-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #72424b;
+  background: rgba(245, 225, 220, 0.5);
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.2rem;
+}
+
+.sd-event-action {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.sd-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #c59285, #9e5f67);
+  color: #ffffff;
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(197, 146, 133, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.sd-map-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* CARD 6: PALETTE */
+.sd-attire-prompt {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #55333a;
+  max-width: 480px;
+  margin: 0 auto 1.8rem;
+}
+
+.sd-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 0.9rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.sd-swatch-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #fdf3f0;
+  border: 1px solid rgba(197, 146, 133, 0.3);
+  padding: 0.8rem 0.4rem;
+  border-radius: 12px;
+}
+.sd-swatch-circle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(80, 40, 50, 0.2);
+  margin-bottom: 0.5rem;
+}
+.sd-swatch-pearl-pin {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #d8baa8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.sd-swatch-name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #351c22;
+}
+.sd-swatch-desc {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  color: #8c5761;
+  margin-top: 0.15rem;
+}
+
+.sd-blessing-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #63323b;
+  background: #fdf0ec;
+  border: 1px solid rgba(197, 146, 133, 0.3);
+  padding: 0.6rem 1.2rem;
+  border-radius: 24px;
+  margin-top: 1.8rem;
+}
+
+/* CARDS 4, 7, 8, 9 */
+.sd-panel-card {
+  padding: 1.4rem;
+}
+.sd-panel-frame {
+  border: 1px solid rgba(197, 146, 133, 0.4);
+  padding: 2.2rem 1.4rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.sd-section-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.sd-section-title {
+  font-family: var(--font-pinyon), cursive;
+  font-size: clamp(2.4rem, 8vw, 3.2rem);
+  color: #ab6a60;
+  background: linear-gradient(180deg, #d9a093 0%, #ad6d62 55%, #7a3c34 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.2rem;
+}
+
+.sd-countdown-section .inv-count-cell {
+  background: #fdf3f0;
+  border: 1px solid rgba(197, 146, 133, 0.4);
+  border-radius: 12px;
+  padding: 0.8rem 0.4rem;
+  box-shadow: 0 2px 8px rgba(80, 40, 50, 0.06);
+}
+.sd-countdown-section .inv-count-num {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ab6a60;
+}
+.sd-countdown-section .inv-count-label {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8c5761;
+}
+
+.sd-gallery-wrap {
+  width: 100%;
+}
+
+.sd-rsvp-guest-line {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.12rem;
+  color: #442a2e;
+  margin-top: 0.5rem;
+}
+.sd-rsvp-prompt {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #72424b;
+  margin: 0.4rem 0 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-door,
+  .sd-stage,
+  .sd-brooch-clasp,
+  .sd-card-interior {
+    transition-duration: 0.01s !important;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sd-gatefold-card {
+    height: min(72dvh, 540px);
+  }
+  .sd-card-interior {
+    padding: 0;
+  }
+  .sd-interior-content {
+    padding: 0.2rem 0.5rem;
+  }
+  .sd-double-gold-frame {
+    margin: 0 0.5rem;
+  }
+  .sd-frame-inner {
+    padding: 1.4rem 0.6rem 1.4rem;
+  }
+  .sd-deckled-card {
+    padding: 1.2rem 1.2rem 2.4rem;
+  }
+  .sd-palette-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

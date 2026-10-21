@@ -7,6 +7,8 @@ import type { InvitationViewData, RsvpResult, RsvpSubmission, TemplateProps } fr
 // Every design is loaded on demand, so a guest only downloads the design
 // their invitation uses. Add new designs here (and in registry.ts).
 const DESIGNS: Record<string, ComponentType<TemplateProps>> = {
+  marwareed: dynamic(() => import("./marwareed")),
+  "sadaf-e-noor": dynamic(() => import("./sadaf-e-noor")),
   "shahi-darwaza": dynamic(() => import("./shahi-darwaza")),
   gulzar: dynamic(() => import("./gulzar")),
   "mehndi-rang": dynamic(() => import("./mehndi-rang")),
@@ -23,6 +25,7 @@ const DESIGNS: Record<string, ComponentType<TemplateProps>> = {
   farman: dynamic(() => import("./farman")),
   jharoka: dynamic(() => import("./jharoka")),
   "mor-pankh": dynamic(() => import("./mor-pankh")),
+  "gulab-mahal": dynamic(() => import("./gulab-mahal")),
 };
 
 /** Server action that saves a guest's RSVP (live invitations only). */

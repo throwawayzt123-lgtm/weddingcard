@@ -46,6 +46,63 @@ export type TemplateMeta = {
 
 export const TEMPLATES: TemplateMeta[] = [
   {
+    key: "marwareed",
+    plan: "PREMIUM",
+    name: "Marwareed",
+    tagline: "Silk gatefold, French lace and a pearl brooch",
+    description:
+      "Pure luxury in ivory satin and French lace. A pearl and rhinestone brooch clasps two silk doors; tap, and they swing open in three dimensions onto gold-framed ivory cardstock with scalloped lace, deckled-edge event cards, draped pearl strands and garden roses.",
+    colors: [
+      { name: "Ivory silk", hex: "#faf6ee" },
+      { name: "Antique gold", hex: "#cda358" },
+      { name: "Pearl cream", hex: "#f3ede3" },
+      { name: "Blush taupe", hex: "#8c6b65" },
+    ],
+    thumbnail: "/templates/marwareed/thumb.webp",
+    opening: "Silk gatefold doors swing open",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
+    bestFor: ["Reception", "Walima", "Luxury weddings", "Ivory and gold"],
+  },
+  {
+    key: "sadaf-e-noor",
+    plan: "PREMIUM",
+    name: "Sadaf-e-Noor",
+    tagline: "Blush satin gatefold, rose gold lace and a crystal pearl buckle",
+    description:
+      "Soft, romantic and quietly royal. Blush pink satin doors edged in rose gold scalloped lace, clasped with a radiant pearl and crystal buckle. Tap, and the doors swing open onto illuminated parchment with petal dividers, deckled celebration cards, and a champagne gold crest.",
+    colors: [
+      { name: "Blush silk", hex: "#faece8" },
+      { name: "Rose gold", hex: "#c59285" },
+      { name: "Pearl cream", hex: "#fbf6ec" },
+      { name: "Dusky rose", hex: "#a5656a" },
+    ],
+    thumbnail: "/templates/sadaf-e-noor/thumb.webp",
+    opening: "Blush silk doors swing open",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
+    bestFor: ["Nikkah", "Walima", "Blush and rose gold", "Romantic couples"],
+  },
+  {
+    key: "gulab-mahal",
+    plan: "PREMIUM",
+    name: "Gulab Mahal",
+    tagline: "A blush envelope opens onto a palace arch at sunset",
+    description:
+      "A blush pink envelope edged in rose gold, with embossed roses and a rose gold wax seal. Break the seal and the arched flap lifts, the envelope falls away and you look out through a flowered palace arch, past a crystal chandelier and glowing lanterns, to a domed palace at sunset where the couple sits by the water. Your invitation is written in the evening sky.",
+    colors: [
+      { name: "Blush", hex: "#f1dbcf" },
+      { name: "Rose gold", hex: "#b07f6b" },
+      { name: "Dusky rose", hex: "#a5656a" },
+      { name: "Ivory", hex: "#f5ebe1" },
+    ],
+    thumbnail: "/templates/gulab-mahal/thumb.webp",
+    opening: "Wax sealed envelope opens onto a palace arch",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
+    bestFor: ["Nikah","Baraat","Blush and rose gold"],
+  },
+  {
     key: "bazm",
     plan: "PREMIUM",
     name: "Bazm",

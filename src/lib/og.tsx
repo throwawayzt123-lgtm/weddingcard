@@ -12,6 +12,8 @@ import { loadInvitation } from "@/lib/invitation-view";
 export const OG_SIZE = { width: 1200, height: 630 };
 
 const THEMES: Record<string, { bg: string; text: string; accent: string; frame: string }> = {
+  marwareed: { bg: "linear-gradient(135deg,#fcf8f2,#ede3d1)", text: "#4a3528", accent: "#b98a2c", frame: "#cda358" },
+  "sadaf-e-noor": { bg: "linear-gradient(135deg,#fff8f5,#faede8)", text: "#442a2e", accent: "#c59285", frame: "#c59285" },
   "shahi-darwaza": { bg: "linear-gradient(135deg,#4a1020,#1a070d)", text: "#f6ecd9", accent: "#ebd08a", frame: "#c9a24b" },
   gulzar: { bg: "linear-gradient(135deg,#fdeceb,#f3cfd2)", text: "#6b2f3c", accent: "#a24d5c", frame: "#c98f7e" },
   "mehndi-rang": { bg: "linear-gradient(135deg,#d81b78,#f26a1b)", text: "#ffffff", accent: "#ffe08a", frame: "#ffd23f" },
