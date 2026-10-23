@@ -99,7 +99,7 @@ export function NewInvitationForm({ clients, siteUrl, defaultExpiryDays }: { cli
 
       {/* 3. Plan & expiry */}
       <Card title="3. Plan and expiry">
-        <div className="grid gap-3 sm:grid-cols-3" role="radiogroup">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="radiogroup">
           {PLAN_KEYS.map((key) => (
             <label key={key} className="cursor-pointer">
               <input type="radio" name="plan" value={key} checked={plan === key} onChange={() => { setPlan(key); if (!amountTouched) setAmount(String(PLANS[key].pricePkr)); }} className="peer sr-only" />

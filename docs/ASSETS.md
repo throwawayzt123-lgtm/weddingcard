@@ -1,6 +1,6 @@
 # Images & music guide
 
-Everything in the seventeen designs is built from **CSS and SVG**, so the site looks complete even with no images.
+Everything in the twenty-three designs is built from **CSS and SVG**, so the site looks complete even with no images.
 A few real photos make the designs richer. Each photo has a gradient fallback: if a file is missing or renamed,
 the design still works.
 
@@ -14,6 +14,10 @@ the design still works.
 | `public/templates/farman/corner-1…4.svg` | Gold corner flourishes of the Farman design | Drawn for this project (`scripts/make-farman-corners.cjs`) |
 | `public/templates/jharoka/jali.svg` | Stone-lattice pattern of the Jharoka design | Drawn for this project (edit freely) |
 | `public/templates/gulab-mahal/scene.webp`, `envelope.webp`, `flap.webp`, `seal.webp` | The Gulab Mahal design: the palace arch at sunset (also its first event picture) and the envelope that opens onto it | Drawn for this project (`scripts/make-gulab-mahal.cjs`) |
+| `public/templates/laal-gulab/*.webp` | The Laal Gulab design: velvet, envelope, flap, wax seal with tassel, and the ivory card; `rose-corner.webp` inside | Drawn for this project (`scripts/make-laal-gulab.cjs`; the inside ornaments of all five Royal designs: `scripts/make-royal-ornaments.cjs`) |
+| `public/templates/mahtab/*.webp` | The Mahtab design: night sky, moon and the arch and palace in front; `moon-disc.webp` and `rose-corner.webp` inside | Drawn for this project (`scripts/make-mahtab.cjs`) |
+| `public/templates/chaman/*.webp` | The Chaman design: the garden card and the jasmine sehra; `wreath.webp` and `sprig.webp` inside | Drawn for this project (`scripts/make-chaman.cjs`) |
+| `public/templates/mehfil/*.webp` | The Mehfil design: the mehndi card, parasols, garlands, the marigold wreath; `parasol.webp` and `swag.webp` inside | Drawn for this project (`scripts/make-mehfil.cjs`) |
 | `public/templates/mor-pankh/eye.svg` | Peacock-feather eye used in the Mor Pankh design | Drawn for this project (edit freely) |
 | `public/templates/bazm/scene-mehndi.webp`, `scene-barat.webp`, `scene-walima.webp` | The background pictures of the Bazm design (one per kind of celebration, used in turn so the picture changes every chapter) | AI-generated ambience pictures (no real venues or people). Replace with your own, same file names, about 960 px wide, under 200 KB |
 | `public/templates/photos/hands-wedding.webp` | The picture of the first (Blessings) chapter in every design: hands with henna, deliberately no couple | Supplied by the owner |

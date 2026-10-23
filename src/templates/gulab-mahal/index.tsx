@@ -13,8 +13,8 @@ const parts: TemplateParts = {
   Opening: GulabMahalOpening,
   Backdrop: GulabMahalBackdrop,
   openingMs: 1000, // the fade out of the opening in gulab-mahal.css (the envelope itself opens on the first tap)
-  // Full-screen chapters: a new picture, colour and layout with every scroll (see chapters.tsx)
-  loadContent: () => import("./chapters"),
+  // Its own inside, drawn for this design (see content.tsx)
+  loadContent: () => import("./content"),
 };
 
 /** "Gulab Mahal": a blush envelope with a rose gold seal that opens onto a palace arch at sunset. */

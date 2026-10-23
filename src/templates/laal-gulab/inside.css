@@ -1,0 +1,165 @@
+/* ------------------------------------------------------------------
+   Laal Gulab, inside (content.tsx): a card suite on burgundy velvet.
+------------------------------------------------------------------- */
+.invitation[data-template="laal-gulab"] {
+  --inv-bg: #4a0814;
+  --inv-panel-bg: #fbf6ec;
+  --inv-panel-border: rgba(201, 160, 82, 0.6);
+  --inv-card-bg: rgba(251, 246, 236, 0.9);
+  background: #4a0814;
+}
+.lg-backdrop {
+  background:
+    radial-gradient(80% 60% at 50% 30%, transparent, rgba(20, 0, 5, 0.55)),
+    url("/templates/laal-gulab/velvet.webp") center / cover no-repeat,
+    #4a0814;
+}
+
+.lg-content {
+  --sp-ink: #3b0a14;
+  --sp-accent: #8e1424;
+  --sp-soft: #fbf6ec;
+  --sp-line: rgba(201, 160, 82, 0.7);
+  --sp-font: var(--font-cormorant), Georgia, serif;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.6rem;
+  padding: 4.5rem 1.1rem 3rem;
+  color: #3b0a14;
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+.lg-content :is(p, h1, h2, h3, ol) { margin: 0; }
+
+/* An ivory card with a gold foil double frame, lying a little askew on the velvet */
+.lg-card {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: 2.6rem 1.6rem 2.4rem;
+  background:
+    linear-gradient(#fbf6ec, #f4ead6);
+  box-shadow: 0 2px 0 #e6d6b4, 0 30px 50px -18px rgba(10, 0, 3, 0.75);
+  text-align: center;
+}
+.lg-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1.5px solid #c9a052;
+  outline: 1px solid rgba(201, 160, 82, 0.55);
+  outline-offset: 4px;
+  pointer-events: none;
+}
+.lg-card[data-r][data-in="true"] { transform: rotate(var(--tilt, 0deg)); }
+.lg-card-main { --tilt: -1.2deg; margin-bottom: 4.5rem; padding-top: 3.4rem; padding-bottom: 4rem; }
+.lg-note { --tilt: 1.6deg; width: min(92%, 28rem); padding: 2rem 1.6rem; background: #fdf9f1; }
+.lg-note::before { border-style: dashed; outline: none; }
+.lg-programme { --tilt: -0.6deg; }
+.lg-album { --tilt: 0.8deg; }
+.lg-reply { --tilt: -1deg; padding-top: 4.4rem; }
+
+.lg-roses { position: absolute; z-index: 2; width: 8rem; pointer-events: none; }
+.lg-roses-tl { top: -1.8rem; left: -1.8rem; }
+.lg-roses-tr { top: -1.8rem; right: -1.8rem; transform: scaleX(-1); }
+
+.lg-foil { position: relative; z-index: 1; }
+.lg-arabic { font: 400 1.7rem/1.7 var(--font-amiri), serif; color: #8e1424; }
+.lg-caps { font: 600 0.74rem/1.6 var(--font-cinzel), Georgia, serif; letter-spacing: 0.22em; text-transform: uppercase; color: #9c7a35; }
+.lg-names { display: flex; flex-direction: column; align-items: center; margin: 0.8rem 0 !important; font: 400 clamp(3.2rem, 13vw, 4.6rem)/1 var(--font-great-vibes), cursive; color: #6e0f22; }
+.lg-names i { font-size: 0.5em; font-style: normal; color: #c9a052; }
+.lg-date { margin-top: 1rem !important; padding-top: 0.8rem; border-top: 1px solid rgba(201, 160, 82, 0.7); font: 600 1.2rem/1.4 var(--font-cinzel), Georgia, serif; letter-spacing: 0.06em; }
+.lg-hashtag { margin-top: 0.6rem !important; }
+.lg-seal { position: absolute; top: calc(100% - 3.1rem); left: 50%; z-index: 3; width: 6.2rem; translate: -50% 0; filter: drop-shadow(0 8px 10px rgba(20, 0, 5, 0.5)); }
+
+.lg-dear { font: 400 2.4rem/1.2 var(--font-great-vibes), cursive; color: #6e0f22; }
+.lg-lead { margin-top: 0.6rem !important; font-size: 1.2rem; font-style: italic; line-height: 1.6; }
+.lg-translation { margin-top: 0.9rem !important; font-size: 0.98rem; opacity: 0.7; }
+
+/* Countdown: gold foil numerals on a wine band */
+.lg-band {
+  width: 100vw;
+  padding: 2.6rem 1.2rem;
+  border-block: 2px solid #c9a052;
+  background: linear-gradient(#7a1426, #5c0c1c);
+  box-shadow: inset 0 0 0 6px #5c0c1c, inset 0 0 0 7px rgba(201, 160, 82, 0.5);
+  color: #f6e7d0;
+}
+.lg-band > * { max-width: 34rem; margin-inline: auto; }
+.lg-band .inv-eyebrow { color: #e0bb6a; }
+.lg-band .inv-title { font-family: var(--font-great-vibes), cursive; font-size: 2.4rem; color: #f6e7d0; }
+.lg-band .inv-count-cell { border: 1px solid rgba(224, 187, 106, 0.6); border-radius: 0; background: rgba(0, 0, 0, 0.18); }
+.lg-band .inv-count-num {
+  font-family: var(--font-cinzel), serif;
+  background: linear-gradient(180deg, #f6dc9a, #b88a34);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.lg-band .inv-count-label { color: #e8d3a8; }
+
+/* The programme */
+.lg-title { font: 400 clamp(2.4rem, 9vw, 3.2rem)/1.1 var(--font-great-vibes), cursive; color: #6e0f22; }
+.lg-on-velvet { margin-bottom: 1.4rem !important; text-align: center; color: #f6e7d0; }
+.lg-flourish { display: block; margin: 0.2rem 0 1.2rem; font-size: 1.6rem; color: #c9a052; }
+.lg-rows { display: grid; gap: 1.6rem; padding: 0; list-style: none; text-align: left; }
+.lg-row + .lg-row { padding-top: 1.6rem; border-top: 1px dotted rgba(142, 20, 36, 0.35); }
+.lg-row-head { display: flex; align-items: center; gap: 0.8rem; }
+.lg-stamp {
+  display: grid;
+  flex: none;
+  width: 3.6rem;
+  height: 3.6rem;
+  place-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b8304a, #6e0f22 70%);
+  box-shadow: 0 0 0 2px #c9a052, 0 4px 8px rgba(60, 0, 10, 0.35);
+  color: #f6e7d0;
+  text-align: center;
+}
+.lg-stamp b { font: 600 1.35rem/1 var(--font-cinzel), serif; }
+.lg-stamp small { font-size: 0.55rem; letter-spacing: 0.2em; }
+.lg-row-name { display: flex; min-width: 0; flex-direction: column; }
+.lg-row-name strong { font: 600 1.2rem/1.2 var(--font-cinzel), serif; letter-spacing: 0.04em; color: #6e0f22; }
+.lg-row-name em { font-size: 0.95rem; opacity: 0.7; }
+.lg-leader { flex: 1; min-width: 1rem; height: 0; margin-top: 0.6rem; border-bottom: 2px dotted rgba(156, 122, 53, 0.6); }
+.lg-row-time { flex: none; max-width: 7.5rem; font-size: 0.95rem; font-weight: 600; text-align: right; }
+.lg-row-detail { margin: 0.7rem 0 0 4.4rem; font-size: 1.05rem; line-height: 1.5; }
+.lg-row-venue { font-size: 1.2rem; font-weight: 700; }
+.lg-row-muted { opacity: 0.78; }
+.lg-row .sp-actions { justify-content: flex-start; }
+.lg-row .sp-btn { min-height: 2.2rem; padding: 0.35rem 0.85rem; border-radius: 4px; font-size: 0.7rem; }
+@media (max-width: 420px) {
+  .lg-leader { display: none; }
+  .lg-row-head { flex-wrap: wrap; }
+  .lg-row-time { flex-basis: 100%; max-width: none; margin-left: 4.4rem; text-align: left; }
+}
+
+/* Calling cards */
+.lg-families { width: 100%; max-width: 50rem; }
+.lg-calling { display: grid; gap: 1.8rem; justify-items: center; }
+@media (min-width: 720px) { .lg-calling { grid-template-columns: 1fr 1fr; } }
+.lg-calling-card { width: min(100%, 22rem); padding: 2rem 1.4rem; }
+.lg-calling-card:nth-child(1) { --tilt: -2deg; }
+.lg-calling-card:nth-child(2) { --tilt: 1.8deg; }
+.lg-calling-card .sp-family-title { font-family: var(--font-cinzel), serif; font-size: 0.7rem; color: #9c7a35; }
+
+.lg-album .inv-wide, .lg-album { width: min(100%, 44rem); }
+
+/* Reply card with an envelope flap over its top */
+.lg-reply-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.2rem;
+  background: linear-gradient(#e8d8b8, #f4ead6);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  filter: drop-shadow(0 2px 0 #c9a052);
+}
+
+.lg-footer { color: #f6e7d0; text-align: center; }
+.lg-thanks { font: 400 2.6rem/1.2 var(--font-great-vibes), cursive; }
+.lg-signed { margin-top: 0.4rem !important; font: 600 1rem/1.4 var(--font-cinzel), serif; letter-spacing: 0.16em; color: #e0bb6a; }
+.lg-footer .sp-badge { --sp-ink: #f6e7d0; --sp-line: rgba(224, 187, 106, 0.6); }

@@ -53,6 +53,17 @@ export const PLANS = {
     customMusicUpload: true,
     canRemoveBadge: true,
   },
+  ROYAL: {
+    label: "Royal",
+    pricePkr: 11999,
+    blurb: "Hand illustrated designs, each with its own inside, and everything in Prime",
+    maxEvents: null,
+    maxGuests: null,
+    rsvp: true,
+    maxPhotos: 50,
+    customMusicUpload: true,
+    canRemoveBadge: true,
+  },
 } as const satisfies Record<Plan, PlanConfig>;
 
 export const PLAN_KEYS = Object.keys(PLANS) as Plan[];

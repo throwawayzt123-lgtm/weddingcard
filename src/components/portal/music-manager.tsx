@@ -82,7 +82,7 @@ export function MusicManager({
         </ul>
       </Card>
 
-      <Card title="Your own music" description="Prime plan: upload an MP3 (up to 10 MB). Only use music you have the right to use.">
+      <Card title="Your own music" description="Prime and Royal plans: upload an MP3 (up to 10 MB). Only use music you have the right to use.">
         {canUpload ? (
           customUrl ? (
             <div className="space-y-3">
@@ -98,7 +98,7 @@ export function MusicManager({
           <p className="flex items-start gap-3 rounded-xl bg-cream/60 p-4 text-sm">
             <Music2 className="mt-0.5 size-5 shrink-0 text-gold-dark" />
             <span>
-              Uploading your own music is included in the Prime plan.{" "}
+              Uploading your own music is included in the Prime and Royal plans.{" "}
               <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-maroon underline">Upgrade by messaging us on WhatsApp</a>
             </span>
           </p>

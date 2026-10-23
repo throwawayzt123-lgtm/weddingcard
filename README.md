@@ -1,6 +1,6 @@
 # Aesthetic Wedding Cards
 
-A website for selling **digital wedding invitations**. Customers pick one of **seventeen** animated designs (royal doors, a sealed envelope, a blush envelope that opens onto a palace arch at sunset (Gulab Mahal), mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Every design is a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Mr & Mrs Ali”) to share on WhatsApp, with RSVP, maps, music and a countdown.
+A website for selling **digital wedding invitations**. Customers pick one of **twenty-three** animated designs (royal doors, a sealed envelope, a blush envelope that opens onto a palace arch at sunset (Gulab Mahal), a burgundy velvet envelope with red roses (Laal Gulab), a moon rising over a palace (Mahtab), a jasmine sehra opening onto a rose garden (Chaman), a marigold mehndi night (Mehfil), mehndi curtains, an emerald arch, a crimson book, a silver moon-dial, a black roller shutter, blue Multani tiles, a pure-white jasmine design, a wine-red royal decree, a sandstone lattice window a peacock-feather fan **Bazm**, a sky-blue cloud design (Aasmani), a champagne-gold gift box (Sunehri) and a saffron diya (Kesar)). Most designs are a set of **full-screen chapters**: as you scroll, swipe or use the menu, the background picture, the colours and the layout all change; the Royal designs each have their own hand illustrated inside), you create their invitation from the admin panel, and they fill in the rest from their own portal. Every guest gets a personal link (“Dear Mr & Mrs Ali”) to share on WhatsApp, with RSVP, maps, music and a countdown.
 
 **The most important rule:** the groom and bride names are entered only by you (the admin) and are **locked**. A customer can never change them, so one purchase cannot be reused for another wedding. [Proof it works](#the-locked-names-and-the-proof) · [Where to read more](#more-guides)
 
@@ -88,7 +88,7 @@ It creates a temporary customer and invitation, tries 30+ ways to cheat, prints 
 
 ## 4. Photos and music
 
-All seventeen designs are built with CSS and SVG, so they work with no images at all. See [docs/ASSETS.md](docs/ASSETS.md) for the list of included photos, **AI prompts** for better ones, and what music to use.
+All twenty-three designs are built with CSS and SVG, so they work with no images at all. See [docs/ASSETS.md](docs/ASSETS.md) for the list of included photos, **AI prompts** for better ones, and what music to use.
 
 - ⚠️ The four MP3s in `public/music/` were *generated* as placeholders. Replace them with royalty-free music (same file names) before launch.
 - The demo photos (Pexels) appear only on the demo preview pages.
@@ -216,9 +216,9 @@ src/
     rate-limit.ts, audit.ts, og.tsx …
 ```
 
-**Categories and prices:** every design belongs to a category: Regular (PKR 2,599), Advanced (PKR 3,399) or Prime (PKR 6,899). The category of a design is the `plan` line of its entry in `src/templates/registry.ts`, and the prices and limits of each category are in `src/lib/plans.ts` (Regular is the BASIC plan, Advanced is STANDARD, Prime is PREMIUM). In Admin, choosing a design selects its category and fills in the amount for you. Every invitation carries a small "Made by Dawatnamaa" credit at the top that opens WhatsApp (see `WATERMARK_NAME` in `src/lib/site.ts`).
+**Categories and prices:** every design belongs to a category: Regular (PKR 2,599), Advanced (PKR 3,399), Prime (PKR 6,899) or Royal (PKR 11,999). The category of a design is the `plan` line of its entry in `src/templates/registry.ts`, and the prices and limits of each category are in `src/lib/plans.ts` (Regular is the BASIC plan, Advanced is STANDARD, Prime is PREMIUM, Royal is ROYAL). The Royal category was added by the migration `20261023000000_royal_plan`: run `npm run db:deploy` (or deploy on Vercel, which runs it) before selling a Royal invitation. In Admin, choosing a design selects its category and fills in the amount for you. Every invitation carries a small "Made by Dawatnamaa" credit at the top that opens WhatsApp (see `WATERMARK_NAME` in `src/lib/site.ts`).
 
-**Add a seventeenth design:** copy a folder in `src/templates/`, change its colours and opening screen, add it to `registry.ts` and `template-host.tsx`, and take a thumbnail. Nothing else changes.
+**Add another design:** copy a folder in `src/templates/`, change its colours and opening screen, add it to `registry.ts` and `template-host.tsx`, and take a thumbnail. Nothing else changes.
 
 ---
 

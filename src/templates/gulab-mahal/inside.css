@@ -1,0 +1,196 @@
+/* ------------------------------------------------------------------
+   Gulab Mahal, inside (content.tsx): a walk through a rose palace.
+   Arched window, rose gold medallion, a corridor of arched doorways, two family windows.
+------------------------------------------------------------------- */
+.invitation[data-template="gulab-mahal"] {
+  --inv-panel-bg: #fffaf6;
+  --inv-panel-border: rgba(176, 127, 107, 0.45);
+  --inv-card-bg: rgba(255, 250, 246, 0.85);
+  --inv-accent-strong: #a5566a;
+  --gm-arch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0 400V150A28 28 0 0 0 22 112A30 30 0 0 0 52 70A32 32 0 0 0 92 36A34 34 0 0 0 150 0A34 34 0 0 0 208 36A32 32 0 0 0 248 70A30 30 0 0 0 278 112A28 28 0 0 0 300 150V400Z'/%3E%3C/svg%3E");
+  --gm-door: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V64A16 16 0 0 0 14 42A18 18 0 0 0 38 22A20 20 0 0 0 66 8A22 22 0 0 0 100 0A22 22 0 0 0 134 8A20 20 0 0 0 162 22A18 18 0 0 0 186 42A16 16 0 0 0 200 64V100Z'/%3E%3C/svg%3E");
+}
+
+.gm-content {
+  --sp-ink: #4f2c33;
+  --sp-accent: #a5656a;
+  --sp-soft: #fffaf6;
+  --sp-line: rgba(176, 127, 107, 0.45);
+  --sp-font: var(--font-cormorant), Georgia, serif;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.5rem;
+  padding: 4.5rem 1.1rem 3rem;
+  color: #4f2c33;
+  font-family: var(--font-cormorant), Georgia, serif;
+  background:
+    radial-gradient(60% 30% at 50% 0%, rgba(246, 205, 196, 0.55), transparent 70%),
+    radial-gradient(50% 30% at 100% 100%, rgba(233, 196, 180, 0.45), transparent 70%);
+}
+.gm-content :is(p, h1, h2, h3) { margin: 0; }
+.gm-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #a5656a; }
+.gm-rule { display: block; width: 7rem; height: 1px; margin: 1.1rem auto; background: linear-gradient(90deg, transparent, #b07f6b, transparent); }
+.gm-lead { max-width: 30rem; margin-inline: auto !important; font-size: 1.2rem; line-height: 1.6; opacity: 0.88; }
+.gm-heading { margin-bottom: 1.8rem; text-align: center; }
+.gm-heading h2 { margin-top: 0.3rem !important; font: 400 clamp(2.6rem, 9vw, 3.6rem)/1.1 var(--font-pinyon), cursive; color: #94475a; }
+
+/* Hero: the scene in a tall cusped arch with a rose gold edge */
+.gm-hero { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; text-align: center; }
+.gm-window {
+  position: relative;
+  width: min(80vw, 380px);
+  aspect-ratio: 3 / 4;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(160deg, #e6c3ae, #b07f6b 45%, #e6c3ae);
+  -webkit-mask: var(--gm-arch) center / 100% 100% no-repeat;
+  mask: var(--gm-arch) center / 100% 100% no-repeat;
+}
+.gm-window-img {
+  inset: 7px !important;
+  width: calc(100% - 14px) !important;
+  height: calc(100% - 14px) !important;
+  object-fit: cover;
+  object-position: 50% 72%;
+  -webkit-mask: var(--gm-arch) center / 100% 100% no-repeat;
+  mask: var(--gm-arch) center / 100% 100% no-repeat;
+}
+.gm-names { display: flex; flex-direction: column; align-items: center; font: 400 clamp(3.2rem, 13vw, 5rem)/1 var(--font-pinyon), cursive; color: #94475a; }
+.gm-names i { margin: 0.2rem 0; font-size: 0.5em; font-style: normal; color: #b07f6b; }
+.gm-dates { font-size: 1.25rem; font-style: italic; font-weight: 600; letter-spacing: 0.04em; }
+.gm-hashtag { margin-top: 0.4rem !important; }
+
+/* Arched cards (note, family windows, RSVP): a round Mughal top and a double rose gold edge */
+.gm-arched {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: 4.2rem 1.6rem 2.4rem;
+  border: 1px solid rgba(176, 127, 107, 0.55);
+  border-radius: 50% 50% 18px 18px / 7.5rem 7.5rem 18px 18px;
+  background: #fffaf6;
+  outline: 1px solid rgba(176, 127, 107, 0.35);
+  outline-offset: 7px;
+  box-shadow: 0 30px 60px -36px rgba(120, 60, 50, 0.45);
+  text-align: center;
+}
+.gm-rose { position: absolute; width: 8.5rem; pointer-events: none; }
+.gm-rose-tl { top: -1.6rem; left: -1.6rem; }
+.gm-rose-br { right: -1.6rem; bottom: -1.6rem; transform: rotate(180deg); }
+.gm-arabic { font: 400 1.8rem/1.7 var(--font-amiri), "Amiri", serif; color: #a5566a; }
+.gm-translation { margin-top: 0.3rem !important; font-size: 1.05rem; font-style: italic; opacity: 0.75; }
+.gm-dear { margin-bottom: 0.8rem !important; font: 400 2.5rem/1.2 var(--font-pinyon), cursive; color: #94475a; }
+
+/* Countdown inside a rose gold medallion */
+.gm-medallion { width: min(100%, 32rem); }
+.gm-medallion-ring {
+  position: relative;
+  padding: 3.2rem 2.6rem 3rem;
+  border-radius: 50% / 42%;
+  background:
+    radial-gradient(closest-side, #fffaf6 92%, transparent 93%),
+    conic-gradient(from 0deg, #e6c3ae, #b07f6b, #f3dccd, #b07f6b, #e6c3ae);
+  box-shadow: 0 0 0 1px rgba(176, 127, 107, 0.4), 0 26px 50px -30px rgba(120, 60, 50, 0.55);
+}
+.gm-medallion-ring::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(176, 127, 107, 0.5);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.gm-medallion .inv-count-cell { background: transparent; border: 0; box-shadow: none; }
+.gm-medallion .inv-count-num { font-family: var(--font-cormorant), serif; color: #94475a; }
+.gm-medallion .inv-title { font-family: var(--font-pinyon), cursive; font-size: 2.2rem; color: #a5566a; }
+
+/* The corridor: arched doorways in a row, swiped sideways (laid out in rows on wide screens) */
+.gm-corridor-section { width: 100%; max-width: 70rem; }
+.gm-corridor {
+  display: flex;
+  gap: 1.2rem;
+  margin-inline: -1.1rem;
+  padding: 0.5rem max(1.1rem, calc(50% - 9.5rem)) 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  outline: none;
+}
+.gm-corridor::-webkit-scrollbar { display: none; }
+@media (min-width: 900px) {
+  .gm-corridor { flex-wrap: wrap; justify-content: center; margin-inline: 0; padding-inline: 1rem; overflow: visible; }
+}
+.gm-door {
+  position: relative;
+  display: flex;
+  flex: 0 0 min(76vw, 19rem);
+  flex-direction: column;
+  scroll-snap-align: center;
+  filter: drop-shadow(0 22px 26px rgba(120, 60, 50, 0.22));
+}
+.gm-door-top {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  background: linear-gradient(160deg, #e6c3ae, #b07f6b 50%, #e6c3ae);
+  -webkit-mask: var(--gm-door) center / 100% 100% no-repeat;
+  mask: var(--gm-door) center / 100% 100% no-repeat;
+}
+.gm-door-top::before {
+  content: "";
+  position: absolute;
+  inset: 6px 6px -1px;
+  background: radial-gradient(70% 90% at 50% 100%, #fbe3d6, #fffaf6);
+  -webkit-mask: var(--gm-door) center / 100% 100% no-repeat;
+  mask: var(--gm-door) center / 100% 100% no-repeat;
+}
+.gm-door-medal {
+  position: absolute;
+  bottom: 0.7rem;
+  left: 50%;
+  display: grid;
+  width: 4.4rem;
+  height: 4.4rem;
+  place-content: center;
+  translate: -50% 0;
+  border: 2px solid #b07f6b;
+  border-radius: 50%;
+  background: #a5656a;
+  box-shadow: 0 0 0 4px #fffaf6, 0 0 0 5px rgba(176, 127, 107, 0.6);
+  color: #fffaf6;
+  text-align: center;
+}
+.gm-door-medal b { font-size: 1.7rem; line-height: 1; }
+.gm-door-medal small { font-size: 0.62rem; letter-spacing: 0.2em; }
+.gm-door-body {
+  flex: 1;
+  padding: 1.1rem 1.3rem 1.6rem;
+  border: 6px solid #c99a86;
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background: #fffaf6;
+  text-align: center;
+}
+.gm-door-kicker { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #a5656a; }
+.gm-door h3 { margin-top: 0.2rem !important; font: 400 2.6rem/1.15 var(--font-pinyon), cursive; color: #94475a; }
+.gm-door-when { margin-top: 0.4rem !important; font-size: 1.05rem; font-weight: 600; }
+.gm-door-venue { font-size: 1.3rem; font-weight: 600; }
+.gm-door-address { margin-top: 0.2rem !important; font-size: 1rem; opacity: 0.78; }
+.gm-door-note { margin-top: 0.5rem !important; font-size: 0.98rem; opacity: 0.85; }
+.gm-door-note em { margin-right: 0.3rem; font-weight: 600; color: #a5656a; }
+.gm-door .sp-btn { min-height: 2.3rem; padding: 0.4rem 0.9rem; font-size: 0.72rem; }
+.gm-swipe { margin-top: 0.4rem !important; text-align: center; font-size: 0.95rem; font-style: italic; opacity: 0.65; }
+@media (min-width: 900px) { .gm-swipe { display: none; } }
+
+/* Two family windows */
+.gm-families { width: 100%; max-width: 62rem; }
+.gm-windows { display: grid; gap: 3rem; justify-items: center; }
+@media (min-width: 760px) { .gm-windows { grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; } }
+
+.gm-gallery { width: 100%; max-width: 60rem; }
+.gm-rsvp { width: min(100%, 36rem); }
+
+.gm-footer { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
+.gm-footer-seal { width: 6rem; filter: drop-shadow(0 8px 12px rgba(90, 45, 35, 0.3)); }
+.gm-thanks { margin-top: 0.4rem !important; font: 400 3rem/1.1 var(--font-pinyon), cursive; color: #94475a; }
+.gm-signed { margin-top: 0.6rem !important; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }

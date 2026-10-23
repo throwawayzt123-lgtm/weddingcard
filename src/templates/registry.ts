@@ -25,7 +25,7 @@ export function getTrack(key: string | null | undefined): MusicTrack | undefined
 
 export type TemplateMeta = {
   key: string;
-  /** The category (and price) of the design: BASIC = Regular, STANDARD = Advanced, PREMIUM = Prime. */
+  /** The category (and price) of the design: BASIC = Regular, STANDARD = Advanced, PREMIUM = Prime, ROYAL = Royal. */
   plan: Plan;
   name: string;
   /** One line shown on cards. */
@@ -85,11 +85,11 @@ export const TEMPLATES: TemplateMeta[] = [
   },
   {
     key: "gulab-mahal",
-    plan: "PREMIUM",
+    plan: "ROYAL",
     name: "Gulab Mahal",
     tagline: "A blush envelope opens onto a palace arch at sunset",
     description:
-      "A blush pink envelope edged in rose gold, with embossed roses and a rose gold wax seal. Break the seal and the arched flap lifts, the envelope falls away and you look out through a flowered palace arch, past a crystal chandelier and glowing lanterns, to a domed palace at sunset where the couple sits by the water. Your invitation is written in the evening sky.",
+      "A blush pink envelope edged in rose gold, with embossed roses and a rose gold wax seal. Break the seal and the arched flap lifts, the envelope falls away and you look out through a flowered palace arch, past a crystal chandelier and glowing lanterns, to a domed palace at sunset where the couple sits by the water. Your invitation is written in the evening sky. Inside, each celebration waits behind its own arched doorway along a palace corridor.",
     colors: [
       { name: "Blush", hex: "#f1dbcf" },
       { name: "Rose gold", hex: "#b07f6b" },
@@ -101,6 +101,82 @@ export const TEMPLATES: TemplateMeta[] = [
     defaultTrack: "soft-piano",
     tracks: ["soft-piano", "shahi-sitar", "calm-pads"],
     bestFor: ["Nikah","Baraat","Blush and rose gold"],
+  },
+  {
+    key: "laal-gulab",
+    plan: "ROYAL",
+    name: "Laal Gulab",
+    tagline: "Burgundy velvet, red roses and an ivory card",
+    description:
+      "An ivory envelope rests on burgundy velvet among red roses and candles, sealed with wine red wax and a gold tassel. Break the seal and the flap opens, the card slides out and fills the screen: a gold arch on ivory, red roses, hanging lanterns and the bride and groom at its foot, with your invitation inside the arch. Inside, a suite of ivory cards lies on the velvet: a printed order of celebrations, calling cards for the families and a reply card.",
+    colors: [
+      { name: "Burgundy", hex: "#6e0f22" },
+      { name: "Rose red", hex: "#b3182f" },
+      { name: "Ivory", hex: "#f8f1e4" },
+      { name: "Gold", hex: "#c9a052" },
+    ],
+    thumbnail: "/templates/laal-gulab/thumb.webp",
+    opening: "Velvet envelope, wax seal and tassel; the card slides out",
+    defaultTrack: "shahi-sitar",
+    tracks: ["shahi-sitar", "soft-piano", "calm-pads"],
+    bestFor: ["Baraat","Nikah","Red and gold"],
+  },
+  {
+    key: "mahtab",
+    plan: "ROYAL",
+    name: "Mahtab",
+    tagline: "A full moon rises over a palace at night",
+    description:
+      "A starry navy sky with the moon low on the horizon. Tap, and the full moon rises into place while a gold Mughal arch, a lit palace on the water and cascades of blue and white roses appear around it. The couple stands on a marble balcony and your invitation is written in the night sky. Inside, the celebrations follow a gold thread down the sky, the moon growing fuller at every one.",
+    colors: [
+      { name: "Midnight", hex: "#0d1838" },
+      { name: "Moon gold", hex: "#d4b46a" },
+      { name: "Hydrangea blue", hex: "#8fa9cf" },
+      { name: "Pearl", hex: "#f3f4f8" },
+    ],
+    thumbnail: "/templates/mahtab/thumb.webp",
+    opening: "The moon rises and a palace arch appears",
+    defaultTrack: "calm-pads",
+    tracks: ["calm-pads", "soft-piano", "shahi-sitar"],
+    bestFor: ["Walima","Evening events","Navy and gold"],
+  },
+  {
+    key: "chaman",
+    plan: "ROYAL",
+    name: "Chaman",
+    tagline: "A sehra of jasmine opens onto a white rose garden",
+    description:
+      "Strings of jasmine and red roses hang like a groom's sehra over the screen. Tap, and the sehra parts to either side onto a garden card in ivory and sage: white roses and eucalyptus, a fine gold arch for your words, and below it the couple walking under a floral arch towards a white marble pavilion. Inside, each celebration is an arched botanical card with a sprig and a plant label.",
+    colors: [
+      { name: "Ivory", hex: "#fbfaf4" },
+      { name: "Sage", hex: "#7d9479" },
+      { name: "White rose", hex: "#ece4d8" },
+      { name: "Soft gold", hex: "#b89b5e" },
+    ],
+    thumbnail: "/templates/chaman/thumb.webp",
+    opening: "A jasmine sehra parts",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
+    bestFor: ["Nikah","Day weddings","White and sage"],
+  },
+  {
+    key: "mehfil",
+    plan: "ROYAL",
+    name: "Mehfil",
+    tagline: "Marigolds, mirror work parasols and a dholak",
+    description:
+      "A marigold wreath turns slowly around your names. Tap, and it spins open: the mehndi night comes into focus, mirror work parasols drop in from above and marigold garlands swing down. A fuchsia mirror work arch holds your invitation, with the couple in green and yellow, a dholak, diyas and marigolds below. Inside, every celebration is a bright ticket with a tear-off stub and the countdown hangs on bunting.",
+    colors: [
+      { name: "Marigold", hex: "#f57c00" },
+      { name: "Fuchsia", hex: "#c2185b" },
+      { name: "Parrot green", hex: "#23955a" },
+      { name: "Haldi yellow", hex: "#ffcf5c" },
+    ],
+    thumbnail: "/templates/mehfil/thumb.webp",
+    opening: "A marigold wreath spins open",
+    defaultTrack: "festive-dhol",
+    tracks: ["festive-dhol", "shahi-sitar", "calm-pads"],
+    bestFor: ["Mehndi","Dholki","Mayun"],
   },
   {
     key: "bazm",

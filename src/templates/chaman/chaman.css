@@ -1,0 +1,86 @@
+/* ------------------------------------------------------------------
+   Chaman: a white rose garden in sage, ivory and a thread of gold.
+   The artwork is drawn by scripts/make-chaman.cjs; the stage, words and buttons
+   are shared (invite-shared/story-card.css). The chapters are the shared full-screen chapters.
+------------------------------------------------------------------- */
+
+.invitation[data-template="chaman"] {
+  --inv-bg: #fbfaf4;
+  --inv-ink: #34452f;
+  --inv-accent: #b89b5e;
+  --inv-accent-strong: #5f7a5b;
+  --inv-on-accent: #ffffff;
+  --inv-menu-bg: #fbfaf4;
+  --inv-heading: var(--font-cormorant), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-parisienne), cursive;
+  background: #fbfaf4;
+}
+.cm-backdrop { position: fixed; inset: 0; z-index: 0; background: #fbfaf4; }
+
+.cm-opening {
+  --guest-ink: #3f5a45;
+  --sc-head-top: 40%;
+  --sc-script: var(--font-parisienne), cursive;
+  --sc-top: 17.5%;
+  --sc-bottom: 36.5%;
+  --sc-width: 32cqh;
+  --sc-ink: #4a5a48;
+  --sc-accent: #8a7442;
+  --sc-name: #3f5a45;
+  --sc-muted: #6a7a66;
+  --sc-rule: rgba(184, 155, 94, 0.6);
+  --sc-delay: 2.3s;
+  --sc-enter-top: 67.5%; /* over the pavilion, under the words */
+  --sc-glow: rgba(253, 252, 247, 0.6);
+  --sc-btn-from: #8fa88a;
+  --sc-btn-to: #5f7a5b;
+  background: #e9ece0;
+}
+/* the names and buttons sit on ivory, so they read over the jasmine strings */
+.cm-opening .sc-cover-head {
+  padding: 4cqh 3cqh 3.4cqh;
+  border: 1px solid #b89b5e;
+  border-radius: 999px 999px 2cqh 2cqh;
+  background: rgba(253, 252, 247, 0.94);
+  box-shadow: 0 1.5cqh 4cqh -1.5cqh rgba(60, 70, 50, 0.35);
+}
+.cm-opening .sc-cover-ui {
+  bottom: 0;
+  padding: 5cqh 1.25rem 5cqh;
+  background: linear-gradient(transparent, rgba(253, 252, 247, 0.94) 32%);
+}
+
+.cm-scene {
+  transform: scale(1.08);
+  transition: transform 2.4s var(--sc-ease) 0.6s;
+}
+.cm-opening:not([data-step="sealed"]) .cm-scene { transform: none; }
+
+.cm-sehra-top { transition: transform 1s var(--sc-ease) 0.1s; }
+.cm-opening:not([data-step="sealed"]) .cm-sehra-top { transform: translateY(-100%); }
+
+/* the strings sway on the cover, then part to either side */
+.cm-sehra-left,
+.cm-sehra-right {
+  transform-origin: 50% 0;
+  animation: cm-sway 4.5s ease-in-out infinite;
+  transition: transform 1.9s var(--sc-ease) 0.4s, opacity 0.8s ease 1.6s;
+}
+.cm-sehra-right { animation-delay: -2.2s; }
+@keyframes cm-sway {
+  0%, 100% { rotate: -0.35deg; }
+  50% { rotate: 0.35deg; }
+}
+.cm-opening:not([data-step="sealed"]) .cm-sehra-left { animation: none; transform: translateX(-62%) skewX(5deg); opacity: 0; }
+.cm-opening:not([data-step="sealed"]) .cm-sehra-right { animation: none; transform: translateX(62%) skewX(-5deg); opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cm-sehra-left,
+  .cm-sehra-right { animation: none; }
+  .cm-scene,
+  .cm-sehra-top,
+  .cm-sehra-left,
+  .cm-sehra-right { transition: opacity 0.3s linear; }
+  .cm-opening:not([data-step="sealed"]) :is(.cm-sehra-top, .cm-sehra-left, .cm-sehra-right) { opacity: 0; transform: none; }
+}

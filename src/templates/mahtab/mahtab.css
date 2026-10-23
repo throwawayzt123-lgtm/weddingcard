@@ -1,0 +1,73 @@
+/* ------------------------------------------------------------------
+   Mahtab: a moonlit palace in navy, gold, blue and white.
+   The artwork is drawn by scripts/make-mahtab.cjs; the stage, words and buttons
+   are shared (invite-shared/story-card.css). The chapters are the shared full-screen chapters.
+------------------------------------------------------------------- */
+
+.invitation[data-template="mahtab"] {
+  --inv-bg: #0d1838;
+  --inv-ink: #f3ead6;
+  --inv-accent: #d4b46a;
+  --inv-accent-strong: #e8c87a;
+  --inv-on-accent: #14204a;
+  --inv-menu-bg: #0d1838;
+  --inv-heading: var(--font-cormorant), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-allura), cursive;
+  background: #0d1838;
+}
+.mt-backdrop { position: fixed; inset: 0; z-index: 0; background: #0d1838; }
+
+.mt-opening {
+  --guest-ink: #f3e3b5;
+  --sc-head-top: 33%;
+  --sc-script: var(--font-allura), cursive;
+  --sc-top: 32.5%;
+  --sc-bottom: 35%;
+  --sc-width: 30cqh;
+  --sc-ink: #e9dcc0;
+  --sc-accent: #e8c87a;
+  --sc-name: #fff6e2;
+  --sc-muted: #c9c2b0;
+  --sc-rule: rgba(212, 180, 106, 0.6);
+  --sc-delay: 2.6s;
+  --sc-enter-top: 86.5%; /* on the marble balcony */
+  --sc-glow: rgba(10, 18, 48, 0.5);
+  --sc-btn-from: #e2c27a;
+  --sc-btn-to: #a8823a;
+  --sc-btn-ink: #14204a;
+  background: #070f29;
+}
+.mt-opening .sc-script { font-size: clamp(1.6rem, 3.8cqh, 2.9rem); }
+.mt-opening .sc-amp { font-size: clamp(1.6rem, 3.4cqh, 2.5rem); }
+.mt-opening .sc-cover-names { color: #f6e7b8; text-shadow: 0 0 2cqh rgba(246, 231, 184, 0.35); }
+
+/* The moon starts low, rises to its place and brightens */
+.mt-moon {
+  transform: translateY(40%) scale(0.85);
+  filter: brightness(0.82);
+  transition: transform 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s, filter 2s ease 0.4s;
+}
+.mt-opening:not([data-step="sealed"]) .mt-moon { transform: none; filter: none; }
+
+/* The arch, palace and flowers appear around the moon */
+.mt-front {
+  opacity: 0;
+  transform: scale(1.12);
+  transform-origin: 50% 30%;
+  transition: opacity 1.4s ease 1.3s, transform 2.3s var(--sc-ease) 1.2s;
+}
+.mt-opening:not([data-step="sealed"]) .mt-front { opacity: 1; transform: none; }
+
+/* Stars breathe on the cover */
+.mt-sky { animation: mt-twinkle 4s ease-in-out infinite; }
+@keyframes mt-twinkle {
+  50% { filter: brightness(1.18); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-sky { animation: none; }
+  .mt-moon,
+  .mt-front { transition: opacity 0.3s linear; }
+  .mt-opening:not([data-step="sealed"]) .mt-moon { transform: none; }
+}

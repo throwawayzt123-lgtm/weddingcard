@@ -26,7 +26,7 @@ export default async function RsvpsPage({ searchParams }: PageProps<"/portal/rsv
         <div className="card mt-6 p-8 text-center">
           <MessageCircle className="mx-auto size-10 text-gold-dark" />
           <p className="mt-3 font-serif text-2xl text-maroon">RSVP is not in your plan</p>
-          <p className="mt-1 text-sm text-ink/65">With RSVP, guests reply Yes, No or Maybe for each event and tell you how many people are coming. Available on Advanced and Prime.</p>
+          <p className="mt-1 text-sm text-ink/65">With RSVP, guests reply Yes, No or Maybe for each event and tell you how many people are coming. Available on Advanced, Prime and Royal.</p>
           <a href={waLink(settings, `Hi, I'd like to upgrade my invitation (${inv.groomName} & ${inv.brideName}) to get RSVP.`)} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5">Upgrade by messaging us on WhatsApp</a>
         </div>
       </div>

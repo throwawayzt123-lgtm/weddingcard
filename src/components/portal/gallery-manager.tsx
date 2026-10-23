@@ -26,7 +26,7 @@ export function GalleryManager({
       <div className="card p-8 text-center">
         <ImageIcon className="mx-auto size-10 text-gold-dark" />
         <p className="mt-3 font-serif text-2xl text-maroon">The photo gallery is not in your plan</p>
-        <p className="mt-1 text-sm text-ink/65">The {planLabel} plan does not include a gallery. Upgrade to Advanced (10 photos) or Prime (30 photos).</p>
+        <p className="mt-1 text-sm text-ink/65">The {planLabel} plan does not include a gallery. Upgrade to Advanced (10 photos), Prime (30 photos) or Royal (50 photos).</p>
         <a href={upgradeUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5">Upgrade by messaging us on WhatsApp</a>
       </div>
     );

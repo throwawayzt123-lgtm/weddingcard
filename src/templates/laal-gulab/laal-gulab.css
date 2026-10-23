@@ -1,0 +1,100 @@
+/* ------------------------------------------------------------------
+   Laal Gulab: burgundy velvet, an ivory card, red roses and gold.
+   The artwork is drawn by scripts/make-laal-gulab.cjs; the stage, words and buttons
+   are shared (invite-shared/story-card.css). The chapters are the shared full-screen chapters.
+------------------------------------------------------------------- */
+
+.invitation[data-template="laal-gulab"] {
+  --inv-bg: #f8f1e4;
+  --inv-ink: #3b0a14;
+  --inv-accent: #c9a052;
+  --inv-accent-strong: #8e1424;
+  --inv-on-accent: #ffffff;
+  --inv-menu-bg: #f8f1e4;
+  --inv-heading: var(--font-cormorant), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-great-vibes), cursive;
+  background: #f8f1e4;
+}
+.lg-backdrop { position: fixed; inset: 0; z-index: 0; background: #f8f1e4; }
+
+.lg-opening {
+  --guest-ink: #f6e7d0;
+  --sc-head-top: 12%;
+  --sc-script: var(--font-great-vibes), cursive;
+  --sc-top: 21%;
+  --sc-bottom: 33%;
+  --sc-width: 33cqh;
+  --sc-ink: #5a2a20;
+  --sc-accent: #8e1424;
+  --sc-name: #6e0f22;
+  --sc-muted: #7a5a3a;
+  --sc-rule: rgba(201, 160, 82, 0.75);
+  --sc-delay: 3.1s;
+  --sc-enter-top: 77%;
+  --sc-enter-left: 36%; /* beside the couple */
+  --sc-glow: rgba(253, 249, 241, 0.6);
+  --sc-btn-from: #b3182f;
+  --sc-btn-to: #6e0f22;
+  background: #3a0610;
+}
+.lg-opening .sc-name { font-family: var(--font-cinzel), Georgia, serif; letter-spacing: 0.06em; }
+.lg-opening .sc-small { color: #8f6c2a; }
+.lg-opening .sc-cover-ui { bottom: 2.5cqh; gap: 1.1cqh; }
+
+/* Stacking: the flap lies over the card until it has opened, then drops behind it */
+.lg-velvet { z-index: 0; }
+.lg-env-back { z-index: 2; }
+.lg-card { z-index: 3; }
+.lg-env-front { z-index: 4; }
+.lg-flap { z-index: 5; }
+.lg-seal { z-index: 6; }
+
+/* The card waits inside the envelope at a little over half size */
+.lg-card {
+  transform: translateY(2.1%) scale(0.55);
+}
+.lg-opening:not([data-step="sealed"]) .lg-card { animation: lg-card-out 3.2s var(--sc-ease) 0.7s both; }
+@keyframes lg-card-out {
+  0% { transform: translateY(2.1%) scale(0.55); }
+  35%, 48% { transform: translateY(-22%) scale(0.55); }
+  100% { transform: none; }
+}
+
+.lg-flap {
+  transform-origin: 50% 24.48%; /* the top edge of the envelope */
+  transition: transform 0.9s var(--sc-ease) 0.25s, z-index 0s linear 0.75s, opacity 0.6s ease 2.2s;
+}
+.lg-opening:not([data-step="sealed"]) .lg-flap { z-index: 1; transform: perspective(2200px) rotateX(180deg); opacity: 0; }
+
+.lg-env-back,
+.lg-env-front { transition: transform 1.2s cubic-bezier(0.5, 0, 0.75, 0) 2.3s, opacity 0.8s ease 2.6s; }
+.lg-opening:not([data-step="sealed"]) :is(.lg-env-back, .lg-env-front) { transform: translateY(60%); opacity: 0; }
+
+/* The wax seal with its tassel: centred on the flap's point (canvas 540, 1070) */
+.lg-seal {
+  position: absolute;
+  top: 49.45%;
+  left: 50%;
+  width: 12.55cqh;
+  height: auto;
+  translate: -50% 0;
+  transform-origin: 50% 27.8%;
+  filter: drop-shadow(0 0.5cqh 0.6cqh rgba(20, 0, 5, 0.45));
+  animation: lg-tassel 3.4s ease-in-out infinite;
+  transition: transform 0.9s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.5s ease 0.3s;
+}
+@keyframes lg-tassel {
+  0%, 100% { rotate: -2deg; }
+  50% { rotate: 2deg; }
+}
+.lg-opening:not([data-step="sealed"]) .lg-seal { animation: none; transform: translateY(45cqh) rotate(25deg); opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-seal { animation: none; }
+  .lg-opening:not([data-step="sealed"]) .lg-card { animation: none; transform: none; }
+  .lg-flap,
+  .lg-env-back,
+  .lg-env-front,
+  .lg-seal { transition: opacity 0.3s linear; }
+}

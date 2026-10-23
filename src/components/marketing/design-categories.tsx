@@ -7,7 +7,7 @@ import { DesignCard } from "./design-card";
 
 const SHOWN = [0, 1, 4, 5, 6]; // the feature lines worth showing on the website
 
-/** The designs grouped by category, each with its price: Regular, Advanced and Prime. */
+/** The designs grouped by category, each with its price: Regular, Advanced, Prime and Royal. */
 export function DesignCategories({ orderHref }: { orderHref: (text: string) => string }) {
   return (
     <div>

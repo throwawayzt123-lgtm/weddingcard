@@ -1,0 +1,220 @@
+/* ------------------------------------------------------------------
+   Mehfil, inside (content.tsx): a mela of marigold, fuchsia, green and mirror work.
+------------------------------------------------------------------- */
+.invitation[data-template="mehfil"] {
+  --inv-panel-bg: #fffaf0;
+  --inv-panel-border: rgba(194, 24, 91, 0.4);
+  --inv-card-bg: rgba(255, 250, 240, 0.9);
+}
+.mf-backdrop {
+  background:
+    radial-gradient(circle at 50% 50%, transparent 38%, rgba(245, 124, 0, 0.09) 39% 41%, transparent 42%) 0 0 / 180px 180px,
+    radial-gradient(circle at 50% 50%, rgba(194, 24, 91, 0.07) 0 12%, transparent 13%) 0 0 / 90px 90px,
+    linear-gradient(#fff3c8, #ffe08a);
+}
+
+.mf-content {
+  --sp-ink: #4a2208;
+  --sp-accent: #c2185b;
+  --sp-soft: #fffaf0;
+  --sp-line: rgba(194, 24, 91, 0.4);
+  --sp-font: var(--font-cormorant), Georgia, serif;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.2rem;
+  padding: 0 1.1rem 3rem;
+  overflow: hidden;
+  color: #4a2208;
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+.mf-content :is(p, h1, h2, h3) { margin: 0; }
+.mf-eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: #c2185b; }
+.mf-lead { max-width: 30rem; margin-inline: auto !important; font-size: 1.2rem; line-height: 1.6; }
+.mf-heading { margin-bottom: 1.8rem; text-align: center; }
+.mf-heading h2 { margin-top: 0.2rem !important; font: 400 clamp(2.8rem, 10vw, 3.8rem)/1.1 var(--font-alex), cursive; color: #1b6b3a; }
+
+.mf-swag { width: min(120vw, 1100px); max-width: none; margin: 0 -1.1rem -1.5rem; pointer-events: none; }
+
+/* Hero: names over a turning mandala */
+.mf-hero { position: relative; display: grid; width: 100%; min-height: 26rem; place-items: center; }
+.mf-mandala {
+  position: absolute;
+  width: min(98vw, 32rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #fffaf0 0 47%, transparent 47.5%),
+    repeating-conic-gradient(from 0deg, #f57c00 0 7.5deg, #ffc940 7.5deg 15deg),
+    #f57c00;
+  -webkit-mask: radial-gradient(circle, #000 0 47%, transparent 47.5% 50%, #000 50.5% 62%, transparent 62.5% 64%, #000 64.5% 70%, transparent 70.5%);
+  mask: radial-gradient(circle, #000 0 47%, transparent 47.5% 50%, #000 50.5% 62%, transparent 62.5% 64%, #000 64.5% 70%, transparent 70.5%);
+  opacity: 0.9;
+  animation: mf-spin 60s linear infinite;
+}
+.mf-mandala::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 7deg, #c2185b 0 6deg, transparent 6deg 30deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 66%, #000 66.5% 72%, transparent 72.5%);
+  mask: radial-gradient(circle, transparent 0 66%, #000 66.5% 72%, transparent 72.5%);
+}
+@keyframes mf-spin { to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .mf-mandala { animation: none; } }
+.mf-hero-words { position: relative; z-index: 1; display: flex; max-width: min(56vw, 15rem); flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; }
+.mf-arabic { font: 400 1.4rem/1.5 var(--font-amiri), serif; color: #c2185b; }
+.mf-names { display: flex; flex-direction: column; align-items: center; font: 400 clamp(2.8rem, 12vw, 4rem)/1 var(--font-alex), cursive; color: #c2185b; }
+.mf-names i { font-size: 0.55em; font-style: normal; color: #f57c00; }
+.mf-dates { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; color: #1b6b3a; }
+
+/* A note under a parasol */
+.mf-note {
+  position: relative;
+  width: min(100%, 32rem);
+  padding: 7.2rem 1.6rem 2.2rem;
+  border: 3px solid #c2185b;
+  border-radius: 24px;
+  background: #fffaf0;
+  box-shadow: 0 0 0 6px #fffaf0, 0 0 0 8px #f57c00, 0 30px 50px -30px rgba(122, 18, 64, 0.5);
+  text-align: center;
+}
+.mf-parasol { position: absolute; top: -2.6rem; left: 50%; width: 10rem; translate: -50% 0; animation: mf-swing 4s ease-in-out infinite; transform-origin: 50% 0; }
+@keyframes mf-swing { 0%, 100% { rotate: -3deg; } 50% { rotate: 3deg; } }
+@media (prefers-reduced-motion: reduce) { .mf-parasol { animation: none; } }
+.mf-dear { font: 400 2.6rem/1.1 var(--font-alex), cursive; color: #c2185b; }
+.mf-note .mf-lead { margin-top: 0.6rem !important; }
+.mf-translation { margin-top: 0.9rem !important; font-size: 1rem; font-style: italic; opacity: 0.75; }
+
+/* Countdown on bunting */
+.mf-count { width: min(100%, 36rem); text-align: center; }
+.mf-bunting-wrap .mf-eyebrow { margin-bottom: 0.4rem !important; }
+.mf-bunting { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; padding-top: 1.2rem; }
+.mf-bunting::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: -4%;
+  right: -4%;
+  height: 1.6rem;
+  border-top: 3px solid #7a5a20;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform: scaleY(-1);
+}
+.mf-flag {
+  position: relative;
+  display: flex;
+  aspect-ratio: 4 / 5;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.9rem;
+  background: var(--c);
+  clip-path: polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%);
+  color: #fff;
+  animation: mf-flutter 3s ease-in-out infinite;
+  transform-origin: 50% 0;
+}
+.mf-flag:nth-child(even) { animation-delay: -1.4s; margin-top: 0.5rem; }
+@keyframes mf-flutter { 50% { rotate: 2.5deg; } }
+@media (prefers-reduced-motion: reduce) { .mf-flag { animation: none; } }
+.mf-flag b { font: 700 clamp(1.6rem, 7vw, 2.3rem)/1 var(--font-cormorant), serif; }
+.mf-flag small { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9; }
+.mf-bunting-done { font: 400 2rem/1.3 var(--font-alex), cursive; color: #c2185b; }
+
+/* Tickets with a tear-off stub */
+.mf-tickets-section { width: 100%; max-width: 46rem; }
+.mf-tickets { display: grid; gap: 2rem; }
+.mf-ticket {
+  display: grid;
+  grid-template-columns: 1fr 5.4rem;
+  filter: drop-shadow(0 18px 18px rgba(90, 30, 0, 0.25));
+}
+.mf-ticket[data-r][data-in="true"] { transform: rotate(var(--tilt)); }
+.mf-ticket-main,
+.mf-ticket-stub {
+  background: #fffaf0;
+  -webkit-mask: radial-gradient(circle at 100% 0, transparent 0.9rem, #000 0.95rem) top right / 51% 51% no-repeat,
+    radial-gradient(circle at 100% 100%, transparent 0.9rem, #000 0.95rem) bottom right / 51% 51% no-repeat,
+    linear-gradient(#000, #000) left / 50% 100% no-repeat;
+  mask: radial-gradient(circle at 100% 0, transparent 0.9rem, #000 0.95rem) top right / 51% 51% no-repeat,
+    radial-gradient(circle at 100% 100%, transparent 0.9rem, #000 0.95rem) bottom right / 51% 51% no-repeat,
+    linear-gradient(#000, #000) left / 50% 100% no-repeat;
+}
+.mf-ticket-main {
+  padding: 1.4rem 1.4rem 1.4rem 1.6rem;
+  border-left: 0.6rem solid var(--c);
+  border-radius: 14px 0 0 14px;
+}
+.mf-ticket-stub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  border-left: 3px dashed rgba(74, 34, 8, 0.35);
+  border-radius: 0 14px 14px 0;
+  background: var(--c);
+  color: #fff;
+  -webkit-mask: radial-gradient(circle at 0 0, transparent 0.9rem, #000 0.95rem) top left / 51% 51% no-repeat,
+    radial-gradient(circle at 0 100%, transparent 0.9rem, #000 0.95rem) bottom left / 51% 51% no-repeat,
+    linear-gradient(#000, #000) right / 50% 100% no-repeat;
+  mask: radial-gradient(circle at 0 0, transparent 0.9rem, #000 0.95rem) top left / 51% 51% no-repeat,
+    radial-gradient(circle at 0 100%, transparent 0.9rem, #000 0.95rem) bottom left / 51% 51% no-repeat,
+    linear-gradient(#000, #000) right / 50% 100% no-repeat;
+}
+.mf-ticket-stub b { font: 700 2.4rem/1 var(--font-cormorant), serif; }
+.mf-ticket-stub small { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.mf-ticket-stub span { margin-top: 0.4rem; font-size: 0.68rem; letter-spacing: 0.1em; opacity: 0.85; writing-mode: vertical-rl; }
+.mf-ticket-kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c); }
+.mf-ticket h3 { font: 400 2.6rem/1.1 var(--font-alex), cursive; color: var(--c); }
+.mf-ticket-when { font-size: 1.02rem; font-weight: 700; }
+.mf-ticket-venue { margin-top: 0.5rem !important; font-size: 1.2rem; font-weight: 700; }
+.mf-ticket-muted { margin-top: 0.2rem !important; font-size: 1rem; opacity: 0.8; }
+.mf-ticket .sp-actions { justify-content: flex-start; }
+.mf-ticket .sp-btn { --sp-accent: var(--c); min-height: 2.2rem; padding: 0.35rem 0.85rem; font-size: 0.7rem; }
+
+/* Families in round mirror work badges */
+.mf-families { width: 100%; max-width: 48rem; }
+.mf-badges { display: grid; gap: 2rem; justify-items: center; }
+@media (min-width: 720px) { .mf-badges { grid-template-columns: 1fr 1fr; } }
+.mf-badge {
+  display: grid;
+  width: min(88vw, 21rem);
+  min-height: 19rem;
+  place-items: center;
+  padding: 4.6rem 3.2rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, #fffaf0 0 84%, transparent 84.5%),
+    repeating-conic-gradient(#c2185b 0 10deg, #1b8a4c 10deg 20deg);
+  box-shadow: 0 0 0 4px #ffc940, 0 24px 40px -24px rgba(90, 30, 0, 0.5);
+  position: relative;
+}
+.mf-badge::before {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border: 3px dotted #d9a62e;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.mf-badge .sp-family { position: relative; max-width: 13rem; }
+.mf-badge .sp-family-parents { font-size: 1.1rem; }
+.mf-badge .sp-family-members { gap: 0.3rem; font-size: 0.95rem; }
+
+.mf-gallery { width: 100%; max-width: 60rem; }
+.mf-rsvp {
+  width: min(100%, 36rem);
+  padding: 2.4rem 1.6rem;
+  border: 3px dashed #c2185b;
+  border-radius: 24px;
+  background: #fffaf0;
+  box-shadow: 0 30px 50px -30px rgba(122, 18, 64, 0.5);
+}
+
+.mf-footer { text-align: center; }
+.mf-thanks { font: 400 3.4rem/1.1 var(--font-alex), cursive; color: #c2185b; }
+.mf-signed { margin-top: 0.8rem !important; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #1b6b3a; }

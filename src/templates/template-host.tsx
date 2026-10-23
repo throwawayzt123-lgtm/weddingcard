@@ -26,6 +26,10 @@ const DESIGNS: Record<string, ComponentType<TemplateProps>> = {
   jharoka: dynamic(() => import("./jharoka")),
   "mor-pankh": dynamic(() => import("./mor-pankh")),
   "gulab-mahal": dynamic(() => import("./gulab-mahal")),
+  "laal-gulab": dynamic(() => import("./laal-gulab")),
+  mahtab: dynamic(() => import("./mahtab")),
+  chaman: dynamic(() => import("./chaman")),
+  mehfil: dynamic(() => import("./mehfil")),
 };
 
 /** Server action that saves a guest's RSVP (live invitations only). */

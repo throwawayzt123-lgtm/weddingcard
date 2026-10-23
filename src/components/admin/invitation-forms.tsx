@@ -67,7 +67,7 @@ export function SettingsForm({ inv }: { inv: InvitationData }) {
           </Field>
           <label className="flex items-start gap-3 rounded-xl border border-ink/10 bg-cream/50 p-4 sm:mt-7">
             <input type="checkbox" name="showBadge" defaultChecked={inv.showBadge} className="mt-1 size-5 accent-maroon" />
-            <span className="text-sm"><strong>Show “Made with ❤” badge</strong><br /><span className="text-ink/65">Only Prime invitations can hide it.</span></span>
+            <span className="text-sm"><strong>Show “Made with ❤” badge</strong><br /><span className="text-ink/65">Only Prime and Royal invitations can hide it.</span></span>
           </label>
         </div>
       </Card>

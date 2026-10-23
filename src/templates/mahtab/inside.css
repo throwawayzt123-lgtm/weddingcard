@@ -1,0 +1,174 @@
+/* ------------------------------------------------------------------
+   Mahtab, inside (content.tsx): a night sky with a moon-phase timeline and dark glass panels.
+------------------------------------------------------------------- */
+.invitation[data-template="mahtab"] {
+  --inv-panel-bg: rgba(16, 28, 66, 0.72);
+  --inv-panel-border: rgba(212, 180, 106, 0.5);
+  --inv-card-bg: rgba(20, 34, 78, 0.7);
+  --inv-muted: rgba(243, 234, 214, 0.75);
+}
+.mt-backdrop {
+  background:
+    linear-gradient(rgba(7, 15, 41, 0.15), rgba(7, 15, 41, 0.55)),
+    url("/templates/mahtab/sky.webp") center / cover no-repeat,
+    #0d1838;
+}
+
+.mt-content {
+  --sp-ink: #f3ead6;
+  --sp-accent: #d4b46a;
+  --sp-on-accent: #14204a;
+  --sp-soft: rgba(13, 24, 56, 0.95);
+  --sp-line: rgba(212, 180, 106, 0.5);
+  --sp-font: var(--font-cormorant), Georgia, serif;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.5rem;
+  padding: 3.5rem 1.1rem 3rem;
+  overflow: hidden;
+  color: #f3ead6;
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+.mt-content :is(p, h1, h2, h3, ol, dl, dd) { margin: 0; }
+
+/* twinkling stars over everything */
+.mt-stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent),
+    radial-gradient(1.2px 1.2px at 78% 12%, #fff, transparent),
+    radial-gradient(1.8px 1.8px at 42% 64%, #fff7d8, transparent),
+    radial-gradient(1.2px 1.2px at 88% 72%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 22% 86%, #fff7d8, transparent),
+    radial-gradient(1px 1px at 60% 34%, #fff, transparent);
+  pointer-events: none;
+  animation: mt-twinkle-in 3.6s ease-in-out infinite alternate;
+}
+@keyframes mt-twinkle-in { to { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .mt-stars { animation: none; } }
+
+.mt-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #e8c87a; }
+.mt-lead { max-width: 30rem; margin-inline: auto !important; font-size: 1.2rem; line-height: 1.6; opacity: 0.9; }
+.mt-heading { margin-bottom: 2rem; text-align: center; }
+.mt-heading h2 { margin-top: 0.2rem !important; font: 400 clamp(2.8rem, 10vw, 4rem)/1.1 var(--font-allura), cursive; color: #f6e7b8; }
+
+/* Hero */
+.mt-hero { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; text-align: center; }
+.mt-moon { width: min(62vw, 300px); margin-bottom: -0.5rem; filter: brightness(1.12) drop-shadow(0 0 30px rgba(246, 231, 184, 0.45)); animation: mt-float 7s ease-in-out infinite; }
+@keyframes mt-float { 50% { translate: 0 -8px; } }
+.mt-arabic { font: 400 1.8rem/1.6 var(--font-amiri), serif; color: #e8c87a; }
+.mt-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 400 clamp(3.6rem, 15vw, 5.6rem)/1 var(--font-allura), cursive;
+  color: #fff6e2;
+  text-shadow: 0 0 24px rgba(246, 231, 184, 0.45);
+}
+.mt-names i { font-size: 0.5em; font-style: normal; color: #d4b46a; }
+.mt-dates { font-size: 1.25rem; font-style: italic; font-weight: 600; letter-spacing: 0.06em; }
+
+/* Dark glass panels edged in gold */
+.mt-glass {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: 2.2rem 1.6rem;
+  border: 1px solid rgba(212, 180, 106, 0.5);
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(27, 42, 90, 0.78), rgba(10, 18, 48, 0.82));
+  box-shadow: inset 0 1px 0 rgba(255, 246, 226, 0.12), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+.mt-dear { font: 400 2.8rem/1.1 var(--font-allura), cursive; color: #f6e7b8; }
+.mt-note .mt-lead { margin-top: 0.6rem !important; }
+.mt-translation { margin-top: 1rem !important; font-size: 1rem; font-style: italic; opacity: 0.7; }
+
+/* Countdown: four glowing moons */
+.mt-moons { width: min(100%, 34rem); text-align: center; }
+.mt-moons .inv-title { font-family: var(--font-allura), cursive; font-size: 2.6rem; color: #f6e7b8; }
+.mt-moons .inv-count-cell {
+  display: flex;
+  aspect-ratio: 1;
+  flex-direction: column;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #fffdf3, #f1e3b5 60%, #cdb87e);
+  box-shadow: 0 0 22px rgba(246, 231, 184, 0.45);
+}
+.mt-moons .inv-count-num { font-family: var(--font-cormorant), serif; font-weight: 700; color: #14204a; }
+.mt-moons .inv-count-label { color: #5b5032; }
+
+/* Timeline: a gold thread with moon phases; panels alternate sides on wide screens */
+.mt-timeline-section { width: 100%; max-width: 64rem; }
+.mt-timeline { position: relative; display: grid; gap: 2.4rem; padding: 0; list-style: none; }
+.mt-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.4rem;
+  width: 1px;
+  background: linear-gradient(transparent, #d4b46a 8%, #d4b46a 92%, transparent);
+}
+.mt-step { position: relative; padding-left: 3.6rem; }
+.mt-phase {
+  position: absolute;
+  top: 1.6rem;
+  left: 0.15rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #f6ecc8;
+  box-shadow: 0 0 16px rgba(246, 231, 184, 0.6);
+  overflow: hidden;
+}
+/* the shadow slides off the moon as --lit grows from a crescent (0.2) to full (1) */
+.mt-phase::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #101c42;
+  transform: translateX(calc(var(--lit, 1) * 105%));
+}
+.mt-event { width: 100%; text-align: left; }
+.mt-event-date { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #e8c87a; }
+.mt-event-date b { font-size: 1.3rem; letter-spacing: 0; }
+.mt-event h3 { margin-top: 0.2rem !important; font: 400 3rem/1.1 var(--font-allura), cursive; color: #fff6e2; }
+.mt-event-kicker { font-style: italic; opacity: 0.75; }
+.mt-facts { display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 1rem; margin-top: 1rem !important; padding-top: 1rem; border-top: 1px solid rgba(212, 180, 106, 0.3); font-size: 1.1rem; }
+.mt-facts dt { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; line-height: 2.1; color: #d4b46a; }
+.mt-facts dd small { display: block; font-size: 0.95rem; opacity: 0.72; }
+.mt-event-note { margin-top: 0.8rem !important; opacity: 0.8; }
+.mt-event .sp-actions { justify-content: flex-start; }
+@media (min-width: 860px) {
+  .mt-timeline::before { left: 50%; }
+  .mt-step { width: 50%; padding: 0 3.4rem 0 0; }
+  .mt-step:nth-child(even) { margin-left: 50%; padding: 0 0 0 3.4rem; }
+  .mt-phase { left: auto; right: -1.25rem; }
+  .mt-step:nth-child(even) .mt-phase { right: auto; left: -1.25rem; }
+}
+
+/* Families */
+.mt-families { width: 100%; max-width: 52rem; }
+.mt-family-pair { display: grid; gap: 1.6rem; justify-items: center; }
+@media (min-width: 720px) { .mt-family-pair { grid-template-columns: 1fr 1fr; align-items: start; } }
+.mt-family { padding-top: 2.8rem; }
+.mt-star { position: absolute; top: -1.1rem; left: 50%; translate: -50% 0; font-size: 2rem; color: #f6e7b8; text-shadow: 0 0 14px rgba(246, 231, 184, 0.8); }
+.mt-family .sp-family-title { color: #e8c87a; }
+
+.mt-gallery { width: 100%; max-width: 60rem; }
+.mt-rsvp { width: min(100%, 36rem); }
+.mt-roses { position: absolute; top: -2rem; left: -2rem; width: 8rem; pointer-events: none; }
+
+.mt-footer { text-align: center; }
+.mt-thanks { font: 400 3.2rem/1.1 var(--font-allura), cursive; color: #f6e7b8; }
+.mt-signed { margin-top: 0.8rem !important; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #d4b46a; }
