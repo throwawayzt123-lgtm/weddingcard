@@ -44,7 +44,7 @@
   height: calc(100dvh - var(--inv-bar, 0px));
   overflow: hidden;
   container-type: size;
-  box-shadow: 0 0 80px -20px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 80px -20px rgba(0, 0, 0, 0.55);
 }
 .sc-layer {
   position: absolute;
@@ -56,36 +56,72 @@
   -webkit-user-drag: none;
 }
 
-/* ---------- Cover: guest name, tap button, hint ---------- */
-.sc-cover-ui {
+/* ---------- Royal decorative gold inner frame & ambient sparkles ---------- */
+.sc-royal-frame {
   position: absolute;
-  inset: auto 0 6.5cqh;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.6cqh;
-  padding: 0 1.25rem;
-  text-align: center;
-  transition: opacity 0.5s ease;
+  inset: 1.2cqh;
+  border: 1px solid rgba(223, 183, 108, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(223, 183, 108, 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 12;
+  transition: opacity 0.8s ease;
 }
-.sc-cover-ui .inv-guest-line { margin: 0 auto; }
-.sc-opening:not([data-step="sealed"]) .sc-cover-ui { opacity: 0; pointer-events: none; }
-.sc-hint { font: italic 500 clamp(0.85rem, 1.9cqh, 1.05rem)/1.4 var(--sc-serif); color: var(--guest-ink, #fff); }
-.sc-opening .inv-tap-btn {
-  background: linear-gradient(135deg, var(--sc-btn-from), var(--sc-btn-to));
-  font-family: var(--sc-serif);
-  color: var(--sc-btn-ink);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 4px color-mix(in srgb, var(--sc-btn-from) 30%, transparent);
+.sc-royal-frame::before {
+  content: "✦";
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  font-size: 0.65rem;
+  color: #dfb76c;
+  line-height: 1;
+  opacity: 0.85;
+}
+.sc-royal-frame::after {
+  content: "✦";
+  position: absolute;
+  bottom: 4px;
+  right: 5px;
+  font-size: 0.65rem;
+  color: #dfb76c;
+  line-height: 1;
+  opacity: 0.85;
+}
+.sc-opening:not([data-step="sealed"]) .sc-royal-frame { opacity: 0; }
+
+.sc-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 14;
+  overflow: hidden;
+  transition: opacity 0.8s ease;
+}
+.sc-opening:not([data-step="sealed"]) .sc-sparkles { opacity: 0; }
+.sc-sparkle {
+  position: absolute;
+  color: #f7e099;
+  text-shadow: 0 0 6px #ffe28a, 0 0 14px rgba(255, 215, 0, 0.5);
+  animation: sc-float-sparkle 4s ease-in-out infinite alternate;
+}
+.sc-sparkle.s1 { top: 16%; left: 12%; font-size: 1.1rem; animation-delay: 0s; }
+.sc-sparkle.s2 { top: 26%; right: 14%; font-size: 0.8rem; animation-delay: 1.2s; }
+.sc-sparkle.s3 { top: 72%; left: 16%; font-size: 0.9rem; animation-delay: 2.3s; }
+.sc-sparkle.s4 { top: 66%; right: 14%; font-size: 1.2rem; animation-delay: 0.7s; }
+
+@keyframes sc-float-sparkle {
+  0% { transform: translateY(0) scale(0.85); opacity: 0.35; }
+  50% { opacity: 0.95; transform: translateY(-8px) scale(1.15); }
+  100% { transform: translateY(-16px) scale(0.85); opacity: 0.4; }
 }
 
-/* ---------- Cover: the couple's names ---------- */
+/* ---------- Cover: couple's royal crest & names ---------- */
 .sc-cover-head {
   position: absolute;
-  top: var(--sc-head-top, 8%);
+  top: var(--sc-head-top, 9%);
   left: 50%;
-  z-index: 20;
-  width: min(40cqh, 86%);
+  z-index: 22;
+  width: min(44cqh, 90%);
   translate: -50% -50%;
   text-align: center;
   color: var(--sc-head-ink, var(--guest-ink, #fff));
@@ -93,28 +129,165 @@
   transition: opacity 0.6s ease;
 }
 .sc-opening:not([data-step="sealed"]) .sc-cover-head { opacity: 0; }
+
+.sc-crown-crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2cqh;
+  margin-bottom: 0.6cqh;
+  color: #dfb76c;
+}
+.sc-crown-icon {
+  width: 2.2rem;
+  height: 1.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+}
+.sc-crest-monogram {
+  font-family: var(--sc-serif);
+  font-size: clamp(0.58rem, 1.15cqh, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #f8df9e;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
 .sc-kicker {
   font: 600 clamp(0.6rem, 1.2cqh, 0.85rem)/1.5 var(--sc-serif);
-  letter-spacing: 0.3em;
-  text-indent: 0.3em;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
   text-transform: uppercase;
-  opacity: 0.85;
+  color: #f3dfae;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.8);
 }
 .sc-cover-names {
-  margin-top: 0.6cqh;
+  margin-top: 0.5cqh;
   font: 400 clamp(1.9rem, 4.6cqh, 3.3rem)/1.05 var(--sc-script);
   overflow-wrap: anywhere;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7), 0 0 20px rgba(223, 183, 108, 0.3);
 }
 .sc-cover-names span { display: block; }
-.sc-cover-names i { display: block; font-size: 0.6em; font-style: normal; opacity: 0.8; }
+.sc-cover-names i { display: block; font-size: 0.6em; font-style: normal; opacity: 0.85; color: #dfb76c; }
 
-/* ---------- The invitation written on the card ---------- */
+/* ---------- Cover: personalized guest plaque + radiant CTA button ---------- */
+.sc-cover-ui {
+  position: absolute;
+  inset: auto 0 4.2cqh;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2cqh;
+  padding: 0 1.25rem;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+.sc-opening:not([data-step="sealed"]) .sc-cover-ui { opacity: 0; pointer-events: none; }
+
+.sc-cover-ui .inv-guest-line {
+  margin: 0 auto;
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(18, 8, 12, 0.86);
+  border: 1px solid rgba(223, 183, 108, 0.75);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.75), inset 0 0 12px rgba(223, 183, 108, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.sc-cover-ui .inv-guest-line span {
+  color: #dfb76c;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.sc-cover-ui .inv-guest-line strong {
+  color: #fff9ea;
+  font-size: clamp(1rem, 2.2cqh, 1.35rem);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.sc-opening .inv-tap-btn.sc-tap {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  min-height: 3.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.8rem 2.4rem;
+  border: 1.5px solid rgba(255, 235, 175, 0.85);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #dfb76c 0%, #b8860b 52%, #855e1c 100%);
+  color: #1e0e02;
+  font-family: var(--sc-serif);
+  font-size: clamp(0.85rem, 1.8cqh, 1.05rem);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 235, 175, 0.4), 0 0 24px rgba(223, 183, 108, 0.45);
+  animation: sc-royal-pulse 2.4s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+.sc-opening .inv-tap-btn.sc-tap:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+.sc-opening .inv-tap-btn.sc-tap:active {
+  transform: scale(0.96);
+}
+.sc-btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-25deg);
+  animation: sc-btn-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes sc-btn-shimmer {
+  0% { left: -100%; }
+  35%, 100% { left: 160%; }
+}
+@keyframes sc-royal-pulse {
+  0%, 100% {
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.75), 0 0 0 2px rgba(228, 191, 118, 0.45);
+  }
+  50% {
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.75), 0 0 0 11px rgba(228, 191, 118, 0);
+  }
+}
+.sc-btn-star {
+  font-size: 0.85em;
+  color: #fff6d8;
+  text-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+.sc-hint {
+  font: italic 500 clamp(0.8rem, 1.7cqh, 0.95rem)/1.4 var(--sc-serif);
+  color: #f7e6cc;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.sc-music-note {
+  display: inline-block;
+  animation: sc-note-float 2s ease-in-out infinite;
+}
+@keyframes sc-note-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-3px) rotate(6deg); }
+}
+
+/* ---------- The invitation written on the revealed card ---------- */
 .sc-words {
   position: absolute;
   top: var(--sc-top);
   bottom: var(--sc-bottom);
   left: 50%;
-  z-index: 15;
+  z-index: 18;
   display: flex;
   width: min(var(--sc-width), 88%);
   flex-direction: column;
@@ -128,7 +301,7 @@
 .sc-words::before {
   content: "";
   position: absolute;
-  inset: -4% -12%;
+  inset: -6% -14%;
   z-index: -1;
   border-radius: 50%;
   background: radial-gradient(closest-side, var(--sc-glow), color-mix(in srgb, var(--sc-glow) 50%, transparent) 60%, transparent);
@@ -137,51 +310,84 @@
 }
 .sc-words p,
 .sc-words h1 { margin: 0; }
-.sc-words :is(p, .sc-name, .sc-parents, .sc-amp) {
+.sc-words :is(p, .sc-name, .sc-parents, .sc-amp, .sc-inner-crest, .sc-date-wrap) {
   opacity: 0;
   transform: translateY(1.2cqh);
   transition: opacity 0.8s ease, transform 1s var(--sc-ease);
   transition-delay: calc(var(--sc-delay) + var(--i, 0) * 70ms);
 }
 .sc-opening:not([data-step="sealed"]) .sc-words::before,
-.sc-opening:not([data-step="sealed"]) .sc-words :is(p, .sc-name, .sc-parents, .sc-amp) {
+.sc-opening:not([data-step="sealed"]) .sc-words :is(p, .sc-name, .sc-parents, .sc-amp, .sc-inner-crest, .sc-date-wrap) {
   opacity: 1;
   transform: none;
 }
+
+.sc-inner-crest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--sc-accent, #c9a052);
+  margin-bottom: 0.4cqh;
+}
+.sc-flourish-left, .sc-flourish-right {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+.sc-crest-mini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  backdrop-filter: blur(4px);
+}
+.sc-mini-crown {
+  width: 0.95rem;
+  height: 0.75rem;
+}
 .sc-bismillah {
-  font: 400 clamp(0.85rem, 1.75cqh, 1.3rem)/1.5 var(--font-amiri), "Amiri", serif;
+  font: 400 clamp(0.95rem, 2cqh, 1.4rem)/1.5 var(--font-amiri), "Amiri", serif;
   color: var(--sc-accent);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 .sc-small {
-  margin-top: 0.5cqh !important;
+  margin-top: 0.4cqh !important;
   font: 600 clamp(0.58rem, 1.15cqh, 0.9rem)/1.5 var(--sc-serif);
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 .sc-script {
-  margin: 0.4cqh 0 0.2cqh !important;
-  font: 400 clamp(1.3rem, 3.1cqh, 2.4rem)/1.3 var(--sc-script);
+  margin: 0.3cqh 0 0.1cqh !important;
+  font: 400 clamp(1.4rem, 3.2cqh, 2.5rem)/1.3 var(--sc-script);
   color: var(--sc-accent);
   white-space: nowrap;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.15);
 }
 .sc-names {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0.6cqh !important;
+  margin-top: 0.5cqh !important;
   font-weight: inherit;
 }
 .sc-name {
   display: block;
-  font: 600 clamp(1.05rem, 2.5cqh, 1.85rem)/1.1 var(--sc-serif);
+  font: 600 clamp(1.1rem, 2.5cqh, 1.9rem)/1.1 var(--sc-serif);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--sc-name);
   overflow-wrap: anywhere;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.18);
 }
 .sc-parents {
   display: block;
-  margin-top: 0.5cqh;
+  margin-top: 0.4cqh;
   font: 600 clamp(0.55rem, 1.1cqh, 0.85rem)/1.35 var(--sc-serif);
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -189,36 +395,78 @@
 }
 .sc-amp {
   display: block;
-  margin: 0.3cqh 0 0.1cqh;
+  margin: 0.2cqh 0 0.05cqh;
   font: 400 clamp(1.3rem, 2.9cqh, 2.1rem)/1 var(--sc-script);
   color: var(--sc-accent);
 }
-.sc-date {
-  margin-top: 1cqh !important;
-  padding-top: 0.8cqh;
-  border-top: 1px solid var(--sc-rule);
-  font: italic 600 clamp(0.8rem, 1.6cqh, 1.2rem)/1.3 var(--sc-serif);
+.sc-date-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.8cqh;
+  color: var(--sc-accent, #c9a052);
+}
+.sc-date-flourish {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+.sc-words .sc-date {
+  margin-top: 0 !important;
+  padding-top: 0;
+  border-top: none;
+  font: italic 600 clamp(0.85rem, 1.7cqh, 1.25rem)/1.3 var(--sc-serif);
+  letter-spacing: 0.04em;
+  color: var(--sc-ink);
 }
 
+/* ---------- The "VIEW FULL INVITATION" button (cleared from couple artwork) ---------- */
 .sc-enter {
   position: absolute;
-  top: var(--sc-enter-top);
-  left: var(--sc-enter-left);
-  z-index: 20;
-  min-height: 0;
-  padding: 1cqh 2.4cqh;
-  translate: -50% -50%;
-  font-size: clamp(0.7rem, 1.5cqh, 0.95rem);
+  top: auto !important;
+  bottom: max(3.5cqh, 1.4rem);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 35;
+  min-height: 3.2rem;
+  padding: 0.8rem 2.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fce9b8 0%, #dfb76c 35%, #b68524 85%, #8f6213 100%) !important;
+  border: 1.5px solid #fff9df !important;
+  color: #1e1104 !important;
+  font-family: var(--sc-serif);
+  font-size: clamp(0.78rem, 1.6cqh, 0.95rem);
+  font-weight: 800 !important;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
   white-space: nowrap;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 249, 223, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease, translate 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.sc-opening[data-step="revealed"] .sc-enter { opacity: 1; pointer-events: auto; }
+.sc-opening[data-step="revealed"] .sc-enter {
+  opacity: 1;
+  pointer-events: auto;
+}
+.sc-enter:hover {
+  translate: -50% -2px;
+  filter: brightness(1.08);
+}
+.sc-enter:active {
+  translate: -50% 1px;
+  filter: brightness(0.96);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .sc-words::before,
-  .sc-words :is(p, .sc-name, .sc-parents, .sc-amp) {
+  .sc-words :is(p, .sc-name, .sc-parents, .sc-amp, .sc-inner-crest, .sc-date-wrap) {
     transition: opacity 0.3s linear;
     transition-delay: 0s;
   }

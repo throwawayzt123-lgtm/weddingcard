@@ -34,7 +34,6 @@
   --sc-accent: #a5566a;
   --sc-name: #94475a;
   --sc-muted: #74505a;
-  --sc-enter-top: 70%; /* on the water's edge, under the words */
   --sc-glow: rgba(255, 245, 236, 0.72);
   background:
     radial-gradient(70% 60% at 50% 40%, #f6e3da, transparent 75%),

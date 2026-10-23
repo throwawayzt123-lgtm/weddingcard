@@ -7,6 +7,7 @@ import type { InvitationViewData, RsvpResult, RsvpSubmission, TemplateProps } fr
 // Every design is loaded on demand, so a guest only downloads the design
 // their invitation uses. Add new designs here (and in registry.ts).
 const DESIGNS: Record<string, ComponentType<TemplateProps>> = {
+  "shahi-taj": dynamic(() => import("./shahi-taj")),
   marwareed: dynamic(() => import("./marwareed")),
   "sadaf-e-noor": dynamic(() => import("./sadaf-e-noor")),
   "shahi-darwaza": dynamic(() => import("./shahi-darwaza")),

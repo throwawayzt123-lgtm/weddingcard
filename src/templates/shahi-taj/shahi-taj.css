@@ -1,0 +1,125 @@
+/* ------------------------------------------------------------------
+   Shahi Taj: Diamond Crown Palace in Champagne Gold & Royal Ivory.
+   Inspired by royal mughal arches, crystal chandeliers, diamond crowns,
+   swans and filigree gold foil.
+   Stage, words and CTA buttons are shared (invite-shared/story-card.css).
+------------------------------------------------------------------- */
+
+.invitation[data-template="shahi-taj"] {
+  --inv-bg: #faf6ee;
+  --inv-ink: #322514;
+  --inv-accent: #c49d48;
+  --inv-accent-strong: #967022;
+  --inv-on-accent: #ffffff;
+  --inv-menu-bg: #faf6ee;
+  --inv-heading: var(--font-cinzel), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-great-vibes), cursive;
+  background: #faf6ee;
+}
+
+.st-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #faf6ee;
+}
+
+.st-opening {
+  --guest-ink: #fcf8ee;
+  --sc-head-top: 11%;
+  --sc-script: var(--font-great-vibes), cursive;
+  --sc-top: 19%;
+  --sc-bottom: 30%;
+  --sc-width: 34cqh;
+  --sc-ink: #3a2a16;
+  --sc-accent: #b58d34;
+  --sc-name: #7c5815;
+  --sc-muted: #6e573a;
+  --sc-rule: rgba(196, 157, 72, 0.85);
+  --sc-delay: 3.1s;
+  --sc-glow: rgba(255, 252, 245, 0.65);
+  --sc-btn-from: #d4af37;
+  --sc-btn-to: #9c7320;
+  background: radial-gradient(circle at 50% 38%, #2d2417 0%, #15100a 85%);
+}
+
+.st-opening .sc-name {
+  font-family: var(--font-cinzel), Georgia, serif;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.st-opening .sc-small { color: #8f6c2a; }
+.st-opening .sc-cover-ui { bottom: 2.5cqh; gap: 1.1cqh; }
+
+/* Stacking */
+.st-silk { z-index: 0; }
+.st-env-back { z-index: 2; }
+.st-card { z-index: 3; }
+.st-env-front { z-index: 4; }
+.st-flap { z-index: 5; }
+.st-seal { z-index: 6; }
+
+/* The palace card rises from the envelope */
+.st-card {
+  transform: translateY(2.1%) scale(0.55);
+}
+.st-opening:not([data-step="sealed"]) .st-card {
+  animation: st-card-out 3.2s var(--sc-ease) 0.7s both;
+}
+@keyframes st-card-out {
+  0% { transform: translateY(2.1%) scale(0.55); }
+  35%, 48% { transform: translateY(-22%) scale(0.55); }
+  100% { transform: none; }
+}
+
+.st-flap {
+  transform-origin: 50% 24.48%;
+  transition: transform 0.9s var(--sc-ease) 0.25s, z-index 0s linear 0.75s, opacity 0.6s ease 2.2s;
+}
+.st-opening:not([data-step="sealed"]) .st-flap {
+  z-index: 1;
+  transform: perspective(2200px) rotateX(180deg);
+  opacity: 0;
+}
+
+.st-env-back,
+.st-env-front {
+  transition: transform 1.2s cubic-bezier(0.5, 0, 0.75, 0) 2.3s, opacity 0.8s ease 2.6s;
+}
+.st-opening:not([data-step="sealed"]) :is(.st-env-back, .st-env-front) {
+  transform: translateY(60%);
+  opacity: 0;
+}
+
+/* Crown seal */
+.st-seal {
+  position: absolute;
+  top: 49.45%;
+  left: 50%;
+  width: 12.55cqh;
+  height: auto;
+  translate: -50% 0;
+  transform-origin: 50% 27.8%;
+  filter: drop-shadow(0 0.6cqh 0.8cqh rgba(20, 14, 5, 0.45));
+  animation: st-crown-breathe 3.4s ease-in-out infinite;
+  transition: transform 0.9s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.5s ease 0.3s;
+}
+@keyframes st-crown-breathe {
+  0%, 100% { transform: scale(1) rotate(-1.5deg); }
+  50% { transform: scale(1.05) rotate(1.5deg); }
+}
+.st-opening:not([data-step="sealed"]) .st-seal {
+  animation: none;
+  transform: translateY(45cqh) rotate(20deg);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-seal { animation: none; }
+  .st-opening:not([data-step="sealed"]) .st-card { animation: none; transform: none; }
+  .st-flap,
+  .st-env-back,
+  .st-env-front,
+  .st-seal { transition: opacity 0.3s linear; }
+}

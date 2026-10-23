@@ -11,7 +11,7 @@ const waits = {
   "shahi-darwaza": 1800, gulzar: 1800, "mehndi-rang": 1800, noor: 4800,
   "nikah-nama": 1800, chandni: 1800, "siyah-taj": 1800, "neelam-kashi": 1800, chambeli: 1800,
   bazm: 1800, aasmani: 1800, sunehri: 1800, kesar: 1800, farman: 1800, jharoka: 1800, "mor-pankh": 1800, "gulab-mahal": 1800,
-  "laal-gulab": 1800, mahtab: 1800, chaman: 1800, mehfil: 1800,
+  "shahi-taj": 1800, "laal-gulab": 1800, mahtab: 1800, chaman: 1800, mehfil: 1800,
 };
 (async () => {
   const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
@@ -26,7 +26,12 @@ const waits = {
     fs.mkdirSync(dir, { recursive: true });
     const save = async (name) => { const b = await page.screenshot(); await sharp(b).resize({ width: 480 }).webp({ quality: 74 }).toFile(`${dir}/${name}.webp`); };
     await save("thumb");
-    await page.getByRole("button", { name: /tap to open/i }).click({ force: true });
+    const tapBtn = page.locator(".inv-tap-btn, button.sc-tap").first();
+    if (await tapBtn.count()) {
+      await tapBtn.click({ force: true });
+    } else {
+      await page.locator('[role="button"]').first().click({ force: true });
+    }
     await page.waitForTimeout(4200);
     await save("thumb-2");
     console.log(key, "ok");

@@ -47,6 +47,25 @@ export type TemplateMeta = {
 // Ordered descending by price: Royal (Rs 11,999) → Prime (Rs 6,899) → Advanced (Rs 3,399) → Regular (Rs 2,599).
 export const TEMPLATES: TemplateMeta[] = [
   {
+    key: "shahi-taj",
+    plan: "ROYAL",
+    name: "Shahi Taj",
+    tagline: "Diamond crown palace in champagne gold & royal ivory",
+    description:
+      "A masterpiece of royal majesty inspired by grand Mughal palaces. An ivory silk envelope stamped with an embossed diamond crown gold wax seal. Break the seal and the royal envelope opens: the palace card rises in gleaming champagne gold, revealing a towering baroque arch flanked by crystal chandeliers, glowing lanterns, twin royal swans, and an imperial crown crest. Inside, walk through a corridor of arched celebration doorways and noble family windows.",
+    colors: [
+      { name: "Champagne gold", hex: "#dfb76c" },
+      { name: "Royal ivory", hex: "#faf6ee" },
+      { name: "Antique gold", hex: "#996e21" },
+      { name: "Silk cream", hex: "#efe6d4" },
+    ],
+    thumbnail: "/templates/shahi-taj/thumb.webp",
+    opening: "Diamond crown wax seal & silk envelope opens onto a royal arch",
+    defaultTrack: "shahi-sitar",
+    tracks: ["shahi-sitar", "soft-piano", "calm-pads"],
+    bestFor: ["Royal Baraat", "Palace Wedding", "Walima", "Champagne and Gold"],
+  },
+  {
     key: "gulab-mahal",
     plan: "ROYAL",
     name: "Gulab Mahal",
