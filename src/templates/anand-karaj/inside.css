@@ -1,0 +1,221 @@
+/* Anand Karaj, inside: pastel rose & pure marble palace styling */
+
+.akd-content {
+  --sp-ink: #3b2229;
+  --sp-accent: #c99c37;
+  --sp-soft: #fff8f9;
+  --sp-line: rgba(201, 156, 55, 0.45);
+  --sp-font: var(--font-cormorant), Georgia, serif;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.5rem;
+  padding: 4.5rem 1.1rem 3rem;
+  color: #3b2229;
+  font-family: var(--font-cormorant), Georgia, serif;
+  background:
+    radial-gradient(60% 30% at 50% 0%, rgba(248, 207, 217, 0.55), transparent 70%),
+    radial-gradient(50% 30% at 100% 100%, rgba(254, 230, 236, 0.45), transparent 70%),
+    #fff8f9;
+}
+
+.akd-content :is(p, h1, h2, h3) { margin: 0; }
+.akd-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c99c37;
+}
+.akd-rule {
+  display: block;
+  width: 7rem;
+  height: 1px;
+  margin: 1.1rem auto;
+  background: linear-gradient(90deg, transparent, #c99c37, transparent);
+}
+.akd-lead {
+  max-width: 30rem;
+  margin-inline: auto !important;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+.akd-heading { margin-bottom: 1.8rem; text-align: center; }
+.akd-heading h2 {
+  margin-top: 0.3rem !important;
+  font: 400 clamp(2.4rem, 8.5vw, 3.4rem)/1.1 var(--font-cinzel), Georgia, serif;
+  color: #69172d;
+}
+
+/* Hero */
+.akd-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+}
+.akd-window {
+  position: relative;
+  width: min(85vw, 420px);
+  aspect-ratio: 9 / 16;
+  max-height: 540px;
+  margin-bottom: 1.4rem;
+  border-radius: 6rem 6rem 16px 16px;
+  overflow: hidden;
+  border: 2px solid #c99c37;
+  box-shadow: 0 20px 50px -15px rgba(105, 23, 45, 0.25);
+}
+.akd-window-img { object-fit: cover; }
+.akd-ik-onkar {
+  font-size: clamp(2.8rem, 8vw, 3.8rem);
+  line-height: 1;
+  color: #c99c37;
+  font-weight: 700;
+}
+.akd-mool-mantar {
+  font-size: 1.25rem;
+  letter-spacing: 0.12em;
+  color: #69172d;
+  font-weight: 600;
+}
+.akd-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 700 clamp(2.6rem, 10vw, 4rem)/1.1 var(--font-cinzel), Georgia, serif;
+  color: #69172d;
+  letter-spacing: 0.06em;
+}
+.akd-names i {
+  font-family: var(--font-great-vibes), cursive;
+  font-size: 0.65em;
+  font-style: normal;
+  color: #c99c37;
+}
+.akd-dates {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #784855;
+}
+
+/* Arched cards */
+.akd-arched {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: 4.4rem 1.6rem 2.4rem;
+  border: 1px solid rgba(201, 156, 55, 0.55);
+  border-radius: 50% 50% 18px 18px / 7.5rem 7.5rem 18px 18px;
+  background: #ffffff;
+  outline: 1px solid rgba(201, 156, 55, 0.3);
+  outline-offset: 7px;
+  box-shadow: 0 30px 60px -36px rgba(105, 23, 45, 0.2);
+  text-align: center;
+}
+.akd-blessing {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #69172d;
+  font-weight: 600;
+}
+.akd-translation { margin-top: 0.4rem !important; font-size: 1.05rem; font-style: italic; opacity: 0.85; }
+.akd-dear { margin-bottom: 0.8rem !important; font: 400 2.4rem/1.2 var(--font-great-vibes), cursive; color: #69172d; }
+
+/* Medallion */
+.akd-medallion { width: min(100%, 32rem); }
+.akd-medallion-ring {
+  position: relative;
+  padding: 3.2rem 2.6rem 3rem;
+  border-radius: 50% / 42%;
+  background:
+    radial-gradient(closest-side, #ffffff 92%, transparent 93%),
+    conic-gradient(from 0deg, #c99c37, #f4c2ce, #faecc8, #f4c2ce, #c99c37);
+  box-shadow: 0 0 0 1px rgba(201, 156, 55, 0.4), 0 26px 50px -30px rgba(105, 23, 45, 0.25);
+}
+.akd-medallion-ring::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(201, 156, 55, 0.5);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.akd-medallion .inv-count-cell { background: transparent; border: 0; box-shadow: none; }
+.akd-medallion .inv-count-num { font-family: var(--font-cinzel), serif; color: #69172d; font-weight: 700; }
+.akd-medallion .inv-title { font-family: var(--font-cinzel), serif; font-size: 1.8rem; color: #c99c37; }
+
+/* Corridor */
+.akd-corridor-section { width: 100%; max-width: 70rem; }
+.akd-corridor {
+  display: flex;
+  gap: 1.2rem;
+  margin-inline: -1.1rem;
+  padding: 0.5rem max(1.1rem, calc(50% - 9.5rem)) 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  outline: none;
+}
+.akd-corridor::-webkit-scrollbar { display: none; }
+.akd-door {
+  flex: 0 0 min(19rem, 82vw);
+  scroll-snap-align: center;
+  border-radius: 4.5rem 4.5rem 14px 14px;
+  background: #ffffff;
+  border: 1px solid rgba(201, 156, 55, 0.55);
+  box-shadow: 0 20px 45px -24px rgba(105, 23, 45, 0.2);
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.akd-door-top {
+  position: relative;
+  height: 4.6rem;
+  background: linear-gradient(135deg, #c99c37, #e89cae);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.akd-door-medal {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #c99c37;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(105, 23, 45, 0.2);
+}
+.akd-door-medal b { font-size: 1.25rem; line-height: 1; color: #69172d; }
+.akd-door-medal small { font-size: 0.68rem; text-transform: uppercase; color: #c99c37; }
+.akd-door-body { padding: 1.8rem 1.4rem 2rem; display: flex; flex-direction: column; flex: 1; }
+.akd-door-kicker { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #c99c37; }
+.akd-door-body h3 { font: 700 1.55rem/1.2 var(--font-cinzel), serif; color: #69172d; margin: 0.4rem 0 0.8rem !important; }
+.akd-door-when { font-size: 0.95rem; line-height: 1.5; color: #784855; }
+.akd-door-venue { font-weight: 600; color: #3b2229; }
+.akd-door-address { font-size: 0.88rem; opacity: 0.8; margin-top: 0.2rem !important; }
+.akd-door-note { font-size: 0.84rem; margin-top: 0.6rem !important; color: #c99c37; }
+.akd-door-note em { font-style: normal; text-transform: uppercase; font-size: 0.7rem; display: block; opacity: 0.8; }
+.akd-swipe { text-align: center; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: #c99c37; margin-top: 0.6rem !important; }
+
+/* Families & Footer */
+.akd-families { width: min(100%, 54rem); text-align: center; }
+.akd-windows { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.6rem; margin-top: 1.5rem; }
+.akd-family-window { padding: 3rem 1.6rem 2.4rem; }
+.akd-gallery { width: min(100%, 54rem); }
+.akd-rsvp { margin-top: 1rem; }
+.akd-footer { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center; margin-top: 2rem; }
+.akd-footer-seal { width: 6rem; height: auto; filter: drop-shadow(0 6px 12px rgba(105, 23, 45, 0.3)); }
+.akd-thanks { font: 400 3rem/1 var(--font-great-vibes), cursive; color: #69172d; }
+.akd-signed { font: 700 1.3rem/1 var(--font-cinzel), serif; letter-spacing: 0.08em; color: #c99c37; }
+
+@media (min-width: 768px) {
+  .akd-corridor { justify-content: center; flex-wrap: wrap; overflow-x: visible; }
+}

@@ -1,0 +1,106 @@
+/* ------------------------------------------------------------------
+   Shahi Farman: Antique Gold Scroll & Crushed Velvet Casket
+------------------------------------------------------------------- */
+
+.invitation[data-template="shahi-farman"] {
+  --inv-bg: #1c050a;
+  --inv-ink: #fbf5e8;
+  --inv-accent: #dfb76c;
+  --inv-accent-strong: #b8860b;
+  --inv-on-accent: #ffffff;
+  --inv-menu-bg: #1c050a;
+  --inv-heading: var(--font-cinzel), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-great-vibes), cursive;
+  background: #1c050a;
+}
+
+.sf-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #1c050a;
+}
+
+.sf-opening {
+  --guest-ink: #fbf5e8;
+  --sc-head-top: 10%;
+  --sc-script: var(--font-great-vibes), cursive;
+  --sc-top: 20%;
+  --sc-bottom: 27%;
+  --sc-width: 32cqh;
+  --sc-ink: #3b220e;
+  --sc-accent: #8b1224;
+  --sc-name: #5c0f1c;
+  --sc-muted: #6e4823;
+  --sc-rule: rgba(184, 134, 11, 0.85);
+  --sc-delay: 2.9s;
+  --sc-glow: rgba(254, 248, 235, 0.75);
+  --sc-btn-from: #d4af37;
+  --sc-btn-to: #851020;
+  background: radial-gradient(circle at 50% 40%, #300810 0%, #0d0104 85%);
+}
+
+.sf-opening .sc-name {
+  font-family: var(--font-cinzel), Georgia, serif;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.sf-opening .sc-cover-ui { bottom: 2.5cqh; gap: 1.1cqh; }
+
+/* Stacking */
+.sf-casket { z-index: 0; }
+.sf-card {
+  z-index: 3;
+  transform: translateY(6%) scale(0.65);
+  transform-origin: 50% 20%;
+}
+.sf-lid {
+  z-index: 5;
+  top: 18%;
+  transform-origin: 50% 0%;
+  transition: transform 1.2s cubic-bezier(0.5, 0, 0.2, 1) 0.3s, opacity 0.8s ease 1.2s;
+}
+.sf-seal {
+  z-index: 6;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: 12.8cqh;
+  height: auto;
+  translate: -50% -50%;
+  filter: drop-shadow(0 0.6cqh 0.8cqh rgba(0, 0, 0, 0.7));
+  animation: sf-seal-breathe 3.2s ease-in-out infinite;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.2s;
+}
+
+@keyframes sf-seal-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* On open: lid lifts up, scroll unrolls out */
+.sf-opening:not([data-step="sealed"]) .sf-seal {
+  animation: none;
+  transform: scale(1.3) translateY(-18cqh);
+  opacity: 0;
+}
+.sf-opening:not([data-step="sealed"]) .sf-lid {
+  transform: perspective(1800px) rotateX(120deg) translateY(-20%);
+  opacity: 0;
+}
+.sf-opening:not([data-step="sealed"]) .sf-card {
+  animation: sf-scroll-unroll 3.2s var(--sc-ease) 0.6s both;
+}
+
+@keyframes sf-scroll-unroll {
+  0% { transform: translateY(6%) scale(0.65); }
+  35% { transform: translateY(-12%) scale(0.65); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-seal { animation: none; }
+  .sf-card { animation: none; transform: none; }
+  .sf-lid, .sf-seal { transition: opacity 0.3s linear; }
+}

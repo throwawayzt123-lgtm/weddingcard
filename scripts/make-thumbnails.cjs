@@ -12,6 +12,7 @@ const waits = {
   "nikah-nama": 1800, chandni: 1800, "siyah-taj": 1800, "neelam-kashi": 1800, chambeli: 1800,
   bazm: 1800, aasmani: 1800, sunehri: 1800, kesar: 1800, farman: 1800, jharoka: 1800, "mor-pankh": 1800, "gulab-mahal": 1800,
   "shahi-taj": 1800, "laal-gulab": 1800, mahtab: 1800, chaman: 1800, mehfil: 1800,
+  "shahi-pardah": 1800, "shahi-farman": 1800, "qasr-e-noor": 1800, "anand-karaj": 1800, "shahi-banafsha": 1800,
 };
 (async () => {
   const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });

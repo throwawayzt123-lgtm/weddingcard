@@ -1,0 +1,98 @@
+/* ------------------------------------------------------------------
+   Anand Karaj: Pastel Pink Silk Canopy, Khanda Gold & White Marble
+------------------------------------------------------------------- */
+
+.invitation[data-template="anand-karaj"] {
+  --inv-bg: #fff8f9;
+  --inv-ink: #3b2229;
+  --inv-accent: #c99c37;
+  --inv-accent-strong: #966b1a;
+  --inv-on-accent: #ffffff;
+  --inv-menu-bg: #fff8f9;
+  --inv-heading: var(--font-cinzel), Georgia, serif;
+  --inv-body: var(--font-cormorant), Georgia, serif;
+  --inv-script: var(--font-great-vibes), cursive;
+  background: #fff8f9;
+}
+
+.ak-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #fff8f9;
+}
+
+.ak-opening {
+  --guest-ink: #4f2330;
+  --sc-head-top: 10%;
+  --sc-script: var(--font-great-vibes), cursive;
+  --sc-top: 20%;
+  --sc-bottom: 26%;
+  --sc-width: 33cqh;
+  --sc-ink: #3a1f26;
+  --sc-accent: #c99c37;
+  --sc-name: #69172d;
+  --sc-muted: #784855;
+  --sc-rule: rgba(201, 156, 55, 0.85);
+  --sc-delay: 2.8s;
+  --sc-glow: rgba(255, 248, 250, 0.88);
+  --sc-btn-from: #d4af37;
+  --sc-btn-to: #b5476a;
+  background: radial-gradient(circle at 50% 40%, #fae6ec 0%, #ecd0d8 85%);
+}
+
+.ak-opening .sc-name {
+  font-family: var(--font-cinzel), Georgia, serif;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #69172d;
+}
+.ak-opening .sc-cover-ui { bottom: 2.5cqh; gap: 1.1cqh; }
+
+/* Stacking */
+.ak-card {
+  z-index: 2;
+  transform: scale(1.06);
+  transition: transform 2.4s var(--sc-ease) 0.6s;
+}
+.ak-chadar {
+  z-index: 4;
+  transform-origin: 50% 0%;
+  transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.3s, opacity 0.8s ease 1.5s;
+}
+.ak-seal {
+  z-index: 6;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13cqh;
+  height: auto;
+  translate: -50% -50%;
+  filter: drop-shadow(0 0.6cqh 0.8cqh rgba(105, 23, 45, 0.35));
+  animation: ak-seal-float 3.2s ease-in-out infinite;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.2s;
+}
+
+@keyframes ak-seal-float {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05) translateY(-0.3cqh); }
+}
+
+/* On open: canopy raises upward */
+.ak-opening:not([data-step="sealed"]) .ak-seal {
+  animation: none;
+  transform: scale(1.3) translateY(-16cqh);
+  opacity: 0;
+}
+.ak-opening:not([data-step="sealed"]) .ak-chadar {
+  transform: translateY(-105%) scaleY(0.8);
+  opacity: 0;
+}
+.ak-opening:not([data-step="sealed"]) .ak-card {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ak-seal { animation: none; }
+  .ak-card, .ak-chadar, .ak-seal { transition: opacity 0.3s linear; }
+}
