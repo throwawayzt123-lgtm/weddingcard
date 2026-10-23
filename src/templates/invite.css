@@ -748,8 +748,8 @@
 /* ---------- The small "Made by" credit, on every design ---------- */
 .inv-watermark {
   position: fixed;
-  top: calc(var(--inv-bar, 0px) + 5px);
-  left: 50%;
+  bottom: max(4.6rem, calc(env(safe-area-inset-bottom) + 3.6rem));
+  left: 1rem;
   z-index: 65;
   padding: 0.18rem 0.7rem;
   border-radius: 999px;
@@ -763,7 +763,6 @@
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
-  transform: translateX(-50%);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   opacity: 0.8;

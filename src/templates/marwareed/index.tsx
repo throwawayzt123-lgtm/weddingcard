@@ -26,3 +26,4 @@ const parts: TemplateParts = {
 export default function Marwareed(props: TemplateProps) {
   return <InvitationExperience {...props} parts={parts} />;
 }
+

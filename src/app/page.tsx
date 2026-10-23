@@ -10,7 +10,7 @@ import { PageMotion } from "@/components/marketing/page-motion";
 import { PhoneMockup } from "@/components/marketing/phone-mockup";
 import { CUSTOM_ORDER_MESSAGE } from "@/lib/site";
 import { getSettings, waLink } from "@/lib/settings";
-import { TEMPLATES } from "@/templates/registry";
+import { TEMPLATES, getTemplate } from "@/templates/registry";
 
 // The page reads the brand and contact details from the database; refresh every 5 minutes.
 export const revalidate = 300;
@@ -105,17 +105,17 @@ export default async function HomePage() {
             <div className="relative mx-auto flex w-full max-w-md items-end justify-center gap-0 sm:max-w-lg" aria-hidden>
               <div data-fx-speed="-26" className="z-10 -mr-6 w-[34%] sm:-mr-8">
                 <div className="float-slow translate-y-8">
-                  <PhoneMockup template={TEMPLATES[2]} sizes="160px" />
+                  <PhoneMockup template={getTemplate("gulab-mahal") ?? TEMPLATES[0]} sizes="160px" />
                 </div>
               </div>
               <div data-fx-speed="-8" className="z-20 w-[40%]">
                 <div className="float-slower">
-                  <PhoneMockup template={TEMPLATES[1]} priority sizes="220px" />
+                  <PhoneMockup template={getTemplate("sadaf-e-noor") ?? TEMPLATES[1]} priority sizes="220px" />
                 </div>
               </div>
               <div data-fx-speed="-18" className="z-10 -ml-6 w-[34%] sm:-ml-8">
                 <div className="float-slow translate-y-8">
-                  <PhoneMockup template={TEMPLATES[4]} sizes="160px" />
+                  <PhoneMockup template={getTemplate("mahtab") ?? TEMPLATES[2]} sizes="160px" />
                 </div>
               </div>
             </div>

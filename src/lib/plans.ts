@@ -20,27 +20,16 @@ export type PlanConfig = {
 };
 
 export const PLANS = {
-  BASIC: {
-    label: "Regular",
-    pricePkr: 2599,
-    blurb: "A graceful invitation for an intimate celebration",
-    maxEvents: 2,
-    maxGuests: 50,
-    rsvp: false,
-    maxPhotos: 0,
-    customMusicUpload: false,
-    canRemoveBadge: false,
-  },
-  STANDARD: {
-    label: "Advanced",
-    pricePkr: 3399,
-    blurb: "RSVP, a photo gallery and up to 4 events",
-    maxEvents: 4,
-    maxGuests: 300,
+  ROYAL: {
+    label: "Royal",
+    pricePkr: 11999,
+    blurb: "Hand illustrated designs, each with its own inside, and everything in Prime",
+    maxEvents: null,
+    maxGuests: null,
     rsvp: true,
-    maxPhotos: 10,
-    customMusicUpload: false,
-    canRemoveBadge: false,
+    maxPhotos: 50,
+    customMusicUpload: true,
+    canRemoveBadge: true,
   },
   PREMIUM: {
     label: "Prime",
@@ -53,20 +42,34 @@ export const PLANS = {
     customMusicUpload: true,
     canRemoveBadge: true,
   },
-  ROYAL: {
-    label: "Royal",
-    pricePkr: 11999,
-    blurb: "Hand illustrated designs, each with its own inside, and everything in Prime",
-    maxEvents: null,
-    maxGuests: null,
+  STANDARD: {
+    label: "Advanced",
+    pricePkr: 3399,
+    blurb: "RSVP, a photo gallery and up to 4 events",
+    maxEvents: 4,
+    maxGuests: 300,
     rsvp: true,
-    maxPhotos: 50,
-    customMusicUpload: true,
-    canRemoveBadge: true,
+    maxPhotos: 10,
+    customMusicUpload: false,
+    canRemoveBadge: false,
+  },
+  BASIC: {
+    label: "Regular",
+    pricePkr: 2599,
+    blurb: "A graceful invitation for an intimate celebration",
+    maxEvents: 2,
+    maxGuests: 50,
+    rsvp: false,
+    maxPhotos: 0,
+    customMusicUpload: false,
+    canRemoveBadge: false,
   },
 } as const satisfies Record<Plan, PlanConfig>;
 
-export const PLAN_KEYS = Object.keys(PLANS) as Plan[];
+// Most expensive first: /designs and the homepage show categories in this order (Royal → Prime → Advanced → Regular).
+export const PLAN_KEYS = (Object.keys(PLANS) as Plan[]).sort(
+  (a, b) => PLANS[b].pricePkr - PLANS[a].pricePkr
+);
 
 export function getPlan(plan: Plan): PlanConfig {
   return PLANS[plan];

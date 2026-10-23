@@ -44,45 +44,8 @@ export type TemplateMeta = {
   bestFor: string[];
 };
 
+// Ordered descending by price: Royal (Rs 11,999) → Prime (Rs 6,899) → Advanced (Rs 3,399) → Regular (Rs 2,599).
 export const TEMPLATES: TemplateMeta[] = [
-  {
-    key: "marwareed",
-    plan: "PREMIUM",
-    name: "Marwareed",
-    tagline: "Silk gatefold, French lace and a pearl brooch",
-    description:
-      "Pure luxury in ivory satin and French lace. A pearl and rhinestone brooch clasps two silk doors; tap, and they swing open in three dimensions onto gold-framed ivory cardstock with scalloped lace, deckled-edge event cards, draped pearl strands and garden roses.",
-    colors: [
-      { name: "Ivory silk", hex: "#faf6ee" },
-      { name: "Antique gold", hex: "#cda358" },
-      { name: "Pearl cream", hex: "#f3ede3" },
-      { name: "Blush taupe", hex: "#8c6b65" },
-    ],
-    thumbnail: "/templates/marwareed/thumb.webp",
-    opening: "Silk gatefold doors swing open",
-    defaultTrack: "soft-piano",
-    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
-    bestFor: ["Reception", "Walima", "Luxury weddings", "Ivory and gold"],
-  },
-  {
-    key: "sadaf-e-noor",
-    plan: "PREMIUM",
-    name: "Sadaf-e-Noor",
-    tagline: "Blush satin gatefold, rose gold lace and a crystal pearl buckle",
-    description:
-      "Soft, romantic and quietly royal. Blush pink satin doors edged in rose gold scalloped lace, clasped with a radiant pearl and crystal buckle. Tap, and the doors swing open onto illuminated parchment with petal dividers, deckled celebration cards, and a champagne gold crest.",
-    colors: [
-      { name: "Blush silk", hex: "#faece8" },
-      { name: "Rose gold", hex: "#c59285" },
-      { name: "Pearl cream", hex: "#fbf6ec" },
-      { name: "Dusky rose", hex: "#a5656a" },
-    ],
-    thumbnail: "/templates/sadaf-e-noor/thumb.webp",
-    opening: "Blush silk doors swing open",
-    defaultTrack: "soft-piano",
-    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
-    bestFor: ["Nikkah", "Walima", "Blush and rose gold", "Romantic couples"],
-  },
   {
     key: "gulab-mahal",
     plan: "ROYAL",
@@ -177,6 +140,44 @@ export const TEMPLATES: TemplateMeta[] = [
     defaultTrack: "festive-dhol",
     tracks: ["festive-dhol", "shahi-sitar", "calm-pads"],
     bestFor: ["Mehndi","Dholki","Mayun"],
+  },
+  {
+    key: "marwareed",
+    plan: "PREMIUM",
+    name: "Marwareed",
+    tagline: "Silk gatefold, French lace and a pearl brooch",
+    description:
+      "Pure luxury in ivory satin and French lace. A pearl and rhinestone brooch clasps two silk doors; tap, and they swing open in three dimensions onto gold-framed ivory cardstock with scalloped lace, deckled-edge event cards, draped pearl strands and garden roses.",
+    colors: [
+      { name: "Ivory silk", hex: "#faf6ee" },
+      { name: "Antique gold", hex: "#cda358" },
+      { name: "Pearl cream", hex: "#f3ede3" },
+      { name: "Blush taupe", hex: "#8c6b65" },
+    ],
+    thumbnail: "/templates/marwareed/thumb.webp",
+    opening: "Silk gatefold doors swing open",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
+    bestFor: ["Reception", "Walima", "Luxury weddings", "Ivory and gold"],
+  },
+  {
+    key: "sadaf-e-noor",
+    plan: "PREMIUM",
+    name: "Sadaf-e-Noor",
+    tagline: "Blush satin gatefold, rose gold lace and a crystal pearl buckle",
+    description:
+      "Soft, romantic and quietly royal. Blush pink satin doors edged in rose gold scalloped lace, clasped with a radiant pearl and crystal buckle. Tap, and the doors swing open onto illuminated parchment with petal dividers, deckled celebration cards, and a champagne gold crest.",
+    colors: [
+      { name: "Blush silk", hex: "#faece8" },
+      { name: "Rose gold", hex: "#c59285" },
+      { name: "Pearl cream", hex: "#fbf6ec" },
+      { name: "Dusky rose", hex: "#a5656a" },
+    ],
+    thumbnail: "/templates/sadaf-e-noor/thumb.webp",
+    opening: "Blush silk doors swing open",
+    defaultTrack: "soft-piano",
+    tracks: ["soft-piano", "calm-pads", "shahi-sitar"],
+    bestFor: ["Nikkah", "Walima", "Blush and rose gold", "Romantic couples"],
   },
   {
     key: "bazm",

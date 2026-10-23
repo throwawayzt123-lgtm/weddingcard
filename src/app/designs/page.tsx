@@ -6,7 +6,6 @@ import { MarketingHeader } from "@/components/marketing/header";
 import { PageMotion } from "@/components/marketing/page-motion";
 import { CUSTOM_ORDER_MESSAGE } from "@/lib/site";
 import { getSettings, waLink } from "@/lib/settings";
-import { TEMPLATES } from "@/templates/registry";
 
 export const revalidate = 300;
 
