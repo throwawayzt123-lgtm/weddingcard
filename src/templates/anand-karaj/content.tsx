@@ -33,13 +33,7 @@ export default function AnandKarajContent({ data, onRsvp, opened }: ContentProps
             priority
           />
         </div>
-        <div className="akd-ik-onkar" data-r aria-hidden>
-          ੴ
-        </div>
-        <p className="akd-mool-mantar" data-r>
-          ਸਤਿਨਾਮੁ ਵਾਹਿਗੁਰੂ
-        </p>
-        <p className="akd-eyebrow" data-r>With the blessings of Waheguru Ji</p>
+        <p className="akd-eyebrow" data-r>Together with their families</p>
         <h1 className="akd-names" data-r aria-label={`${data.groomName} and ${data.brideName}`}>
           <span>{data.groomName}</span>
           <i aria-hidden>&amp;</i>
@@ -49,21 +43,17 @@ export default function AnandKarajContent({ data, onRsvp, opened }: ContentProps
         {data.hashtag && <p className="akd-eyebrow akd-hashtag" data-r>{data.hashtag}</p>}
       </header>
 
-      {/* Anand Karaj Blessing Note */}
+      {/* Sacred Wedding Blessing Note */}
       <section className="akd-note akd-arched" data-r>
-        <p className="akd-blessing">
-          ਧਨੁ ਪਿਰੁ ਏਹਿ ਨ ਆਖੀਅਨਿ ਬਹਨਿ ਇਕਠੇ ਹੋਇ ॥
-          <br />
-          ਏਕ ਜੋਤਿ ਦੁਇ ਮੂਰਤੀ ਧਨ ਪਿਰੁ ਕਹੀਐ ਸੋਇ ॥
-        </p>
         <p className="akd-translation">
-          “They are not said to be husband and wife, who merely sit together. Rather, they alone are called husband and wife, who have one light in two bodies.”
+          {data.verseText?.trim() ||
+            "“They are not said to be husband and wife, who merely sit together. Rather, they alone are called husband and wife, who have one light in two bodies.”"}
         </p>
         <span className="akd-rule" aria-hidden />
-        <p className="akd-dear">Respected {guest ?? "Family & Friends"},</p>
+        <p className="akd-dear">Honoured {guest ?? "Guest"},</p>
         <p className="akd-lead">
           {data.welcomeMessage?.trim() ||
-            "With deep humility, joy, and the boundless grace of the Almighty, we warmly invite you to bless the sacred Laavan ceremony and Anand Karaj of our beloved children."}
+            "With deep humility, joy, and the boundless grace of the Almighty, we warmly invite you to bless the sacred union and celebration of our beloved children."}
         </p>
       </section>
 

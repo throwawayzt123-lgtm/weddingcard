@@ -70,18 +70,7 @@
   box-shadow: 0 20px 50px -15px rgba(105, 23, 45, 0.25);
 }
 .akd-window-img { object-fit: cover; }
-.akd-ik-onkar {
-  font-size: clamp(2.8rem, 8vw, 3.8rem);
-  line-height: 1;
-  color: #c99c37;
-  font-weight: 700;
-}
-.akd-mool-mantar {
-  font-size: 1.25rem;
-  letter-spacing: 0.12em;
-  color: #69172d;
-  font-weight: 600;
-}
+
 .akd-names {
   display: flex;
   flex-direction: column;
@@ -116,13 +105,15 @@
   box-shadow: 0 30px 60px -36px rgba(105, 23, 45, 0.2);
   text-align: center;
 }
-.akd-blessing {
-  font-size: 1.15rem;
-  line-height: 1.8;
+.akd-translation {
+  max-width: 29rem;
+  margin: 0 auto !important;
+  font-size: 1.16rem;
+  line-height: 1.7;
+  font-style: italic;
   color: #69172d;
-  font-weight: 600;
+  font-weight: 500;
 }
-.akd-translation { margin-top: 0.4rem !important; font-size: 1.05rem; font-style: italic; opacity: 0.85; }
 .akd-dear { margin-bottom: 0.8rem !important; font: 400 2.4rem/1.2 var(--font-great-vibes), cursive; color: #69172d; }
 
 /* Medallion */
@@ -211,6 +202,75 @@
 .akd-family-window { padding: 3rem 1.6rem 2.4rem; }
 .akd-gallery { width: min(100%, 54rem); }
 .akd-rsvp { margin-top: 1rem; }
+.akd-rsvp .inv-rsvp-card {
+  background: #ffffff;
+  border: 1px solid rgba(201, 156, 55, 0.4);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px -12px rgba(105, 23, 45, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.akd-rsvp .inv-event-icon {
+  background: rgba(201, 156, 55, 0.12);
+  border: 1.5px solid #c99c37;
+  color: #69172d;
+}
+.akd-rsvp .inv-event-title {
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  color: #69172d;
+  letter-spacing: 0.04em;
+}
+.akd-rsvp .inv-choice {
+  background: #fff8f9;
+  border: 1px solid rgba(201, 156, 55, 0.35);
+  color: #3b2229;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.akd-rsvp .inv-choice:hover {
+  background: rgba(201, 156, 55, 0.15);
+  border-color: #c99c37;
+}
+.akd-rsvp .inv-choice[data-active="true"] {
+  background: linear-gradient(135deg, #c99c37 0%, #966b1a 100%);
+  border-color: #966b1a;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(150, 107, 26, 0.3);
+}
+.akd-rsvp .inv-stepper {
+  border: 1px solid rgba(201, 156, 55, 0.4);
+  background: #ffffff;
+  color: #3b2229;
+}
+.akd-rsvp .inv-stepper button {
+  color: #69172d;
+}
+.akd-rsvp .inv-stepper button:hover {
+  background: rgba(201, 156, 55, 0.12);
+}
+.akd-rsvp .inv-textarea {
+  background: #ffffff;
+  border: 1px solid rgba(201, 156, 55, 0.35);
+  color: #3b2229;
+  border-radius: 14px;
+}
+.akd-rsvp .inv-textarea:focus {
+  border-color: #c99c37;
+  box-shadow: 0 0 0 2px rgba(201, 156, 55, 0.2);
+  outline: none;
+}
+.akd-rsvp label.inv-eyebrow {
+  color: #c99c37;
+  letter-spacing: 0.22em;
+}
+.akd-rsvp .inv-btn {
+  background: linear-gradient(135deg, #c99c37 0%, #966b1a 100%);
+  color: #ffffff;
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px -4px rgba(150, 107, 26, 0.3);
+}
 .akd-footer { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center; margin-top: 2rem; }
 .akd-footer-seal { width: 6rem; height: auto; filter: drop-shadow(0 6px 12px rgba(105, 23, 45, 0.3)); }
 .akd-thanks { font: 400 3rem/1 var(--font-great-vibes), cursive; color: #69172d; }

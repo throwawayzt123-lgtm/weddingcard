@@ -3,6 +3,7 @@
 .sfd-content {
   --sp-ink: #fbf5e8;
   --sp-accent: #dfb76c;
+  --sp-on-accent: #1c050a;
   --sp-soft: #22060b;
   --sp-line: rgba(223, 183, 108, 0.45);
   --sp-font: var(--font-cormorant), Georgia, serif;
@@ -200,6 +201,91 @@
 .sfd-family-window { padding: 3rem 1.6rem 2.4rem; }
 .sfd-gallery { width: min(100%, 54rem); }
 .sfd-rsvp { margin-top: 1rem; }
+.sfd-rsvp .inv-rsvp-card {
+  background: rgba(22, 4, 8, 0.75);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(223, 183, 108, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.sfd-rsvp .inv-event-icon {
+  background: rgba(223, 183, 108, 0.12);
+  border: 1.5px solid #dfb76c;
+  color: #dfb76c;
+}
+.sfd-rsvp .inv-event-title {
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+.sfd-rsvp .inv-rsvp-card .opacity-75 {
+  color: #e2cfa7;
+  opacity: 0.9;
+  font-style: italic;
+}
+.sfd-rsvp .inv-choice {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  color: #fbf5e8;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.sfd-rsvp .inv-choice:hover {
+  background: rgba(223, 183, 108, 0.18);
+  border-color: #dfb76c;
+  color: #ffffff;
+}
+.sfd-rsvp .inv-choice[data-active="true"] {
+  background: linear-gradient(135deg, #dfb76c 0%, #b8860b 100%);
+  border-color: #dfb76c;
+  color: #1c050a !important;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(223, 183, 108, 0.4);
+}
+.sfd-rsvp .inv-stepper {
+  border: 1px solid rgba(223, 183, 108, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fbf5e8;
+}
+.sfd-rsvp .inv-stepper button {
+  color: #dfb76c;
+}
+.sfd-rsvp .inv-stepper button:hover {
+  background: rgba(223, 183, 108, 0.15);
+}
+.sfd-rsvp .inv-textarea {
+  background: rgba(22, 4, 8, 0.75);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  color: #fbf5e8;
+  border-radius: 14px;
+}
+.sfd-rsvp .inv-textarea:focus {
+  border-color: #dfb76c;
+  box-shadow: 0 0 0 2px rgba(223, 183, 108, 0.25);
+  outline: none;
+}
+.sfd-rsvp .inv-textarea::placeholder {
+  color: rgba(251, 245, 232, 0.45);
+}
+.sfd-rsvp label.inv-eyebrow {
+  color: #dfb76c;
+  letter-spacing: 0.22em;
+}
+.sfd-rsvp .inv-btn {
+  background: linear-gradient(135deg, #dfb76c 0%, #c49a45 100%);
+  color: #1c050a;
+  border: 1px solid rgba(255, 235, 175, 0.6);
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 24px -4px rgba(223, 183, 108, 0.35);
+}
+.sfd-rsvp .inv-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
 .sfd-footer { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center; margin-top: 2rem; }
 .sfd-footer-seal { width: 6rem; height: auto; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.65)); }
 .sfd-thanks { font: 400 3rem/1 var(--font-great-vibes), cursive; color: #dfb76c; }

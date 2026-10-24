@@ -6,8 +6,11 @@
   --inv-bg: #1c050a;
   --inv-ink: #fbf5e8;
   --inv-accent: #dfb76c;
-  --inv-accent-strong: #b8860b;
-  --inv-on-accent: #ffffff;
+  --inv-accent-strong: #dfb76c;
+  --inv-on-accent: #1c050a;
+  --inv-panel-bg: #25070d;
+  --inv-panel-border: rgba(223, 183, 108, 0.45);
+  --inv-card-bg: rgba(22, 4, 8, 0.75);
   --inv-menu-bg: #1c050a;
   --inv-heading: var(--font-cinzel), Georgia, serif;
   --inv-body: var(--font-cormorant), Georgia, serif;

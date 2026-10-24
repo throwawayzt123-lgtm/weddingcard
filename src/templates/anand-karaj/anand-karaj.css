@@ -8,6 +8,9 @@
   --inv-accent: #c99c37;
   --inv-accent-strong: #966b1a;
   --inv-on-accent: #ffffff;
+  --inv-panel-bg: #ffffff;
+  --inv-panel-border: rgba(201, 156, 55, 0.45);
+  --inv-card-bg: #ffffff;
   --inv-menu-bg: #fff8f9;
   --inv-heading: var(--font-cinzel), Georgia, serif;
   --inv-body: var(--font-cormorant), Georgia, serif;

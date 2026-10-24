@@ -109,7 +109,7 @@ export const TEMPLATES: TemplateMeta[] = [
     name: "Anand Karaj",
     tagline: "White marble Gurdwara sanctum, golden dome & pastel canopy",
     description:
-      "A serene royal sanctuary in pure white marble and pastel pink roses. A silk chadar canopy with pearl drops covers the screen; tap the golden Khanda emblem and the canopy raises upward to reveal the glowing golden Palki Sahib sanctum, white marble pillars, and the couple holding the sacred pink silk palla. Decorated with Gurmukhi blessings and floral arches.",
+      "A serene royal sanctuary in pure white marble and pastel pink roses. A silk chadar canopy with pearl drops covers the screen; tap the golden Khanda emblem and the canopy raises upward to reveal the glowing golden Palki Sahib sanctum, white marble pillars, and the couple holding the sacred pink silk palla. Decorated with sacred blessings and floral arches.",
     colors: [
       { name: "Pastel pink", hex: "#e89cae" },
       { name: "Sanctum gold", hex: "#c99c37" },

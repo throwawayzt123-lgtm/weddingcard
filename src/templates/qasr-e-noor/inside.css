@@ -3,6 +3,7 @@
 .qnd-content {
   --sp-ink: #fdfcf9;
   --sp-accent: #dfb76c;
+  --sp-on-accent: #0d1428;
   --sp-soft: #0d1428;
   --sp-line: rgba(223, 183, 108, 0.45);
   --sp-font: var(--font-cormorant), Georgia, serif;
@@ -200,6 +201,91 @@
 .qnd-family-window { padding: 3rem 1.6rem 2.4rem; }
 .qnd-gallery { width: min(100%, 54rem); }
 .qnd-rsvp { margin-top: 1rem; }
+.qnd-rsvp .inv-rsvp-card {
+  background: rgba(9, 14, 30, 0.78);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(223, 183, 108, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.qnd-rsvp .inv-event-icon {
+  background: rgba(223, 183, 108, 0.12);
+  border: 1.5px solid #dfb76c;
+  color: #dfb76c;
+}
+.qnd-rsvp .inv-event-title {
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+.qnd-rsvp .inv-rsvp-card .opacity-75 {
+  color: #e2cfa7;
+  opacity: 0.9;
+  font-style: italic;
+}
+.qnd-rsvp .inv-choice {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  color: #fdfcf9;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.qnd-rsvp .inv-choice:hover {
+  background: rgba(223, 183, 108, 0.18);
+  border-color: #dfb76c;
+  color: #ffffff;
+}
+.qnd-rsvp .inv-choice[data-active="true"] {
+  background: linear-gradient(135deg, #dfb76c 0%, #b8860b 100%);
+  border-color: #dfb76c;
+  color: #0d1428 !important;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(223, 183, 108, 0.4);
+}
+.qnd-rsvp .inv-stepper {
+  border: 1px solid rgba(223, 183, 108, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fdfcf9;
+}
+.qnd-rsvp .inv-stepper button {
+  color: #dfb76c;
+}
+.qnd-rsvp .inv-stepper button:hover {
+  background: rgba(223, 183, 108, 0.15);
+}
+.qnd-rsvp .inv-textarea {
+  background: rgba(9, 14, 30, 0.78);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  color: #fdfcf9;
+  border-radius: 14px;
+}
+.qnd-rsvp .inv-textarea:focus {
+  border-color: #dfb76c;
+  box-shadow: 0 0 0 2px rgba(223, 183, 108, 0.25);
+  outline: none;
+}
+.qnd-rsvp .inv-textarea::placeholder {
+  color: rgba(253, 252, 249, 0.45);
+}
+.qnd-rsvp label.inv-eyebrow {
+  color: #dfb76c;
+  letter-spacing: 0.22em;
+}
+.qnd-rsvp .inv-btn {
+  background: linear-gradient(135deg, #dfb76c 0%, #c49a45 100%);
+  color: #0d1428;
+  border: 1px solid rgba(255, 235, 175, 0.6);
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 24px -4px rgba(223, 183, 108, 0.35);
+}
+.qnd-rsvp .inv-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
 .qnd-footer { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center; margin-top: 2rem; }
 .qnd-footer-seal { width: 6rem; height: auto; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.65)); }
 .qnd-thanks { font: 400 3rem/1 var(--font-great-vibes), cursive; color: #dfb76c; }

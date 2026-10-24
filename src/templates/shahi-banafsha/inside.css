@@ -3,6 +3,7 @@
 .sbd-content {
   --sp-ink: #f8eefa;
   --sp-accent: #dfb76c;
+  --sp-on-accent: #1e092b;
   --sp-soft: #210a29;
   --sp-line: rgba(223, 183, 108, 0.45);
   --sp-font: var(--font-cormorant), Georgia, serif;
@@ -200,6 +201,91 @@
 .sbd-family-window { padding: 3rem 1.6rem 2.4rem; }
 .sbd-gallery { width: min(100%, 54rem); }
 .sbd-rsvp { margin-top: 1rem; }
+.sbd-rsvp .inv-rsvp-card {
+  background: rgba(19, 4, 25, 0.72);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(223, 183, 108, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.sbd-rsvp .inv-event-icon {
+  background: rgba(223, 183, 108, 0.12);
+  border: 1.5px solid #dfb76c;
+  color: #dfb76c;
+}
+.sbd-rsvp .inv-event-title {
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+.sbd-rsvp .inv-rsvp-card .opacity-75 {
+  color: #e2cfa7;
+  opacity: 0.9;
+  font-style: italic;
+}
+.sbd-rsvp .inv-choice {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  color: #f8eefa;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.sbd-rsvp .inv-choice:hover {
+  background: rgba(223, 183, 108, 0.18);
+  border-color: #dfb76c;
+  color: #ffffff;
+}
+.sbd-rsvp .inv-choice[data-active="true"] {
+  background: linear-gradient(135deg, #dfb76c 0%, #b8860b 100%);
+  border-color: #dfb76c;
+  color: #1a0524 !important;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(223, 183, 108, 0.4);
+}
+.sbd-rsvp .inv-stepper {
+  border: 1px solid rgba(223, 183, 108, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  color: #f8eefa;
+}
+.sbd-rsvp .inv-stepper button {
+  color: #dfb76c;
+}
+.sbd-rsvp .inv-stepper button:hover {
+  background: rgba(223, 183, 108, 0.15);
+}
+.sbd-rsvp .inv-textarea {
+  background: rgba(19, 4, 25, 0.72);
+  border: 1px solid rgba(223, 183, 108, 0.35);
+  color: #f8eefa;
+  border-radius: 14px;
+}
+.sbd-rsvp .inv-textarea:focus {
+  border-color: #dfb76c;
+  box-shadow: 0 0 0 2px rgba(223, 183, 108, 0.25);
+  outline: none;
+}
+.sbd-rsvp .inv-textarea::placeholder {
+  color: rgba(248, 238, 250, 0.45);
+}
+.sbd-rsvp label.inv-eyebrow {
+  color: #dfb76c;
+  letter-spacing: 0.22em;
+}
+.sbd-rsvp .inv-btn {
+  background: linear-gradient(135deg, #dfb76c 0%, #c49a45 100%);
+  color: #1a0524;
+  border: 1px solid rgba(255, 235, 175, 0.6);
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 24px -4px rgba(223, 183, 108, 0.35);
+}
+.sbd-rsvp .inv-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
 .sbd-footer { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center; margin-top: 2rem; }
 .sbd-footer-seal { width: 6rem; height: auto; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.65)); }
 .sbd-thanks { font: 400 3rem/1 var(--font-great-vibes), cursive; color: #dfb76c; }

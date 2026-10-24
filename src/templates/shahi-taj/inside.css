@@ -248,6 +248,75 @@
 /* Gallery & RSVP */
 .st-gallery { width: min(100%, 54rem); }
 .st-rsvp { margin-top: 1rem; }
+.st-rsvp .inv-rsvp-card {
+  background: rgba(255, 253, 249, 0.95);
+  border: 1px solid rgba(196, 157, 72, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px -12px rgba(124, 88, 21, 0.15);
+}
+.st-rsvp .inv-event-icon {
+  background: rgba(196, 157, 72, 0.12);
+  border: 1.5px solid #b58d34;
+  color: #7c5815;
+}
+.st-rsvp .inv-event-title {
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  color: #322514;
+  letter-spacing: 0.04em;
+}
+.st-rsvp .inv-choice {
+  background: #fffdf9;
+  border: 1px solid rgba(196, 157, 72, 0.4);
+  color: #322514;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.st-rsvp .inv-choice:hover {
+  background: rgba(196, 157, 72, 0.15);
+  border-color: #b58d34;
+}
+.st-rsvp .inv-choice[data-active="true"] {
+  background: linear-gradient(135deg, #b58d34 0%, #7c5815 100%);
+  border-color: #7c5815;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(124, 88, 21, 0.3);
+}
+.st-rsvp .inv-stepper {
+  border: 1px solid rgba(196, 157, 72, 0.45);
+  background: #fffdf9;
+  color: #322514;
+}
+.st-rsvp .inv-stepper button {
+  color: #7c5815;
+}
+.st-rsvp .inv-stepper button:hover {
+  background: rgba(196, 157, 72, 0.15);
+}
+.st-rsvp .inv-textarea {
+  background: rgba(255, 253, 249, 0.95);
+  border: 1px solid rgba(196, 157, 72, 0.4);
+  color: #322514;
+  border-radius: 14px;
+}
+.st-rsvp .inv-textarea:focus {
+  border-color: #b58d34;
+  box-shadow: 0 0 0 2px rgba(196, 157, 72, 0.2);
+  outline: none;
+}
+.st-rsvp label.inv-eyebrow {
+  color: #b58d34;
+  letter-spacing: 0.22em;
+}
+.st-rsvp .inv-btn {
+  background: linear-gradient(135deg, #b58d34 0%, #7c5815 100%);
+  color: #ffffff;
+  font-family: var(--font-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px -4px rgba(124, 88, 21, 0.3);
+}
 
 /* Footer */
 .st-footer {
