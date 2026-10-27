@@ -22,7 +22,7 @@ export type PlanConfig = {
 export const PLANS = {
   ROYAL: {
     label: "Royal",
-    pricePkr: 11999,
+    pricePkr: 7999,
     blurb: "Hand illustrated designs, each with its own inside, and everything in Prime",
     maxEvents: null,
     maxGuests: null,

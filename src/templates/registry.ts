@@ -44,7 +44,7 @@ export type TemplateMeta = {
   bestFor: string[];
 };
 
-// Ordered descending by price: Royal (Rs 11,999) → Prime (Rs 6,899) → Advanced (Rs 3,399) → Regular (Rs 2,599).
+// Ordered descending by price: Royal (Rs 7,999) → Prime (Rs 6,899) → Advanced (Rs 3,399) → Regular (Rs 2,599).
 export const TEMPLATES: TemplateMeta[] = [
   {
     key: "shahi-pardah",
